@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { NavLink } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>
-          Neighborhood Library
-        </h2>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h2>Neighborhood Library</h2>
       </header>
+      <nav>
+        <NavLink to="/addBook">Add a Book</NavLink>
+        <NavLink to="/myShelf">My Shelf</NavLink>
+        <NavLink to="/search">Search</NavLink>
+        <NavLink to="/account">Account</NavLink>
+      </nav>
     </div>
   );
 }
