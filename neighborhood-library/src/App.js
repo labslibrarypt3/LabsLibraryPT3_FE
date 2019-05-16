@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
-import { NavLink } from "react-router-dom";
+import {Route} from react-router-dom;
 
 //component imports
-import { Search, Account, AddBook, MyShelf } from "./components";
+import { Search, Account, AddBook, MyShelf, Nav } from "./components";
 
 function App() {
   return (
@@ -11,36 +11,15 @@ function App() {
       <header className="App-header">
         <h2>Neighborhood Library</h2>
       </header>
-      <nav>
-        <NavLink
-          to="/addBook"
-          activeClassName="selected"
-          render={props => <AddBook {...props} books={bookData} />}
-        >
-          Add a Book
-        </NavLink>
-        <NavLink
-          to="/myShelf"
-          activeClassName="selected"
-          render={props => <MyShelf {...props} books={bookData} />}
-        >
-          My Shelf
-        </NavLink>
-        <NavLink
-          to="/search"
-          activeClassName="selected"
-          render={props => <Search {...props} books={bookData} />}
-        >
-          Search
-        </NavLink>
-        <NavLink
-          to="/account"
-          activeClassName="selected"
-          render={props => <Account {...props} books={bookData} />}
-        >
-          Account
-        </NavLink>
-      </nav>
+
+      <Nav/>
+
+      <div className="main">
+        <Route path="/add-book/:id" component={AddBook} />
+        <Route path="/account/:id/" component={Account} />
+        <Route path="/search" component={Search} />
+        <Route path="/my-shelf/:id" component={MyShelf}/>
+      </div>
     </div>
   );
 }
