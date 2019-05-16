@@ -1,6 +1,9 @@
 import React from "react";
 import "./App.css";
-import { NavLink } from "react-router-dom";
+import {Route} from react-router-dom;
+
+//component imports
+import { Search, Account, AddBook, MyShelf, Nav } from "./components";
 
 function App() {
   return (
@@ -8,12 +11,15 @@ function App() {
       <header className="App-header">
         <h2>Neighborhood Library</h2>
       </header>
-      <nav>
-        <NavLink to="/addBook">Add a Book</NavLink>
-        <NavLink to="/myShelf">My Shelf</NavLink>
-        <NavLink to="/search">Search</NavLink>
-        <NavLink to="/account">Account</NavLink>
-      </nav>
+
+      <Nav/>
+
+      <div className="main">
+        <Route path="/add-book/:id" component={AddBook} />
+        <Route path="/account/:id/" component={Account} />
+        <Route path="/search" component={Search} />
+        <Route path="/my-shelf/:id" component={MyShelf}/>
+      </div>
     </div>
   );
 }
