@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-class AddBook extends Component {
+class Register extends Component {
   render() {
     return (
       <div>
-        <h2>Add Book</h2> <Nav />
+        <h2>Register</h2>
       </div>
     );
   }
 }
 
-export default AddBook;
+export default Register;
