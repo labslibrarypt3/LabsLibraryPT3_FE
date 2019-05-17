@@ -4,7 +4,7 @@ import Nav from "../Nav";
 const Settings = () => {
   return (
     <div>
-      Settings <Nav />
+      <h2>Settings</h2> <Nav />
     </div>
   );
 };

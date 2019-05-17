@@ -5,7 +5,8 @@ class MyShelf extends Component {
   render() {
     return (
       <div>
-        MyShelf <Nav />
+        <h2>MyShelf</h2>
+        <Nav />
       </div>
     );
   }
