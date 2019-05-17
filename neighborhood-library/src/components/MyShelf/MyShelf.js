@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Nav from "../Nav";
+import Nav from "../Nav/Nav";
 
 class MyShelf extends Component {
   render() {

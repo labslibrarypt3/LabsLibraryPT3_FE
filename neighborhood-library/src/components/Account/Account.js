@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Router from "react-router-dom";
-import Nav from "../Nav";
+import { Route } from "react-router-dom";
+import Settings from './Settings';
+import Nav from "../Nav/Nav";
 
 class Account extends Component {
   render() {
