@@ -8,7 +8,6 @@ import Account from './components/Account/Account';
 import AddBook from './components/AddBook/AddBook';
 import MyShelf from './components/MyShelf/MyShelf';
 import Nav from './components/Nav/Nav';
-import AuthContainer from './components/Auth/AuthContainer';
 
 function App() {
   return (
@@ -18,8 +17,6 @@ function App() {
       </header>
 
       <Nav/>
-
-      <AuthContainer />
 
       <div className="main">
         <Route path="/add-book/:id" component={AddBook} />
