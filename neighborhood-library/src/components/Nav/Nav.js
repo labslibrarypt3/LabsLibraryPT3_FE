@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 function Nav() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/*<header className="App-header">
         <h2>Neighborhood Library</h2>
-      </header>
+      </header>*/}
       <nav>
         <NavLink to="/addBook" activeClassName="selected">
           Add a Book

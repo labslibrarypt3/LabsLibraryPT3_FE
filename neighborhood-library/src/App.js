@@ -1,10 +1,13 @@
 import React from "react";
 import "./App.css";
-import {Route} from react-router-dom;
+import { Route } from 'react-router-dom';
 
-import { Search, Account, AddBook, MyShelf, Nav } from "./components";
-
-
+//component imports
+import Search from './components/Search/Search';
+import Account from './components/Account/Account';
+import AddBook from './components/AddBook/AddBook';
+import MyShelf from './components/MyShelf/MyShelf';
+import Nav from './components/Nav/Nav';
 
 class App extends React.Component {
   constructor(){
@@ -26,7 +29,7 @@ class App extends React.Component {
 
       <header className="App-header">
         <h2>Neighborhood Library</h2>
-        
+
       </header>
 
       <Nav/>
