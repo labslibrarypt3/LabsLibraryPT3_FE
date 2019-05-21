@@ -17,19 +17,24 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount(){
-    const response = await fetch( /*URL GOES HERE*/);
+  async componentDidMount(){
+    
+    const response = await fetch( 'https://pt3-neighborhood-library-back.herokuapp.com/account');
     const data = await response.json();
     this.setState({data: data});
+    
 
   }
 
+
   render(){
+    
+    return (
     <div className="App">
 
       <header className="App-header">
         <h2>Neighborhood Library</h2>
-
+        
       </header>
 
       <Nav/>
@@ -41,7 +46,8 @@ class App extends React.Component {
         <Route path="/my-shelf/:id" component={MyShelf} />
       </div>
     </div>
-  }
+)  
+}
 }
 
 export default App;
