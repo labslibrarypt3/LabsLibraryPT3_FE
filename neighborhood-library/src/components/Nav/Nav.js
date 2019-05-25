@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import AuthContainer from "../Auth/AuthContainer";
 
 function Nav() {
   return (
@@ -17,6 +18,7 @@ function Nav() {
         <NavLink to="/account" activeClassName="selected">
           Account
         </NavLink>
+        <AuthContainer />
       </nav>
     </div>
   );

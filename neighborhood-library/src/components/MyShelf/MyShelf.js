@@ -9,8 +9,7 @@ function MyShelf() {
   return (
     <div>
       <h2>MyShelf</h2>
-      <Nav />
-      <div>
+      <div className="my-shelf-links">
         <Link to={Borrowed}>Borrowed</Link>
         <Link to={Loaned}>Loaned</Link>
         <Link to={HomeLibrary}>Home Library</Link>

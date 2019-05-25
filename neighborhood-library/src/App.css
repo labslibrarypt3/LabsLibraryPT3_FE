@@ -5,6 +5,7 @@ html {
 .App {
   border: 1px solid lightgrey;
   color: lightgrey;
+  text-align: center;
 }
 
 p,
@@ -20,5 +21,15 @@ a {
 nav {
   display: flex;
   justify-content: space-around;
+  padding: 10px;
+}
+
+.auth-container {
+  border: 1px dotted pink;
+}
+
+.my-shelf-links {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
 }
