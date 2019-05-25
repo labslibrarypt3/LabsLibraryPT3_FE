@@ -5,7 +5,7 @@ function Nav() {
   return (
     <div className="App">
       <nav>
-        <NavLink to="/add-book" activeClassName="selected">
+        <NavLink to="/add-book/:id" activeClassName="selected">
           Add a Book
         </NavLink>
         <NavLink to="/my-shelf/:id" activeClassName="selected">
