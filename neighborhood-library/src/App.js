@@ -9,6 +9,7 @@ import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
 import MyShelf from "./components/MyShelf/MyShelf";
 import Nav from "./components/Nav/Nav";
+import Landing from "./components/Landing/Landing";
 
 class App extends React.Component {
   constructor() {
@@ -40,10 +41,11 @@ class App extends React.Component {
         </Link>
 
         <div className="main">
-          <Route path="/add-book/:id" component={AddBook} />
-          <Route path="/account/:id/" component={Account} />
-          <Route path="/search" component={Search} />
-          <Route path="/my-shelf/:id" component={MyShelf} />
+          <Route exact path="/add-book/:id" component={AddBook} />
+          <Route exact path="/account/:id/" component={Account} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/my-shelf/:id" component={MyShelf} />
+          <Route exact path="/" component={Landing} />
         </div>
       </div>
     );
