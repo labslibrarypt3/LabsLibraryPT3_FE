@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Nav from "../Nav/Nav";
 import MapsContainer from "./MapsContainer";
 
