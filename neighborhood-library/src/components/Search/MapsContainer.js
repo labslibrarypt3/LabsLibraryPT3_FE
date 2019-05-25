@@ -9,10 +9,7 @@ class MapsContainer extends Component {
     return (
       <div>
         <iframe
-          width="600"
-          height="450"
-          frameborder="0"
-          style="border:0"
+          style={iframeStyles}
           src="https://www.google.com/maps/embed/v1/undefined?origin=...&q=...&destination=...&center=...&zoom=...&key={process.env.REACT_APP_MAPS_KEY}"
           allowfullscreen>
         </iframe>
@@ -22,3 +19,10 @@ class MapsContainer extends Component {
 }
 
 export default MapsContainer;
+
+const iframeStyles = {
+  width: 600,
+  height: 450,
+  frameborder: 0,
+  border: 0
+}
