@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import axios from "axios";
 
 //component imports
@@ -31,9 +31,13 @@ class App extends React.Component {
         <header className="App-header">
           <h2>Neighborhood Library</h2>
         </header>
-        <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
-      ">Sign in with Github</a>
         <Nav />
+        <Link
+          to="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
+      "
+        >
+          Sign in with Github
+        </Link>
 
         <div className="main">
           <Route path="/add-book/:id" component={AddBook} />
