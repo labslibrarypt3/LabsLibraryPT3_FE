@@ -16,13 +16,9 @@ class AuthContainer extends Component {
     return (
       <div className="auth-container">
         {this.state.loggedIn ? (
-          <Link path="/login" component={Login}>
-            Login
-          </Link>
+          <Link to="/login">Login</Link>
         ) : (
-          <Link path="/register" component={Register}>
-            Register
-          </Link>
+          <Link to="/register">Register</Link>
         )}
       </div>
     );

@@ -12,6 +12,7 @@ import Nav from "./components/Nav/Nav";
 import Landing from "./components/Landing/Landing";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import GRBooks from "./components/AddBook/GRBooks";
 
 class App extends React.Component {
   constructor() {
@@ -23,7 +24,7 @@ class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get("https://pt3-neighborhood-library-back.herokuapp.com/account")
+      .get("https://pt3-neighborhood-library-back.herokuapp.com/")
       .then(response => console.log(response))
       .catch(error => console.log(error));
   }
@@ -50,6 +51,8 @@ class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
         </div>
+
+        <GRBooks />
       </div>
     );
   }
