@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { REACT_APP_MAPS_KEY } from '../../config';
 
 class MapsContainer extends Component {
   constructor() {
     super();
+    this.state = {
+      latitude: null,
+      longitude: null
+    }
   }
 
   render() {
@@ -10,7 +15,7 @@ class MapsContainer extends Component {
       <div>
         <iframe
           style={iframeStyles}
-          src="https://www.google.com/maps/embed/v1/undefined?origin=...&q=...&destination=...&center=...&zoom=...&key={process.env.REACT_APP_MAPS_KEY}"
+          src=`https:www.google.com/maps/embed/v1/view?&center=40.680105499999996,-73.97711439999999&zoom=18&key=REACT_APP_MAPS_KEY`
           allowfullscreen>
         </iframe>
       </div>
