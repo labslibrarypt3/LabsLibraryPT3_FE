@@ -12,7 +12,7 @@ import Nav from "./components/Nav/Nav";
 import Landing from "./components/Landing/Landing";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
-import GRBooks from "./components/AddBook/GRBooks";
+import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 
 class App extends React.Component {
   constructor() {
@@ -52,7 +52,7 @@ class App extends React.Component {
           <Route path="/register" component={Register} />
         </div>
 
-        <GRBooks />
+        <SearchGoodreads />
       </div>
     );
   }

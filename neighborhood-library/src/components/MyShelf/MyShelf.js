@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Nav from "../Nav/Nav";
 import { Link } from "react-router-dom";
 import Borrowed from "./Borrowed";
 import Loaned from "./Loaned";
