@@ -1,7 +1,8 @@
-export function PostData(type,userData){
-    let baseURL = 'https://pt3-neighborhood-library-back.herokuapp.com/';
+export default function AuthPostData(type,userData){
+    let baseURL = 'http://localhost:4000/auths';
 
     return new Promise((resolve, reject) =>{
+
         fetch(baseURL+type,{
             method:'POST',
             body:JSON.stringify(userData)
