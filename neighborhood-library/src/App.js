@@ -9,6 +9,7 @@ import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
 import MyShelf from "./components/MyShelf/MyShelf";
 import Nav from "./components/Nav/Nav";
+import AuthContainer from "./components/Auth/AuthContainer"
 
 class App extends React.Component {
   constructor() {
@@ -24,17 +25,19 @@ class App extends React.Component {
       .then(response => console.log(response))
       .catch(error => console.log(error));
   }
-
+  
+  
   render() {
+    
+
     return (
       <div className="App">
         <header className="App-header">
+       
           <h2>Neighborhood Library</h2>
         </header>
-        <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
-      ">Sign in with Github</a>
         <Nav />
-
+        <AuthContainer/>
         <div className="main">
           <Route path="/add-book/:id" component={AddBook} />
           <Route path="/account/:id/" component={Account} />
@@ -45,5 +48,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 export default App;
