@@ -18,25 +18,43 @@ class AuthContainer extends Component {
   }
   callback (res, type){
 
-  let authPostData;
+  let userData;
 
   if( type ==='facebook'&& res.email){
+    userData = {
+      name: res.name,
+      provider:type,
+      email:res.email,
+      provider_id:res.id,
+      token:res.accessToken
+    }
 
   }
 
   if( type ==='google'&& res.w3.U3){
+    {
+      userData = {
+        name: res.w3.ig,
+        provider:type,
+        email:res.w3.U3,
+        provider_id:res.El,
+        token:res.Zi.access_token
+      }
+  
+    }
     
   }
 
-  AuthPostData('/callback',authPostData).then((result)=>{
-    let responseJson = result;
+  AuthPostData(type,userData);
+  // AuthPostData('callback',AuthPostData).then((result)=>{
+  //   let responseJson = result;
 
-    if(responseJson.userData){
-      sessionStorage.setItem('userData',JSON.stringify(responseJson));
-      this.setState({redirectToReferrer:true});
+  //   if(responseJson.userData){
+  //     sessionStorage.setItem('userData',JSON.stringify(responseJson));
+  //     this.setState({redirectToReferrer:true});
 
-    }
-  })
+  //   }
+  // })
 }
 
 

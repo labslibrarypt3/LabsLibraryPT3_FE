@@ -1,9 +1,10 @@
 export default function AuthPostData(type,userData){
-    let baseURL = 'http://localhost:4000/auths';
+    console.log(userData)
+    let baseURL = 'http://localhost:4000/auths/callback';
 
     return new Promise((resolve, reject) =>{
 
-        fetch(baseURL+type,{
+        fetch(baseURL,{
             method:'POST',
             body:JSON.stringify(userData)
         })
