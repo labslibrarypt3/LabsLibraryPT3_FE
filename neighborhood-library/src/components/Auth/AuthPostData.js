@@ -1,19 +1,26 @@
+import axios from "axios";
+
+
 export default function AuthPostData(type,userData){
     console.log(userData)
-    let baseURL = 'http://localhost:4000/auths/callback';
+    
 
     return new Promise((resolve, reject) =>{
 
-        fetch(baseURL,{
-            method:'POST',
-            body:JSON.stringify(userData)
+        axios({
+            method:'post',
+            url:'http://localhost:4000/auths/callback',
+            data:userData
         })
-        .then((response)=>response.json())
-        .then((res)=>{
-            resolve(res);
-        })
-        .catch((error)=>{
-            reject(error);
-        });
-    });
+})
 }
+
+// Send a POST request
+// axios({
+//     method: 'post',
+//     url: '/user/12345',
+//     data: {
+//       firstName: 'Fred',
+//       lastName: 'Flintstone'
+//     }
+//   });
