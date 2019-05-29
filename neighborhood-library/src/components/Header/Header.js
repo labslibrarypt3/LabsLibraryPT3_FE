@@ -3,17 +3,28 @@ import { slide as Menu } from "react-hamburger-menu";
 import Nav from "../Nav/Nav";
 
 
-// class Header extends React.Component {
-//     render() {
-    export default props => {
-    return (
-        <Menu {...props}>
-            <div>Hello</div>
-        <Nav />
-    </Menu>
-    );
+const style = {
+    container: {
+        borderBottom: '4px solid AliceBlue',
+        backgroundColor: 'SkyBlue',
+        padding: 10
+    },
+    title: {
+        color: 'white'
     }
-//     }
-// }
-// export default Header;
+}
 
+class Header extends React.Component {
+
+    render(){
+        return(
+            <header style={style.container}>
+                <h1 style={style.title}>Hello React!</h1>
+                <Menu />
+                <Nav />
+            </header>
+        )
+    }
+}
+
+export default Header
