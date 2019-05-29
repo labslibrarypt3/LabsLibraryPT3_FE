@@ -10,7 +10,13 @@ import AddBook from "./components/AddBook/AddBook";
 import MyShelf from "./components/MyShelf/MyShelf";
 import Nav from "./components/Nav/Nav";
 import Landing from "./components/Landing/Landing";
+
 import GRBooks from "./components/AddBook/GRBooks";
+
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
+import SearchGoodreads from "./components/AddBook/SearchGoodreads";
+
 
 class App extends React.Component {
   constructor() {
@@ -52,7 +58,7 @@ class App extends React.Component {
         </div>
 
 
-        <GRBooks />
+        <SearchGoodreads />
       </div>
       </div>
     );
