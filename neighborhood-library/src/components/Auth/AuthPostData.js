@@ -6,8 +6,9 @@ export default function AuthPostData(type,userData){
     
 
     return new Promise((resolve, reject) =>{
-
+        console.log(userData)
         axios({
+           
             method:'post',
             url:'http://localhost:4000/auths/callback',
             data:userData
@@ -15,12 +16,3 @@ export default function AuthPostData(type,userData){
 })
 }
 
-// Send a POST request
-// axios({
-//     method: 'post',
-//     url: '/user/12345',
-//     data: {
-//       firstName: 'Fred',
-//       lastName: 'Flintstone'
-//     }
-//   });

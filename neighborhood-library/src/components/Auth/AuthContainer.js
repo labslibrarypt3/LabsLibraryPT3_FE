@@ -32,7 +32,6 @@ class AuthContainer extends Component {
   }
 
   if( type ==='google'&& res.w3.U3){
-    {
       userData = {
         name: res.w3.ig,
         provider:type,
@@ -40,23 +39,10 @@ class AuthContainer extends Component {
         provider_id:res.El,
         token:res.Zi.access_token
       }
-  
-    }
-    
   }
 
   AuthPostData(type,userData);
-  // AuthPostData('callback',AuthPostData).then((result)=>{
-  //   let responseJson = result;
-
-  //   if(responseJson.userData){
-  //     sessionStorage.setItem('userData',JSON.stringify(responseJson));
-  //     this.setState({redirectToReferrer:true});
-
-  //   }
-  // })
 }
-
 
   render() {
    
