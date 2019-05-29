@@ -9,6 +9,10 @@ import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
 import MyShelf from "./components/MyShelf/MyShelf";
 import Nav from "./components/Nav/Nav";
+import Loaned from "./components/MyShelf/Loaned/Loaned";
+import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
+
+
 
 class App extends React.Component {
   constructor() {
@@ -34,13 +38,17 @@ class App extends React.Component {
         <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
       ">Sign in with Github</a>
         <Nav />
-
+        
         <div className="main">
           <Route path="/add-book/:id" component={AddBook} />
           <Route path="/account/:id/" component={Account} />
           <Route path="/search" component={Search} />
-          <Route path="/my-shelf/:id" component={MyShelf} />
+          <Route path="/myShelf" component={MyShelf} />
         </div>
+        <div className="myshelf">
+    <Route path="/loaned" component={Loaned}/>
+    <Route path="/borrowed" component={Borrowed}/>
+    </div>
       </div>
     );
   }
