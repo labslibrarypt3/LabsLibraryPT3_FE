@@ -4,11 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-<<<<<<< HEAD
     "google-maps-react": "^2.0.2",
-=======
     "dotenv": "^8.0.0",
->>>>>>> eeae23bfcfc72aad1e9b0d451fe85fed398ba598
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
