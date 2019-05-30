@@ -1,14 +1,33 @@
 import React, { Component } from "react";
 import Nav from "../Nav/Nav";
-import MapsContainer from "./MapsContainer";
+// import MapsContainer from "./MapsContainer";
+import MapContainer from "./MapContainer";
+
 
 class Search extends Component {
-  constructor() {
-    super();
-    this.state = {
-      searchInput: ''
-    }
+  state = {
+    searchInput: ''
   }
+
+  // componentDidMount() {
+  //   navigator.geolocation.getCurrentPosition(this.posSuccess, this.posFailure)
+  // }
+  //
+  // posSuccess = (pos) => {
+  //   if (pos) {
+  //     console.log(pos.coords);
+  //     this.setState({
+  //       latitude: pos.coords.latitude,
+  //       longitude: pos.coords.longitude
+  //     }, () => {
+  //       console.log(this.state);
+  //     });
+  //   }
+  // }
+  //
+  // PosFailure() {
+  //   console.log("nope");
+  // }
 
   handleInput = e => {
     e.preventDefault();
@@ -35,7 +54,7 @@ class Search extends Component {
             onChange={this.state.handleInput}
           />
         </form>
-        <MapsContainer />
+        <MapContainer />
       </div>
     );
   }

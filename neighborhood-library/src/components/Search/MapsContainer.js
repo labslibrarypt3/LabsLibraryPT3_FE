@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
-import { REACT_APP_MAPS_KEY } from '../../config';
+import config from '../../config';
 
 class MapsContainer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      latitude: null,
-      longitude: null
-    }
-  }
 
   render() {
+    console.log(this.props.latitude, this.props.longitude);
+    const { reactMapsKey, mapsUrl } = config;
+
+    console.log(`https://www.google.com/maps/embed/v1/view?key=${reactMapsKey}&center=${this.props.latitude, this.props.longitude}`);
     return (
       <div>
-        <iframe
+        {/* <iframe
           style={iframeStyles}
-          src=`https:www.google.com/maps/embed/v1/view?&center=40.680105499999996,-73.97711439999999&zoom=18&key=REACT_APP_MAPS_KEY`
-          allowfullscreen>
-        </iframe>
+          src={config}
+          allowFullScreen>
+        </iframe> */}
+        {reactMapsKey ? <iframe
+          width="450"
+          height="250"
+          frameborder="0"
+          src={mapsUrl} allowfullscreen>
+        </iframe> : null}
+        <img src="https://facthacker.com/wp-content/uploads/2015/03/Everything-You-Need-to-Know-About-Your-Poop.jpg" />
       </div>
     )
   }
