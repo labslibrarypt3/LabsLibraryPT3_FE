@@ -33,3 +33,8 @@ nav {
   flex-direction: column;
   padding: 10px;
 }
+.paymentContainer {
+  border: 1px solid blueviolet;
+  background-color: antiquewhite;
+  color: black;
+}
