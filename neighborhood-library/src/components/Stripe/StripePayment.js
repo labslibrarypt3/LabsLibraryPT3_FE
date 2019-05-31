@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe, ReactStripeElements } from 'react-stripe-elements';
-import dotenv from 
+// import dotenv from 
 
 class StripePayment extends React.Component {
 constructor(props) {
@@ -24,13 +24,13 @@ handleSubmit = async e => {
 }
 
 handleInputChange = e => {
-    this.setState({ 
+    this.setState({
       [e.target.name]: e.target.value });
   };
  render() {
      return (
          <div className='paymentContainer'>
-             <form 
+             <form
                 className='paymentForm'
                 onSubmit={this.handleSubmit}
             >

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
 import Nav from "../Nav/Nav";
 // import MapsContainer from "./MapsContainer";
@@ -59,16 +58,6 @@ class Search extends Component {
       </div>
     );
   }
-=======
-import React from "react";
-
-function Search() {
-  return (
-    <div>
-      <h2>this will be the search page</h2>
-    </div>
-  );
->>>>>>> eeae23bfcfc72aad1e9b0d451fe85fed398ba598
 }
 
 export default Search;
