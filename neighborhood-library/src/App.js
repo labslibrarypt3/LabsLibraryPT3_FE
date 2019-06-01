@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import { Route, Link } from "react-router-dom";
 import axios from "axios";
+import { StripeProvider, Elements } from 'react-stripe-elements'
+
 
 //component imports
 import Search from "./components/Search/Search";
@@ -10,7 +12,14 @@ import AddBook from "./components/AddBook/AddBook";
 import MyShelf from "./components/MyShelf/MyShelf";
 import Nav from "./components/Nav/Nav";
 import Landing from "./components/Landing/Landing";
+
 import GRBooks from "./components/AddBook/GRBooks";
+
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
+import SearchGoodreads from "./components/AddBook/SearchGoodreads";
+import StripePayment from './components/Stripe/StripePayment'
+
 
 class App extends React.Component {
   constructor() {
@@ -51,8 +60,21 @@ class App extends React.Component {
           <Route path="/my-shelf/:id" component={MyShelf} />
         </div>
 
+        <div className="auth-routes">
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+        </div>
 
-        <GRBooks />
+        <SearchGoodreads />
+
+        <>
+        <StripeProvider apiKey='key goes here'>
+          <Elements>
+            <StripePayment />
+          </Elements>
+        </StripeProvider>
+        
+        </>
       </div>
       </div>
     );
