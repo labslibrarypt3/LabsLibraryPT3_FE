@@ -78,6 +78,8 @@ class AuthContainer extends Component {
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
+
+    
   />
 
         <Login />

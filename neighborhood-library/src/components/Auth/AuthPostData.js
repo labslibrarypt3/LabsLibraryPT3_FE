@@ -10,7 +10,7 @@ export default function AuthPostData(type,userData){
         axios({
            
             method:'post',
-            url:'http://localhost:4000/auths/callback',
+            url:'http://localhost:4000/auths/oauth',
             data:userData
         })
 })
