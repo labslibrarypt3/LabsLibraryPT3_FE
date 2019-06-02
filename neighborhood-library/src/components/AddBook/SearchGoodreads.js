@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import GoodreadsSearchResults from "./GoodreadsSearchResults";
+import GoodreadsSearchResult from "./GoodreadsSearchResult";
 
 class SearchGoodreads extends Component {
   constructor(props) {
@@ -50,12 +50,12 @@ class SearchGoodreads extends Component {
         <div className="goodreads-search-results-container">
           {this.state.books.map(book => {
             return (
-              <div className="goodreads-search-result">
-                <img src={book.covers[0]} alt="cover image" />
-                <p>
-                  {book.title} by {book.authors}
-                </p>
-              </div>
+              <GoodreadsSearchResult
+                key={book.goodreadsID}
+                cover={book.covers[0]}
+                title={book.title}
+                authors={book.authors}
+              />
             );
           })}
         </div>
