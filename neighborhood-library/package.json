@@ -5,9 +5,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cheeseburger-menu": "^0.0.13",
+    "react-hamburger-menu": "^1.1.1",
+    "dotenv": "^8.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-hamburger-menu": "^1.1.1",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^5.0.4",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1"
   },
@@ -31,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "knex": "^0.17.0"
   }
 }

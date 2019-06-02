@@ -1,17 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import AuthContainer from "../Auth/AuthContainer";
 
 function Nav() {
+
+
+  
   return (
     <div className="App">
-      {/*<header className="App-header">
-        <h2>Neighborhood Library</h2>
-      </header>*/}
       <nav>
-        <NavLink to="/addBook" activeClassName="selected">
+        <NavLink to="/add-book/:id" activeClassName="selected">
           Add a Book
         </NavLink>
-        <NavLink to="/myShelf" activeClassName="selected">
+        <NavLink to="/my-shelf/:id" activeClassName="selected">
           My Shelf
         </NavLink>
         <NavLink to="/search" activeClassName="selected">
@@ -20,6 +21,8 @@ function Nav() {
         <NavLink to="/account" activeClassName="selected">
           Account
         </NavLink>
+        <AuthContainer />
+        
       </nav>
     </div>
   );

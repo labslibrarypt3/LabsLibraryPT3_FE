@@ -11,9 +11,10 @@ class MyShelf extends Component {
         <h2>MyShelf</h2>        
         <NavLink to ="/loaned" component={Loaned}>Loaned</NavLink>
         <NavLink to ="/borrowed" component={Borrowed}>Borrowed</NavLink>
+
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default MyShelf;
