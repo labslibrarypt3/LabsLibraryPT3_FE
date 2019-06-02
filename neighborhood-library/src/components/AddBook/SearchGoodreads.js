@@ -1,28 +1,45 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class SearchGoodreads extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      value: ""
+      query: "",
+      books: []
     };
   }
-  handleChange = event => {
-    this.setState({ value: event.target.value });
+
+  // url: https://pt3-neighborhood-library-back.herokuapp.com/api/goodeads/search
+  getData = async () => {
+    const axiosResponse = await axios
+      .get(`http://localhost:4000/api/goodreads/search`, {
+        params: { query: this.state.query }
+      })
+      .then(res => this.setState({ books: res.data.books }))
+      .catch(err => console.log(err));
   };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
+    this.getData();
   };
+
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             placeholder="Search for books to add to your library"
             onChange={this.handleChange}
-            value={this.state.value}
+            value={this.state.query}
+            name="query"
           />
-          <button submit={this.handleSubmit}>Search</button>
+          <button type="submit">Search</button>
         </form>
       </div>
     );
