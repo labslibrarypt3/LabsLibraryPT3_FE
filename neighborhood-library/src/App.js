@@ -9,15 +9,19 @@ import Search from "./components/Search/Search";
 import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
 import MyShelf from "./components/MyShelf/MyShelf";
-import Nav from "./components/Nav/Nav";
-import Landing from "./components/Landing/Landing";
 
-import GRBooks from "./components/AddBook/GRBooks";
+// import Nav from "./components/Nav/Nav";
+import Loaned from "./components/MyShelf/Loaned/Loaned";
+import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
+import Header from "./components/Header/Headers";
+
+import Landing from "./components/Landing/Landing";
 
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripePayment from "./components/Stripe/StripePayment";
+
 
 
 class App extends React.Component {
@@ -45,6 +49,12 @@ class App extends React.Component {
        
           <h2>Neighborhood Library</h2>
         </header>
+
+        <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
+      ">Sign in with Github</a>
+        <div className="main">
+        <Header />
+
         <Nav />
         
         <div className="main">
@@ -53,11 +63,18 @@ class App extends React.Component {
           </h2>
         <div className="main-routes">
           <Route exact path="/" component={Landing} />
+
           <Route path="/add-book/:id" component={AddBook} />
           <Route path="/account/:id/" component={Account} />
           <Route path="/search" component={Search} />
-          <Route path="/my-shelf/:id" component={MyShelf} />
+          <Route path="/myShelf" component={MyShelf} />
         </div>
+
+        <div className="myshelf">
+    <Route path="/loaned" component={Loaned}/>
+    <Route path="/borrowed" component={Borrowed}/>
+    </div>
+
 
         <div className="auth-routes">
           <Route path="/login" component={Login} />
@@ -74,6 +91,7 @@ class App extends React.Component {
           </StripeProvider>
         </>
       </div>
+
       </div>
     );
   }
