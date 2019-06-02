@@ -49,11 +49,12 @@ class SearchGoodreads extends Component {
         </form>
         <div className="goodreads-search-results-container">
           {this.state.books.map(book => {
-            console.log(book);
             return (
               <div className="goodreads-search-result">
-                <p>{book.title}</p>
-                <p>{book.authors}</p>
+                <img src={book.covers[0]} alt="cover image" />
+                <p>
+                  {book.title} by {book.authors}
+                </p>
               </div>
             );
           })}
