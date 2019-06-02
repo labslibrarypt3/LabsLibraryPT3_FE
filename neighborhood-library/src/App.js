@@ -5,24 +5,19 @@ import axios from "axios";
 import { StripeProvider, Elements } from "react-stripe-elements";
 
 //component imports
-import Search from "./components/Search/Search";
 import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
-import MyShelf from "./components/MyShelf/MyShelf";
-
-// import Nav from "./components/Nav/Nav";
-import Loaned from "./components/MyShelf/Loaned/Loaned";
 import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
-
 import Landing from "./components/Landing/Landing";
-
+import Loaned from "./components/MyShelf/Loaned/Loaned";
 import Login from "./components/Auth/Login";
+import MyShelf from "./components/MyShelf/MyShelf";
+import Nav from "./components/Nav/Nav";
 import Register from "./components/Auth/Register";
+import Search from "./components/Search/Search";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripePayment from "./components/Stripe/StripePayment";
-
-
 
 class App extends React.Component {
   constructor() {
@@ -38,64 +33,60 @@ class App extends React.Component {
       .then(response => console.log(response))
       .catch(error => console.log(error));
   }
-  
-  
-  render() {
-    
 
+  render() {
     return (
       <div className="App">
         <header className="App-header">
-       
           <h2>Neighborhood Library</h2>
         </header>
 
-        <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
-      ">Sign in with Github</a>
-        <div className="main">
-        <Header />
+        <a
+          href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
+      "
+        >
+          Sign in with Github
+        </a>
 
-        <Nav />
-        
         <div className="main">
+          <Header />
+
+          <Nav />
           <h2>
             <Link to="/">Neighborhood Library</Link>
           </h2>
-        <div className="main-routes">
-          <Route exact path="/" component={Landing} />
+          <div className="main-routes">
+            <Route exact path="/" component={Landing} />
 
-          <Route path="/add-book/:id" component={AddBook} />
-          <Route path="/account/:id/" component={Account} />
-          <Route path="/search" component={Search} />
-          <Route path="/myShelf" component={MyShelf} />
+            <Route path="/add-book/:id" component={AddBook} />
+            <Route path="/account/:id/" component={Account} />
+            <Route path="/search" component={Search} />
+            <Route path="/myShelf" component={MyShelf} />
+          </div>
+
+          <div className="myshelf">
+            <Route path="/loaned" component={Loaned} />
+            <Route path="/borrowed" component={Borrowed} />
+          </div>
+
+          <div className="auth-routes">
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+          </div>
+
+          <SearchGoodreads />
+
+          <>
+            <StripeProvider apiKey="key goes here">
+              <Elements>
+                <StripePayment />
+              </Elements>
+            </StripeProvider>
+          </>
         </div>
-
-        <div className="myshelf">
-    <Route path="/loaned" component={Loaned}/>
-    <Route path="/borrowed" component={Borrowed}/>
-    </div>
-
-
-        <div className="auth-routes">
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-        </div>
-
-        <SearchGoodreads />
-
-        <>
-          <StripeProvider apiKey="key goes here">
-            <Elements>
-              <StripePayment />
-            </Elements>
-          </StripeProvider>
-        </>
-      </div>
-
       </div>
     );
   }
 }
-
 
 export default App;
