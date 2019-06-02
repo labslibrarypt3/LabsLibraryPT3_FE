@@ -1,13 +1,11 @@
 import React, { Component } from "react";
+import SearchGoodreads from "./SearchGoodreads";
+
+// I needed to take this out in order to re-organize and pass props properly
 
 class AddBook extends Component {
   render() {
-    return (
-      <div>
-        <h2>Add a Book to your Library</h2>
-        <p>I am a list of books you want to lend out to the community</p>
-      </div>
-    );
+    return <div />;
   }
 }
 
