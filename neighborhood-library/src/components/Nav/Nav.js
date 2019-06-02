@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import AuthContainer from "../Auth/AuthContainer";
 
 function Nav() {
+
+
+  
   return (
     <div className="App">
       <nav>
@@ -19,6 +22,7 @@ function Nav() {
           Account
         </NavLink>
         <AuthContainer />
+        
       </nav>
     </div>
   );

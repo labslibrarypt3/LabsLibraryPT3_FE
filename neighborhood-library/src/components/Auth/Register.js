@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class Register extends Component {
   constructor() {
@@ -19,20 +19,13 @@ class Register extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const creds = this.state;
-    const endpoint = "";
+    // const creds = this.state;
+    // const endpoint = "";
   };
 
   render() {
     return (
       <div>
-        <Link
-          to="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
-  "
-        >
-          Log in with Github
-        </Link>
-
         <form>
           <label htmlFor="login">Register</label>
           <input
