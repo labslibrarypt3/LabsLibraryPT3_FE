@@ -8,7 +8,7 @@ import Search from "./components/Search/Search";
 import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
 import MyShelf from "./components/MyShelf/MyShelf";
-// import Nav from "./components/Nav/Nav";
+import LandingPage from "./components/LandingPage/LandingPage";
 import Loaned from "./components/MyShelf/Loaned/Loaned";
 import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
@@ -33,13 +33,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h2>Neighborhood Library</h2>
-        </header>
+      <Header />
+      <LandingPage />
         <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
       ">Sign in with Github</a>
         <div className="main">
-        <Header />
           <Route path="/add-book/:id" component={AddBook} />
           <Route path="/account/:id/" component={Account} />
           <Route path="/search" component={Search} />
