@@ -1,6 +1,7 @@
 // import React from "react";
 // import Nav from "../Nav/Nav";
 
+
 // function Search() {
 //   return (
 //     <div>
@@ -26,6 +27,7 @@ handleInputChange = () => {
 
 render() {
   return (
+
     
     <form>
       <input

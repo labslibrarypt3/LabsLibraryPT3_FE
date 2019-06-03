@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+// import { Link } from "react-router-dom";
 
 class Register extends Component {
   constructor() {
     super();
     this.state = {
-      username: '',
-      password: ''
-    }
+      username: "",
+      password: ""
+    };
   }
 
   handleInput = e => {
@@ -14,32 +15,36 @@ class Register extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
-    const creds = this.state;
-    const endpoint = '';
-  }
+    // const creds = this.state;
+    // const endpoint = "";
+  };
 
   render() {
     return (
-      <form>
-        <label for='login'>Register</label>
-        <input
-          type='text'
-          name='username'
-          placeholder='username'
-          value={this.state.username}
-          onChange={this.handleInput} />
-        <input
-          type='password'
-          name='password'
-          placeholder='password'
-          value={this.state.password}
-          onChange={this.handleInput} />
-        <button type='submit'>Register</button>
-      </form>
+      <div>
+        <form>
+          <label htmlFor="login">Register</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="username"
+            value={this.state.username}
+            onChange={this.handleInput}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={this.state.password}
+            onChange={this.handleInput}
+          />
+          <button type="submit">Register</button>
+        </form>
+      </div>
     );
   }
 }
