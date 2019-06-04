@@ -1,4 +1,7 @@
 import React from "react";
+import { Route} from "react-router-dom";
+
+import Register from "../Auth/Register";
 
 function Landing() {
   return (

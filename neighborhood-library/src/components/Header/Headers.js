@@ -11,12 +11,12 @@ import MenuContent from './MenuContent'
 const style = {
     container: {
         borderBottom: '4px solid AliceBlue',
-        backgroundColor: 'SkyBlue',
+        backgroundColor: '#BCBCBE',
         padding: 10
     },
     title: {
         color: 'white'
-    }
+    },
 }
 
 class Headers extends React.Component {
@@ -36,7 +36,7 @@ class Headers extends React.Component {
     render(){
         return(
             <header style={style.container}>
-                <h1 style={style.title}>Hello React!</h1>
+                <h1 style={style.title}>Neighborhood Library!</h1>
                 <div classname = "sidebar">
                 <CheeseburgerMenu
                 isOpen={this.state.open}
