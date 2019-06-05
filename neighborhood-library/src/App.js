@@ -57,7 +57,7 @@ class App extends React.Component {
         <SearchGoodreads />
 
         <>
-        <StripeProvider apiKey='key goes here'>
+        <StripeProvider apiKey='pk_test_j6wi0FWmtWCqFPwU3oCHJA2800c8YshuOy'>
           <Elements>
             <StripePayment />
           </Elements>

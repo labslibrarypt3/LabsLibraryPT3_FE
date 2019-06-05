@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe, ReactStripeElements } from 'react-stripe-elements';
-import dotenv from 
 
 class StripePayment extends React.Component {
 constructor(props) {
@@ -12,16 +11,29 @@ constructor(props) {
  }
 
 
-handleSubmit = async e => {
-    e.preventDefault();
-    try {
-        let token = await this.props.stripe.createToken({name: this.state.name});
-        console.log(token);
-    } catch (e) {
-        throw e;
+    handleSubmit = async e => {
+        e.preventDefault();
+        try {
+            let { token } = await this.props.stripe.createToken({name: this.state.name});
+            let amount = this.state.amount;
+            console.log(token);
+            //fix this URL
+            await fetch('https://pt3-neighborhood-library-back.herokuapp.com//api/striperoutes/charge', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ token, amount })
+            })
+        } catch (e) {
+            throw e;
+        }
+        console.log('clicked!')
     }
-    console.log('clicked!')
-}
+
+
+
+
 
 handleInputChange = e => {
     this.setState({ 
