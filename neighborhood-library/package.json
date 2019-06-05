@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "cheeseburger-menu": "^0.0.13",
+    "react-hamburger-menu": "^1.1.1",
     "dotenv": "^8.0.0",
     "google-maps-react": "^2.0.2",
     "react": "^16.8.6",
