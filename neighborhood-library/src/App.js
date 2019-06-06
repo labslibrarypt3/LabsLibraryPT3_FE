@@ -18,6 +18,7 @@ import Register from "./components/Auth/Register";
 import Search from "./components/Search/Search";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripePayment from "./components/Stripe/StripePayment";
+import HomeLibrary from "./components/MyShelf/HomeLibrary/HomeLibrary";
 
 class App extends React.Component {
   constructor() {
@@ -41,13 +42,6 @@ class App extends React.Component {
           <h2>Neighborhood Library</h2>
         </header>
 
-        <a
-          href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
-      "
-        >
-          Sign in with Github
-        </a>
-
         <div className="main">
           <Header />
 
@@ -65,6 +59,7 @@ class App extends React.Component {
           </div>
 
           <div className="myshelf">
+            <Route path="/library"component={HomeLibrary}/>
             <Route path="/loaned" component={Loaned} />
             <Route path="/borrowed" component={Borrowed} />
           </div>
@@ -73,7 +68,7 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </div>
-
+          
           <SearchGoodreads />
 
           <>

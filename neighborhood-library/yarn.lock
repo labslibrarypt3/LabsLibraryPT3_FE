@@ -2129,6 +2129,7 @@ chardet@^0.7.0:
 cheeseburger-menu@^0.0.13:
   version "0.0.13"
   resolved "https://registry.yarnpkg.com/cheeseburger-menu/-/cheeseburger-menu-0.0.13.tgz#733ccdfeb729c666c3fe0d18fd650c7d62fcfbdc"
+  integrity sha512-6kXrfUGmDpjPK5btog45+u2Pph6Hcdd4c+BqpJQIOCG95Odh9/n8TojlZ4O40Yjk7fpToGuOgh6i645RvoVmyw==
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.6.2"
@@ -7230,6 +7231,7 @@ react-google-login@^5.0.4:
 react-hamburger-menu@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-hamburger-menu/-/react-hamburger-menu-1.1.1.tgz#36fb5d38b55f3babb472f94f8cc3640345bfa9ae"
+  integrity sha512-uBmRe8UTmmNsuqKx/Z4H9SnWEa7Wok0ZAzvtfrLgTY2NimLI3lvaPUP/i8q2rfIHfP2gH9u8ltP+YunCHciHdQ==
 
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.8.6"
