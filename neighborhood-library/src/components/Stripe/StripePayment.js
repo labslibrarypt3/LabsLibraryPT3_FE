@@ -1,16 +1,6 @@
-<<<<<<< HEAD
-import React, { Component } from "react";
-import {
-  CardElement,
-  injectStripe,
-  ReactStripeElements
-} from "react-stripe-elements";
-import dotenv from "dotenv";
-=======
 import React, { Component } from 'react';
 import { CardElement, injectStripe, ReactStripeElements } from 'react-stripe-elements';
 // import dotenv from 
->>>>>>> de65ac5b29a32b6baf2debe8954e06064591f196
 
 class StripePayment extends React.Component {
   constructor(props) {
@@ -31,10 +21,6 @@ class StripePayment extends React.Component {
     } catch (e) {
       throw e;
     }
-<<<<<<< HEAD
-    console.log("clicked!");
-  };
-=======
     console.log('clicked!')
 }
 
@@ -70,7 +56,6 @@ handleInputChange = e => {
          </div>
      )
  }
->>>>>>> de65ac5b29a32b6baf2debe8954e06064591f196
 
   handleInputChange = e => {
     this.setState({

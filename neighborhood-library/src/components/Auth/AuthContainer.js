@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import AuthPostData from './AuthPostData';
-import Login from './Login';
-import Register from './Register';
+// import Login from './Login';
+// import Register from './Register';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 import {Redirect} from 'react-router-dom';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class AuthContainer extends Component {
   constructor(props) {
@@ -51,17 +51,14 @@ class AuthContainer extends Component {
       )}
     
       const responseGoogle = (response) => {
-        console.log(response);
         this.callback(response, 'google');
       }
       
       const responseFacebook = (response) => {
-        console.log(response);
         this.callback(response, 'facebook');
       }
       
       const componentClicked =(response) => {
-        console.log(response);
       }
       return(
         <div>
@@ -78,11 +75,10 @@ class AuthContainer extends Component {
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
-
     
   />
 
-        <Login />
+        {/* <Login />
         <Register />
       <div className="auth-container">
         {this.state.loggedIn ? (
@@ -90,14 +86,10 @@ class AuthContainer extends Component {
         ) : (
           <Link to="/register">Register</Link>
         )}
-      </div>
+      </div> */}
       </div>
       )
   }
     
 }
-
-
-
 export default AuthContainer;
-//repushing oauth work to development after it was merged out 
