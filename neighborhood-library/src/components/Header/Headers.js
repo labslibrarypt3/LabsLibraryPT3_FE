@@ -7,7 +7,6 @@ import Nav from "../Nav/Nav";
 import MenuContent from "./MenuContent";
 
 const style = {
-<<<<<<< HEAD
     container: {
         borderBottom: '4px solid AliceBlue',
         backgroundColor: '#BCBCBE',
@@ -17,17 +16,6 @@ const style = {
         color: 'white'
     },
 }
-=======
-  container: {
-    borderBottom: "4px solid AliceBlue",
-    backgroundColor: "SkyBlue",
-    padding: 10
-  },
-  title: {
-    color: "white"
-  }
-};
->>>>>>> origin/development
 
 class Headers extends React.Component {
   state = {
@@ -43,7 +31,6 @@ class Headers extends React.Component {
     this.setState({ open: false });
   }
 
-<<<<<<< HEAD
     render(){
         return(
             <header style={style.container}>
@@ -69,7 +56,6 @@ class Headers extends React.Component {
             </header>
         )
     }
-=======
   render() {
     return (
       <header style={style.container}>
@@ -96,7 +82,6 @@ class Headers extends React.Component {
       </header>
     );
   }
->>>>>>> origin/development
 }
 
 export default Headers;

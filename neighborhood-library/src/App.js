@@ -7,9 +7,10 @@ import { StripeProvider, Elements } from "react-stripe-elements";
 //component imports
 import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
-import Borrowed from "./components/MyShelf/Borrowed";
+import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
-import Landing from "./components/Landing/Landing";
+// import Landing from "./components/MyShelf/Landing/Landing";
+import Loaned from "./components/MyShelf/Loaned/Loaned";
 
 // import GRBooks from "./components/AddBook/GRBooks";
 
@@ -35,10 +36,6 @@ class App extends React.Component {
       .catch(error => console.log(error));
   }
 
-
-  render() {
-
-
   render() {
     return (
       <div className="App">
@@ -46,7 +43,7 @@ class App extends React.Component {
 
           <h2>Neighborhood Library</h2>
         </header>
-        <Nav />
+        {/* <Nav /> */}
 
         <div className="main">
           <Header />
@@ -57,7 +54,7 @@ class App extends React.Component {
           Sign in with Github
         </a>
           <div className="main-routes">
-            <Route exact path="/" component={Landing} />
+            {/* <Route exact path="/" component={Landing} /> */}
 
             <Route path="/add-book/:id" component={AddBook} />
             <Route path="/account/:id/" component={Account} />
