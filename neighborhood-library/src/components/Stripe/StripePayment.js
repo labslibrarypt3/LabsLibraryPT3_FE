@@ -18,12 +18,14 @@ constructor(props) {
             let amount = this.state.amount;
             console.log(token);
             //fix this URL
-            await fetch('https://pt3-neighborhood-library-back.herokuapp.com//api/striperoutes/charge', {
+
+            // await fetch('http://localhost:4000/api/striperoutes/charge', {
+            await fetch('https://pt3-neighborhood-library-back.herokuapp.com/api/striperoutes/charge', {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/json'
+                    'Content-type': 'text/plain'
                 },
-                body: JSON.stringify({ token, amount })
+                body: token.id, amount
             })
         } catch (e) {
             throw e;
