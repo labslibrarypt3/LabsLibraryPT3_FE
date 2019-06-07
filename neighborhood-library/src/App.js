@@ -10,7 +10,13 @@ import AddBook from "./components/AddBook/AddBook";
 import Borrowed from "./components/MyShelf/Borrowed";
 import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
+<<<<<<< HEAD
 import Loaned from "./components/MyShelf/Loaned";
+=======
+
+// import GRBooks from "./components/AddBook/GRBooks";
+
+>>>>>>> de65ac5b29a32b6baf2debe8954e06064591f196
 import Login from "./components/Auth/Login";
 import MyShelf from "./components/MyShelf/MyShelf";
 import Nav from "./components/Nav/Nav";
@@ -32,12 +38,26 @@ class App extends React.Component {
       .then(response => console.log(response))
       .catch(error => console.log(error));
   }
+<<<<<<< HEAD
+=======
+
+
+  render() {
+
+>>>>>>> de65ac5b29a32b6baf2debe8954e06064591f196
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
+<<<<<<< HEAD
         </header>
+=======
+
+          <h2>Neighborhood Library</h2>
+        </header>
+        <Nav />
+>>>>>>> de65ac5b29a32b6baf2debe8954e06064591f196
 
         <div className="main">
           <Header />
@@ -61,6 +81,7 @@ class App extends React.Component {
             <Route path="/borrowed" component={Borrowed} />
           </div>
 
+<<<<<<< HEAD
           <div className="auth-routes">
             <Route path="/login" component={Login} />
           </div>
@@ -75,6 +96,17 @@ class App extends React.Component {
             </StripeProvider>
           </>
         </div>
+=======
+        <>
+        <StripeProvider apiKey='key goes here'>
+          <Elements>
+            <StripePayment />
+          </Elements>
+        </StripeProvider>
+
+        </>
+      </div>
+>>>>>>> de65ac5b29a32b6baf2debe8954e06064591f196
       </div>
     );
   }
