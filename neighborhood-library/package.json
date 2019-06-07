@@ -14,7 +14,8 @@
     "react-hamburger-menu": "^1.1.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "react-stripe-elements": "^3.0.0"
+    "react-stripe-elements": "^3.0.0",
+    "twilio": "^3.31.1"
   },
   "scripts": {
     "start": "react-scripts start",
