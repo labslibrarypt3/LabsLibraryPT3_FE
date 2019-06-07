@@ -20,7 +20,7 @@ class MenuContent extends Component {
         {this.items.map(i => <div className="menu-item" key={i}>
           <Nav />
         </div>)}
-        {/* implement an onClick to close sidebar */}
+        {/* implement an onClick to close sidebar instead of clicking on page to close*/}
         <p className="hint">Click outside the menu to close it</p>
       </div>
     )
