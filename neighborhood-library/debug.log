@@ -1,0 +1,15 @@
+[0529/220641.190:ERROR:process_info.cc(359)] UncheckedAllocate
+[0529/220645.559:ERROR:process_reader_win.cc(182)] ResumeThread: The parameter is incorrect. (0x57)
+[0529/220645.559:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0529/220645.559:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0529/220645.560:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0529/220645.560:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0529/220645.560:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0529/220645.560:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0529/221155.639:ERROR:process_info.cc(359)] UncheckedAllocate
+[0529/221203.286:ERROR:process_info.cc(359)] UncheckedAllocate
+[0529/221318.217:ERROR:process_info.cc(359)] UncheckedAllocate
+[0529/221520.507:ERROR:process_info.cc(359)] UncheckedAllocate
+[0529/224440.812:ERROR:process_info.cc(359)] UncheckedAllocate
+[0530/224136.845:ERROR:process_info.cc(359)] UncheckedAllocate
+[0530/234132.705:ERROR:process_info.cc(359)] UncheckedAllocate

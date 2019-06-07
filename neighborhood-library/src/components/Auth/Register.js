@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import AuthPostData from './AuthPostData';
 // import { Link } from "react-router-dom";
@@ -31,7 +32,6 @@ class Register extends Component {
     // const creds = this.state;
     // const endpoint = "";
   };
-
   render() {
     return (
       <div>
