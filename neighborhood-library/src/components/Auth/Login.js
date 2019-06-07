@@ -1,20 +1,74 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import React, { Component } from "react";
+// import Axios from "axios";
 
-class Login extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Login</h2>
-        <Link
-          to="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
-      "
-        >
-          Log in with Github
-        </Link>
-      </div>
-    );
-  }
-}
 
-export default Login;
+// export default class Login extends Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = {
+//       email : '',
+//       password: ''
+//     };
+//   }
+
+//   handleInputChange = (event) => {
+//     const { value, name } = event.target;
+//     this.setState({
+//       [name]: value
+//     });
+//   }
+// //   axios({
+           
+// //     method:'post',
+// //     url:'http://localhost:4000/auths/register',
+// //     data:userData
+// // })
+  
+//     onSubmit = (event) => {
+//       event.preventDefault();
+//       Axios({
+//         method: 'post',
+//         url:'http://localhost:4000/auths/login',
+//         data:this.state
+//       })
+//       .then(res => {
+//         if (res.status === 200) {
+//           this.props.history.push('/');
+//         } else {
+//           const error = new Error(res.error);
+//           throw error;
+//         }
+//       })
+//       .catch(err => {
+//         console.error(err);
+//         alert('Error logging in please try again');
+//       });
+//     }
+  
+  
+ 
+//   render() {
+//     return (
+//       <form onSubmit={this.onSubmit}>
+//         <h1>Login Below!</h1>
+//         <input
+//           type="email"
+//           name="email"
+//           placeholder="Enter email"
+//           value={this.state.email}
+//           onChange={this.handleInputChange}
+//           required
+//         />
+//         <input
+//           type="password"
+//           name="password"
+//           placeholder="Enter password"
+//           value={this.state.password}
+//           onChange={this.handleInputChange}
+//           required
+//         />
+//        <input type="submit" value="Submit"/>
+//       </form>
+//     );
+//   }
+// }
