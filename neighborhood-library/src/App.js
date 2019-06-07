@@ -6,7 +6,6 @@ import { StripeProvider, Elements } from "react-stripe-elements";
 
 //component imports
 import Account from "./components/Account/Account";
-import AddBook from "./components/AddBook/AddBook";
 import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
@@ -52,7 +51,7 @@ class App extends React.Component {
           <div className="main-routes">
             <Route exact path="/" component={Landing} />
 
-            <Route path="/add-book/:id" component={AddBook} />
+            <Route path="/add-book/:id" component={SearchGoodreads} />
             <Route path="/account/:id/" component={Account} />
             <Route path="/search" component={Search} />
             <Route path="/myShelf" component={MyShelf} />
@@ -68,8 +67,7 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </div>
-          
-          <SearchGoodreads />
+
 
           <>
             <StripeProvider apiKey="key goes here">
