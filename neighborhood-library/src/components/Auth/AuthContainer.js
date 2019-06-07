@@ -51,14 +51,17 @@ class AuthContainer extends Component {
       )}
     
       const responseGoogle = (response) => {
+
         this.callback(response, 'google');
       }
       
       const responseFacebook = (response) => {
+
         this.callback(response, 'facebook');
       }
       
       const componentClicked =(response) => {
+
       }
       return(
         <div>
