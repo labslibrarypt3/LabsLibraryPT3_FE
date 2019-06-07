@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AuthPostData from './AuthPostData';
 // import { Link } from "react-router-dom";
 
 class Register extends Component {
@@ -6,10 +7,11 @@ class Register extends Component {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      email:""
     };
   }
-
+  
   handleInput = e => {
     e.preventDefault();
     this.setState({
@@ -19,6 +21,13 @@ class Register extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const userData = {
+      name:this.state.username,
+      password:this.state.password,
+      email:this.state.email
+    }
+    console.log(userData)
+    AuthPostData('manual',userData);
     // const creds = this.state;
     // const endpoint = "";
   };
@@ -26,10 +35,10 @@ class Register extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="login">Register</label>
           <input
-            type="text"
+            type="username"
             name="username"
             placeholder="username"
             value={this.state.username}
@@ -40,6 +49,13 @@ class Register extends Component {
             name="password"
             placeholder="password"
             value={this.state.password}
+            onChange={this.handleInput}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            value={this.state.email}
             onChange={this.handleInput}
           />
           <button type="submit">Register</button>
