@@ -7,10 +7,6 @@ import { StripeProvider, Elements } from "react-stripe-elements";
 //component imports
 import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
-<<<<<<< HEAD
-import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
-=======
->>>>>>> 08676956880a0dd29473dece7cf224b1b41b31eb
 import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
 import Loaned from "./components/MyShelf/Loaned/Loaned";
@@ -19,7 +15,6 @@ import Loaned from "./components/MyShelf/Loaned/Loaned";
 
 import Login from "./components/Auth/Login";
 import MyShelf from "./components/MyShelf/MyShelf";
-import Loaned from "./components/MyShelf/Loaned/Loaned";
 import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Nav from "./components/Nav/Nav";
 import Search from "./components/Search/Search";
