@@ -40,12 +40,9 @@ class App extends React.Component {
         <header className="App-header">
           <h2>Neighborhood Library</h2>
         </header>
-        <Nav />
-
         <div className="main">
           <Header />
           <SearchGoodreads />
-          <Nav />
           <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb">
             Sign in with Github
           </a>
