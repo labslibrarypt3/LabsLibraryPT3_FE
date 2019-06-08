@@ -21,7 +21,6 @@ class GoodreadsSearchResult extends Component {
   // };
 
   addBookToLibrary = () => {
-    // axios post to /api/users/add
     const book = this.state;
     axios
       .post("localhost:4000/api/books", book)
@@ -32,7 +31,7 @@ class GoodreadsSearchResult extends Component {
   render() {
     return (
       <div className="goodreads-search-result">
-        <img src={this.props.cover} alt="cover image" />
+        <img className="book-cover" src={this.props.cover} alt="cover image" />
         <p>
           {this.props.title} by {this.props.authors}
         </p>
