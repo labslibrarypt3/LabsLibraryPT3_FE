@@ -9,9 +9,11 @@ class GoodreadsSearchResult extends Component {
     this.state = {
       title: this.props.title,
       authors: this.props.authors,
-      ISBN: "",
-      user_id: "",
-      cover: this.props.cover
+      ISBN: "0"
+      // user_id: " ",
+      // cover: this.props.cover
+      // need to add cover cell to db
+      // need sample user to test with
     };
   }
 
@@ -20,11 +22,11 @@ class GoodreadsSearchResult extends Component {
   //   axios.post(`https://lambda-school-test-apis.herokuapp.com/quotes`, quote);
   // };
 
-  addBookToLibrary = () => {
+  addBookToLibrary = async () => {
     const book = this.state;
-    axios
+    const axiosResponse = await axios
       .post("localhost:4000/api/books", book)
-      .then(res => console.log(res))
+      .then(res => console.log("res: ", res))
       .catch(err => console.log(err));
   };
 
