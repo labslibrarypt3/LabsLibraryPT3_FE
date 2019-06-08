@@ -12,6 +12,7 @@ class GoodreadsSearchResult extends Component {
         <p>
           {this.props.title} by {this.props.authors}
         </p>
+        <button>Lend</button>
       </div>
     );
   }
