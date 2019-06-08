@@ -37,11 +37,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h2>Neighborhood Library</h2>
-        </header>
+        <Header />
         <div className="main">
-          <Header />
           <SearchGoodreads />
           <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb">
             Sign in with Github
