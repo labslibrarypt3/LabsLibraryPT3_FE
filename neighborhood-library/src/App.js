@@ -9,10 +9,12 @@ import Account from "./components/Account/Account";
 
 import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
+import Loaned from "./components/MyShelf/Loaned/Loaned";
+
+
 
 import Login from "./components/Auth/Login";
 import MyShelf from "./components/MyShelf/MyShelf";
-import Loaned from "./components/MyShelf/Loaned/Loaned";
 import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Nav from "./components/Nav/Nav";
 import Search from "./components/Search/Search";
