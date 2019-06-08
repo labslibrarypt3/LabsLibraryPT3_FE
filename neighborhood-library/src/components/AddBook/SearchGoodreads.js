@@ -1,3 +1,5 @@
+//THIS COMPONENT IS A CONTAINER FOR THE SEARCH FORM AND ALL OF THE SEARCH RESULTS
+//IF YOU NEED TO MANIPULATE AN INDIVIDUAL SEARCH RESULT, GO TO GoodreadsSearchResult.js
 import React, { Component } from "react";
 import axios from "axios";
 import GoodreadsSearchResult from "./GoodreadsSearchResult";
@@ -18,7 +20,7 @@ class SearchGoodreads extends Component {
         params: { q: this.state.query }
       })
       .then(res => {
-        console.log("search submitted");
+        console.log(res);
         this.setState({ books: res.data.books });
       })
       .catch(err => console.log(err));
@@ -51,7 +53,7 @@ class SearchGoodreads extends Component {
           {this.state.books.map(book => {
             return (
               <GoodreadsSearchResult
-                key={book.goodreadsID}
+                key={book.goodreadsId}
                 cover={book.covers[0]}
                 title={book.title}
                 authors={book.authors}

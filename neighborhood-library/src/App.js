@@ -6,7 +6,7 @@ import { StripeProvider, Elements } from "react-stripe-elements";
 
 //component imports
 import Account from "./components/Account/Account";
-import AddBook from "./components/AddBook/AddBook";
+
 import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
 
@@ -37,22 +37,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h2>Neighborhood Library</h2>
-        </header>
-        <Nav />
-
+        <Header />
         <div className="main">
-          <Header />
-          <SearchGoodreads />
-          <Nav />
-          <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb">
-            Sign in with Github
-          </a>
           <div className="main-routes">
             <Route exact path="/" component={Landing} />
 
-            <Route path="/add-book/:id" component={AddBook} />
+            <Route path="/add-book/:id" component={SearchGoodreads} />
+
             <Route path="/account/:id/" component={Account} />
 
             <Route path="/my-shelf/:id" component={MyShelf} />

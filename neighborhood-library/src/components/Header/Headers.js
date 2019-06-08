@@ -34,7 +34,7 @@ class Headers extends React.Component {
   render() {
     return (
       <header style={style.container}>
-        <h1 style={style.title}>Hello React!</h1>
+        <h1 style={style.title}>Neighborhood Library</h1>
         <div className="sidebar">
           <CheeseburgerMenu
             isOpen={this.state.open}
