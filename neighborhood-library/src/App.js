@@ -40,9 +40,7 @@ class App extends React.Component {
         <Header />
         <div className="main">
           <SearchGoodreads />
-          <a href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb">
-            Sign in with Github
-          </a>
+
           <div className="main-routes">
             <Route exact path="/" component={Landing} />
 
