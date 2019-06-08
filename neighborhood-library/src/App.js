@@ -7,9 +7,12 @@ import { StripeProvider, Elements } from "react-stripe-elements";
 //component imports
 import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
-import Borrowed from "./components/MyShelf/Borrowed";
+import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
+import Loaned from "./components/MyShelf/Loaned/Loaned";
+
+
 
 // import GRBooks from "./components/AddBook/GRBooks";
 
