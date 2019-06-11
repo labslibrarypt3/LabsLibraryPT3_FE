@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 
-
-class loanedBooks extends Component {
+class Loaned extends Component {
   render() {
-    return (
-      <div>
-        <h2>Loaned Books</h2>        
-      </div>
-    );
+    return <div />;
   }
 }
 
-export default loanedBooks;
+export default Loaned;

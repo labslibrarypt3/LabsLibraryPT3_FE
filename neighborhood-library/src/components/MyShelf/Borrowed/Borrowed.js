@@ -1,14 +1,16 @@
 import React, { Component } from "react";
+import axios from 'axios'
 
+class Borrowed extends Component {
 
-class borrowedBooks extends Component {
   render() {
     return (
       <div>
-        <h2>Borrowed Books</h2>        
+        <h2>Borrowed</h2>
+        <p>I am a list of books you've borrowed from someone else</p>
       </div>
     );
   }
 }
 
-export default borrowedBooks;
+export default Borrowed;

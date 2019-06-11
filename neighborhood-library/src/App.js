@@ -9,15 +9,23 @@ import Account from "./components/Account/Account";
 import AddBook from "./components/AddBook/AddBook";
 import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
+// import Landing from "./components/MyShelf/Landing/Landing";
+import Loaned from "./components/MyShelf/Loaned/Loaned";
+
+import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
 import Loaned from "./components/MyShelf/Loaned/Loaned";
+
+
+
 import Login from "./components/Auth/Login";
 import MyShelf from "./components/MyShelf/MyShelf";
+import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Nav from "./components/Nav/Nav";
-import Register from "./components/Auth/Register";
 import Search from "./components/Search/Search";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripePayment from "./components/Stripe/StripePayment";
+import TwilioApp from "./components/Twilio/TwilioApp";
 
 class App extends React.Component {
   constructor() {
@@ -38,46 +46,31 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
+
           <h2>Neighborhood Library</h2>
         </header>
+        <TwilioApp />
+        {/* <Nav /> */}
 
-        <a
-          href="https://github.com/login/oauth/authorize?client_id=66d10ed2a42e30acdfcb
-      "
-        >
-          Sign in with Github
-        </a>
-
+        <Header />
         <div className="main">
-          <Header />
-
-          <Nav />
-          <h2>
-            <Link to="/">Neighborhood Library</Link>
-          </h2>
           <div className="main-routes">
-            <Route exact path="/" component={Landing} />
+            {/* <Route exact path="/" component={Landing} /> */}
 
-            <Route path="/add-book/:id" component={AddBook} />
+            <Route path="/add-book/:id" component={SearchGoodreads} />
+
             <Route path="/account/:id/" component={Account} />
-            <Route path="/search" component={Search} />
-            <Route path="/myShelf" component={MyShelf} />
+
+            <Route path="/my-shelf/:id" component={MyShelf} />
           </div>
 
-          <div className="myshelf">
-            <Route path="/loaned" component={Loaned} />
-            <Route path="/borrowed" component={Borrowed} />
+          <div className="my-shelf">
+            <Route path="/loaned/:id" component={Loaned} />
+            <Route path="/borrowed/:id" component={Borrowed} />
           </div>
-
-          <div className="auth-routes">
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-          </div>
-
-          <SearchGoodreads />
 
           <>
-            <StripeProvider apiKey="key goes here">
+            <StripeProvider apiKey="pk_test_j6wi0FWmtWCqFPwU3oCHJA2800c8YshuOy">
               <Elements>
                 <StripePayment />
               </Elements>

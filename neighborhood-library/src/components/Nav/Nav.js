@@ -15,9 +15,9 @@ function Nav() {
         <NavLink to="/my-shelf/:id" activeClassName="selected">
           My Shelf
         </NavLink>
-        <NavLink to="/search" activeClassName="selected">
+        {/* <NavLink to="/search" activeClassName="selected">
           Search
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/account" activeClassName="selected">
           Account
         </NavLink>

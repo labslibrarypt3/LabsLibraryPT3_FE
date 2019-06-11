@@ -4,17 +4,24 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
     "cheeseburger-menu": "^0.0.13",
-    "react-hamburger-menu": "^1.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
+<<<<<<< HEAD
     "google-maps-react": "^2.0.2",
+=======
+    "express": "^4.17.1",
+>>>>>>> 54c22877dc301c78c79d8e4c1c1a76566c57cb27
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.0.4",
+    "react-hamburger-menu": "^1.1.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "react-stripe-elements": "^3.0.0"
+    "react-stripe-elements": "^3.0.0",
+    "twilio": "^3.31.1"
   },
   "scripts": {
     "start": "react-scripts start",
