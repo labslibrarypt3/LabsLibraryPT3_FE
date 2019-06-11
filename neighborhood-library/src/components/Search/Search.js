@@ -1,18 +1,5 @@
-// import React from "react";
-// import Nav from "../Nav/Nav";
-
-
-// function Search() {
-//   return (
-//     <div>
-//       <h2>this will be the search page</h2>
-//       <Nav />
-//     </div>
-//   );
-// }
-
-// export default Search;
 import React, { Component } from 'react'
+import MapContainer from './MapContainer';
 
 class Search extends Component {
   state = {
@@ -27,16 +14,17 @@ class Search extends Component {
 
   render() {
     return (
-
-
-      <form>
-        <input
-          placeholder="Search for..."
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}
-        />
-        <p>{this.state.query}</p>
-      </form>
+      <div>
+        <form>
+          <input
+            placeholder="Search for..."
+            ref={input => this.search = input}
+            onChange={this.handleInputChange}
+          />
+          <p>{this.state.query}</p>
+        </form>
+        <MapContainer />
+      </div>
     )
   }
 }
