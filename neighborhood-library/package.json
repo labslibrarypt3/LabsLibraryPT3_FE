@@ -8,11 +8,7 @@
     "cheeseburger-menu": "^0.0.13",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
-<<<<<<< HEAD
     "google-maps-react": "^2.0.2",
-=======
-    "express": "^4.17.1",
->>>>>>> 54c22877dc301c78c79d8e4c1c1a76566c57cb27
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
