@@ -20,6 +20,7 @@ import Nav from "./components/Nav/Nav";
 import Search from "./components/Search/Search";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripePayment from "./components/Stripe/StripePayment";
+import TwilioApp from "./components/Twilio/TwilioApp";
 
 class App extends React.Component {
   constructor() {
@@ -43,6 +44,7 @@ class App extends React.Component {
 
           <h2>Neighborhood Library</h2>
         </header>
+        <TwilioApp />
         {/* <Nav /> */}
 
         <div className="main">
