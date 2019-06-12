@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-
+import HomeLibrary from "./HomeLibrary/HomeLibrary"
 import Borrowed from "./Borrowed/Borrowed";
 import Loaned from "./Loaned/Loaned";
 class MyShelf extends Component {
@@ -8,6 +8,9 @@ class MyShelf extends Component {
     return (
       <div>
         <h2>MyShelf</h2>
+        
+         <HomeLibrary/>
+        
         <NavLink to="/loaned" component={Loaned}>
           Loaned
         </NavLink>
