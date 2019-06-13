@@ -11,9 +11,7 @@ import { Redirect } from "react-router-dom";
 class AuthContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      
-    };
+    this.state = {};
     this.callback = this.callback.bind(this);
   }
   callback(res, type) {
@@ -40,7 +38,6 @@ class AuthContainer extends Component {
     }
 
     AuthPostData(type, userData);
-    
   }
 
   render() {
@@ -50,7 +47,7 @@ class AuthContainer extends Component {
 
     const responseGoogle = response => {
       this.callback(response, "google");
-      console.log(response)
+      console.log(response);
     };
 
     const responseFacebook = response => {
@@ -77,16 +74,6 @@ class AuthContainer extends Component {
           cookiePolicy={"single_host_origin"}
           className="login-button"
         />
-
-        {/* <Login />
-        <Register />
-      <div className="auth-container">
-        {this.state.loggedIn ? (
-          <Link to="/login">Login</Link>
-        ) : (
-          <Link to="/register">Register</Link>
-        )}
-      </div> */}
       </div>
     );
   }
