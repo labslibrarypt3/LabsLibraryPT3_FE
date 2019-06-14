@@ -37,7 +37,7 @@ class HomeLibrary extends Component {
         <h3>HomeLibrary</h3>
         {console.log(this.state.data)}
         <div>
-          {state.data.map(e => {
+          {this.state.data.map(e => {
             return (
               <MyBook key={e.bookId} title={e.title} authors={e.authors} />
             );

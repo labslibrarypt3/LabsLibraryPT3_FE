@@ -23,10 +23,9 @@ class SearchGoodreads extends Component {
         params: { q: this.state.query }
       })
       .then(res => {
-        console.log(res);
         this.setState({ books: res.data.books });
       })
-      .catch(err => console.log(err));
+      .catch(err => err.json({ error: err }));
   };
 
   handleChange = event => {
