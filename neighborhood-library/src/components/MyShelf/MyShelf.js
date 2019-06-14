@@ -1,20 +1,29 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Borrowed from "./Borrowed";
-import Loaned from "./Loaned";
-import HomeLibrary from "./HomeLibrary";
+import { NavLink } from "react-router-dom";
+import HomeLibrary from "./HomeLibrary/HomeLibrary"
+import Borrowed from "./Borrowed/Borrowed";
+import Loaned from "./Loaned/Loaned";
+class MyShelf extends Component {
+  render() {
+    return (
+      <div>
+        <h2>MyShelf</h2>
+        
+         <HomeLibrary/>
+         <Borrowed/>
 
-function MyShelf() {
-  return (
-    <div>
-      <h2>MyShelf</h2>
-      <div className="my-shelf-links">
-        <Link to={Borrowed}>Borrowed</Link>
-        <Link to={Loaned}>Loaned</Link>
-        <Link to={HomeLibrary}>Home Library</Link>
+        
+        <NavLink to="/loaned" component={Loaned}>
+          Loaned
+        </NavLink>
+        <NavLink to="/borrowed" component={Borrowed}>
+          Borrowed
+        </NavLink>
       </div>
-    </div>
-  );
+
+    // set up routes for the above links.
+    );
+  }
 }
 
 export default MyShelf;

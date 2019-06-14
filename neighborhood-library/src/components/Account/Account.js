@@ -3,28 +3,28 @@ import { Route } from "react-router-dom";
 import Settings from "./Settings";
 import { Link } from "react-router-dom";
 import {Redirect} from 'react-router-dom';
+import {axios} from "axios";
 
 class Account extends Component {
 
   constructor(props){
     super(props);
     this.state={
-      redirectToReferrer:false,
+      userId:'',
       name:'',
       email:''
     }
   }
   componentDidMount(){
-    let data = JSON.parse(sessionStorage.getItem('userData'))
-    this.setState({name: data.userData.name})
-    this.setState({email: data.userData.email})
+    axios.get('http://localhost:4000/auths/auth')
+    .then(res =>{
+      this.setState({userId:res.userId,name:res.name,email:res.email})
+
+    })
 
   }
   render() {
-    if(!sessionStorage.getItem('userData')){
-return (
-<Redirect to={'/'}/> 
-)}
+   
     return (
       <div>
         <h2>Welcome {this.state.name}</h2>
