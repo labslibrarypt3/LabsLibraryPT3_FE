@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { NavLink, withRouter } from "react-router-dom";
-
 import axios from "axios";
 import { NavLink, withRouter } from "react-router-dom";
 
@@ -20,9 +18,10 @@ class Borrowed extends Component {
           localStorage.getItem("jwt"),
           "occurs before axios"
         );
-
+        const authToken = localStorage.getItem("jwt");
+        console.log(authToken);
         return axios
-          .get(endpoint, localStorage.getItem("id"))
+          .get(endpoint, localStorage.getItem("jwt"))
           .then(res => {
             // console.log(...res.data);
             this.setState({ data: res.data });

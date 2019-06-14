@@ -1,10 +1,7 @@
-import axios from "axios";
-import { NavLink, withRouter } from "react-router-dom";
-
 import React, { Component } from "react";
 //This MyBook IS the same as the one in HomeLibrary, because I got curious and wanted to try both. If you have no idea what this note is referencing, see the top of Borrowed.js
 import MyBook from "../HomeLibrary/MyBook";
-import axios from "axios"
+import axios from "axios";
 import { NavLink, withRouter } from "react-router-dom";
 
 class Loaned extends Component {
@@ -18,7 +15,7 @@ class Loaned extends Component {
     const endpoint = "http://localhost:4000/api/trans";
     const data = () => {
       if (localStorage.getItem("jwt")) {
-         axios
+        axios
           .get(endpoint, localStorage.getItem("id"))
           .then(res => {
             console.log(...res.data);
