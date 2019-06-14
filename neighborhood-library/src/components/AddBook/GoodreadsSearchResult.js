@@ -1,4 +1,6 @@
-//Note for Thomas: We need a cell in the db for the image cover that takes a string. This will allow us to display the images in the library/borrowed/loaned components;
+/* This component renders 1 book from the list of search results from the Goodreads API.
+
+You can add a book to your library from this component */
 
 import React, { Component } from "react";
 import axios from "axios";
@@ -12,15 +14,8 @@ class GoodreadsSearchResult extends Component {
       ISBN: "0"
       // user_id: " ",
       // cover: this.props.cover
-      // need to add cover cell to db
-      // need sample user to test with
     };
   }
-
-  //adds a book to individual user library, making it available for others to borrow
-  // postMessage = () => {
-  //   axios.post(`https://lambda-school-test-apis.herokuapp.com/quotes`, quote);
-  // };
 
   addBookToLibrary = async () => {
     const book = this.state;
