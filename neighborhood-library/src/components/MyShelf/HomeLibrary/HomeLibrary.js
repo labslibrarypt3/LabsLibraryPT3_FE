@@ -13,19 +13,17 @@ class HomeLibrary extends Component {
   }
   componentDidMount() {
     const endpoint = "http://localhost:4000/api/books";
-    const data = async () => {
+    const data = () => {
       if (localStorage.getItem("jwt")) {
-       const response= await axios
+        return axios
           .get(endpoint, localStorage.getItem("id"))
           .then(res => {
-            console.log(...res.data);
+            // console.log(...res.data);
             this.setState({ data: res.data });
           })
           .catch(err => {
             console.log(" Error", err);
           });
-        return response
-        
       } else {
         return withRouter.push("/");
       }
@@ -37,21 +35,21 @@ class HomeLibrary extends Component {
     return (
       <div>
         <h3>HomeLibrary</h3>
-        {console.log(this.state.data)}
+        {/* {console.log(this.state.data)} */}
         <div>
           {this.state.data.map(e => {
             return (
               <MyBook key={e.bookId} 
                       title={e.title} 
                       authors={e.authors} />
+
             );
           })}
         </div>
-      </div>
+    </div>
     );
   }
 }
-{
-}
+
 
 export default HomeLibrary;
