@@ -15,10 +15,13 @@ class HomeLibrary extends Component {
     const endpoint = "http://localhost:4000/api/books";
     const data = () => {
       if (localStorage.getItem("jwt")) {
+        const storageobj = {
+          
+        }
         return axios
           .get(endpoint, localStorage.getItem("id"))
           .then(res => {
-            // console.log(...res.data);
+            console.log(...res.data);
             this.setState({ data: res.data });
           })
           .catch(err => {
