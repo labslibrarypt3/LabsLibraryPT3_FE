@@ -10,6 +10,8 @@ class MyShelf extends Component {
         <h2>MyShelf</h2>
         
          <HomeLibrary/>
+         <Borrowed/>
+
         
         <NavLink to="/loaned" component={Loaned}>
           Loaned
@@ -18,6 +20,8 @@ class MyShelf extends Component {
           Borrowed
         </NavLink>
       </div>
+
+    // set up routes for the above links.
     );
   }
 }

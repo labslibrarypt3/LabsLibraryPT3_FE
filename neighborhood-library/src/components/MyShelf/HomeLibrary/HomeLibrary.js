@@ -15,6 +15,9 @@ class HomeLibrary extends Component {
     const endpoint = "http://localhost:4000/api/books";
     const data = () => {
       if (localStorage.getItem("jwt")) {
+        const storageobj = {
+          
+        }
         return axios
           .get(endpoint, localStorage.getItem("id"))
           .then(res => {
@@ -35,25 +38,21 @@ class HomeLibrary extends Component {
     return (
       <div>
         <h3>HomeLibrary</h3>
-        {console.log(this.state.data)}
+        {/* {console.log(this.state.data)} */}
         <div>
-          {state.data.map(e => {
+          {this.state.data.map(e => {
             return (
-              <MyBook key={e.bookId} title={e.title} authors={e.authors} />
+              <MyBook key={e.bookId} 
+                      title={e.title} 
+                      authors={e.authors} />
+
             );
           })}
         </div>
-      </div>
+    </div>
     );
   }
 }
-{
-  /* <GoodreadsSearchResult
-key={book.goodreadsId}
-cover={book.covers[0]}
-title={book.title}
-authors={book.authors}
-/> */
-}
+
 
 export default HomeLibrary;

@@ -3,6 +3,7 @@ import axios from "axios";
 //This MyBook, imported below on line 5, is not the same as the one in HomeLibrary. I copied it here in case it needs its own stuff.
 // If it's the same as the one in HomeLibrary, delete one.
 import MyBook from "./MyBook";
+import { NavLink, withRouter } from "react-router-dom";
 
 class Borrowed extends Component {
   constructor() {
@@ -12,15 +13,17 @@ class Borrowed extends Component {
     };
   }
   componentDidMount() {
-    const endpoint = "http://localhost:4000/api/books";
+    const endpoint = "http://localhost:4000/api/trans/borrow";
     const data = () => {
       if (localStorage.getItem("jwt")) {
+        console.log(localStorage.getItem("id"),(localStorage.getItem("jwt")), 'occurs before axios')
+       
         return axios
-          .get(endpoint, localStorage.getItem("id"))
-          .then(res => {
-            console.log(...res.data);
-            this.setState({ data: res.data });
-          })
+        .get(endpoint, localStorage.getItem("id"))
+        .then(res => {
+          // console.log(...res.data);
+          this.setState({ data: res.data });
+        })
           .catch(err => {
             console.log(" Error", err);
           });
@@ -37,9 +40,10 @@ class Borrowed extends Component {
         <h2>Borrowed</h2>
         <p>I am a list of books you've borrowed from someone else</p>
         <div>
-          {state.data.map(e => {
+          {this.state.data.map(e => {
+            console.log(e)
             return (
-              <MyBook key={e.bookId} title={e.title} authors={e.authors} />
+              <li>{e.borrower_id}</li>
             );
           })}
         </div>
