@@ -18,9 +18,11 @@ class SearchGoodreads extends Component {
 
   // url: https://pt3-neighborhood-library-back.herokuapp.com/api/goodeads/search
   getData = async () => {
+    const authToken = localStorage.getItem("jwt");
     const axiosResponse = await axios
       .get(`http://localhost:4000/api/goodreads/search`, {
-        params: { q: this.state.query }
+        params: { q: this.state.query },
+        headers: { authorization: authToken }
       })
       .then(res => {
         this.setState({ books: res.data.books });
