@@ -8,6 +8,7 @@ export default function AuthPostData(type, userData) {
       .then(res => {
         localStorage.setItem("jwt", userData.token);
         localStorage.setItem("email", userData.email);
+        localStorage.setItem("name", userData.name);
       })
       .catch(err => console.log(err));
   });

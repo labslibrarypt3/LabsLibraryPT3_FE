@@ -37,10 +37,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h2>Neighborhood Library</h2>
-        </header>
-
         <Header />
         <div className="main">
           <div className="main-routes">
