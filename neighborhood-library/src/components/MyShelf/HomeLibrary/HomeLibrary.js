@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Landing from "../../Landing/Landing";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import MyBook from "./MyBook";
 
 class HomeLibrary extends Component {
@@ -23,7 +23,7 @@ class HomeLibrary extends Component {
           })
           .catch(err => err.json({ error: err }));
       } else {
-        return withRouter.push("/");
+        return <Redirect to={"/"} />;
       }
     };
     data();
