@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 class Borrowed extends Component {
   constructor(props) {
