@@ -15,8 +15,9 @@ class HomeLibrary extends Component {
     const endpoint = "http://localhost:4000/api/books";
     const data = () => {
       if (localStorage.getItem("jwt")) {
+        const authToken = localStorage.getItem("jwt");
         return axios
-          .get(endpoint, localStorage.getItem("id"))
+          .get(endpoint, { headers: { authorization: authToken } })
           .then(res => {
             this.setState({ data: res.data });
           })

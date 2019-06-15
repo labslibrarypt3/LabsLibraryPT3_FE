@@ -31,7 +31,7 @@ class App extends React.Component {
     axios
       .get("https://pt3-neighborhood-library-back.herokuapp.com/")
       .then(res => res.status(200).json({ message: "connected to backend" }))
-      .catch(err => err.json({ error: err }));
+      .catch(err => err.status(500).json({ error: err }));
   }
 
   render() {

@@ -13,15 +13,9 @@ class Borrowed extends Component {
     const endpoint = "http://localhost:4000/api/trans/borrow";
     const data = () => {
       if (localStorage.getItem("jwt")) {
-        console.log(
-          localStorage.getItem("id"),
-          localStorage.getItem("jwt"),
-          "occurs before axios"
-        );
         const authToken = localStorage.getItem("jwt");
-        console.log(authToken);
         return axios
-          .get(endpoint, localStorage.getItem("jwt"))
+          .get(endpoint, { headers: { authorization: authToken } })
           .then(res => {
             this.setState({ data: res.data });
           })
