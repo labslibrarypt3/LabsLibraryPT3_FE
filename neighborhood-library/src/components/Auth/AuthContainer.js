@@ -71,6 +71,7 @@ class AuthContainer extends Component {
           cookiePolicy={"single_host_origin"}
           className="login-button"
         />
+
         <Logout />
       </div>
     );

@@ -22,7 +22,7 @@ class GoodreadsSearchResult extends Component {
     const axiosResponse = await axios
       .post("localhost:4000/api/books", book)
       .then(res => res.status(201).json({ message: "book added to library" }))
-      .catch(err => err.json({ error: err }));
+      .catch(err => console.log(err));
   };
 
   render() {

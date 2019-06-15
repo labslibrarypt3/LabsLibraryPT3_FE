@@ -27,7 +27,7 @@ class SearchGoodreads extends Component {
       .then(res => {
         this.setState({ books: res.data.books });
       })
-      .catch(err => err.json({ error: err }));
+      .catch(err => console.log(err));
   };
 
   handleChange = event => {
