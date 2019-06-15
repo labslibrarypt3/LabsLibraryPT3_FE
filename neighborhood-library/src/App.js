@@ -6,10 +6,9 @@ import { StripeProvider, Elements } from "react-stripe-elements";
 
 //component imports
 import Account from "./components/Account/Account";
-// import AddBook from "./components/AddBook/AddBook";
 import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
-// import Landing from "./components/MyShelf/Landing/Landing";
+import Landing from "./components/Landing/Landing";
 import Loaned from "./components/MyShelf/Loaned/Loaned";
 import MyShelf from "./components/MyShelf/MyShelf";
 // import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
@@ -27,11 +26,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
     axios
       .get("https://pt3-neighborhood-library-back.herokuapp.com/")
-      .then(res => res.status(200).json({ message: "connected to backend" }))
+      .then(res => {
+        console.log(res);
+      })
       .catch(err => console.log(err));
-  }
+  };
 
   render() {
     return (
@@ -39,23 +44,17 @@ class App extends React.Component {
         <header className="App-header">
           <h2>Neighborhood Library</h2>
         </header>
-        {/* <Nav /> */}
 
         <Header />
         <div className="main">
           <div className="main-routes">
-            {/* <Route exact path="/" component={Landing} /> */}
+            <Route exact path="/" component={Landing} />
 
             <Route path="/add-book/:id" component={SearchGoodreads} />
 
             <Route path="/account/:id/" component={Account} />
 
             <Route path="/my-shelf/:id" component={MyShelf} />
-          </div>
-
-          <div className="my-shelf">
-            <Route path="/loaned/:id" component={Loaned} />
-            <Route path="/borrowed/:id" component={Borrowed} />
           </div>
 
           <>
