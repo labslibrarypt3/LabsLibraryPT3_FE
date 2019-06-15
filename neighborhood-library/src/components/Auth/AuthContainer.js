@@ -3,6 +3,7 @@ import AuthPostData from "./AuthPostData";
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
+import Logout from "./Logout";
 
 class AuthContainer extends Component {
   constructor(props) {
@@ -69,6 +70,7 @@ class AuthContainer extends Component {
           cookiePolicy={"single_host_origin"}
           className="login-button"
         />
+        <Logout />
       </div>
     );
   }
