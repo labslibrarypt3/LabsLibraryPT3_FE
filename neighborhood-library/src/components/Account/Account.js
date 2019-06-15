@@ -2,29 +2,29 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Settings from "./Settings";
 import { Link } from "react-router-dom";
-import {Redirect} from 'react-router-dom';
-import {axios} from "axios";
+import { Redirect } from "react-router-dom";
+import { axios } from "axios";
 
 class Account extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      userId:'',
-      name:'',
-      email:''
-    }
+    this.state = {
+      userId: "",
+      name: "",
+      email: ""
+    };
   }
-  componentDidMount(){
-    axios.get('http://localhost:4000/auths/auth')
-    .then(res =>{
-      this.setState({userId:res.userId,name:res.name,email:res.email})
-
-    })
-
+  componentDidMount() {
+    const authToken = localStorage.getItem("jwt");
+    axios
+      .get("http://localhost:4000/auths/auth", {
+        headers: { authorization: authToken }
+      })
+      .then(res => {
+        this.setState({ userId: res.userId, name: res.name, email: res.email });
+      });
   }
   render() {
-   
     return (
       <div>
         <h2>Welcome {this.state.name}</h2>
