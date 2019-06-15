@@ -6,17 +6,13 @@ import { StripeProvider, Elements } from "react-stripe-elements";
 
 //component imports
 import Account from "./components/Account/Account";
-import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
-import Loaned from "./components/MyShelf/Loaned/Loaned";
 import MyShelf from "./components/MyShelf/MyShelf";
-// import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
-import Nav from "./components/Nav/Nav";
-import Search from "./components/Search/Search";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripePayment from "./components/Stripe/StripePayment";
 import TwilioApp from "./components/Twilio/TwilioApp";
+
 class App extends React.Component {
   constructor() {
     super();
