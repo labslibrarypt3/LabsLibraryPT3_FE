@@ -3,11 +3,11 @@ import axios from "axios";
 //This MyBook, imported below on line 5, is not the same as the one in HomeLibrary. I copied it here in case it needs its own stuff.
 // If it's the same as the one in HomeLibrary, delete one.
 import MyBook from "./MyBook";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter, Redirect } from "react-router-dom";
 
 class Borrowed extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: []
     };
@@ -19,7 +19,7 @@ class Borrowed extends Component {
         console.log(localStorage.getItem("id"),(localStorage.getItem("jwt")), 'occurs before axios')
        
         return axios
-        .get(endpoint, localStorage.getItem("id"))
+        .get(endpoint, {headers:{authorization:localStorage.getItem("jwt")}})
         .then(res => {
           // console.log(...res.data);
           this.setState({ data: res.data });
@@ -28,7 +28,7 @@ class Borrowed extends Component {
             console.log(" Error", err);
           });
       } else {
-        return withRouter.push("/");
+        return <Redirect to={"/"} />;
       }
     };
     data();
