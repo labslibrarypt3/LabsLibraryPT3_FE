@@ -11,7 +11,6 @@ import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
 // import Landing from "./components/MyShelf/Landing/Landing";
 import Loaned from "./components/MyShelf/Loaned/Loaned";
-import Login from "./components/Auth/Login";
 import MyShelf from "./components/MyShelf/MyShelf";
 // import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Nav from "./components/Nav/Nav";
