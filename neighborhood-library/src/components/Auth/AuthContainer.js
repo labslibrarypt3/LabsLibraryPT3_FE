@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import AuthPostData from "./AuthPostData";
-// import Login from './Login';
-// import Register from './Register';
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
-// import { Link } from "react-router-dom";
-// import axios from "axios"
 
 class AuthContainer extends Component {
   constructor(props) {
@@ -47,7 +43,6 @@ class AuthContainer extends Component {
 
     const responseGoogle = response => {
       this.callback(response, "google");
-      console.log(response);
     };
 
     const responseFacebook = response => {

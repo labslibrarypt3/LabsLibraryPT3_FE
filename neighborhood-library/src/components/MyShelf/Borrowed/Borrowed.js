@@ -23,12 +23,9 @@ class Borrowed extends Component {
         return axios
           .get(endpoint, localStorage.getItem("jwt"))
           .then(res => {
-            // console.log(...res.data);
             this.setState({ data: res.data });
           })
-          .catch(err => {
-            console.log(" Error", err);
-          });
+          .catch(err => err.json({ error: err }));
       } else {
         return withRouter.push("/");
       }
