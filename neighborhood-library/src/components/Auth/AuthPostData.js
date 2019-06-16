@@ -1,6 +1,7 @@
 import axios from "axios";
 
 
+
 export default function AuthPostData(type,userData){
     
     console.log(userData)
@@ -19,5 +20,5 @@ export default function AuthPostData(type,userData){
             })
         
 })
-}
 
+}
