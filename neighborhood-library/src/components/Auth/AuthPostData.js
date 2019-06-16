@@ -6,10 +6,14 @@ export default function AuthPostData(type, userData) {
     axios
       .post(endpoint, userData)
       .then(res => {
+        console.log(res, "at set storage");
         localStorage.setItem("jwt", userData.token);
         localStorage.setItem("email", userData.email);
-        localStorage.setItem("name", userData.name);
+        localStorage.setItem("id", res.data.userId);
+        console.log(localStorage, "authenticate frontend");
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log("login Error", err);
+      });
   });
 }
