@@ -1,5 +1,5 @@
 import React from "react";
-import { Route} from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import Register from "../Auth/Register";
 
@@ -7,7 +7,7 @@ function Landing() {
   return (
     <div>
       <div className="delete-me-filler">
-        <h2>Landing Page</h2>
+        <h2>run yarn start and then yarn watch-css</h2>
         <p>
           Welcome to the Neighborhood Library. Here you can add books to your
           lending library so that your neighbors and friends can check them out
