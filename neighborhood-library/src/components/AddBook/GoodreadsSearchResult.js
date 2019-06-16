@@ -12,17 +12,17 @@ class GoodreadsSearchResult extends Component {
       title: this.props.title,
       authors: this.props.authors,
       ISBN: "0",
-      user_id: this.props.user_id,
-      cover: this.props.cover
+      cover: this.props.cover,
+      user_id: localStorage.getItem('id')
     };
   }
 
   addBookToLibrary = async () => {
-    const book = this.state;
+    const book = this.state; 
     const axiosResponse = await axios
-      .post("localhost:4000/api/books", book)
-      .then(res => res.status(201).json({ message: "book added to library" }))
-      .catch(err => console.log(err));
+      .post("http://localhost:4000/api/books/", book,console.log(book, 'frontend obj'))
+      .then(res => console.log ('book added to library'))
+      .catch(err => console.log(err,'front end book post'));
   };
 
   render() {
