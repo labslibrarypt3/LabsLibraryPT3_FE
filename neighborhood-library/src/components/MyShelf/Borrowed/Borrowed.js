@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 class Borrowed extends Component {
   constructor(props) {
@@ -36,7 +36,6 @@ class Borrowed extends Component {
           .catch(err => {
             console.log(" Error", err);
           });
-
       } else {
         return <Redirect to={"/"} />;
       }
@@ -52,9 +51,10 @@ class Borrowed extends Component {
         <div>
           {this.state.data.map(e => {
             console.log(e);
-            return <li key>{e.title}</li>;
+            return <li key={e.borrower_id}>book</li>;
           })}
         </div>
+      </div>
     );
   }
 }

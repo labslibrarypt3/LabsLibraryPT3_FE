@@ -12,7 +12,8 @@ class SearchGoodreads extends Component {
     super(props);
     this.state = {
       query: "",
-      books: []
+      books: [],
+      user_id: null
     };
   }
 
@@ -25,9 +26,12 @@ class SearchGoodreads extends Component {
         headers: { authorization: authToken }
       })
       .then(res => {
-        this.setState({ books: res.data.books });
+        this.setState({
+          books: res.data.books,
+          user_id: localStorage.getItem("id")
+        });
       })
-      .catch(err => err.json({ error: err }));
+      .catch(err => console.log(err));
   };
 
   handleChange = event => {

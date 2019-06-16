@@ -21,7 +21,7 @@ class HomeLibrary extends Component {
           .then(res => {
             this.setState({ data: res.data });
           })
-          .catch(err => err.json({ error: err }));
+          .catch(err => console.log(err));
       } else {
         return <Redirect to={"/"} />;
       }
