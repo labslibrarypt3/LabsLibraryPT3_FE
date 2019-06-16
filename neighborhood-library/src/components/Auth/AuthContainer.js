@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import AuthPostData from "./AuthPostData";
-// import Login from './Login';
-// import Register from './Register';
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
-// import { Link } from "react-router-dom";
-// import axios from "axios"
+import Logout from "./Logout";
 
 class AuthContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      
-    };
+    this.state = {};
     this.callback = this.callback.bind(this);
   }
   callback(res, type) {
@@ -40,7 +35,6 @@ class AuthContainer extends Component {
     }
 
     AuthPostData(type, userData);
-    
   }
 
   render() {
@@ -50,12 +44,11 @@ class AuthContainer extends Component {
 
     const responseGoogle = response => {
       this.callback(response, "google");
-      console.log(response,'google')
     };
 
     const responseFacebook = response => {
       this.callback(response, "facebook");
-      console.log(response, 'fb')
+      console.log(response, "fb");
     };
 
     const componentClicked = response => {};
@@ -78,16 +71,7 @@ class AuthContainer extends Component {
           cookiePolicy={"single_host_origin"}
           className="login-button"
         />
-
-        {/* <Login />
-        <Register />
-      <div className="auth-container">
-        {this.state.loggedIn ? (
-          <Link to="/login">Login</Link>
-        ) : (
-          <Link to="/register">Register</Link>
-        )}
-      </div> */}
+        <Logout />
       </div>
     );
   }

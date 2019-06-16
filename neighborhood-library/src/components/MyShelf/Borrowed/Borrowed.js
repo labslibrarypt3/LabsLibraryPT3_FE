@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-//This MyBook, imported below on line 5, is not the same as the one in HomeLibrary. I copied it here in case it needs its own stuff.
-// If it's the same as the one in HomeLibrary, delete one.
-import MyBook from "./MyBook";
-import { NavLink, withRouter, Redirect } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
 class Borrowed extends Component {
   constructor(props) {
@@ -39,6 +36,7 @@ class Borrowed extends Component {
           .catch(err => {
             console.log(" Error", err);
           });
+
       } else {
         return <Redirect to={"/"} />;
       }
@@ -57,7 +55,6 @@ class Borrowed extends Component {
             return <li key>{e.title}</li>;
           })}
         </div>
-      </div>
     );
   }
 }

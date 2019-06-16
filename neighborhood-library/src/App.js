@@ -11,16 +11,13 @@ import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Header from "./components/Header/Headers";
 // import Landing from "./components/MyShelf/Landing/Landing";
 import Loaned from "./components/MyShelf/Loaned/Loaned";
-
-
-import Login from "./components/Auth/Login";
 import MyShelf from "./components/MyShelf/MyShelf";
 // import Borrowed from "./components/MyShelf/Borrowed/Borrowed";
 import Nav from "./components/Nav/Nav";
 import Search from "./components/Search/Search";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripePayment from "./components/Stripe/StripePayment";
-import TwilioApp from "./components/Twilio/TwilioApp"
+import TwilioApp from "./components/Twilio/TwilioApp";
 class App extends React.Component {
   constructor() {
     super();
@@ -32,15 +29,14 @@ class App extends React.Component {
   componentDidMount() {
     axios
       .get("https://pt3-neighborhood-library-back.herokuapp.com/")
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
+      .then(res => res.status(200).json({ message: "connected to backend" }))
+      .catch(err => err.status(500).json({ error: err }));
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-
           <h2>Neighborhood Library</h2>
         </header>
         {/* <Nav /> */}
