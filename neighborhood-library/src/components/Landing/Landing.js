@@ -7,7 +7,7 @@ function Landing() {
   return (
     <div>
       <div className="delete-me-filler">
-        <h2>run yarn start and then yarn watch-css</h2>
+        <h2>Welcome</h2>
         <p>
           Welcome to the Neighborhood Library. Here you can add books to your
           lending library so that your neighbors and friends can check them out
