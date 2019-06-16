@@ -3,9 +3,6 @@ import { NavLink } from "react-router-dom";
 import AuthContainer from "../Auth/AuthContainer";
 
 function Nav() {
-
-
-  
   return (
     <div className="App">
       <nav>
@@ -18,11 +15,10 @@ function Nav() {
         {/* <NavLink to="/search" activeClassName="selected">
           Search
         </NavLink> */}
-        <NavLink to="/account" activeClassName="selected">
+        <NavLink to="/account/:id" activeClassName="selected">
           Account
         </NavLink>
         <AuthContainer />
-        
       </nav>
     </div>
   );

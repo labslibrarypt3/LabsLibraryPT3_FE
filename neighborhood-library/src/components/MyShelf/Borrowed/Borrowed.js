@@ -1,34 +1,43 @@
 import React, { Component } from "react";
 import axios from "axios";
-//This MyBook, imported below on line 5, is not the same as the one in HomeLibrary. I copied it here in case it needs its own stuff.
-// If it's the same as the one in HomeLibrary, delete one.
-import MyBook from "./MyBook";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 class Borrowed extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: []
     };
   }
   componentDidMount() {
-    const endpoint = "http://localhost:4000/api/trans/borrow";
+    console.log(
+      localStorage.getItem("id"),
+      localStorage.getItem("jwt"),
+      "occurs before axios"
+    );
     const data = () => {
+      const endpoint = "http://localhost:4000/api/trans/borrow";
       if (localStorage.getItem("jwt")) {
-        console.log(localStorage.getItem("id"),(localStorage.getItem("jwt")), 'occurs before axios')
-       
+        console.log(
+          localStorage.getItem("id"),
+          localStorage.getItem("jwt"),
+          "occurs before axios"
+        );
+
         return axios
-        .get(endpoint, localStorage.getItem("id"))
-        .then(res => {
-          // console.log(...res.data);
-          this.setState({ data: res.data });
-        })
+          .get(endpoint, {
+            headers: { authorization: localStorage.getItem("jwt") },
+            params: { borrower_id: localStorage.getItem("id") }
+          })
+          .then(res => {
+            // console.log(...res.data);
+            this.setState({ data: res.data });
+          })
           .catch(err => {
             console.log(" Error", err);
           });
       } else {
-        return withRouter.push("/");
+        return <Redirect to={"/"} />;
       }
     };
     data();
@@ -41,10 +50,8 @@ class Borrowed extends Component {
         <p>I am a list of books you've borrowed from someone else</p>
         <div>
           {this.state.data.map(e => {
-            console.log(e)
-            return (
-              <li>{e.borrower_id}</li>
-            );
+            console.log(e);
+            return <li key={e.borrower_id}>book</li>;
           })}
         </div>
       </div>

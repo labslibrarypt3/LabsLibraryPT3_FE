@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Landing from "../../Landing/Landing";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import MyBook from "./MyBook";
 
 class HomeLibrary extends Component {
@@ -15,20 +15,15 @@ class HomeLibrary extends Component {
     const endpoint = "http://localhost:4000/api/books";
     const data = () => {
       if (localStorage.getItem("jwt")) {
-        const storageobj = {
-          
-        }
+        const authToken = localStorage.getItem("jwt");
         return axios
-          .get(endpoint, localStorage.getItem("id"))
+          .get(endpoint, { headers: { authorization: authToken } })
           .then(res => {
-            console.log(...res.data);
             this.setState({ data: res.data });
           })
-          .catch(err => {
-            console.log(" Error", err);
-          });
+          .catch(err => console.log(err));
       } else {
-        return withRouter.push("/");
+        return <Redirect to={"/"} />;
       }
     };
     data();
@@ -38,21 +33,16 @@ class HomeLibrary extends Component {
     return (
       <div>
         <h3>HomeLibrary</h3>
-        {/* {console.log(this.state.data)} */}
         <div>
           {this.state.data.map(e => {
             return (
-              <MyBook key={e.bookId} 
-                      title={e.title} 
-                      authors={e.authors} />
-
+              <MyBook key={e.bookId} title={e.title} authors={e.authors} />
             );
           })}
         </div>
-    </div>
+      </div>
     );
   }
 }
-
 
 export default HomeLibrary;
