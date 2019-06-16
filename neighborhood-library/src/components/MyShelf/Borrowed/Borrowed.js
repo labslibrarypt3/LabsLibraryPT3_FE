@@ -52,7 +52,7 @@ class Borrowed extends Component {
         <div>
           {this.state.data.map(e => {
             console.log(e);
-            return <li key>{e.borrower_id}</li>;
+            return <li key>{e.title}</li>;
           })}
         </div>
     );
