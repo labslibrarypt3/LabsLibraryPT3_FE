@@ -34,7 +34,7 @@ class Borrowed extends Component {
         <p>I am a list of books you've borrowed from someone else</p>
         <div>
           {this.state.data.map(e => {
-            return <li>{e.borrower_id}</li>;
+            return <li key={Math.random()}>{e.borrower_id}</li>;
           })}
         </div>
       </div>

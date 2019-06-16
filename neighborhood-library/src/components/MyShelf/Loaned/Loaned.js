@@ -20,7 +20,7 @@ class Loaned extends Component {
           .then(res => {
             this.setState({ data: res.data });
           })
-          .catch(err => err.status(500).json({ error: err }));
+          .catch(err => console.log(err));
       } else {
         return withRouter.push("/");
       }
