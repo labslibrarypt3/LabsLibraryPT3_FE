@@ -36,7 +36,6 @@ class Borrowed extends Component {
           .catch(err => {
             console.log(" Error", err);
           });
-
       } else {
         return <Redirect to={"/"} />;
       }
@@ -55,6 +54,7 @@ class Borrowed extends Component {
             return <li key={e.borrower_id}>book</li>;
           })}
         </div>
+      </div>
     );
   }
 }
