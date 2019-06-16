@@ -13,17 +13,29 @@ class Borrowed extends Component {
     };
   }
   componentDidMount() {
-    const endpoint = "http://localhost:4000/api/trans/borrow";
+    console.log(
+      localStorage.getItem("id"),
+      localStorage.getItem("jwt"),
+      "occurs before axios"
+    );
     const data = () => {
+      const endpoint = "http://localhost:4000/api/trans/borrow";
       if (localStorage.getItem("jwt")) {
-        console.log(localStorage.getItem("id"),(localStorage.getItem("jwt")), 'occurs before axios')
-       
+        console.log(
+          localStorage.getItem("id"),
+          localStorage.getItem("jwt"),
+          "occurs before axios"
+        );
+
         return axios
-        .get(endpoint, {headers:{authorization:localStorage.getItem("jwt")}})
-        .then(res => {
-          // console.log(...res.data);
-          this.setState({ data: res.data });
-        })
+          .get(endpoint, {
+            headers: { authorization: localStorage.getItem("jwt") },
+            params: { borrower_id: localStorage.getItem("id") }
+          })
+          .then(res => {
+            // console.log(...res.data);
+            this.setState({ data: res.data });
+          })
           .catch(err => {
             console.log(" Error", err);
           });
@@ -41,10 +53,8 @@ class Borrowed extends Component {
         <p>I am a list of books you've borrowed from someone else</p>
         <div>
           {this.state.data.map(e => {
-            console.log(e)
-            return (
-              <li>{e.borrower_id}</li>
-            );
+            console.log(e);
+            return <li key>{e.borrower_id}</li>;
           })}
         </div>
       </div>
