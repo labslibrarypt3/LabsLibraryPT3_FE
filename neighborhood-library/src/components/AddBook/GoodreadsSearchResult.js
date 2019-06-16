@@ -12,7 +12,7 @@ class GoodreadsSearchResult extends Component {
       title: this.props.title,
       authors: this.props.authors,
       ISBN: "0",
-      // user_id: " ",
+      user_id: this.props.user_id,
       cover: this.props.cover
     };
   }
