@@ -1,5 +1,8 @@
-//THIS COMPONENT IS A CONTAINER FOR THE SEARCH FORM AND ALL OF THE SEARCH RESULTS
-//IF YOU NEED TO MANIPULATE AN INDIVIDUAL SEARCH RESULT, GO TO GoodreadsSearchResult.js
+/*
+This component connects to the Goodreads API and returns a list of books based on the user's search results
+
+If you need to make changes to a single result, please go to GoodreadsSearchResult.js
+ */
 import React, { Component } from "react";
 import axios from "axios";
 import GoodreadsSearchResult from "./GoodreadsSearchResult";
