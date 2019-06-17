@@ -4,6 +4,7 @@ import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
 import Logout from "./Logout";
+import "../../App.css";
 
 class AuthContainer extends Component {
   constructor(props) {
@@ -53,26 +54,33 @@ class AuthContainer extends Component {
 
     const componentClicked = response => {};
     return (
-      <div>
-        <FacebookLogin
-          appId="2561795117185670"
-          autoLoad={true}
-          fields="name,email,picture"
-          onClick={componentClicked}
-          callback={responseFacebook}
-          className="login-button"
-        />
+      <div className="auth-buttons">
+        {!localStorage.getItem("jwt") ? (
+          <div className="login-section">
+            <FacebookLogin
+              appId="2561795117185670"
+              autoLoad={true}
+              fields="name,email,picture"
+              onClick={componentClicked}
+              callback={responseFacebook}
+              // cssClass="login-button"
+              icon="fa fa-facebook"
+              textButton="Login"
+            />
 
-        <GoogleLogin
-          clientId="276277558253-h0h6fqj0m26r3a20998jeplb75r097g7.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={"single_host_origin"}
-          className="login-button"
-        />
-
-        <Logout />
+            <GoogleLogin
+              clientId="276277558253-h0h6fqj0m26r3a20998jeplb75r097g7.apps.googleusercontent.com"
+              icon={true}
+              buttonText="Login"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+              className="login-button"
+            />
+          </div>
+        ) : (
+          <Logout class="logout-button" />
+        )}
       </div>
     );
   }
