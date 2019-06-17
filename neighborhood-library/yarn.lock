@@ -4521,6 +4521,7 @@ express@^4.16.2:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
+<<<<<<< HEAD
 extend-shallow@^1.1.2, extend-shallow@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/extend-shallow/-/extend-shallow-1.1.4.tgz#19d6bf94dfc09d76ba711f39b872d21ff4dd9071"
@@ -4528,6 +4529,9 @@ extend-shallow@^1.1.2, extend-shallow@^1.1.4:
     kind-of "^1.1.0"
 
 extend-shallow@^2.0.0, extend-shallow@^2.0.1:
+=======
+extend-shallow@^2.0.1:
+>>>>>>> b77fba7cd9abc690c3af8cf1e74b525fbd81dfd5
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/extend-shallow/-/extend-shallow-2.0.1.tgz#51af7d614ad9a9f610ea1bafbb989d6b1c56890f"
   dependencies:
@@ -7881,7 +7885,11 @@ oauth-sign@~0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
 
+<<<<<<< HEAD
 object-assign@4.1.1, object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+=======
+object-assign@4.1.1, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+>>>>>>> b77fba7cd9abc690c3af8cf1e74b525fbd81dfd5
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -9516,6 +9524,10 @@ react-scripts@3.0.1:
 react-stripe-elements@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-stripe-elements/-/react-stripe-elements-3.0.0.tgz#8b5e354e6e421b85f909329c9818a719b132410a"
+<<<<<<< HEAD
+=======
+  integrity sha512-ouGHPmPhdg7KUTOFVuYIr0UWVgBjG5CqmOn9/y0vaJICryPB6llkiOGeUXKrac7fu1/vtPdn8t/4JKnbi8PT8g==
+>>>>>>> b77fba7cd9abc690c3af8cf1e74b525fbd81dfd5
   dependencies:
     prop-types "^15.5.10"
 

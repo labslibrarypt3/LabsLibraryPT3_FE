@@ -27,7 +27,6 @@ class Register extends Component {
       password:this.state.password,
       email:this.state.email
     }
-    console.log(userData)
     AuthPostData('manual',userData);
     // const creds = this.state;
     // const endpoint = "";

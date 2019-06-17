@@ -11,18 +11,18 @@ class GoodreadsSearchResult extends Component {
     this.state = {
       title: this.props.title,
       authors: this.props.authors,
-      ISBN: "0"
-      // user_id: " ",
-      // cover: this.props.cover
+      ISBN: "0",
+      cover: this.props.cover,
+      user_id: localStorage.getItem('id')
     };
   }
 
   addBookToLibrary = async () => {
-    const book = this.state;
+    const book = this.state; 
     const axiosResponse = await axios
-      .post("localhost:4000/api/books", book)
-      .then(res => console.log("res: ", res))
-      .catch(err => console.log(err));
+      .post("http://localhost:4000/api/books/", book,console.log(book, 'frontend obj'))
+      .then(res => console.log ('book added to library'))
+      .catch(err => console.log(err,'front end book post'));
   };
 
   render() {
@@ -39,21 +39,3 @@ class GoodreadsSearchResult extends Component {
 }
 
 export default GoodreadsSearchResult;
-
-// server.use("/api/users", users);
-
-// server.use("/api/books", books)
-
-// router.post('/', async (req,res) => {
-//   console.log(req.body)
-//   const enter = req.body
-//     try {
-//       const user = await db.insert(enter);
-//       res.status(201).json(user);
-//     } catch (error) {
-//       // log error to database
-//       res.status(500).json({
-//         message: 'Error adding the book',
-//       });
-//     }
-//   });
