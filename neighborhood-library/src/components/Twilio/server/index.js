@@ -2,7 +2,7 @@ const config = require('./config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
-const { chatToken, videoToken } = require('./tokens');
+const { chatToken } = require('./tokens');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,20 +33,6 @@ sendTokenResponse(token, res);
 app.post('/chat/token', (req, res) => {
 const identity = req.body.identity;
 const token = chatToken(identity, config);
-sendTokenResponse(token, res);
-});
-
-app.get('/video/token', (req, res) => {
-const identity = req.query.identity;
-const room = req.query.room;
-const token = videoToken(identity, room, config);
-sendTokenResponse(token, res);
-});
-
-app.post('/video/token', (req, res) => {
-const identity = req.body.identity;
-const room = req.body.room;
-const token = videoToken(identity, room, config);
 sendTokenResponse(token, res);
 });
 

@@ -3,7 +3,7 @@ import '@progress/kendo-theme-material/dist/all.css';
 import Login from './Login';
 import ChatApp from './ChatApp';
 
-class TwilioApp extends Component {
+class App extends Component {
 constructor(props) {
     super(props);
     this.state = {
@@ -43,4 +43,4 @@ render() {
     }
 }
 
-export default TwilioApp;
+export default App;
