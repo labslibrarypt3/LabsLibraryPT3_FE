@@ -9,13 +9,16 @@ import "../../App.css";
 class AuthContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loggedIn:false
+    };
     this.callback = this.callback.bind(this);
   }
   callback(res, type) {
     let userData;
 
     if (type === "facebook" && res.email) {
+      this.setState({loggedIn:true})
       userData = {
         name: res.name,
         provider: type,
@@ -26,6 +29,7 @@ class AuthContainer extends Component {
     }
 
     if (type === "google" && res.w3.U3) {
+      this.setState({loggedIn:true})
       userData = {
         name: res.w3.ig,
         provider: type,
@@ -76,10 +80,16 @@ class AuthContainer extends Component {
               onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
               className="login-button"
+              
             />
           </div>
         ) : (
-          <Logout class="logout-button" />
+         
+           
+            <button onClick={ () => {
+              localStorage.clear()
+              this.setState({loggedIn:false})
+            }}>Logout</button>
         )}
       </div>
     );
