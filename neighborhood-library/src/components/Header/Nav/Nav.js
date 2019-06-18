@@ -9,13 +9,16 @@ function Nav() {
         <nav>
           <NavLink to="/add-book/:id" activeClassName="selected">
             Add a Book
+            <hr />
           </NavLink>
           <NavLink to="/my-shelf/:id" activeClassName="selected">
             My Shelf
+            <hr />
           </NavLink>
           <NavLink to="/account/:id" activeClassName="selected">
             {" "}
             Account
+            <hr />
           </NavLink>
         </nav>
       ) : null}
