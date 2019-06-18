@@ -12,12 +12,18 @@ const MyBook = (props) =>{
             <div>{props.authors}</div>
             <img src={props.cover}/>
             <button onClick={ function buttonClicked (e) {
-        const endpoint = "http://localhost:4000/api/books/del/";
+        
         const book = props.bookId
          console.log('buttonclicked',props.bookId)
-         axios(endpoint,book)
+         return axios({
+             method:'DELETE',
+             url:'http://localhost:4000/api/books/',
+             data:{
+             'bookId':props.bookId
+             }
+         })
        }}>Delete</button>
     </div>  )
 }
-
+//'http://localhost:4000/api/books/'
 export default MyBook;
