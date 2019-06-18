@@ -1,5 +1,8 @@
-//THIS COMPONENT IS A CONTAINER FOR THE SEARCH FORM AND ALL OF THE SEARCH RESULTS
-//IF YOU NEED TO MANIPULATE AN INDIVIDUAL SEARCH RESULT, GO TO GoodreadsSearchResult.js
+/*
+This component connects to the Goodreads API and returns a list of books based on the user's search results
+
+If you need to make changes to a single result, please go to GoodreadsSearchResult.js
+ */
 import React, { Component } from "react";
 import axios from "axios";
 import GoodreadsSearchResult from "./GoodreadsSearchResult";
@@ -9,19 +12,24 @@ class SearchGoodreads extends Component {
     super(props);
     this.state = {
       query: "",
-      books: []
+      books: [],
+      user_id: null
     };
   }
 
   // url: https://pt3-neighborhood-library-back.herokuapp.com/api/goodeads/search
   getData = async () => {
+    const authToken = localStorage.getItem("jwt");
     const axiosResponse = await axios
       .get(`http://localhost:4000/api/goodreads/search`, {
-        params: { q: this.state.query }
+        params: { q: this.state.query },
+        headers: { authorization: authToken }
       })
       .then(res => {
-        console.log(res);
-        this.setState({ books: res.data.books });
+        this.setState({
+          books: res.data.books,
+          user_id: localStorage.getItem("id")
+        });
       })
       .catch(err => console.log(err));
   };

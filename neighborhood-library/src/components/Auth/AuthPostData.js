@@ -1,21 +1,19 @@
 import axios from "axios";
 
-
-export default function AuthPostData(type,userData){
-    
-    
-
-    return new Promise((resolve, reject) =>{
-        
-        axios({
-           
-            method:'post',
-
-            url:'http://localhost:4000/auths/auth',
-
-            data:userData
-        })
-})
+export default function AuthPostData(type, userData) {
+  return new Promise((resolve, reject) => {
+    const endpoint = "http://localhost:4000/auths/auth";
+    axios
+      .post(endpoint, userData)
+      .then(res => {
+        console.log(res, "at set storage");
+        localStorage.setItem("jwt", userData.token);
+        localStorage.setItem("email", userData.email);
+        localStorage.setItem("id", res.data.userId);
+        console.log(localStorage, "authenticate frontend");
+      })
+      .catch(err => {
+        console.log("login Error", err);
+      });
+  });
 }
-
-//repushing oauth work to development after it was merged out 

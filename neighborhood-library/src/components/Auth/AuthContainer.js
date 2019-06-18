@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import AuthPostData from "./AuthPostData";
-// import Login from './Login';
-// import Register from './Register';
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import Logout from "./Logout";
 
 class AuthContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loggedIn: false,
-      redirectToReferrer: false
-    };
+    this.state = {};
     this.callback = this.callback.bind(this);
   }
   callback(res, type) {
@@ -53,6 +48,7 @@ class AuthContainer extends Component {
 
     const responseFacebook = response => {
       this.callback(response, "facebook");
+      console.log(response, "fb");
     };
 
     const componentClicked = response => {};
@@ -76,15 +72,7 @@ class AuthContainer extends Component {
           className="login-button"
         />
 
-        {/* <Login />
-        <Register />
-      <div className="auth-container">
-        {this.state.loggedIn ? (
-          <Link to="/login">Login</Link>
-        ) : (
-          <Link to="/register">Register</Link>
-        )}
-      </div> */}
+        <Logout />
       </div>
     );
   }

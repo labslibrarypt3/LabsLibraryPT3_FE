@@ -1,35 +1,54 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Link, Redirect } from "react-router-dom";
 import Settings from "./Settings";
-import { Link } from "react-router-dom";
-import {Redirect} from 'react-router-dom';
+import axios from "axios";
+import { StripeProvider, Elements } from "react-stripe-elements";
+import StripePayment from "./Stripe/StripePayment";
 
 class Account extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      redirectToReferrer:false,
-      name:'',
-      email:''
+    this.state = {
+      userId: "",
+      name: "",
+      email: ""
+    };
+  }
+  componentDidMount() {
+    this.getData();
+  }
+  getData = () => {
+    if (localStorage.getItem("jwt")) {
+      const authToken = localStorage.getItem("jwt");
+      const endpoint = "http://localhost:4000/api/users/account";
+      return axios
+        .get(endpoint, {
+          headers: { authorization: authToken }
+        })
+        .then(res => {
+          this.setState({
+            userId: res.userId,
+            name: res.name,
+            email: res.email
+          });
+        })
+        .catch(err => console.log(err));
+    } else {
+      return <Redirect to={"/"} />;
     }
-  }
-  componentDidMount(){
-    let data = JSON.parse(sessionStorage.getItem('userData'))
-    this.setState({name: data.userData.name})
-    this.setState({email: data.userData.email})
+  };
 
-  }
   render() {
-    if(!sessionStorage.getItem('userData')){
-return (
-<Redirect to={'/'}/> 
-)}
     return (
       <div>
         <h2>Welcome {this.state.name}</h2>
-        <Link to={Settings} />
-        <Route path="/account/:id/settings" component={Settings} />
+        <Link to="/settings/:id" component={Settings} />
+        <Route path="/settings/:id" component={Settings} />
+        <StripeProvider apiKey="pk_test_j6wi0FWmtWCqFPwU3oCHJA2800c8YshuOy">
+          <Elements>
+            <StripePayment />
+          </Elements>
+        </StripeProvider>
       </div>
     );
   }
