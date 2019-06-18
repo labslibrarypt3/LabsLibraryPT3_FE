@@ -18,7 +18,9 @@ const MyBook = (props) =>{
          return axios({
              method:'DELETE',
              url:'http://localhost:4000/api/books/',
-             data:props.bookId
+             data:{
+             'bookId':props.bookId
+             }
          })
        }}>Delete</button>
     </div>  )

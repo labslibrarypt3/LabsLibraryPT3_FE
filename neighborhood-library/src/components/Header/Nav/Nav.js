@@ -5,7 +5,7 @@ import AuthContainer from "../../Auth/AuthContainer";
 function Nav() {
   return (
     <div className="App">
-      {!localStorage.getItem("jwt") ? (
+      {localStorage.getItem("jwt") ? (
         <nav>
           <NavLink to="/add-book/:id" activeClassName="selected">
             Add a Book
