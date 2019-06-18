@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Nav from "../Nav/Nav";
+import Nav from "../Header/Nav/Nav";
 
 class MenuContent extends Component {
   constructor(props) {
