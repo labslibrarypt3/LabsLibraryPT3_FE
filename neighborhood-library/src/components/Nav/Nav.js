@@ -5,21 +5,22 @@ import AuthContainer from "../Auth/AuthContainer";
 function Nav() {
   return (
     <div className="App">
-      <nav>
-        <NavLink to="/add-book/:id" activeClassName="selected">
-          Add a Book
-        </NavLink>
-        <NavLink to="/my-shelf/:id" activeClassName="selected">
-          My Shelf
-        </NavLink>
-        {/* <NavLink to="/search" activeClassName="selected">
-          Search
-        </NavLink> */}
-        <NavLink to="/account/:id" activeClassName="selected">
-          Account
-        </NavLink>
-        <AuthContainer />
-      </nav>
+      {!localStorage.getItem("jwt") ? (
+        <nav>
+          <NavLink to="/add-book/:id" activeClassName="selected">
+            Add a Book
+          </NavLink>
+          <NavLink to="/my-shelf/:id" activeClassName="selected">
+            My Shelf
+          </NavLink>
+          <NavLink to="/account/:id" activeClassName="selected">
+            {" "}
+            Account
+          </NavLink>
+        </nav>
+      ) : null}
+
+      <AuthContainer />
     </div>
   );
 }

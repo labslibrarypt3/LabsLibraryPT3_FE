@@ -27,6 +27,7 @@ class HomeLibrary extends Component {
       }
     };
     data();
+
   }
 
   render() {
@@ -35,14 +36,19 @@ class HomeLibrary extends Component {
         <h3>HomeLibrary</h3>
         <div>
           {this.state.data.map(e => {
+            console.log (e,'in map')
             return (
-              <MyBook key={e.bookId} title={e.title} authors={e.authors} cover={e.cover} />
+              <div>
+              <MyBook title={e.title} authors={e.authors} cover={e.cover} bookId = {e.bookId}/>
+              
+              </div>
             );
           })}
         </div>
       </div>
     );
   }
+
 }
 
 export default HomeLibrary;

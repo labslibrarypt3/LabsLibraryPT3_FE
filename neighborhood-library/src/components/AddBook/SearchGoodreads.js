@@ -45,12 +45,12 @@ class SearchGoodreads extends Component {
 
   render() {
     return (
-      <div>
+      <div className="add-book">
         <h2>Add a Book to your Library</h2>
         <p>I am a list of books you want to lend out to the community</p>
         <form onSubmit={this.handleSubmit}>
           <input
-            placeholder="Search for books to add to your library"
+            placeholder="      Powered by Goodreads"
             onChange={this.handleChange}
             value={this.state.query}
             name="query"
