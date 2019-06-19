@@ -9,17 +9,25 @@ class MyShelf extends Component {
   render() {
     if (localStorage.getItem("jwt")) {
       return (
-        <div>
+        <div className="page">
           <h2>MyShelf</h2>
-          <HomeLibrary />
-          <Loaned />
-          <Borrowed />
-          <NavLink to="/loaned" component={Loaned}>
+
+          <NavLink to="/loaned/:id" component={Loaned}>
             Loaned
           </NavLink>
-          <NavLink to="/borrowed" component={Borrowed}>
+          <NavLink to="/borrowed/:id" component={Borrowed}>
             Borrowed
           </NavLink>
+          <NavLink to="/home-library/:id" component={HomeLibrary}>
+            Home Library
+          </NavLink>
+          {/* <Route path="/loaned/:id" component={Loaned} />
+          <Route path="/borrowed/:id" component={Borrowed} />
+          <Route path="/home-library/:id" component={HomeLibrary} /> 
+          
+          ^^^ These aren't rendering, and I don't know why*/}
+
+          <HomeLibrary />
         </div>
       );
     } else {
