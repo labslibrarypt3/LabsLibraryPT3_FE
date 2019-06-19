@@ -1,21 +1,29 @@
 import React from "react";
+import axios from "axios";
 
 
 const MyBook = (props) =>{
-    console.log(props.cover)
 
-    const removefromLibrary = () =>{
-console.log('ira do this')
-}
 
     return(
-        <div key={props.key}>
+        
+        <div key={props.bookId}>
             <div>{props.title}</div>
             <div>{props.authors}</div>
-            <div><img src={props.cover}/></div>
-            <button onClick={removefromLibrary}>Remove Book</button>
-            
-        </div>    )
+            <img src={props.cover}/>
+            <button onClick={ function buttonClicked (e) {
+        
+        const book = props.bookId
+         console.log('buttonclicked',props.bookId)
+         return axios({
+             method:'DELETE',
+             url:'http://localhost:4000/api/books/',
+             data:{
+             'bookId':props.bookId
+             }
+         })
+       }}>Delete</button>
+    </div>  )
 }
-
+//'http://localhost:4000/api/books/'
 export default MyBook;

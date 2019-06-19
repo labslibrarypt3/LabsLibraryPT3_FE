@@ -2,17 +2,7 @@ import React from "react";
 import HamburgerMenu from "react-hamburger-menu";
 import CheeseburgerMenu from "cheeseburger-menu";
 import MenuContent from "./MenuContent";
-
-const style = {
-  container: {
-    borderBottom: "4px solid AliceBlue",
-    backgroundColor: "#BCBCBE",
-    padding: 10
-  },
-  title: {
-    color: "white"
-  }
-};
+import "../../App.css";
 
 class Headers extends React.Component {
   state = {
@@ -34,8 +24,7 @@ class Headers extends React.Component {
 
   render() {
     return (
-      <header style={style.container}>
-        <h1 style={style.title}>Neighborhood Library!</h1>
+      <header>
         <div classname="sidebar">
           <CheeseburgerMenu
             isOpen={this.state.open}
@@ -46,42 +35,16 @@ class Headers extends React.Component {
           <HamburgerMenu
             isOpen={this.state.open}
             menuClicked={this.handleClick.bind(this)}
-            width={18}
-            height={15}
-            strokeWidth={1}
+            strokeWidth={3}
             rotate={0}
-            color="black"
+            color="#ea4d33"
             borderRadius={0}
             animationDuration={0.5}
+            className="hamburger-icon"
+            border-radius={15}
           />
         </div>
-      </header>
-    );
-  }
-  render() {
-    return (
-      <header style={style.container}>
-        <h1 style={style.title}>Neighborhood Library</h1>
-        <h3>{this.state.name}</h3>
-        <div className="sidebar">
-          <CheeseburgerMenu
-            isOpen={this.state.open}
-            closeCallback={this.closeMenu.bind(this)}
-          >
-            <MenuContent closeCallback={this.closeMenu.bind(this)} />
-          </CheeseburgerMenu>
-          <HamburgerMenu
-            isOpen={this.state.open}
-            menuClicked={this.handleClick.bind(this)}
-            width={18}
-            height={15}
-            strokeWidth={1}
-            rotate={0}
-            color="black"
-            borderRadius={0}
-            animationDuration={0.5}
-          />
-        </div>
+        <h1 className="title">Neighborhood Library!</h1>
       </header>
     );
   }
