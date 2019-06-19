@@ -8,8 +8,8 @@ const MyBook = props => {
         <img src={props.cover} className="book-cover" />
       </div>
       <div className="book-bottom">
-        <p>{props.title}</p>
-        <p>{props.authors}</p>
+        <p className="book-title">{props.title}</p>
+        <p>by {props.authors}</p>
         <button
           onClick={function buttonClicked(e) {
             const book = props.bookId;
