@@ -17,8 +17,9 @@ class HomeLibrary extends Component {
       if (localStorage.getItem("jwt")) {
         const authToken = localStorage.getItem("jwt");
         return axios
-          .get(endpoint, { headers: { authorization: authToken }, 
-                          params:{user_id:localStorage.getItem("id")}
+          .get(endpoint, {
+            headers: { authorization: authToken },
+            params: { user_id: localStorage.getItem("id") }
           })
           .then(res => {
             this.setState({ data: res.data });
@@ -29,28 +30,28 @@ class HomeLibrary extends Component {
       }
     };
     data();
-
   }
 
   render() {
     return (
-      <div>
+      <div className="home-library">
         <h3>HomeLibrary</h3>
-        <div>
+        <div className="shelf">
           {this.state.data.map(e => {
-            console.log (e,'in map')
+            console.log(e, "in map");
             return (
-              <div>
-              <MyBook title={e.title} authors={e.authors} cover={e.cover} bookId = {e.bookId}/>
-              
-              </div>
+              <MyBook
+                title={e.title}
+                authors={e.authors}
+                cover={e.cover}
+                bookId={e.bookId}
+              />
             );
           })}
         </div>
       </div>
     );
   }
-
 }
 
 export default HomeLibrary;

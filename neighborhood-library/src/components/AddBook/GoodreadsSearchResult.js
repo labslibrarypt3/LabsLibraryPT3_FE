@@ -31,15 +31,15 @@ class GoodreadsSearchResult extends Component {
 
   render() {
     return (
-      <div className="goodreads-search-result">
-        <div className="card-top">
+      <div className="goodreads-search-result book">
+        <div className="book-top">
           <img
             className="book-cover"
             src={this.props.cover}
             alt="cover image"
           />
         </div>
-        <div className="card-bottom">
+        <div className="book-bottom">
           <p>{this.props.title}</p>
           <p>by {this.props.authors}</p>
           <button onClick={this.addBookToLibrary}>Add to Library</button>

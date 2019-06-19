@@ -5,9 +5,6 @@
 #39113c Dark Purple
 #ea4d33 Carmine Pink */
 
-/* Add dotted lines around everything to make it easier to see */
-/* remove when done */
-
 .App {
   font-family: Lato;
   /* Side borders */
@@ -73,13 +70,17 @@ nav {
   padding: 25px 15px;
   color: inherit;
   text-decoration: none;
+  font-size: 24px;
 }
 
 .menu-item a:hover {
   color: inherit;
   text-decoration: none;
-  color: #39113c;
-  background-color: #fabc3c;
+  color: #fabc3c;
+}
+
+hr {
+  color: #fabc3c;
 }
 
 .menu-item a:focus {
@@ -127,7 +128,7 @@ footer a {
   color: white;
 }
 
-/* Add Book and Goodreads Stylings */
+/* AddBook and HomeLibrary Stylings */
 
 .add-book {
   width: 100%;
@@ -139,7 +140,7 @@ footer a {
   align-items: flex-start;
 }
 
-.goodreads-search-results-container {
+.shelf {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -154,6 +155,7 @@ form {
   justify-content: space-evenly;
   margin: 30px auto;
 }
+
 form button {
   padding: 10px 2%;
   background-color: #fabc3c;
@@ -163,6 +165,7 @@ form button {
   font-size: 18px;
   font-weight: bold;
 }
+
 input {
   border-radius: 5px;
   border: 4px solid #fabc3c;
@@ -178,9 +181,11 @@ input {
   font-weight: bold;
 }
 
-.goodreads-search-result {
-  width: 20%;
+.book {
+  height: 200px;
+  width: 35%;
   background-color: #0a2239;
+  box-shadow: 2.5px 2.5px 15px #39113c;
   margin: 5px 5%;
   padding: 5px;
   display: flex;
@@ -193,42 +198,56 @@ input {
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
 }
-.card-top {
-  height: 50%;
+
+.book-top {
+  height: 46%;
   width: 99%;
   padding: 10px 2%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   display: flex;
 }
-.card-top .book-cover {
+.book-top .book-cover {
   margin: 0 auto;
   border: 2px solid #fabc3c;
 }
-.card-bottom {
+.book-bottom {
+  height: 46%;
+  /* height: 100px; */
   width: 100%;
-  height: 50%;
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  margin: 5px 5%;
-  padding: 10px 0;
+  /* margin: 5px 5%; */
+  /* padding: 10px 0; */
   border-bottom-left-radius: 15px;
   color: #0a2239;
   font-weight: bold;
 }
 
-.card-bottom p {
+.book-bottom p {
+  height: 25px;
+  line-height: 16px;
+  width: 90%;
   padding: 5px 5%;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.card-bottom button {
+/* .book-title {
+} */
+
+.book-bottom button {
+  height: fit-content;
   width: 60%;
   background-color: #ea4d33;
   border-radius: 5px;
-  padding: 5px 5%;
+  margin-bottom: 5px;
+  padding: 3px 5%;
   font-weight: bold;
-  color: #fabc3c;
+  color: #1c0f13;
 }
