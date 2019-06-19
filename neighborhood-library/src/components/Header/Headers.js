@@ -3,6 +3,8 @@ import HamburgerMenu from "react-hamburger-menu";
 import CheeseburgerMenu from "cheeseburger-menu";
 import MenuContent from "./MenuContent";
 import "../../App.css";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 class Headers extends React.Component {
   state = {
@@ -21,6 +23,31 @@ class Headers extends React.Component {
   closeMenu() {
     this.setState({ open: false });
   }
+  componentDidMount() {
+    this.getData();
+  }
+  getData = () => {
+    if (localStorage.getItem("jwt")) {
+      const authToken = localStorage.getItem("jwt");
+      const endpoint = "http://localhost:4000/api/users/user";
+      return axios
+        .get(endpoint, {
+          headers: { authorization: authToken },
+          params: { userId: localStorage.getItem("id") }
+        })
+        .then(res => {
+          console.log(res,'account page')
+          this.setState({
+            userId: res.data.userId,
+            name: res.data.name,
+            email: res.data.email
+          });
+        })
+        .catch(err => console.log(err));
+    } else {
+      return <Redirect to={"/"} />;
+    }
+  };
 
   render() {
     return (
@@ -45,6 +72,7 @@ class Headers extends React.Component {
           />
         </div>
         <h1 className="title">Neighborhood Library!</h1>
+        <h3>Logged in as: {this.state.name.split(' ')[0]}</h3>
       </header>
     );
   }
