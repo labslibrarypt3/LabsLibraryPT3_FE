@@ -12,12 +12,14 @@ class HomeLibrary extends Component {
     };
   }
   componentDidMount() {
-    const endpoint = "http://localhost:4000/api/books";
+    const endpoint = "http://localhost:4000/api/books/mybooks";
     const data = () => {
       if (localStorage.getItem("jwt")) {
         const authToken = localStorage.getItem("jwt");
         return axios
-          .get(endpoint, { headers: { authorization: authToken } })
+          .get(endpoint, { headers: { authorization: authToken }, 
+                          params:{user_id:localStorage.getItem("id")}
+          })
           .then(res => {
             this.setState({ data: res.data });
           })
