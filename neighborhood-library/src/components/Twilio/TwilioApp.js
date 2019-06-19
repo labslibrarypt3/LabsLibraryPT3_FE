@@ -8,7 +8,7 @@ class TwilioApp extends Component {
     this.state = {
       error: null,
       isLoading: true,
-      messages: []
+      messages: ['welcome to chat!']
     };
 
     //change for our database
@@ -27,7 +27,7 @@ class TwilioApp extends Component {
 
   // correct URL for back end tokens later
   componentDidMount() {
-    fetch('https://pt3-neighborhood-library-back.herokuapp.com/chat/token', {
+    fetch('https://pt3-neighborhood-library-back.herokuapp.com/api/twilio/token', {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       method: 'POST',
       // usrname or something like first name last initial?
@@ -110,12 +110,14 @@ class TwilioApp extends Component {
       return <p>Loading chat...</p>;
     }
     return (
+      <>
       <ChatUI
         user={this.user}
         messages={this.state.messages}
         onMessageSend={this.sendMessage}
         width={500}
       />
+      </>
     );
   }
 }

@@ -9,6 +9,7 @@ import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
+import TwilioApp from "./components/Twilio/TwilioApp";
 
 class App extends React.Component {
   constructor() {
@@ -46,7 +47,7 @@ class App extends React.Component {
             <Route path="/my-shelf/:id" component={MyShelf} />
           </div>
 
-          <></>
+          < TwilioApp />
         </div>
       </div>
     );
