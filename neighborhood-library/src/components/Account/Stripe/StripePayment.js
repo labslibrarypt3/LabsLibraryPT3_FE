@@ -59,8 +59,6 @@ handleInputChange = e => {
                     defaultValue={this.state.amount}
                     onChange={this.handleInputChange}
                  />
-                 <br />
-                 <label>hint: testing card number is 4242 4242 4242 4242 4242. any CVV and zip may be used</label>
                  <CardElement className='cardElement'/>
                  <button className='button'>Click to Pay</button>
              </form>
@@ -90,11 +88,7 @@ handleInputChange = e => {
             defaultValue={this.state.amount}
             onChange={this.handleInputChange}
           />
-          <br />
-          <label>
-            hint: testing card number is 4242 4242 4242 4242 4242. any CVV and
-            zip may be used
-          </label>
+          <br/>
           <CardElement className="cardElement" />
           <button className="button">Click to Pay</button>
         </form>
@@ -103,3 +97,4 @@ handleInputChange = e => {
   }
 }
 export default injectStripe(StripePayment);
+//hint: testing card number is 4242 4242 4242 4242 4242. any CVV and zip may be used
