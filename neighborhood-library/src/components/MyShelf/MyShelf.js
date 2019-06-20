@@ -43,10 +43,12 @@ class MyShelf extends Component {
         <div className="page">
           <h2>MyShelf</h2>
           
+
           <button onClick={this.handleBoClick}>Borrowed</button>
           <button onClick={this.handleLoClick}>Loaned</button>
           <HomeLibrary />
          
+
         </div>
       );
       }
