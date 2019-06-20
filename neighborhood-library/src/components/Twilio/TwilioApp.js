@@ -12,10 +12,10 @@ class TwilioApp extends Component {
     };
 
     //change for our database
-    this.user = {
-      id: props.username,
-      name: props.username
-    };
+    // this.user = {
+    //   id: props.user.userId,
+    //   name: props.user.name
+    // };
 
     this.setupChatClient = this.setupChatClient.bind(this);
     this.messagesLoaded = this.messagesLoaded.bind(this);
@@ -27,6 +27,7 @@ class TwilioApp extends Component {
 
   // correct URL for back end tokens later
   componentDidMount() {
+    
     fetch('https://pt3-neighborhood-library-back.herokuapp.com/api/twilio/token', {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       method: 'POST',
