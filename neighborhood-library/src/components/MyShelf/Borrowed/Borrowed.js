@@ -51,7 +51,7 @@ class Borrowed extends Component {
         <div>
           {this.state.data.map(e => {
             console.log(e);
-            return <li key={e.borrower_id}>book</li>;
+            return <li key={e.borrower_id} bookid={e.book_id}>{e.title}</li>;
           })}
         </div>
       </div>

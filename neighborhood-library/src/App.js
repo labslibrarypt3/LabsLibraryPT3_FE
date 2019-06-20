@@ -10,6 +10,7 @@ import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import TwilioApp from "./components/Twilio/TwilioApp";
+import Footer from "./components/Footer/Footer";
 
 class App extends React.Component {
   constructor() {
@@ -49,6 +50,7 @@ class App extends React.Component {
 
           < TwilioApp />
         </div>
+        <Footer />
       </div>
     );
   }
