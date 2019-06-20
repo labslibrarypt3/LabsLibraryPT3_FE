@@ -27,7 +27,7 @@ class MyShelf extends Component {
           
           ^^^ These aren't rendering, and I don't know why*/}
 
-          <HomeLibrary />
+          <Borrowed />
         </div>
       );
     } else {
