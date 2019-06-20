@@ -57,6 +57,7 @@ class Borrowed extends Component {
                 authors={e.authors}
                 cover={e.cover}
                 bookId={e.bookId}
+                key={e.borrower_id}
               />
             );
           })}
