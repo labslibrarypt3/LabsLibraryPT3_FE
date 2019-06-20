@@ -13,7 +13,6 @@ const MyBook = props => {
         <button
           onClick={function buttonClicked(e) {
             const book = props.bookId;
-            console.log("buttonclicked", props.bookId);
             return axios({
               method: "DELETE",
               url: "http://localhost:4000/api/books/",

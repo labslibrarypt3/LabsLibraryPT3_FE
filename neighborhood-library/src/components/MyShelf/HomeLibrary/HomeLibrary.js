@@ -38,7 +38,6 @@ class HomeLibrary extends Component {
         <h3>HomeLibrary</h3>
         <div className="shelf">
           {this.state.data.map(e => {
-            console.log(e, "in map");
             return (
               <MyBook
                 title={e.title}
