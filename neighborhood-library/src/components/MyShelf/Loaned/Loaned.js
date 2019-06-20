@@ -34,10 +34,10 @@ class Loaned extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <h2>Lent</h2>
         <p>I am a list of books you've loaned to someone else</p>
-        <div>
+        <div className="shelf">
           {this.state.data.map(e => {
             console.log(e);
             return (
