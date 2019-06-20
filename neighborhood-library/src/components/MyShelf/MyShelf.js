@@ -6,30 +6,74 @@ import Loaned from "./Loaned/Loaned";
 import { Route, Link, Redirect } from "react-router-dom";
 
 class MyShelf extends Component {
+  constructor(){
+    super();
+    this.state = {
+      hlOpen: true,
+      boOpen: false,
+      loOpen: false
+    };
+  }
+     handleHlClick = () => {
+      this.setState({
+        hlOpen: true,
+        boOpen: false,
+        loOpen: false
+      })
+    }
+    handleBoClick = () => {
+      this.setState({
+        hlOpen: false,
+        boOpen: true,
+        loOpen: false
+      })
+    }
+    handleLoClick = () => {
+      this.setState({
+        hlOpen: false,
+        boOpen: false,
+        loOpen: true
+      })
+    }
+  
   render() {
     if (localStorage.getItem("jwt")) {
+      if(this.state.hlOpen){
       return (
         <div className="page">
           <h2>MyShelf</h2>
-
-          <NavLink to="/loaned/:id" component={Loaned}>
-            Loaned
-          </NavLink>
-          <NavLink to="/borrowed/:id" component={Borrowed}>
-            Borrowed
-          </NavLink>
-          <NavLink to="/home-library/:id" component={HomeLibrary}>
-            Home Library
-          </NavLink>
-          {/* <Route path="/loaned/:id" component={Loaned} />
-          <Route path="/borrowed/:id" component={Borrowed} />
-          <Route path="/home-library/:id" component={HomeLibrary} /> 
           
-          ^^^ These aren't rendering, and I don't know why*/}
 
-          <Borrowed />
+          <button onClick={this.handleBoClick}>Borrowed</button>
+          <button onClick={this.handleLoClick}>Loaned</button>
+          <HomeLibrary />
+         
+
         </div>
       );
+      }
+      if(this.state.boOpen){
+        return(
+          <div className="page">
+          <h2>MyShelf</h2>
+          <button onClick={this.handleHlClick}>HomeLibrary</button>
+          <button onClick={this.handleLoClick}>Loaned</button>
+          <Borrowed />
+        </div>
+        )
+      }
+      if(this.state.loOpen){
+        return(
+          <div className="page">
+          <h2>MyShelf</h2>
+          <button onClick={this.handleHlClick}>HomeLibrary</button>
+          <button onClick={this.handleBoClick}>Borrowed</button>
+          <Loaned />
+        </div>
+        )
+      }
+   
+
     } else {
       return <Redirect to={"/"} />;
     }
