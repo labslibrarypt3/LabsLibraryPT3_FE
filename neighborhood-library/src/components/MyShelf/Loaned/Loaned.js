@@ -11,27 +11,15 @@ class Loaned extends Component {
     };
   }
   componentDidMount() {
-    console.log(
-      localStorage.getItem("id"),
-      localStorage.getItem("jwt"),
-      "occurs before axios"
-    );
     const data = () => {
       const endpoint = "http://localhost:4000/api/trans/lend";
       if (localStorage.getItem("jwt")) {
-        console.log(
-          localStorage.getItem("id"),
-          localStorage.getItem("jwt"),
-          "occurs before axios"
-        );
-
         return axios
           .get(endpoint, {
             headers: { authorization: localStorage.getItem("jwt") },
             params: { lender_id: localStorage.getItem("id") }
           })
           .then(res => {
-            // console.log(...res.data);
             this.setState({ data: res.data });
           })
           .catch(err => {
