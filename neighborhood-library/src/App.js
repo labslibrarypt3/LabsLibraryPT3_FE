@@ -9,6 +9,7 @@ import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
+import Search from "./components/Search/Search";
 import Footer from "./components/Footer/Footer";
 
 class App extends React.Component {
@@ -45,6 +46,8 @@ class App extends React.Component {
             <Route path="/account/:id/" component={Account} />
 
             <Route path="/my-shelf/:id" component={MyShelf} />
+
+            <Route path="/search" component={Search} />
           </div>
 
           <></>

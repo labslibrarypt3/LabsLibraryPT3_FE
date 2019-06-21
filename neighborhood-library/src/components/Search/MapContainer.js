@@ -3,11 +3,34 @@ import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 
 import CurrentLocation from "./Map";
 
+const Library = ({ places }) => (
+  <ul>{places && places.map(p => <li key={p.id}>{p.name}</li>)}</ul>
+);
+
 export class MapContainer extends Component {
   state = {
     showingInfoWindow: false, // hides or shows InfoWindow
     activeMarker: {}, // shows the active marker on click
-    selectedPlace: {} // shows the InfoWindow to the selected place on marker
+    selectedPlace: {}, // shows the InfoWindow to the selected place on marker
+    places: []
+  };
+
+  onMapReady = (mapProps, map) => this.searchNearby(map, map.center);
+
+  searchNearby = (map, center) => {
+    const { google } = this.props;
+    const service = new google.maps.places.PlacesService(map);
+
+    const request = {
+      location: center,
+      radius: '500',
+      type: ['book']
+    };
+
+    service.nearbySearch(request, (results, status) => {
+      if (status === google.maps.places.PlaceServiceStatus.OK)
+        this.setState({ places: results });
+    });
   };
 
   onMarkerClick = (props, marker, e) => {
@@ -28,6 +51,10 @@ export class MapContainer extends Component {
   };
 
   render() {
+    if (!this.props.loaded) {
+      return <div>Loading...</div>
+    };
+
     return (
       <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
         <Marker onClick={this.onMarkerClick} name={"current location"} />
