@@ -37,8 +37,8 @@ export class MapContainer extends Component {
 
     const request = {
       location: center,
-      radius: '500',
-      type: ['book']
+      radius: '5000',
+      type: ['geocode']
     };
 
     service.nearbySearch(request, (results, status) => {
