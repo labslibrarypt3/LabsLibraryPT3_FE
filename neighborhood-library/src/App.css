@@ -351,3 +351,14 @@ input {
 .book-bottom button:hover {
   cursor: pointer;
 }
+
+/* Stripe Payment Information Styling */
+
+.stripe {
+  display: flex;
+  flex-direction: column;
+}
+.payment-form {
+  display: flex;
+  flex-direction: column;
+}
