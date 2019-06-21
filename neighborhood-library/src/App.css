@@ -46,6 +46,7 @@ header {
 
 h1 {
   letter-spacing: 3px;
+  margin-left: 20px;
 }
 
 .hamburger-menu {
@@ -174,7 +175,13 @@ hr {
 /* Footer */
 footer {
   margin-top: 20px;
-  background-color: #ea4d33;
+  background: rgb(234, 77, 51);
+  background: linear-gradient(
+    90deg,
+    rgba(234, 77, 51, 1) 0%,
+    rgba(250, 188, 60, 1) 74%,
+    rgba(234, 77, 51, 1) 100%
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -341,6 +348,6 @@ input {
   font-weight: bold;
   color: #1c0f13;
 }
-.book-bottom:hover {
+.book-bottom button:hover {
   cursor: pointer;
 }
