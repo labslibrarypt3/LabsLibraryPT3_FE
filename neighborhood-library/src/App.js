@@ -10,6 +10,7 @@ import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import Footer from "./components/Footer/Footer";
+import AuthContainer from "./components/Auth/AuthContainer";
 
 class App extends React.Component {
   constructor() {
@@ -39,6 +40,8 @@ class App extends React.Component {
         <div className="main">
           <div className="main-routes">
             <Route exact path="/" component={Landing} />
+
+            <Route path ="/auth-container/:id" component={AuthContainer}/>
 
             <Route path="/add-book/:id" component={SearchGoodreads} />
 

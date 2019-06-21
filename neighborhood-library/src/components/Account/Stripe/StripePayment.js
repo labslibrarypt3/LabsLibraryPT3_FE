@@ -15,10 +15,8 @@ class StripePayment extends React.Component {
         try {
             let { token } = await this.props.stripe.createToken({name: this.state.name});
             let amount = this.state.amount;
-            console.log(token);
-            //fix this URL
-
-            // await fetch('http://localhost:4000/api/striperoutes/charge', {
+            
+           
             await fetch('https://pt3-neighborhood-library-back.herokuapp.com/api/striperoutes/charge', {
                 method: 'POST',
                 headers: {
@@ -29,7 +27,7 @@ class StripePayment extends React.Component {
         } catch (e) {
             throw e;
         }
-        console.log('clicked!')
+        
     }
 
 

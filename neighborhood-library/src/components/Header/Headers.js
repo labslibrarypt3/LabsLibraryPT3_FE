@@ -36,7 +36,6 @@ class Headers extends React.Component {
           params: { userId: localStorage.getItem("id") }
         })
         .then(res => {
-          console.log(res,'account page')
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
