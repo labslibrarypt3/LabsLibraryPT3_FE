@@ -22,14 +22,14 @@ class Register extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const type = 'register'
     const userData = {
       name:this.state.username,
       password:this.state.password,
       email:this.state.email
     }
-    AuthPostData('manual',userData);
-    // const creds = this.state;
-    // const endpoint = "";
+    AuthPostData(type,userData)
+  
   };
   render() {
     return (

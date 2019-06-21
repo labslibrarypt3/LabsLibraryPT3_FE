@@ -11,19 +11,11 @@ class Borrowed extends Component {
     };
   }
   componentDidMount() {
-    console.log(
-      localStorage.getItem("id"),
-      localStorage.getItem("jwt"),
-      "occurs before axios"
-    );
+  
     const data = () => {
       const endpoint = "http://localhost:4000/api/trans/borrow";
       if (localStorage.getItem("jwt")) {
-        console.log(
-          localStorage.getItem("id"),
-          localStorage.getItem("jwt"),
-          "occurs before axios"
-        );
+       
 
         return axios
           .get(endpoint, {
@@ -31,7 +23,7 @@ class Borrowed extends Component {
             params: { borrower_id: localStorage.getItem("id") }
           })
           .then(res => {
-            // console.log(...res.data);
+            
             this.setState({ data: res.data });
           })
           .catch(err => {

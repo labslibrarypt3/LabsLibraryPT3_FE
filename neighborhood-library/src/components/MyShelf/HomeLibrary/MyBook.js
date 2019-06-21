@@ -28,5 +28,4 @@ const MyBook = props => {
     </div>
   );
 };
-//'http://localhost:4000/api/books/'
 export default MyBook;
