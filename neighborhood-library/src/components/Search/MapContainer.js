@@ -12,7 +12,21 @@ export class MapContainer extends Component {
     showingInfoWindow: false, // hides or shows InfoWindow
     activeMarker: {}, // shows the active marker on click
     selectedPlace: {}, // shows the InfoWindow to the selected place on marker
-    places: []
+    places: [{
+      name: 'Prospect Park',
+      lat: 40.665,
+      lng: -73.969
+    },
+    {
+      name: 'Brooklyn Public Library',
+      lat: 40.672,
+      lng: -73.968
+    },
+    {
+      name: 'Brooklyn Botanical Garden',
+      lat: 40.663,
+      lng: -73.962
+    }]
   };
 
   onMapReady = (mapProps, map) => this.searchNearby(map, map.center);
@@ -75,3 +89,20 @@ export class MapContainer extends Component {
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_MAPS_KEY
 })(MapContainer);
+
+
+// [{
+//   name: 'Prospect Park',
+//   lat: 40.665,
+//   lng: -73.969
+// },
+// {
+//   name: 'Brooklyn Public Library',
+//   lat: 40.672,
+//   lng: -73.968
+// },
+// {
+//   name: 'Brooklyn Botanical Garden',
+//   lat: 40.663,
+//   lng: -73.962
+// }]
