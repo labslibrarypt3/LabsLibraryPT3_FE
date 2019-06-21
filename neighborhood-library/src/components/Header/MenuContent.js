@@ -26,8 +26,6 @@ class MenuContent extends Component {
   }
 }
 
-// MenuContent.PropTypes = {
-//   closeCallback: React.PropTypes.func.isRequired
-// }
+
 
 export default MenuContent;

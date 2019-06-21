@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-
+import {AuthContainer} from "../Auth/AuthContainer"
 import Register from "../Auth/Register";
 
 function Landing() {

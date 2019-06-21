@@ -4,7 +4,10 @@ import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
 import Logout from "./Logout";
+import Register from "./Register"
+import Landing from "../Landing/Landing"
 import "../../App.css";
+
 
 class AuthContainer extends Component {
   constructor(props) {
@@ -16,7 +19,7 @@ class AuthContainer extends Component {
   }
   callback(res, type) {
     let userData;
-
+console.log(res)
     if (type === "facebook" && res.email) {
       this.setState({ loggedIn: true });
       userData = {
@@ -24,7 +27,8 @@ class AuthContainer extends Component {
         provider: type,
         email: res.email,
         provider_id: res.id,
-        token: res.accessToken
+        token: res.accessToken,
+        img:res.picture
       };
     }
 
@@ -35,25 +39,23 @@ class AuthContainer extends Component {
         provider: type,
         email: res.w3.U3,
         provider_id: res.El,
-        token: res.Zi.access_token
+        token: res.Zi.access_token,
+        img:res.w3.Paa
       };
+      
     }
 
     AuthPostData(type, userData);
   }
 
   render() {
-    if (this.state.redirectToReferrer) {
-      return <Redirect to={"/account"} />;
-    }
-
+  
     const responseGoogle = response => {
       this.callback(response, "google");
     };
 
     const responseFacebook = response => {
       this.callback(response, "facebook");
-      console.log(response, "fb");
     };
 
     const componentClicked = response => {};
@@ -63,7 +65,7 @@ class AuthContainer extends Component {
           <div className="login-section">
             <FacebookLogin
               appId="2561795117185670"
-              autoLoad={true}
+              autoLoad={false}
               fields="name,email,picture"
               onClick={componentClicked}
               callback={responseFacebook}
@@ -83,6 +85,7 @@ class AuthContainer extends Component {
             />
           </div>
         ) : (
+
           <button
             className="logout-button"
             onClick={() => {
@@ -92,6 +95,7 @@ class AuthContainer extends Component {
           >
             Logout
           </button>
+
         )}
       </div>
     );

@@ -14,6 +14,7 @@ class StripePayment extends React.Component {
     };
   }
 
+
   handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -38,6 +39,7 @@ class StripePayment extends React.Component {
       );
     } catch (e) {
       throw e;
+
     }
     console.log("clicked!");
   };

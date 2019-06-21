@@ -36,7 +36,6 @@ class Headers extends React.Component {
           params: { userId: localStorage.getItem("id") }
         })
         .then(res => {
-          console.log(res,'account page')
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
@@ -72,7 +71,7 @@ class Headers extends React.Component {
           />
         </div>
         <h1 className="title">Neighborhood Library!</h1>
-        <h3>Logged in as: {this.state.name.split(' ')[0]}</h3>
+        
       </header>
     );
   }

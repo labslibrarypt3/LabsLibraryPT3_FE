@@ -23,7 +23,6 @@ class GoodreadsSearchResult extends Component {
       .post(
         "http://localhost:4000/api/books/",
         book,
-        console.log(book, "frontend obj")
       )
       .then(res => console.log("book added to library"))
       .catch(err => console.log(err, "front end book post"));
