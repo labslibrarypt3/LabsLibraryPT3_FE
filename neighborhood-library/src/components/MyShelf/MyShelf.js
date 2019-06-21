@@ -6,7 +6,7 @@ import Loaned from "./Loaned/Loaned";
 import { Route, Link, Redirect } from "react-router-dom";
 
 class MyShelf extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       hlOpen: true,
@@ -14,70 +14,69 @@ class MyShelf extends Component {
       loOpen: false
     };
   }
-     handleHlClick = () => {
-      this.setState({
-        hlOpen: true,
-        boOpen: false,
-        loOpen: false
-      })
-    }
-    handleBoClick = () => {
-      this.setState({
-        hlOpen: false,
-        boOpen: true,
-        loOpen: false
-      })
-    }
-    handleLoClick = () => {
-      this.setState({
-        hlOpen: false,
-        boOpen: false,
-        loOpen: true
-      })
-    }
-  
+  handleHlClick = () => {
+    this.setState({
+      hlOpen: true,
+      boOpen: false,
+      loOpen: false
+    });
+  };
+  handleBoClick = () => {
+    this.setState({
+      hlOpen: false,
+      boOpen: true,
+      loOpen: false
+    });
+  };
+  handleLoClick = () => {
+    this.setState({
+      hlOpen: false,
+      boOpen: false,
+      loOpen: true
+    });
+  };
+
   render() {
     if (localStorage.getItem("jwt")) {
-      if(this.state.hlOpen){
-      return (
-        <div className="page">
-          <h2>MyShelf</h2>
-          
-
-          <button onClick={this.handleBoClick}>Borrowed</button>
-          <button onClick={this.handleLoClick}>Loaned</button>
-          <HomeLibrary />
-         
-
-        </div>
-      );
-      }
-      if(this.state.boOpen){
-        return(
+      if (this.state.hlOpen) {
+        return (
           <div className="page">
-          <h2>MyShelf</h2>
-          <button onClick={this.handleHlClick}>HomeLibrary</button>
-          <button onClick={this.handleLoClick}>Loaned</button>
-          <Borrowed />
-        </div>
-        )
+            <h2>MyShelf</h2>
+            <div className="my-shelf-nav">
+              <button onClick={this.handleBoClick}>Borrowed</button>
+              <button onClick={this.handleLoClick}>Loaned</button>
+            </div>
+            <HomeLibrary />
+          </div>
+        );
       }
-      if(this.state.loOpen){
-        return(
+      if (this.state.boOpen) {
+        return (
           <div className="page">
-          <h2>MyShelf</h2>
-          <button onClick={this.handleHlClick}>HomeLibrary</button>
-          <button onClick={this.handleBoClick}>Borrowed</button>
-          <Loaned />
-        </div>
-        )
+            <h2>MyShelf</h2>
+            <div className="my-shelf-nav">
+              <button onClick={this.handleHlClick}>HomeLibrary</button>
+              <button onClick={this.handleLoClick}>Loaned</button>
+            </div>
+            <Borrowed />
+          </div>
+        );
       }
-   
-
+      if (this.state.loOpen) {
+        return (
+          <div className="page">
+            <h2>MyShelf</h2>
+            <div className="my-shelf-nav">
+              <button onClick={this.handleHlClick}>HomeLibrary</button>
+              <button onClick={this.handleBoClick}>Borrowed</button>
+            </div>
+            <Loaned />
+          </div>
+        );
+      }
     } else {
       return <Redirect to={"/"} />;
     }
-    // set up routes for the above links.
   }
 }
 

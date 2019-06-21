@@ -10,8 +10,12 @@ const Logout = () => {
     <Redirect to={"/"} />
     )
   };
-  return <button onClick={logout}>Logout</button>;
-  
-};
+
+  return (
+    <button onClick={logout} class="logout-button">
+      Logout
+    </button>
+  );
+
 
 export default Logout;
