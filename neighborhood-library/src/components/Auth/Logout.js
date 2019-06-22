@@ -16,6 +16,6 @@ const Logout = () => {
       Logout
     </button>
   );
+  }
 
-
-export default Logout;
+export default Logout
