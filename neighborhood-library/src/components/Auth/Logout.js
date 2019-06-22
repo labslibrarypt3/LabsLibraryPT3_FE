@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import Landing from "../Landing/Landing"
+import Landing from "../Landing/Landing";
 
 const Logout = () => {
-
   const logout = () => {
-    return(
-      localStorage.clear(),
-    <Redirect to={"/"} />
-    )
+    return localStorage.clear(), <Redirect to={"/"} />;
   };
 
   return (
@@ -16,6 +12,6 @@ const Logout = () => {
       Logout
     </button>
   );
-
+};
 
 export default Logout;
