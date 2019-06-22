@@ -5,6 +5,7 @@ import {
   ReactStripeElements
 } from "react-stripe-elements";
 import axios from "axios";
+import InputKeyValue from "./InputKeyValue";
 
 class StripePayment extends React.Component {
   constructor(props) {
@@ -12,15 +13,31 @@ class StripePayment extends React.Component {
     this.state = {
       setupBegan: false,
       isLoadingFieldsNeeded: false,
-      error: null
+      error: null,
+      fieldsNeededForm: {}
     };
   }
 
   componentWillMount() {
-    this.fetchFieldsNeeded();
+    this.fetchAccount();
   }
 
-  fetchFieldsNeeded = () => {
+  getFieldValue = key => {
+    const { fieldsNeededForm } = this.state;
+    if (fieldsNeededForm[key]) {
+      return fieldsNeededForm[key];
+    } else {
+      return "";
+    }
+  };
+
+  handleInputChange = (e, key) => {
+    const { fieldsNeededForm } = this.state;
+    fieldsNeededForm[key] = e.target.value;
+    this.setState({ fieldsNeededForm });
+  };
+
+  fetchAccount = () => {
     axios
       .post("localhost:4000/api/striperoutes/account/get", {
         headers: {
@@ -30,7 +47,7 @@ class StripePayment extends React.Component {
       })
       .then(res => res.json())
       .then(json => {
-        const { success, message, setupBegan } = json;
+        const { success, message, account, setupBegan } = json;
         // ↑ same as const success = json.success
         success
           ? this.setState({ setupBegan, isLoadingFieldsNeeded: false })
@@ -60,56 +77,15 @@ class StripePayment extends React.Component {
         const { success, message } = json;
         // ↑ same as const success = json.success
         success
-          ? this.fetchFieldsNeeded()
+          ? this.fetchAccount()
           : this.setState({ error: message, isLoadingFieldsNeeded: false });
       })
       .catch(error => {
         console.log(error);
       });
   };
-
-  // handleSubmit = async e => {
-  //   e.preventDefault();
-  //   try {
-  //     let { token } = await this.props.stripe.createToken({
-  //       name: this.state.name
-  //     });
-  //     let amount = this.state.amount;
-  //     console.log(token);
-  //     //fix this URL
-
-  //     // await fetch('http://localhost:4000/api/striperoutes/charge', {
-  //     await fetch(
-  //       "https://pt3-neighborhood-library-back.herokuapp.com/api/striperoutes/charge",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-type": "text/plain"
-  //         },
-  //         body: token.id,
-  //         amount
-  //       }
-  //     );
-  //   } catch (e) {
-  //     throw e;
-  //   }
-  //   console.log("clicked!");
-  // };
-
-  // handleInputChange = e => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   });
-  // };
-
-  handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
   render() {
-    const { isLoadingFieldsNeeded, setupBegan, error } = this.state;
+    const { isLoadingFieldsNeeded, setupBegan, error, account } = this.state;
     if (isLoadingFieldsNeeded) {
       return <p>...loading</p>;
     }
@@ -117,7 +93,7 @@ class StripePayment extends React.Component {
     if (!setupBegan) {
       return (
         <div>
-          <div>{error ? <p>{error}</p> : null}</div>
+          {error ? <p>{error}</p> : null}
           <button onClick={this.onClickBeginSetup}>Begin Setup</button>
           <p>
             We partner with Stripe to facilitate transferring late fees and lost
@@ -127,10 +103,72 @@ class StripePayment extends React.Component {
         </div>
       );
     }
+
+    console.log("account", account);
+    const { verification } = account;
+    const { fields_needed } = verification;
+
+    return (
+      <div>
+        {error ? <p>{error}</p> : null}
+
+        {fields_needed.length === 0 ? (
+          <p>All setup</p>
+        ) : (
+          <div>
+            {fields_needed.map(fieldKey => {
+              return (
+                <InputKeyValue
+                  text={fieldKey}
+                  id={fieldKey}
+                  value={this.getFieldValue(fieldKey)}
+                  key={Math.random()}
+                  onInputChange={this.inputChangeHandler}
+                />
+              );
+            })}
+            <div>
+              <button>Save</button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
   }
 }
 
 // old code
+// handleSubmit = async e => {
+//   e.preventDefault();
+//   try {
+//     let { token } = await this.props.stripe.createToken({
+//       name: this.state.name
+//     });
+//     let amount = this.state.amount;
+//     console.log(token);
+//     //fix this URL
+//     // await fetch('http://localhost:4000/api/striperoutes/charge', {
+//     await fetch(
+//       "https://pt3-neighborhood-library-back.herokuapp.com/api/striperoutes/charge",
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-type": "text/plain"
+//         },
+//         body: token.id,
+//         amount
+//       }
+//     );
+//   } catch (e) {
+//     throw e;
+//   }
+//   console.log("clicked!");
+// };
+// handleInputChange = e => {
+//   this.setState({
+//     [e.target.name]: e.target.value
+//   });
+// };
 // return (
 //   <div className="stripe">
 //     <form className="payment-form" onSubmit={this.handleSubmit}>
@@ -151,7 +189,6 @@ class StripePayment extends React.Component {
 //     </form>
 //   </div>
 // );
-
 // export default injectStripe(StripePayment);
 //hint: testing card number is 4242 4242 4242 4242 4242. any CVV and zip may be used
 
