@@ -25,12 +25,31 @@ class BankAccountForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.stripe.createToken({ name: "Jenny Rosen" }).then(({ token }) => {
-      console.log("received stripe token", token);
-    });
+    const {
+      countryValue,
+      currencyValue,
+      routingNumberValue,
+      accountNumberValue,
+      accountHolderNameValue,
+      accountHolderTypeValue
+    } = this.state;
+
+    this.props.stripe
+      .createToken("bank_account", {
+        country: countryValue,
+        currency: currencyValue,
+        routing_number: routingNumberValue,
+        account_number: accountNumberValue,
+        account_holder_name: accountHolderNameValue,
+        account_holder_type: accountHolderTypeValue
+      })
+      .then(({ token }) => {
+        console.log("received stripe token", token);
+        const { id } = token;
+      });
   };
 
-  onChange = (e, textBoxKey) => {
+  onChangeFunc = (e, textBoxKey) => {
     const value = e.target.value;
     //can refactor to get literal value within VARIABLES and set state to value
     switch (textBoxKey) {
@@ -64,7 +83,7 @@ class BankAccountForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <BankAccountSection
-          onChange={this.onChange}
+          onChange={this.onChangeFunc}
           countryValue={countryValue}
           currencyValue={currencyValue}
           routingNumberValue={routingNumberValue}

@@ -86,6 +86,7 @@ const BankAccountForm = props => {
           id={accountHolderTypeKey}
           value={accountHolderTypeValue}
           onChange={e => onChangeFunc(e, accountHolderTypeKey)}
+          placeholder="Individual or Business"
         />
       </div>
     </div>
