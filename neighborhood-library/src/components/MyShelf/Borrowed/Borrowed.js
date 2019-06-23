@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { NavLink, Redirect } from "react-router-dom";
-import MyBook from "./MyBook";
+import MyBook from "../MyBook";
 
 class Borrowed extends Component {
   constructor(props) {
@@ -16,12 +16,10 @@ class Borrowed extends Component {
       const endpoint = "http://localhost:4000/api/trans/borrow";
       if (localStorage.getItem("jwt")) {
        
-
+        const authToken = localStorage.getItem("jwt");
         return axios
-          .get(endpoint, {
-            headers: { authorization: localStorage.getItem("jwt") },
-            params: { borrower_id: localStorage.getItem("id") }
-          })
+         .get(endpoint, {headers:{Authorization:`${authToken}`}})
+          
           .then(res => {
             
             this.setState({ data: res.data });

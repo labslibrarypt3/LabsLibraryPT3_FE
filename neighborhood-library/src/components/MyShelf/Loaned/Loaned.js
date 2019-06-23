@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { NavLink, Redirect } from "react-router-dom";
-import MyBook from "./MyBook";
+import MyBook from "../MyBook";
 
 class Loaned extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class Loaned extends Component {
         <p>I am a list of books you've loaned to someone else</p>
         <div className="shelf">
           {this.state.data.map(e => {
-            console.log(e);
+            
             return (
               <MyBook
                 key={e.lender_id}

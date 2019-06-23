@@ -19,7 +19,7 @@ class AuthContainer extends Component {
   }
   callback(res, type) {
     let userData;
-console.log(res)
+
     if (type === "facebook" && res.email) {
       this.setState({ loggedIn: true });
       userData = {
