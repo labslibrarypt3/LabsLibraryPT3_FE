@@ -10,14 +10,11 @@ let endpoint;
     axios
       .post(endpoint, userData)
       .then(res => {
-        console.log (res.data)
-        localStorage.setItem("jwt", res.data.password);
-        localStorage.setItem("email", userData.email);
-        localStorage.setItem("id", res.data.userId);
         
+        localStorage.setItem("jwt", res.data);     
       })
       .catch(err => {
-        console.log("login Error", err);
+        console.log("login Error", err)
       });
   });
 }

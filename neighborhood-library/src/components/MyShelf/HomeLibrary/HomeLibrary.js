@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Landing from "../../Landing/Landing";
 import { NavLink, Redirect } from "react-router-dom";
-import MyBook from "./MyBook";
+import MyBook from "../MyBook";
 
 class HomeLibrary extends Component {
   constructor() {
@@ -17,11 +17,9 @@ class HomeLibrary extends Component {
       if (localStorage.getItem("jwt")) {
         const authToken = localStorage.getItem("jwt");
         return axios
-          .get(endpoint, {
-            headers: { authorization: authToken },
-            params: { user_id: localStorage.getItem("id") }
-          })
+          .get(endpoint, {headers:{Authorization:`${authToken}`}})
           .then(res => {
+            
             this.setState({ data: res.data });
           })
           .catch(err => console.log(err));

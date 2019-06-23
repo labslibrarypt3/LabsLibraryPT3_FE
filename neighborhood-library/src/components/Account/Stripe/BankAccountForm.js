@@ -45,6 +45,7 @@ class BankAccountForm extends Component {
         account_holder_type: accountHolderTypeValue
       })
       .then(({ token }) => {
+        const { onSaveAccount } = this.props;
         console.log("received stripe token", token);
         const { id } = token;
         onSaveAccount(id);
@@ -61,7 +62,7 @@ class BankAccountForm extends Component {
       case textBoxKey === BANK_ACCOUNT_FORM_CURRENCY:
         this.setState({ currencyValue: value });
         break;
-        break;
+        
       case textBoxKey === BANK_ACCOUNT_FORM_ROUTING_NUMBER:
         this.setState({ routingNumberValue: value });
         break;

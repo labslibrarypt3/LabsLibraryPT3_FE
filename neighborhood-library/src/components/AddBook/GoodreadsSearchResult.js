@@ -19,10 +19,13 @@ class GoodreadsSearchResult extends Component {
 
   addBookToLibrary = async () => {
     const book = this.state;
+    const endpoint = "http://localhost:4000/api/books/"
+    const authToken = localStorage.getItem("jwt");
     const axiosResponse = await axios
       .post(
-        "http://localhost:4000/api/books/",
+        endpoint,
         book,
+        {headers:{authorization:`${authToken}`}}
       )
       .then(res => console.log("book added to library"))
       .catch(err => console.log(err, "front end book post"));

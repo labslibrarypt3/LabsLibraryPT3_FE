@@ -28,7 +28,7 @@ class Register extends Component {
       password:this.state.password,
       email:this.state.email
     }
-    console.log(userData,'register')
+    
     AuthPostData(type,userData)
   
   };

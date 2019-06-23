@@ -1,33 +1,41 @@
 //if this works on Loaned.js, Borrowed.js, and HomeLibrary.js, then use this for all 3 and delete the extras
-import React from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
-const MyBook = props => {
-  return (
-    <div key={props.bookId} className="book">
+class MyBook extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
+    buttonClicked= () =>{
+      
+      
+      const authToken = localStorage.getItem("jwt");
+      const book = this.props.bookId
+      const endpoint = "http://localhost:4000/api/books/";
+      return axios.delete(
+        endpoint,
+        {headers:{
+          Authorization:`${authToken}`,params:book}}
+        
+        
+      )
+    }
+  
+  
+  render(){return(
+    <div key={this.props.bookId} className="book">
       <div className="book-top">
-        <img src={props.cover} className="book-cover" />
+        <img src={this.props.cover} className="book-cover" />
       </div>
       <div className="book-bottom">
-        <p className="book-title">{props.title}</p>
-        <p>by {props.authors}</p>
-        <button
-          onClick={function buttonClicked(e) {
-            const book = props.bookId;
-            return axios({
-              method: "DELETE",
-              url: "http://localhost:4000/api/books/",
-              data: {
-                bookId: props.bookId
-              }
-            });
-          }}
-        >
-          Delete
-        </button>
+        <p className="book-title">{this.props.title}</p>
+        <p>by {this.props.authors}</p>
+        <button onClick={this.buttonClicked}>Delete</button>
       </div>
     </div>
-  );
+  )
 };
-
+}
 export default MyBook;

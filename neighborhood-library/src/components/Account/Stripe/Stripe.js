@@ -112,8 +112,8 @@ class Stripe extends React.Component {
       });
   };
 
-  onSaveAccount = async () => {
-    console.log("onSaveAccount", id);
+  onSaveAccount = async (props) => {
+    console.log("onSaveAccount", props.id);
     this.setState({ isLoading: true });
     const axiosResponse = await axios
       .get("localhost:4000/api/striperoutes/account/save/account", {
@@ -121,7 +121,7 @@ class Stripe extends React.Component {
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ stripeTokenId: id })
+        body: JSON.stringify({ stripeTokenId: props.id })
       })
       .then(res => res.json())
       .then(json => {
