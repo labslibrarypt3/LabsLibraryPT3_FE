@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import {
   CardElement,
   injectStripe,
-  ReactStripeElements
+  ReactStripeElements,
+  Elements
 } from "react-stripe-elements";
 import axios from "axios";
 import InputKeyValue from "./InputKeyValue";
+import BankAccountForm from "./BankAccountForm";
 
-class StripePayment extends React.Component {
+class Stripe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,11 +58,6 @@ class StripePayment extends React.Component {
       .catch(error => error.json());
   };
 
-  onClickBeginSetup = () => {
-    console.log("onClickBeginSetup");
-    this.onStartAccountSetup();
-  };
-
   onStartAccountSetup = () => {
     console.log("onStartAccountSetup");
     this.setState({ isLoadingFieldsNeeded: true });
@@ -84,6 +81,37 @@ class StripePayment extends React.Component {
         console.log(error);
       });
   };
+
+  onClickBeginSetup = () => {
+    console.log("onClickBeginSetup");
+    this.onStartAccountSetup();
+  };
+
+  onClickSaveFieldsNeeded = () => {
+    console.log("onClickSaveFieldsNeeded");
+    const { fieldsNeededForm } = this.state;
+    this.setState({ isLoading: true });
+    axios
+      .post("localhost:4000/api/striperoutes/account/save", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(fieldsNeededForm)
+      })
+      .then(res => res.json())
+      .then(json => {
+        const { success, message } = json;
+        // ↑ same as const success = json.success
+        success
+          ? this.fetchAccount()
+          : this.setState({ error: message, isLoadingFieldsNeeded: false });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   render() {
     const { isLoadingFieldsNeeded, setupBegan, error, account } = this.state;
     if (isLoadingFieldsNeeded) {
@@ -117,6 +145,13 @@ class StripePayment extends React.Component {
         ) : (
           <div>
             {fields_needed.map(fieldKey => {
+              if (fieldKey === "bank_account") {
+                return (
+                  <Elements>
+                    <BankAccountForm />
+                  </Elements>
+                );
+              }
               return (
                 <InputKeyValue
                   text={fieldKey}
@@ -128,7 +163,7 @@ class StripePayment extends React.Component {
               );
             })}
             <div>
-              <button>Save</button>
+              <button onClick={this.onClickSaveFieldsNeeded}>Save</button>
             </div>
           </div>
         )}
@@ -137,59 +172,4 @@ class StripePayment extends React.Component {
   }
 }
 
-// old code
-// handleSubmit = async e => {
-//   e.preventDefault();
-//   try {
-//     let { token } = await this.props.stripe.createToken({
-//       name: this.state.name
-//     });
-//     let amount = this.state.amount;
-//     console.log(token);
-//     //fix this URL
-//     // await fetch('http://localhost:4000/api/striperoutes/charge', {
-//     await fetch(
-//       "https://pt3-neighborhood-library-back.herokuapp.com/api/striperoutes/charge",
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-type": "text/plain"
-//         },
-//         body: token.id,
-//         amount
-//       }
-//     );
-//   } catch (e) {
-//     throw e;
-//   }
-//   console.log("clicked!");
-// };
-// handleInputChange = e => {
-//   this.setState({
-//     [e.target.name]: e.target.value
-//   });
-// };
-// return (
-//   <div className="stripe">
-//     <form className="payment-form" onSubmit={this.handleSubmit}>
-//       <label>Name</label>
-//       <input
-//         type="text"
-//         defaultValue={this.state.name}
-//         onChange={this.handleInputChange}
-//       />
-//       <label>Dollar Amount</label>
-//       <input
-//         type="text"
-//         defaultValue={this.state.amount}
-//         onChange={this.handleInputChange}
-//       />
-//       <CardElement className="cardElement" />
-//       <button className="button">Click to Pay</button>
-//     </form>
-//   </div>
-// );
-// export default injectStripe(StripePayment);
-//hint: testing card number is 4242 4242 4242 4242 4242. any CVV and zip may be used
-
-export default StripePayment;
+export default injectStripe(Stripe);
