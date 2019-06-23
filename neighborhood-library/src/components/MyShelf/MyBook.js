@@ -1,3 +1,4 @@
+//if this works on Loaned.js, Borrowed.js, and HomeLibrary.js, then use this for all 3 and delete the extras
 import React from "react";
 import axios from "axios";
 
@@ -28,4 +29,5 @@ const MyBook = props => {
     </div>
   );
 };
+
 export default MyBook;

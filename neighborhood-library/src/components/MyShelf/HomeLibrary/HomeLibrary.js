@@ -12,12 +12,15 @@ class HomeLibrary extends Component {
     };
   }
   componentDidMount() {
-    const endpoint = "http://localhost:4000/api/books";
+    const endpoint = "http://localhost:4000/api/books/mybooks";
     const data = () => {
       if (localStorage.getItem("jwt")) {
         const authToken = localStorage.getItem("jwt");
         return axios
-          .get(endpoint, { headers: { authorization: authToken } })
+          .get(endpoint, {
+            headers: { authorization: authToken },
+            params: { user_id: localStorage.getItem("id") }
+          })
           .then(res => {
             this.setState({ data: res.data });
           })
@@ -27,28 +30,27 @@ class HomeLibrary extends Component {
       }
     };
     data();
-
   }
 
   render() {
     return (
-      <div>
+      <div className="home-library">
         <h3>HomeLibrary</h3>
-        <div>
+        <div className="shelf">
           {this.state.data.map(e => {
-            console.log (e,'in map')
             return (
-              <div>
-              <MyBook title={e.title} authors={e.authors} cover={e.cover} bookId = {e.bookId}/>
-              
-              </div>
+              <MyBook
+                title={e.title}
+                authors={e.authors}
+                cover={e.cover}
+                bookId={e.bookId}
+              />
             );
           })}
         </div>
       </div>
     );
   }
-
 }
 
 export default HomeLibrary;

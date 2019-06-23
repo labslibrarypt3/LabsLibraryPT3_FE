@@ -23,7 +23,6 @@ class GoodreadsSearchResult extends Component {
       .post(
         "http://localhost:4000/api/books/",
         book,
-        console.log(book, "frontend obj")
       )
       .then(res => console.log("book added to library"))
       .catch(err => console.log(err, "front end book post"));
@@ -31,15 +30,15 @@ class GoodreadsSearchResult extends Component {
 
   render() {
     return (
-      <div className="goodreads-search-result">
-        <div className="card-top">
+      <div className="goodreads-search-result book">
+        <div className="book-top">
           <img
             className="book-cover"
             src={this.props.cover}
             alt="cover image"
           />
         </div>
-        <div className="card-bottom">
+        <div className="book-bottom">
           <p>{this.props.title}</p>
           <p>by {this.props.authors}</p>
           <button onClick={this.addBookToLibrary}>Add to Library</button>

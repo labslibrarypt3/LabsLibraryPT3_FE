@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@progress/kendo-react-buttons": "^3.2.2",
+    "@progress/kendo-react-conversational-ui": "^3.2.2",
+    "@progress/kendo-react-inputs": "^3.2.2",
+    "@progress/kendo-react-intl": "^3.2.2",
+    "@progress/kendo-theme-material": "^2.5.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "cheeseburger-menu": "^0.0.13",
@@ -16,7 +21,8 @@
     "react-hamburger-menu": "^1.1.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "react-stripe-elements": "^3.0.0"
+    "react-stripe-elements": "^3.0.0",
+    "twilio-chat": "^3.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,28 +1,32 @@
 import React, { Component } from "react";
-//This MyBook IS the same as the one in HomeLibrary, because I got curious and wanted to try both. If you have no idea what this note is referencing, see the top of Borrowed.js
-import MyBook from "../HomeLibrary/MyBook";
 import axios from "axios";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
+import MyBook from "./MyBook";
 
 class Loaned extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: []
     };
   }
   componentDidMount() {
-    const endpoint = "http://localhost:4000/api/trans";
     const data = () => {
+      const endpoint = "http://localhost:4000/api/trans/lend";
       if (localStorage.getItem("jwt")) {
-        axios
-          .get(endpoint, localStorage.getItem("id"))
+        return axios
+          .get(endpoint, {
+            headers: { authorization: localStorage.getItem("jwt") },
+            params: { lender_id: localStorage.getItem("id") }
+          })
           .then(res => {
             this.setState({ data: res.data });
           })
-          .catch(err => console.log(err));
+          .catch(err => {
+            console.log(" Error", err);
+          });
       } else {
-        return withRouter.push("/");
+        return <Redirect to={"/"} />;
       }
     };
     data();
@@ -30,13 +34,20 @@ class Loaned extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Loaned</h2>
-        <p>I am a list of books you've lent to someone else</p>
-        <div>
+      <div className="page">
+        <h2>Lent</h2>
+        <p>I am a list of books you've loaned to someone else</p>
+        <div className="shelf">
           {this.state.data.map(e => {
+            console.log(e);
             return (
-              <MyBook key={e.bookId} title={e.title} authors={e.authors} />
+              <MyBook
+                key={e.lender_id}
+                title={e.title}
+                authors={e.authors}
+                cover={e.cover}
+                bookId={e.bookId}
+              />
             );
           })}
         </div>
