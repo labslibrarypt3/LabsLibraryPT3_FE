@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { StripeProvider, Elements } from "react-stripe-elements";
-import StripePayment from "./Stripe/StripePayment";
+import Stripe from "./Stripe/Stripe";
 
 class Account extends Component {
   constructor(props) {
@@ -26,7 +26,6 @@ class Account extends Component {
           params: { userId: localStorage.getItem("id") }
         })
         .then(res => {
-
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
@@ -46,7 +45,7 @@ class Account extends Component {
 
         <StripeProvider apiKey="pk_test_j6wi0FWmtWCqFPwU3oCHJA2800c8YshuOy">
           <Elements>
-            <StripePayment />
+            <Stripe />
           </Elements>
         </StripeProvider>
       </div>
