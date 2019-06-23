@@ -112,6 +112,28 @@ class Stripe extends React.Component {
       });
   };
 
+  onSaveAccount = async () => {
+    console.log("onSaveAccount", id);
+    this.setState({ isLoading: true });
+    const axiosResponse = await axios
+      .get("localhost:4000/api/striperoutes/account/save/account", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ stripeTokenId: id })
+      })
+      .then(res => res.json())
+      .then(json => {
+        const { success, message } = json;
+        if (success) {
+          this.fetchAccount();
+        } else {
+          //Failed
+          this.setState({ error: message, isLoading: false });
+        }
+      });
+  };
   render() {
     const { isLoadingFieldsNeeded, setupBegan, error, account } = this.state;
     if (isLoadingFieldsNeeded) {
@@ -148,7 +170,7 @@ class Stripe extends React.Component {
               if (fieldKey === "bank_account") {
                 return (
                   <Elements>
-                    <BankAccountForm />
+                    <BankAccountForm onSaveAccount={this.onSaveAccount} />
                   </Elements>
                 );
               }

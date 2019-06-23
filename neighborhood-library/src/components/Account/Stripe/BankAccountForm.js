@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { injectStripe } from "react-stripe-elements";
+import PropTypes from "prop-types";
 import BankAccountSection, {
   BANK_ACCOUNT_FORM,
   BANK_ACCOUNT_FORM_COUNTRY,
@@ -8,7 +10,6 @@ import BankAccountSection, {
   BANK_ACCOUNT_FORM_ACCOUNT_HOLDER_NAME,
   BANK_ACCOUNT_FORM_ACCOUNT_HOLDER_TYPE
 } from "./BankAccountSection";
-import { injectStripe } from "react-stripe-elements";
 
 class BankAccountForm extends Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class BankAccountForm extends Component {
       .then(({ token }) => {
         console.log("received stripe token", token);
         const { id } = token;
+        onSaveAccount(id);
       });
   };
 
@@ -80,6 +82,7 @@ class BankAccountForm extends Component {
       accountHolderNameValue,
       accountHolderTypeValue
     } = this.state;
+    const { onSaveAccount } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <BankAccountSection
@@ -97,5 +100,9 @@ class BankAccountForm extends Component {
     );
   }
 }
+
+BankAccountForm.propTypes = {
+  onSaveAccount: PropTypes.func.isRequired
+};
 
 export default injectStripe(BankAccountForm);
