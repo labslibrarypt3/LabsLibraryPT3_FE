@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import AuthContainer from "../Auth/AuthContainer"
 import Register from "../Auth/Register";
 import Login from "../Auth/Login"
+import { Redirect } from "react-router-dom";
+
+// import MapContainer from "../Search/MapContainer"
 
 
 class Landing extends Component {
@@ -14,6 +17,7 @@ class Landing extends Component {
   handleLoginClick = () => {
     this.setState({
       loggedIn: true
+
     })}
   handleRegClick = () => {
       this.setState({
@@ -23,6 +27,9 @@ class Landing extends Component {
 
   render() {
     return(
+    localStorage.getItem("jwt")?
+    <Redirect to={"/account"} />:
+    
     <div>
       <div className="delete-me-filler">
         <h2>Welcome</h2>
@@ -40,7 +47,9 @@ class Landing extends Component {
         <button onClick={this.handleLoginClick}>Login</button>
         <button onClick={this.handleRegClick}>Register</button>
         {this.state.loggedIn?<Login/>:<Register/>}
-       
+        <div>
+       {/* <MapContainer/> */}
+       </div>
       </div>
     </div> 
     )

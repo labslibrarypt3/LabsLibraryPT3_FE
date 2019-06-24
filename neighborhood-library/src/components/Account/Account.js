@@ -3,6 +3,7 @@ import { Route, Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { StripeProvider, Elements } from "react-stripe-elements";
 import Stripe from "./Stripe/Stripe";
+import UserInfo from "./UserInfo"
 
 class Account extends Component {
   constructor(props) {
@@ -23,13 +24,15 @@ class Account extends Component {
       return axios
         .get(endpoint, {
           headers: { authorization: authToken },
-          params: { userId: localStorage.getItem("id") }
         })
         .then(res => {
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
-            email: res.data.email
+            address: res.data.address,
+            email: res.data.email,
+            img:res.data.img,
+            password:res.data.img
           });
         })
         .catch(err => console.log(err));
@@ -39,9 +42,18 @@ class Account extends Component {
   };
 
   render() {
-    return (
+    return(
+      localStorage.getItem("jwt")?
+      <Redirect to={"/Landing"} />:
       <div>
         <h2>{this.state.name}</h2>
+        <UserInfo
+          name= {this.state.name}
+          address= {this.state.address}
+          email= {this.state.email}
+          img={this.state.img}
+          password={this.state.password}
+        />
 
         <StripeProvider apiKey="pk_test_j6wi0FWmtWCqFPwU3oCHJA2800c8YshuOy">
           <Elements>
