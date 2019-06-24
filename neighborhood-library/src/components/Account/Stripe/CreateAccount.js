@@ -10,7 +10,7 @@ class CreateAccount extends Component {
   submitForm = e => {
     e.preventDefault();
     axios
-      .post("/createAccount", this.state)
+      .post("/create-account", this.state)
       .then(data => this.setState({ ...this.state, id: data.data.id }));
   };
 
@@ -18,6 +18,10 @@ class CreateAccount extends Component {
     return (
       <div>
         <h3> Connect to Stripe </h3>
+        <p>
+          We partner with Stripe to facilitate late fees between borrowers and
+          lenders. Please follow the steps below to connect your account.
+        </p>
         <form onSubmit={this.submitForm}>
           <label> Email </label>
           <input
