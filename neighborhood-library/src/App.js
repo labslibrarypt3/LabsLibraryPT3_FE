@@ -9,14 +9,7 @@ import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
-<<<<<<< HEAD
-import StripePayment from "./components/Stripe/StripePayment";
-import TwilioApp from "./components/Twilio/src/TwilioApp"
-=======
 
-<<<<<<< HEAD
->>>>>>> b77fba7cd9abc690c3af8cf1e74b525fbd81dfd5
-=======
 import Search from "./components/Search/Search";
 
 import TwilioApp from "./components/Twilio/TwilioApp";
@@ -24,7 +17,6 @@ import TwilioApp from "./components/Twilio/TwilioApp";
 import Footer from "./components/Footer/Footer";
 import AuthContainer from "./components/Auth/AuthContainer";
 
->>>>>>> 67ff1a1909f9cd67dedf07c7b8463178809d5ab2
 class App extends React.Component {
   constructor() {
     super();

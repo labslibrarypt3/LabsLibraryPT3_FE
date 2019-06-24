@@ -3,17 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "@progress/kendo-react-buttons": "^3.2.1",
-    "@progress/kendo-react-conversational-ui": "^3.2.1",
-    "@progress/kendo-react-inputs": "^3.2.1",
-    "@progress/kendo-react-intl": "^3.2.1",
-=======
     "@progress/kendo-react-buttons": "^3.2.2",
     "@progress/kendo-react-conversational-ui": "^3.2.2",
     "@progress/kendo-react-inputs": "^3.2.2",
     "@progress/kendo-react-intl": "^3.2.2",
->>>>>>> 67ff1a1909f9cd67dedf07c7b8463178809d5ab2
     "@progress/kendo-theme-material": "^2.5.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
