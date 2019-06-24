@@ -1,14 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import AuthContainer from "../../Auth/AuthContainer";
+import Login from "../../Auth/Login";
+import Register from "../../Auth/Register";
+import Logout from "../../Auth/Logout";
 
 function Nav() {
   return (
-    <div className="App">
+    <div>
       {localStorage.getItem("jwt") ? (
         <nav>
           <NavLink
-            to="/add-book/:id"
+            to="/add-book"
             activeClassName="selected"
             className="nav-item"
           >
@@ -17,7 +20,7 @@ function Nav() {
             <div class="pageTurn" />
           </NavLink>
           <NavLink
-            to="/my-shelf/:id"
+            to="/my-shelf"
             activeClassName="selected"
             className="nav-item"
           >
@@ -26,7 +29,7 @@ function Nav() {
             <div class="pageTurn" />
           </NavLink>
           <NavLink
-            to="/account/:id"
+            to="/account"
             activeClassName="selected"
             className="nav-item"
           >
@@ -34,10 +37,30 @@ function Nav() {
             <hr />
             <div class="pageTurn" />
           </NavLink>
+          <Logout />
         </nav>
-      ) : null}
-
-      <AuthContainer />
+      ) : (
+        <nav>
+          <NavLink
+            to="/"
+            activeClassName="selected"
+            className="nav-item login-button"
+          >
+            Login
+            <hr />
+            <div class="pageTurn" />
+          </NavLink>
+          <NavLink
+            to="/"
+            activeClassName="selected"
+            className="nav-item login-button"
+          >
+            Register
+            <hr />
+            <div class="pageTurn" />
+          </NavLink>
+        </nav>
+      )}
     </div>
   );
 }

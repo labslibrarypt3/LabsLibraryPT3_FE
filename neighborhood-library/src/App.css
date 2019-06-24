@@ -38,10 +38,17 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 5%;
-  color: #ea4d33;
+  color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   border-top: 5px solid #ea4d33;
+  background: rgb(234, 77, 51);
+  background: linear-gradient(
+    90deg,
+    rgba(234, 77, 51, 1) 0%,
+    rgba(250, 188, 60, 1) 74%,
+    rgba(234, 77, 51, 1) 100%
+  );
 }
 
 h1 {
@@ -50,10 +57,10 @@ h1 {
 }
 
 .hamburger-menu {
+  /* color in component */
   width: 18px;
   height: 15px;
   transform: rotate(0deg);
-  color: #ea4d33;
 }
 
 .cheeseburger-menu-inner {
@@ -64,6 +71,7 @@ h1 {
 nav {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .login-button {

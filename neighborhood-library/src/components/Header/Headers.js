@@ -63,7 +63,7 @@ class Headers extends React.Component {
             menuClicked={this.handleClick.bind(this)}
             strokeWidth={3}
             rotate={0}
-            color="#ea4d33"
+            color="white"
             borderRadius={0}
             animationDuration={0.5}
             className="hamburger-icon"
@@ -71,7 +71,6 @@ class Headers extends React.Component {
           />
         </div>
         <h1 className="title">Neighborhood Library!</h1>
-        
       </header>
     );
   }

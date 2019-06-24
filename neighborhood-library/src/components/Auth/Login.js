@@ -1,17 +1,15 @@
-
 import React, { Component } from "react";
-import AuthPostData from './AuthPostData';
-// import { Link } from "react-router-dom";
+import AuthPostData from "./AuthPostData";
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
       password: "",
-      email:""
+      email: ""
     };
   }
-  
+
   handleInput = e => {
     e.preventDefault();
     this.setState({
@@ -21,14 +19,13 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const type = 'login'
+    const type = "login";
     const userData = {
-      password:this.state.password,
-      email:this.state.email
-    }
-    
-    AuthPostData(type,userData)
-  
+      password: this.state.password,
+      email: this.state.email
+    };
+
+    AuthPostData(type, userData);
   };
   render() {
     return (
