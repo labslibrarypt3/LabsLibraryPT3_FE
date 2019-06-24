@@ -19,7 +19,7 @@ class SubscribeToPlan extends Component {
       <div>
         <h3> Step 4 - Subscribe to plan </h3>
         <p>
-          <i>Subscribe Rory, the customer of James to James' plan </i>
+          <i>Subscribe Borrower to Late Fee Plan from Lender </i>
         </p>
         <form onSubmit={this.submitForm}>
           <label> Customer </label>

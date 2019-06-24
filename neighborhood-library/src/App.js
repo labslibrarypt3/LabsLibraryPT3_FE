@@ -46,18 +46,18 @@ class App extends React.Component {
           <div className="main-routes">
             <Route exact path="/" component={Landing} />
 
-            <Route path ="/auth-container/:id" component={AuthContainer}/>
+            <Route path="/auth-container" component={AuthContainer} />
 
-            <Route path="/add-book/:id" component={SearchGoodreads} />
+            <Route path="/add-book" component={SearchGoodreads} />
 
-            <Route path="/account/:id/" component={Account} />
+            <Route path="/account" component={Account} />
 
-            <Route path="/my-shelf/:id" component={MyShelf} />
+            <Route path="/my-shelf" component={MyShelf} />
 
             <Route path="/search" component={Search} />
           </div>
 
-          < TwilioApp />
+          <TwilioApp />
         </div>
         <Footer />
       </div>
