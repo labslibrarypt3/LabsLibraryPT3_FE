@@ -42,7 +42,7 @@ function Nav() {
       ) : (
         <nav>
           <NavLink
-            to="/login"
+            to="/"
             activeClassName="selected"
             className="nav-item login-button"
           >
@@ -51,7 +51,7 @@ function Nav() {
             <div class="pageTurn" />
           </NavLink>
           <NavLink
-            to="/register"
+            to="/"
             activeClassName="selected"
             className="nav-item login-button"
           >

@@ -9,9 +9,15 @@ class CreateAccount extends Component {
 
   submitForm = e => {
     e.preventDefault();
-    axios
-      .post("/create-account", this.state)
-      .then(data => this.setState({ ...this.state, id: data.data.id }));
+    if (localStorage.getItem("jwt")) {
+      const authToken = localStorage.getItem("jwt");
+      
+      axios
+        .post("http://localhost:4000/api/striperoutes/account-create",{}, {
+          headers: { Authorization: authToken }
+        })
+        .then(data => this.setState({ ...this.state, id: data.data.id }));
+    }
   };
 
   render() {
