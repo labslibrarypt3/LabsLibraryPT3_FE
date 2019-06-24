@@ -3,10 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@progress/kendo-react-buttons": "^3.2.1",
     "@progress/kendo-react-conversational-ui": "^3.2.1",
     "@progress/kendo-react-inputs": "^3.2.1",
     "@progress/kendo-react-intl": "^3.2.1",
+=======
+    "@progress/kendo-react-buttons": "^3.2.2",
+    "@progress/kendo-react-conversational-ui": "^3.2.2",
+    "@progress/kendo-react-inputs": "^3.2.2",
+    "@progress/kendo-react-intl": "^3.2.2",
+>>>>>>> 67ff1a1909f9cd67dedf07c7b8463178809d5ab2
     "@progress/kendo-theme-material": "^2.5.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
@@ -14,6 +21,7 @@
     "dotenv": "^8.0.0",
     "google-maps-react": "^2.0.2",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.0.4",

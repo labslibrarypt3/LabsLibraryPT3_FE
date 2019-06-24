@@ -14,7 +14,17 @@ import StripePayment from "./components/Stripe/StripePayment";
 import TwilioApp from "./components/Twilio/src/TwilioApp"
 =======
 
+<<<<<<< HEAD
 >>>>>>> b77fba7cd9abc690c3af8cf1e74b525fbd81dfd5
+=======
+import Search from "./components/Search/Search";
+
+import TwilioApp from "./components/Twilio/TwilioApp";
+
+import Footer from "./components/Footer/Footer";
+import AuthContainer from "./components/Auth/AuthContainer";
+
+>>>>>>> 67ff1a1909f9cd67dedf07c7b8463178809d5ab2
 class App extends React.Component {
   constructor() {
     super();
@@ -44,15 +54,20 @@ class App extends React.Component {
           <div className="main-routes">
             <Route exact path="/" component={Landing} />
 
+            <Route path ="/auth-container/:id" component={AuthContainer}/>
+
             <Route path="/add-book/:id" component={SearchGoodreads} />
 
             <Route path="/account/:id/" component={Account} />
 
             <Route path="/my-shelf/:id" component={MyShelf} />
+
+            <Route path="/search" component={Search} />
           </div>
 
-          <></>
+          < TwilioApp />
         </div>
+        <Footer />
       </div>
     );
   }

@@ -9,29 +9,33 @@ class MyBook extends Component {
     }
   }
     buttonClicked= () =>{
-      const book = props.bookId;
-      const authToken = localStorage.getItem("jwt");
       
+      
+      const authToken = localStorage.getItem("jwt");
+      const book = this.props.bookId
       const endpoint = "http://localhost:4000/api/books/";
       return axios.delete(
         endpoint,
-        book,
-        {headers:{authorization:authToken}}
+        {headers:{
+          Authorization:`${authToken}`,params:book}}
+        
+        
       )
     }
   
   
-  render(){
-    <div key={props.bookId} className="book">
+  render(){return(
+    <div key={this.props.bookId} className="book">
       <div className="book-top">
-        <img src={props.cover} className="book-cover" />
+        <img src={this.props.cover} className="book-cover" />
       </div>
       <div className="book-bottom">
-        <p className="book-title">{props.title}</p>
-        <p>by {props.authors}</p>
-        <button onClick={buttonClicked}>Delete</button>
+        <p className="book-title">{this.props.title}</p>
+        <p>by {this.props.authors}</p>
+        <button onClick={this.buttonClicked}>Delete</button>
       </div>
     </div>
+  )
 };
 }
 export default MyBook;
