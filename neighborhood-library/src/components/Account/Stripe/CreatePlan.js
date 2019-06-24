@@ -56,3 +56,5 @@ class CreatePlan extends Component {
     );
   }
 }
+
+export default CreatePlan;

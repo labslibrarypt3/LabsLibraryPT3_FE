@@ -47,3 +47,5 @@ class SubscribeToPlan extends Component {
     );
   }
 }
+
+export default SubscribeToPlan;

@@ -40,7 +40,7 @@ class CreateCustomer extends Component {
               this.setState({ ...this.state, account: event.target.value })
             }
           />
-          <Button type="submit"> Submit </Button>
+          <button type="submit"> Submit </button>
           <p> {this.state.id} </p>
         </form>
       </div>
