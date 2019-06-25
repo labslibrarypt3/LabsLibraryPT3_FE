@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { NavLink, Redirect } from "react-router-dom";
+import MyBook from "../MyBook";
 
 class Borrowed extends Component {
   constructor(props) {
@@ -10,27 +11,17 @@ class Borrowed extends Component {
     };
   }
   componentDidMount() {
-    console.log(
-      localStorage.getItem("id"),
-      localStorage.getItem("jwt"),
-      "occurs before axios"
-    );
+  
     const data = () => {
       const endpoint = "http://localhost:4000/api/trans/borrow";
       if (localStorage.getItem("jwt")) {
-        console.log(
-          localStorage.getItem("id"),
-          localStorage.getItem("jwt"),
-          "occurs before axios"
-        );
-
+       
+        const authToken = localStorage.getItem("jwt");
         return axios
-          .get(endpoint, {
-            headers: { authorization: localStorage.getItem("jwt") },
-            params: { borrower_id: localStorage.getItem("id") }
-          })
+         .get(endpoint, {headers:{Authorization:`${authToken}`}})
+          
           .then(res => {
-            // console.log(...res.data);
+            
             this.setState({ data: res.data });
           })
           .catch(err => {
@@ -45,13 +36,20 @@ class Borrowed extends Component {
 
   render() {
     return (
-      <div>
+      <div className="borrowed">
         <h2>Borrowed</h2>
-        <p>I am a list of books you've borrowed from someone else</p>
-        <div>
+        <p>These are books you are borrowing from someone else:</p>
+        <div className="shelf">
           {this.state.data.map(e => {
-            console.log(e);
-            return <li key={e.borrower_id}>book</li>;
+            return (
+              <MyBook
+                title={e.title}
+                authors={e.authors}
+                cover={e.cover}
+                bookId={e.bookId}
+                key={e.borrower_id}
+              />
+            );
           })}
         </div>
       </div>

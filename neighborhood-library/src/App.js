@@ -10,6 +10,13 @@ import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 
+import Search from "./components/Search/Search";
+
+import TwilioApp from "./components/Twilio/TwilioApp";
+
+import Footer from "./components/Footer/Footer";
+import AuthContainer from "./components/Auth/AuthContainer";
+
 class App extends React.Component {
   constructor() {
     super();
@@ -39,15 +46,20 @@ class App extends React.Component {
           <div className="main-routes">
             <Route exact path="/" component={Landing} />
 
-            <Route path="/add-book/:id" component={SearchGoodreads} />
+            <Route path="/auth-container" component={AuthContainer} />
 
-            <Route path="/account/:id/" component={Account} />
+            <Route path="/add-book" component={SearchGoodreads} />
 
-            <Route path="/my-shelf/:id" component={MyShelf} />
+            <Route path="/account" component={Account} />
+
+            <Route path="/my-shelf" component={MyShelf} />
+
+            <Route path="/search" component={Search} />
           </div>
 
-          <></>
+          <TwilioApp />
         </div>
+        <Footer />
       </div>
     );
   }

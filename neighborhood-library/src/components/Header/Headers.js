@@ -9,10 +9,10 @@ import axios from "axios";
 class Headers extends React.Component {
   state = {
     open: false,
-    userId: ``,
-    name: ``,
-    email: ``,
-    img:``
+    userId: "",
+    name: "",
+    email: "",
+    img:""
   };
 
   handleClick() {
