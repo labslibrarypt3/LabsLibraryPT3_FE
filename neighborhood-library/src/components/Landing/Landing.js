@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import AuthContainer from "../Auth/AuthContainer"
+import AuthContainer from "../Auth/AuthContainer";
 import Register from "../Auth/Register";
-import Login from "../Auth/Login"
-
+import Login from "../Auth/Login";
 
 class Landing extends Component {
   constructor(props) {
@@ -10,40 +9,49 @@ class Landing extends Component {
     this.state = {
       loggedIn: false
     };
-  };
+  }
   handleLoginClick = () => {
     this.setState({
       loggedIn: true
-    })}
+    });
+  };
   handleRegClick = () => {
-      this.setState({
-        loggedIn: false
-      })}
-
+    this.setState({
+      loggedIn: false
+    });
+  };
 
   render() {
-    return(
-    <div>
-      <div className="delete-me-filler">
-        <h2>Welcome</h2>
-        <p>
-          Welcome to the Neighborhood Library. Here you can add books to your
-          lending library so that your neighbors and friends can check them out
-          from you. We've taken the pesky problem of forgetful friends out of
-          the equation by empowering every person to charge late fees through
-          the app.
-        </p>
-        <h3>JOIN TODAY!</h3>
-        
-        <AuthContainer/>
-        <h3>Login or register manually</h3>
-        <button onClick={this.handleLoginClick}>Login</button>
-        <button onClick={this.handleRegClick}>Register</button>
-        {this.state.loggedIn?<Login/>:<Register/>}
-       
+    return (
+      <div className="landing-auth">
+        <AuthContainer />
+        <div className="auth-divider">
+          <p>or</p>
+        </div>
+        <div className="manual-auth-container">
+          {this.state.loggedIn ? (
+            <div>
+              <Login />
+              <p>Need an account?</p>
+              <button className="manual-auth-nav" onClick={this.handleRegClick}>
+                Register
+              </button>
+            </div>
+          ) : (
+            <div className="manual-auth-container">
+              <Register />
+              <p>Already have an account?</p>
+              <button
+                className="manual-auth-nav"
+                onClick={this.handleLoginClick}
+              >
+                Login
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-    </div> 
-    )
-}
+    );
+  }
 }
 export default Landing;
