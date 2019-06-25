@@ -43,8 +43,8 @@ class Account extends Component {
 
   render() {
     return(
-      localStorage.getItem("jwt")?
-      <Redirect to={"/Landing"} />:
+      !localStorage.getItem("jwt")?
+      <Redirect to={"/"} />:
       <div>
         <h2>{this.state.name}</h2>
         <UserInfo

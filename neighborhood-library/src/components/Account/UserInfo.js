@@ -11,6 +11,8 @@ class UserInfo extends Component {
         email:"",
         img:"",
         password:"",
+        edit:false,
+        changePassword:false
     }
     };
     // getData = () => {
@@ -36,20 +38,81 @@ class UserInfo extends Component {
     //       return <Redirect to={"/"} />;
     //     }
     //   };
+    handlePasswordClick = () => {
+      this.setState({
+        edit: false,
+        changePassword: true
+      })}
+    
+
+    handleEditClick = () => {
+      this.setState({
+        edit: true,
+        changePassword:false
+      })}
+    
   
 
   render(){
     console.log(this.props,'in the userinfo')
+    
+    if(this.state.edit){
+    return(
+    
+      <div>
+        <h2> Enter data to replace</h2>
+        <div>Name: <input placeholder={this.props.name} type="text" name="name" ref="name" /></div>
+        <div>Street address: <input placeholder={this.props.address} type="text" name="address" ref="address" /></div>
+        <div>email:<input placeholder={this.props.email} type="email" name="email" ref="email" /></div>
+        <div>img:<input placeholder="Enter web address for img" type="text" name="img" ref="img" /></div>
+        <div><button onClick={this.handleEditClick}>Submit</button></div>
+        
+      </div>
+    )
+    }else{
+    if(this.state.changePassword){
       return(
-      <>
-       <h2> Account Info</h2>
-       <div>Name: {this.props.name};</div>
-       <div>Address:{this.props.address};</div>
-       <div>email:{this.props.email};</div>
-       <div>img:{this.props.img};</div>
-       <div>password:{this.props.password}</div>
-      </>
+        <div>
+          
+        <h2> Account Info</h2>
+         <div>Name: {this.props.name};</div>
+         <div>Street address:{this.props.address};</div>
+         <div>email:{this.props.email};</div>
+         <div><img src={this.props.img}/></div>
+        <div><button onClick={this.handleClick}>Edit profile</button></div>
+        <div><button onClick={this.handlePasswordClick}>Change Password</button></div>
+
+    </div>
       )
+    }else{
+      return(
+      <div>
+
+          <h2>Enter current password</h2>
+          <form>
+          <div>
+          Current password: <input placeholder={"Enter current password"} type="password" name="currentPassword" ref="currentPassword" />
+          </div>
+          <div>
+          New password:<input placeholder={"Enter new password"} type="password" name="newPassword" ref="newPassword" />
+          </div>
+          <div>
+          Confirm password:<input placeholder={"Enter current password"} type="password" name="currentPassword" ref="currentPassword" />
+          </div>
+          </form>
+
+      </div>
+
+      
+    )
+  }  
+} 
   }
 }
+
+      
+     
+  
+
+
 export default UserInfo;

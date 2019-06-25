@@ -11,7 +11,8 @@ class Headers extends React.Component {
     open: false,
     userId: "",
     name: "",
-    email: ""
+    email: "",
+    img:""
   };
 
   handleClick() {
@@ -32,14 +33,14 @@ class Headers extends React.Component {
       const endpoint = "http://localhost:4000/api/users/user";
       return axios
         .get(endpoint, {
-          headers: { authorization: authToken },
-          params: { userId: localStorage.getItem("id") }
+          headers: { authorization: authToken }
         })
         .then(res => {
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
-            email: res.data.email
+            email: res.data.email,
+            img: res.data.img
           });
         })
         .catch(err => console.log(err));
