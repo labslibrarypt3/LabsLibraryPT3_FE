@@ -3,13 +3,16 @@ import HamburgerMenu from "react-hamburger-menu";
 import CheeseburgerMenu from "cheeseburger-menu";
 import MenuContent from "./MenuContent";
 import "../../App.css";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 class Headers extends React.Component {
   state = {
     open: false,
     userId: "",
     name: "",
-    email: ""
+    email: "",
+    img:""
   };
 
   handleClick() {
@@ -21,6 +24,30 @@ class Headers extends React.Component {
   closeMenu() {
     this.setState({ open: false });
   }
+  componentDidMount() {
+    this.getData();
+  }
+  getData = () => {
+    if (localStorage.getItem("jwt")) {
+      const authToken = localStorage.getItem("jwt");
+      const endpoint = "http://localhost:4000/api/users/user";
+      return axios
+        .get(endpoint, {
+          headers: { authorization: authToken }
+        })
+        .then(res => {
+          this.setState({
+            userId: res.data.userId,
+            name: res.data.name,
+            email: res.data.email,
+            img: res.data.img
+          });
+        })
+        .catch(err => console.log(err));
+    } else {
+      return <Redirect to={"/"} />;
+    }
+  };
 
   render() {
     return (
@@ -37,7 +64,7 @@ class Headers extends React.Component {
             menuClicked={this.handleClick.bind(this)}
             strokeWidth={3}
             rotate={0}
-            color="#ea4d33"
+            color="white"
             borderRadius={0}
             animationDuration={0.5}
             className="hamburger-icon"

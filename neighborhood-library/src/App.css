@@ -5,9 +5,6 @@
 #39113c Dark Purple
 #ea4d33 Carmine Pink */
 
-/* Add dotted lines around everything to make it easier to see */
-/* remove when done */
-
 .App {
   font-family: Lato;
   /* Side borders */
@@ -41,54 +38,128 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 5%;
-  color: #ea4d33;
+  color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   border-top: 5px solid #ea4d33;
+  background: rgb(234, 77, 51);
+  background: linear-gradient(
+    90deg,
+    rgba(234, 77, 51, 1) 0%,
+    rgba(250, 188, 60, 1) 74%,
+    rgba(234, 77, 51, 1) 100%
+  );
+}
+
+h1 {
+  letter-spacing: 3px;
+  margin-left: 20px;
 }
 
 .hamburger-menu {
+  /* color in component */
   width: 18px;
   height: 15px;
   transform: rotate(0deg);
-  color: #ea4d33;
+}
+
+.cheeseburger-menu-inner {
+  background-color: #ea4d33;
+  color: #e8e8f9;
 }
 
 nav {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .login-button {
   margin: 10px;
 }
 
-.menu-item {
-  background-color: #ea4d33;
-  color: #e8e8f9;
+.logout-button {
+  width: 70%;
+  height: 30px;
+  border-radius: 10px;
+  color: #ea4d33;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  margin-top: 30px;
+}
+
+.logout-button:hover {
+  cursor: pointer;
 }
 
 .menu-item a {
-  display: block;
   padding: 25px 15px;
   color: inherit;
   text-decoration: none;
+  letter-spacing: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 15px;
 }
 
 .menu-item a:hover {
   color: inherit;
   text-decoration: none;
-  color: #39113c;
-  background-color: #fabc3c;
+  color: #fabc3c;
+  background-color: #0a2239;
+  border: 1px solid #0a2239;
+  cursor: pointer;
+}
+
+hr {
+  color: #fabc3c;
 }
 
 .menu-item a:focus {
   text-decoration: none;
 }
 
-.active-menu-item {
-  background-color: #e8e8f9;
-  color: #ea4d33;
+/* nav page turn animation */
+
+.nav-item {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.nav-item:hover .pageTurn {
+  width: 20px;
+  height: 20px;
+}
+
+.pageTurn {
+  display: block;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  bottom: -3px;
+  right: -2px;
+  border-radius: 8px;
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuMCIgeDI9IjEuMCIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiLz48c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==");
+  background-size: 100%;
+  background-image: -webkit-gradient(
+    linear,
+    0% 0%,
+    100% 100%,
+    color-stop(50%, #fabc3c),
+    color-stop(51%, #ea4d33)
+  );
+  background-image: -moz-linear-gradient(left top, #fabc3c 50%, #ea4d33 51%);
+  background-image: -webkit-linear-gradient(left top, #fabc3c 50%, #ea4d33 51%);
+  background-image: linear-gradient(to right bottom, #fabc3c 50%, #ea4d33 51%);
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 
 .auth-buttons {
@@ -112,7 +183,13 @@ nav {
 /* Footer */
 footer {
   margin-top: 20px;
-  background-color: #ea4d33;
+  background: rgb(234, 77, 51);
+  background: linear-gradient(
+    90deg,
+    rgba(234, 77, 51, 1) 0%,
+    rgba(250, 188, 60, 1) 74%,
+    rgba(234, 77, 51, 1) 100%
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,9 +204,10 @@ footer a {
   color: white;
 }
 
-/* Add Book and Goodreads Stylings */
+/* MyShelf and Children Components Stylings */
 
-.add-book {
+.add-book,
+.page {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -139,7 +217,34 @@ footer a {
   align-items: flex-start;
 }
 
-.goodreads-search-results-container {
+.my-shelf-nav {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.my-shelf-nav button {
+  min-width: fit-content;
+  width: 35%;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 15px;
+  border: none;
+  background-color: #0a2239;
+  color: #fabc3c;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.my-shelf-nav button:hover {
+  background-color: #fabc3c;
+  color: #0a2239;
+  cursor: pointer;
+}
+
+.shelf {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -154,6 +259,7 @@ form {
   justify-content: space-evenly;
   margin: 30px auto;
 }
+
 form button {
   padding: 10px 2%;
   background-color: #fabc3c;
@@ -163,6 +269,7 @@ form button {
   font-size: 18px;
   font-weight: bold;
 }
+
 input {
   border-radius: 5px;
   border: 4px solid #fabc3c;
@@ -178,10 +285,12 @@ input {
   font-weight: bold;
 }
 
-.goodreads-search-result {
-  width: 20%;
+.book {
+  height: 275px;
+  width: 35%;
   background-color: #0a2239;
-  margin: 5px 5%;
+  box-shadow: 2.5px 2.5px 15px #39113c;
+  margin: 5px 5% 35px 5%;
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -193,42 +302,71 @@ input {
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
 }
-.card-top {
-  height: 50%;
+
+.book:hover {
+  box-shadow: 2.5px 2.5px 15px #fabc3c;
+}
+
+.book-top {
+  height: 54%;
   width: 99%;
   padding: 10px 2%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   display: flex;
 }
-.card-top .book-cover {
+.book-top .book-cover {
   margin: 0 auto;
   border: 2px solid #fabc3c;
 }
-.card-bottom {
+.book-bottom {
+  height: 46%;
+  /* height: 100px; */
   width: 100%;
-  height: 50%;
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  margin: 5px 5%;
-  padding: 10px 0;
+  /* margin: 5px 5%; */
+  /* padding: 10px 0; */
   border-bottom-left-radius: 15px;
   color: #0a2239;
   font-weight: bold;
 }
 
-.card-bottom p {
+.book-bottom p {
+  height: 25px;
+  line-height: 16px;
+  width: 90%;
   padding: 5px 5%;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.card-bottom button {
+.book-bottom button {
+  height: fit-content;
   width: 60%;
   background-color: #ea4d33;
   border-radius: 5px;
-  padding: 5px 5%;
+  margin-bottom: 5px;
+  padding: 3px 5%;
   font-weight: bold;
-  color: #fabc3c;
+  color: #1c0f13;
+}
+.book-bottom button:hover {
+  cursor: pointer;
+}
+
+/* Stripe Payment Information Styling */
+
+.stripe {
+  display: flex;
+  flex-direction: column;
+}
+.payment-form {
+  display: flex;
+  flex-direction: column;
 }

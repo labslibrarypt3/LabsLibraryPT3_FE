@@ -45,19 +45,19 @@ class SearchGoodreads extends Component {
 
   render() {
     return (
-      <div className="add-book">
+      <div className="add-book page">
         <h2>Add a Book to your Library</h2>
         <p>I am a list of books you want to lend out to the community</p>
         <form onSubmit={this.handleSubmit}>
           <input
-            placeholder="      Powered by Goodreads"
+            placeholder="Powered by Goodreads"
             onChange={this.handleChange}
             value={this.state.query}
             name="query"
           />
           <button type="submit">Search</button>
         </form>
-        <div className="goodreads-search-results-container">
+        <div className="goodreads-search-results-container shelf">
           {this.state.books.map(book => {
             return (
               <GoodreadsSearchResult
