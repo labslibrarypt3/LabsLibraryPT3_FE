@@ -11,7 +11,8 @@ let endpoint;
       .post(endpoint, userData)
       .then(res => {
         
-        localStorage.setItem("jwt", res.data);     
+        localStorage.setItem("jwt", res.data)
+        
       })
       .catch(err => {
         console.log("login Error", err)

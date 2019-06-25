@@ -4,7 +4,7 @@ import Landing from "../Landing/Landing";
 
 const Logout = () => {
   const logout = () => {
-    return localStorage.clear(), <Redirect to={"/"} />;
+    return (localStorage.clear(), <Redirect to={"/"} />);
   };
 
   return (
