@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
+import Geocode from 'react-geocode';
 
 import CurrentLocation from "./Map";
 
@@ -64,24 +65,35 @@ export class MapContainer extends Component {
     }
   };
 
+  geocodeData = () => {
+    Geocode.setApiKey(process.env.REACT_APP_MAPS_KEY);
+    Geocode.setLanguage('en');
+    Geocode.enableDebug();
+
+    // Geocode.fromLatLng
+  }
+
   render() {
     if (!this.props.loaded) {
       return <div>Loading...</div>
     };
 
     return (
-      <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-        <Marker onClick={this.onMarkerClick} name={"current location"} />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
-      </CurrentLocation>
+      <div>
+        <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+          <Marker onClick={this.onMarkerClick} name={"current location"} />
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+            >
+              <div>
+                <h4>{this.state.selectedPlace.name}</h4>
+              </div>
+            </InfoWindow>
+          </CurrentLocation>
+        <Library />
+      </div>
     );
   }
 }
