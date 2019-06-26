@@ -36,6 +36,7 @@ class Headers extends React.Component {
           headers: { authorization: authToken }
         })
         .then(res => {
+          console.log(res.data,`in then`)
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
@@ -50,6 +51,7 @@ class Headers extends React.Component {
   };
 
   render() {
+    console.log(this.state,'here is the header')
     return (
       <header>
         <div classname="sidebar">
