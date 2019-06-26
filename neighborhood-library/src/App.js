@@ -4,6 +4,7 @@ import { Route, Link } from "react-router-dom";
 import axios from "axios";
 
 //component imports
+import verify from "./components/Auth/Verify"
 import Account from "./components/Account/Account";
 import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
@@ -48,11 +49,11 @@ class App extends React.Component {
 
             <Route path="/auth-container" component={AuthContainer} />
 
-            <Route path="/add-book" component={SearchGoodreads} />
+            <Route path="/add-book" component={verify(SearchGoodreads)} />
 
-            <Route path="/account" component={Account} />
+            <Route path="/account" component={verify(Account)} />
 
-            <Route path="/my-shelf" component={MyShelf} />
+            <Route path="/my-shelf" component={verify(MyShelf)} />
 
             <Route path="/search" component={Search} />
           </div>
