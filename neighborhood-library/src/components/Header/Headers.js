@@ -27,6 +27,13 @@ class Headers extends React.Component {
   componentDidMount() {
     this.getData();
   }
+
+  isLoggedIn() {
+    this.setState({img: true});
+  }
+  isLoggedOut(){
+    this.setState({img:false});
+  }
   getData = () => {
     if (localStorage.getItem("jwt")) {
       const authToken = localStorage.getItem("jwt");
@@ -52,6 +59,14 @@ class Headers extends React.Component {
 
   render() {
     console.log(this.state,'here is the header')
+    const isLoggedIn = this.state.img;
+    let avatar;
+
+    if(isLoggedIn) {
+      avatar =<img className= "avatar" src={this.state.img}/>
+    } else {
+      avatar = <img src={null}/>
+    }
     return (
       <header>
         <div classname="sidebar">
@@ -74,6 +89,7 @@ class Headers extends React.Component {
           />
         </div>
         <h1 className="title">Neighborhood Library!</h1>
+        {avatar}
       </header>
     );
   }
