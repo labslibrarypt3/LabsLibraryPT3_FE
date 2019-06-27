@@ -442,8 +442,77 @@ input {
 
 /* Account Styling */
 
+.account {
+  align-items: center;
+}
+
 .user-info {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-info .edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 100px 0;
+}
+
+.form-pair {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.form-pair label {
+  width: 50%;
+}
+.form-pair input {
+  width: 50%;
+}
+
+.user-info .edit-profile-form button {
+  align-self: center;
+  width: 30%;
+  text-align: center;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.user-info button {
+  width: 100%;
+  height: 25px;
+  font-size: 16px;
+  border-radius: 15px;
+  border: none;
+  margin: 5px 0;
+  background-color: #0a2239;
+  color: #fabc3c;
+  letter-spacing: 3px;
+}
+
+.user-info button:hover {
+  background-color: #fabc3c;
+  color: #0a2239;
+  cursor: pointer;
+}
+
+.stripe {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.stripe p {
+  padding: 10px 10%;
 }
 .stripe img {
   max-width: 250px;

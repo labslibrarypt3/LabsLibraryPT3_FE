@@ -6,6 +6,8 @@ class Stripe extends Component {
       <div className="stripe">
         <p>
           We partner with Stripe to facilitate payments for late and lost books.
+          <br />
+          <br />
           Connect to Stripe by following the link below:
         </p>
         <a href={`http://localhost:4000/api/stripe/connect`}>

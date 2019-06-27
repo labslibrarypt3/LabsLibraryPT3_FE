@@ -45,10 +45,10 @@ class UserInfo extends Component {
     }
     if (this.state.edit) {
       return (
-        <div>
-          <h2> Enter data to replace</h2>
-          <form>
-            <div>
+        <div className="user-info">
+          <h2>Edit Profile</h2>
+          <form className="edit-profile-form">
+            <div className="form-pair">
               <label>Name</label>
               <input
                 placeholder={this.props.name}
@@ -57,7 +57,7 @@ class UserInfo extends Component {
                 ref="name"
               />
             </div>
-            <div>
+            <div className="form-pair">
               <label>Street Address</label>
               <input
                 placeholder={this.props.address}
@@ -66,7 +66,7 @@ class UserInfo extends Component {
                 ref="address"
               />
             </div>
-            <div>
+            <div className="form-pair">
               <label>Email</label>
               <input
                 placeholder={this.props.email}
@@ -75,7 +75,7 @@ class UserInfo extends Component {
                 ref="email"
               />
             </div>
-            <div>
+            <div className="form-pair">
               <label>Avatar url:</label>
               <input
                 placeholder="Enter web address for img"
@@ -84,20 +84,26 @@ class UserInfo extends Component {
                 ref="img"
               />
             </div>
-            <button>Submit Changes</button>
+            <button>Submit</button>
           </form>
         </div>
       );
     } else {
       if (!this.state.changePassword) {
         return (
-          <div>
+          <div className="user-info">
             <h2> Account Info</h2>
-            <div>Name: {this.props.name};</div>
-            <div>Street address:{this.props.address};</div>
-            <div>email:{this.props.email};</div>
             <div>
-              <img src={this.props.img} alt="user profile" />
+              <label>Name:</label> {this.props.name}
+            </div>
+            <div>
+              <label>Street Address:</label> {this.props.address}
+            </div>
+            <div>
+              <label>Email:</label> {this.props.email}
+            </div>
+            <div>
+              <img src={this.props.img} alt="user profile image" />
             </div>
             <div>
               <button onClick={this.handleEditClick}>Edit Profile</button>
@@ -111,11 +117,11 @@ class UserInfo extends Component {
         );
       } else {
         return (
-          <div>
-            <h2>Enter current password</h2>
+          <div className="user-info">
+            <h2>Change Password</h2>
             <form>
               <div>
-                Current password:{" "}
+                <label>Current Password:</label>
                 <input
                   placeholder={"Enter current password"}
                   type="password"
@@ -124,7 +130,7 @@ class UserInfo extends Component {
                 />
               </div>
               <div>
-                New password:
+                <label>New Password:</label>
                 <input
                   placeholder={"Enter new password"}
                   type="password"
@@ -133,7 +139,7 @@ class UserInfo extends Component {
                 />
               </div>
               <div>
-                Confirm password:
+                <label>Confirm password:</label>
                 <input
                   placeholder={"Enter current password"}
                   type="password"
