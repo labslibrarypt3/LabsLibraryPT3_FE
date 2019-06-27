@@ -43,7 +43,7 @@ class Headers extends React.Component {
           headers: { authorization: authToken }
         })
         .then(res => {
-          console.log(res.data,`in then`)
+         
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
@@ -69,7 +69,7 @@ class Headers extends React.Component {
     }
     return (
       <header>
-        <div classname="sidebar">
+        <div className="sidebar">
           <CheeseburgerMenu
             isOpen={this.state.open}
             closeCallback={this.closeMenu.bind(this)}

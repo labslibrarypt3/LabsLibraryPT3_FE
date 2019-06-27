@@ -4,7 +4,7 @@ import Register from "../Auth/Register";
 import Login from "../Auth/Login"
 import { Redirect } from "react-router-dom";
 
-// import MapContainer from "../Search/MapContainer"
+import MapContainer from "../Search/MapContainer"
 
 
 class Landing extends Component {
@@ -48,7 +48,7 @@ class Landing extends Component {
         <button onClick={this.handleRegClick}>Register</button>
         {this.state.loggedIn?<Login/>:<Register/>}
         <div>
-       {/* <MapContainer/> */}
+       <MapContainer/>
        </div>
       </div>
     </div> 

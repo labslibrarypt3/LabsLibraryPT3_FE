@@ -17,6 +17,7 @@ export default function verify (ComponentToProtect) {
             this.setState({ loading: false });
           } else {
             const error = new Error(res.error);
+            this.setState({ loading: false, redirect: true });
             throw error;
           }
         })
@@ -29,8 +30,7 @@ export default function verify (ComponentToProtect) {
       const { loading, redirect } = this.state;
       if (loading) {
         return null;
-      }
-      if (redirect) {
+      }else if (redirect) {
         return <Redirect to="/" />;
       }
       return (
