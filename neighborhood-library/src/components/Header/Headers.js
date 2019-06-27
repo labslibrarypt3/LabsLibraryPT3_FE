@@ -5,6 +5,7 @@ import MenuContent from "./MenuContent";
 import "../../App.css";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import TwilioApp from "../Twilio/oldTwilioApp";
 
 class Headers extends React.Component {
   state = {
@@ -36,7 +37,7 @@ class Headers extends React.Component {
           headers: { authorization: authToken }
         })
         .then(res => {
-          console.log(res.data,`in then`)
+         
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
@@ -51,10 +52,10 @@ class Headers extends React.Component {
   };
 
   render() {
-    console.log(this.state,'here is the header')
+    
     return (
       <header>
-        <div classname="sidebar">
+        <div className="sidebar">
           <CheeseburgerMenu
             isOpen={this.state.open}
             closeCallback={this.closeMenu.bind(this)}
@@ -74,6 +75,11 @@ class Headers extends React.Component {
           />
         </div>
         <h1 className="title">Neighborhood Library!</h1>
+        {/* <TwilioApp
+        userid = {this.state.userId}
+        username = {this.state.name}
+        
+        /> */}
       </header>
     );
   }
