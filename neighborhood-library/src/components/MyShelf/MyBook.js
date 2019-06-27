@@ -27,7 +27,7 @@ class MyBook extends Component {
   render(){return(
     <div key={this.props.bookId} className="book">
       <div className="book-top">
-        <img src={this.props.cover} className="book-cover" />
+        <img src={this.props.cover} className="book-cover" alt="book cover" />
       </div>
       <div className="book-bottom">
         <p className="book-title">{this.props.title}</p>

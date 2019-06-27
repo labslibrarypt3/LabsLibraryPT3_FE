@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AuthPostData from "./AuthPostData";
-import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   constructor() {

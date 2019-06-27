@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import Chat from 'twilio-chat';
+import React, { Component } from "react";
+import Chat from "twilio-chat";
 import { Chat as ChatUI } from '@progress/kendo-react-conversational-ui';
+import axios from "axios"
 
 class TwilioApp extends Component {
   constructor(props) {
@@ -8,57 +9,59 @@ class TwilioApp extends Component {
     this.state = {
       error: null,
       isLoading: true,
-      messages: []
-    };
-
-    this.user = {
-      id: props.username,
-      name: props.username
-    };
-
-    this.setupChatClient = this.setupChatClient.bind(this);
-    this.messagesLoaded = this.messagesLoaded.bind(this);
-    this.messageAdded = this.messageAdded.bind(this);
-    this.sendMessage = this.sendMessage.bind(this);
-    this.handleError = this.handleError.bind(this);
-
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:4000/api/twilio/token', {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      method: 'POST',
-      body: `identity=${encodeURIComponent(this.props.username)}`
-      
-    })
-      .then(res => res.json())
+      messages: ['welcome to chat!'],
+      data:{}
+    };  
+    //  end of state object
+  }   
+// end of constructor
+componentDidMount = async () => {
+  const authToken = localStorage.getItem("jwt");
+  const endpoint = 'http://localhost:4000/api/twilio/token';
+try{
+axios
+      .post(
+        endpoint,{},
+        {headers: { 
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'authorization': authToken
+      }},
+      )
+      // .then(res => res.json())
       .then(data => Chat.create(data.token))
-      .then(this.setupChatClient)
-      .catch(this.handleError);
+      .then(this.setupChatClient,console.log('now its here'))
+    }catch(error){
+      this.handleError();
+    }   
   }
-
-  handleError(error) {
-    console.error(error);
-    this.setState({
-      error: 'Could not load chat.'
-    });
-  }
-
+  
+handleError(error){
+console.error(error);
+this.setState({
+  error: 'Could not load chat.'
+});
+}
+  
+  
+    
+ 
   setupChatClient(client) {
+    
     this.client = client;
+    console.log(client)
     this.client
-      .getChannelByUniqueName('general2')
+      .getChannelByUniqueName('general')
       .then(channel => channel)
       .catch(error => {
         if (error.body.code === 50300) {
-          return this.client.createChannel({ uniqueName: 'general2' });
+          return this.client.createChannel({ uniqueName: 'general' });
         } else {
           this.handleError(error);
-        }
-      })
+      }
+    })
       .then(channel => {
-        this.channel = channel;
-        return this.channel.join().catch(() => {});
+       this.channel = channel;
+       return this.channel.join().catch(() => {});
       })
       .then(() => {
         this.setState({ isLoading: false });
@@ -66,7 +69,10 @@ class TwilioApp extends Component {
         this.channel.on('messageAdded', this.messageAdded);
       })
       .catch(this.handleError);
-  }
+   }
+
+
+   
 
   twilioMessageToKendoMessage(message) {
     return {
@@ -96,25 +102,29 @@ class TwilioApp extends Component {
   }
 
   componentWillUnmount() {
-    this.client.shutdown();
+    // this.client.shutdown();
   }
 
   render() {
-      console.log(this.props)
     if (this.state.error) {
       return <p>{this.state.error}</p>;
     } else if (this.state.isLoading) {
       return <p>Loading chat...</p>;
     }
-    return (
+  return (
+      <>
+
+      <h1>twillio coming soon</h1>
       <ChatUI
-        user={this.user}
+        user={this.state.data.name}
         messages={this.state.messages}
         onMessageSend={this.sendMessage}
         width={500}
       />
+      </>
     );
-  }
+    }
 }
+
 
 export default TwilioApp;

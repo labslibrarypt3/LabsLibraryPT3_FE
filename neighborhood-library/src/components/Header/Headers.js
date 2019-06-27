@@ -27,6 +27,13 @@ class Headers extends React.Component {
   componentDidMount() {
     this.getData();
   }
+
+  isLoggedIn() {
+    this.setState({img: true});
+  }
+  isLoggedOut(){
+    this.setState({img:false});
+  }
   getData = () => {
     if (localStorage.getItem("jwt")) {
       const authToken = localStorage.getItem("jwt");
@@ -36,6 +43,7 @@ class Headers extends React.Component {
           headers: { authorization: authToken }
         })
         .then(res => {
+         
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
@@ -50,9 +58,18 @@ class Headers extends React.Component {
   };
 
   render() {
+    console.log(this.state,'here is the header')
+    const isLoggedIn = this.state.img;
+    let avatar;
+
+    if(isLoggedIn) {
+      avatar =<img className= "avatar" src={this.state.img} alt="avatar"/>
+    } else {
+      avatar = <img src={null}/>
+    }
     return (
       <header>
-        <div classname="sidebar">
+        <div className="sidebar">
           <CheeseburgerMenu
             isOpen={this.state.open}
             closeCallback={this.closeMenu.bind(this)}
@@ -72,6 +89,7 @@ class Headers extends React.Component {
           />
         </div>
         <h1 className="title">Neighborhood Library!</h1>
+        {avatar}
       </header>
     );
   }
