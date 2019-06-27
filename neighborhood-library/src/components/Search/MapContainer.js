@@ -30,6 +30,16 @@ export class MapContainer extends Component {
     }]
   };
 
+  // TODO: on mount should pull user data for libraries, need to filter by location. also should update on props changes from google maps
+  // componentDidMount() {
+  //   axios
+  //     .get('https://pt3-neighborhood-library-back.herokuapp.com/users')
+  //     .then(res => {
+  //       console.log(res);
+  //     })
+  //     .catch(err => console.log(err));
+  // }
+
   onMapReady = (mapProps, map) => this.searchNearby(map, map.center);
 
   searchNearby = (map, center) => {
@@ -65,12 +75,20 @@ export class MapContainer extends Component {
     }
   };
 
-  geocodeData = () => {
+  getGeocodeData = () => {
     Geocode.setApiKey(process.env.REACT_APP_MAPS_KEY);
     Geocode.setLanguage('en');
     Geocode.enableDebug();
 
-    // Geocode.fromLatLng
+    Geocode.fromLatLng('', '').then(
+      response => {
+        const address = response.results[0].formatted_address;
+        console.log(address);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   render() {
@@ -99,7 +117,8 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_MAPS_KEY
+  apiKey: process.env.REACT_APP_MAPS_KEY,
+  libraries: ['places']
 })(MapContainer);
 
 
