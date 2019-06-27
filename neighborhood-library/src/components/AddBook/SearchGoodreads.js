@@ -46,8 +46,11 @@ class SearchGoodreads extends Component {
   render() {
     return (
       <div className="add-book page">
-        <h2>Add a Book to your Library</h2>
-        <p>I am a list of books you want to lend out to the community</p>
+        <h2>Add a book to your library.</h2>
+        <p>
+          Search Goodreads' database to find a book you currently own and would
+          like to make available for borrowing.
+        </p>
         <form onSubmit={this.handleSubmit}>
           <input
             placeholder="Powered by Goodreads"

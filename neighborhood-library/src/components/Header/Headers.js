@@ -12,7 +12,8 @@ class Headers extends React.Component {
     userId: "",
     name: "",
     email: "",
-    img:""
+    img: "",
+    isLoggedIn: false
   };
 
   handleClick() {
@@ -29,10 +30,10 @@ class Headers extends React.Component {
   }
 
   isLoggedIn() {
-    this.setState({img: true});
+    this.setState({ isLoggedIn: true });
   }
-  isLoggedOut(){
-    this.setState({img:false});
+  isLoggedOut() {
+    this.setState({ isLoggedIn: false });
   }
   getData = () => {
     if (localStorage.getItem("jwt")) {
@@ -43,12 +44,12 @@ class Headers extends React.Component {
           headers: { authorization: authToken }
         })
         .then(res => {
-         
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
             email: res.data.email,
-            img: res.data.img
+            img: res.data.img,
+            isLoggedIn: true
           });
         })
         .catch(err => console.log(err));
@@ -58,14 +59,14 @@ class Headers extends React.Component {
   };
 
   render() {
-    console.log(this.state,'here is the header')
-    const isLoggedIn = this.state.img;
+    console.log(this.state, "here is the header");
+    const { isLoggedIn } = this.state;
     let avatar;
 
-    if(isLoggedIn) {
-      avatar =<img className= "avatar" src={this.state.img} alt="avatar"/>
+    if (isLoggedIn) {
+      avatar = this.state.img;
     } else {
-      avatar = <img src={null}/>
+      avatar = null;
     }
     return (
       <header>
@@ -89,7 +90,7 @@ class Headers extends React.Component {
           />
         </div>
         <h1 className="title">Neighborhood Library!</h1>
-        {avatar}
+        <img src={avatar} className="avatar" />
       </header>
     );
   }
