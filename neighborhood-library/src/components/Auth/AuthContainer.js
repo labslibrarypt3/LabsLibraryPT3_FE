@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import AuthPostData from "./AuthPostData";
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
-import { Redirect } from "react-router-dom";
-import Logout from "./Logout";
-import Register from "./Register"
-import Landing from "../Landing/Landing"
 import "../../App.css";
 
 

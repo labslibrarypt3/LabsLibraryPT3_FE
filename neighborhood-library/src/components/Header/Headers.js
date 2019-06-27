@@ -63,7 +63,7 @@ class Headers extends React.Component {
     let avatar;
 
     if(isLoggedIn) {
-      avatar =<img className= "avatar" src={this.state.img}/>
+      avatar =<img className= "avatar" src={this.state.img} alt="avatar"/>
     } else {
       avatar = <img src={null}/>
     }

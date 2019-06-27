@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios"
-import { NavLink, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class UserInfo extends Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class UserInfo extends Component {
         changePassword:false
     }
     };
-   
+
     handlePasswordClick = () => {
       this.setState({
         edit: false,
@@ -68,7 +67,7 @@ class UserInfo extends Component {
          <div>Name: {this.props.name};</div>
          <div>Street address:{this.props.address};</div>
          <div>email:{this.props.email};</div>
-         <div><img src={this.props.img}/></div>
+         <div><img src={this.props.img} alt="user profile"/></div>
          <div><button onClick={this.handleEditClick}>Edit Profile</button></div>
         <div><button onClick={this.handlePasswordClick}>Change Password</button></div>
 

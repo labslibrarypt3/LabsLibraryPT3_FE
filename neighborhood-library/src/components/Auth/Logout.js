@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
-import Landing from "../Landing/Landing";
 
 const Logout = () => {
   const logout = () => {

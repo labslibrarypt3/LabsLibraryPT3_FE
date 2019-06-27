@@ -1,8 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import AuthContainer from "../../Auth/AuthContainer";
-import Login from "../../Auth/Login";
-import Register from "../../Auth/Register";
 import Logout from "../../Auth/Logout";
 
 function Nav() {
