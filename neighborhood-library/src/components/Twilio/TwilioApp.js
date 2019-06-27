@@ -29,6 +29,7 @@ class TwilioApp extends Component {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       method: 'POST',
       body: `identity=${encodeURIComponent(this.props.username)}`
+      
     })
       .then(res => res.json())
       .then(data => Chat.create(data.token))
@@ -99,6 +100,7 @@ class TwilioApp extends Component {
   }
 
   render() {
+      console.log(this.props)
     if (this.state.error) {
       return <p>{this.state.error}</p>;
     } else if (this.state.isLoading) {
