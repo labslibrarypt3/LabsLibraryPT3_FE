@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Landing from "../../Landing/Landing";
-import { NavLink, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import MyBook from "../MyBook";
 
 class HomeLibrary extends Component {

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 import HomeLibrary from "./HomeLibrary/HomeLibrary";
 import Borrowed from "./Borrowed/Borrowed";
 import Loaned from "./Loaned/Loaned";
-import { Route, Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class MyShelf extends Component {
   constructor() {

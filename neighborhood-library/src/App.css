@@ -56,6 +56,13 @@ h1 {
   margin-left: 20px;
 }
 
+.avatar{
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 .hamburger-menu {
   /* color in component */
   width: 18px;

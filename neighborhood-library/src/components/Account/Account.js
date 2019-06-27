@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { StripeProvider, Elements } from "react-stripe-elements";
 import Stripe from "./Stripe/Stripe";
