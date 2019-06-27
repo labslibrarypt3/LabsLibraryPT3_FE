@@ -6,7 +6,7 @@
 #ea4d33 Carmine Pink */
 
 .App {
-  font-family: Lato;
+  font-family: Lato, sans-serif;
   /* Side borders */
   border-left: 5px solid #ea4d33;
   border-right: 5px solid #ea4d33;
@@ -37,7 +37,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 5%;
+  padding: 20px 5%;
   color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -52,11 +52,11 @@ header {
 }
 
 h1 {
-  letter-spacing: 3px;
+  letter-spacing: 0px;
   margin-left: 20px;
 }
 
-.avatar{
+.avatar {
   vertical-align: middle;
   width: 50px;
   height: 50px;
@@ -207,10 +207,15 @@ footer {
   color: white;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  padding-bottom: 20px;
+  padding: 20px 0;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 footer a {
+  color: white;
+}
+footer a:hover {
   color: white;
 }
 
@@ -218,6 +223,7 @@ footer a {
 
 .add-book,
 .page {
+  min-width: 310px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -236,7 +242,7 @@ footer a {
 }
 
 .my-shelf-nav button {
-  min-width: fit-content;
+  min-width: 150px;
   width: 35%;
   height: 50px;
   font-size: 16px;
@@ -244,8 +250,9 @@ footer a {
   border: none;
   background-color: #0a2239;
   color: #fabc3c;
-  letter-spacing: 5px;
+  letter-spacing: 1px;
   font-weight: bold;
+  text-align: center;
 }
 
 .my-shelf-nav button:hover {
@@ -431,4 +438,13 @@ input {
   background-color: #fabc3c;
   color: #0a2239;
   cursor: pointer;
+}
+
+/* Account Styling */
+
+.user-info {
+  display: flex;
+}
+.stripe img {
+  max-width: 250px;
 }
