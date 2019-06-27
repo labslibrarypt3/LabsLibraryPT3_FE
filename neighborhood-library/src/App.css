@@ -72,6 +72,8 @@ nav {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-button {
@@ -126,6 +128,7 @@ hr {
   position: relative;
   display: inline-block;
   text-align: center;
+  width: 80%;
 }
 .nav-item:hover .pageTurn {
   width: 20px;

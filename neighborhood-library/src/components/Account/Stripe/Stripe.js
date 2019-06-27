@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import CreateAccount from "./CreateAccount";
-import CreatePlan from "./CreatePlan";
-import CreateCustomer from "./CreateCustomer";
-import SubscribeToPlan from "./SubscribeToPlan";
 
 class Stripe extends Component {
   render() {
     return (
       <div className="stripe">
-        <CreateAccount />
-        <CreatePlan />
-        <CreateCustomer />
-        <SubscribeToPlan />
+        <p>
+          We partner with Stripe to facilitate payments for late and lost books.
+          Connect to Stripe by following the link below:
+        </p>
+        <a href={`http://localhost:4000/api/stripe/connect`}>
+          <img src={require("./connect-to-stripe-button.png")} />
+        </a>
       </div>
     );
   }
