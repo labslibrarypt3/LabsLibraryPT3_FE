@@ -5,8 +5,13 @@
 #39113c Dark Purple
 #ea4d33 Carmine Pink */
 
+/* General Stylings */
+h2 {
+  padding: 10px 0;
+}
+
 .App {
-  font-family: Lato;
+  font-family: Lato, sans-serif;
   /* Side borders */
   border-left: 5px solid #ea4d33;
   border-right: 5px solid #ea4d33;
@@ -37,7 +42,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 5%;
+  padding: 20px 5%;
   color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -51,12 +56,12 @@ header {
   );
 }
 
-h1 {
-  letter-spacing: 3px;
+header h1 {
+  letter-spacing: 0px;
   margin-left: 20px;
 }
 
-.avatar{
+.avatar {
   vertical-align: middle;
   width: 50px;
   height: 50px;
@@ -78,7 +83,9 @@ h1 {
 nav {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 20px auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-button {
@@ -133,6 +140,7 @@ hr {
   position: relative;
   display: inline-block;
   text-align: center;
+  width: 80%;
 }
 .nav-item:hover .pageTurn {
   width: 20px;
@@ -204,17 +212,24 @@ footer {
   color: white;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  padding-bottom: 20px;
+  padding: 20px 0;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 footer a {
   color: white;
 }
+footer a:hover {
+  color: white;
+}
 
 /* MyShelf and Children Components Stylings */
+/* Also affects add book search results styling */
 
 .add-book,
 .page {
+  min-width: 310px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -233,7 +248,7 @@ footer a {
 }
 
 .my-shelf-nav button {
-  min-width: fit-content;
+  min-width: 150px;
   width: 35%;
   height: 50px;
   font-size: 16px;
@@ -241,8 +256,9 @@ footer a {
   border: none;
   background-color: #0a2239;
   color: #fabc3c;
-  letter-spacing: 5px;
+  letter-spacing: 1px;
   font-weight: bold;
+  text-align: center;
 }
 
 .my-shelf-nav button:hover {
@@ -367,13 +383,145 @@ input {
   cursor: pointer;
 }
 
-/* Stripe Payment Information Styling */
+/* Landing Auth */
+
+.landing-auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-divider {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.manual-auth-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 40px auto;
+}
+
+.manual-auth form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.manual-auth input {
+  margin: 10px 0;
+}
+
+.manual-auth-nav {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.manual-auth-nav button {
+  min-width: fit-content;
+  height: 18px;
+  font-size: 16px;
+
+  border: none;
+  color: #1c0f13;
+  letter-spacing: 5px;
+  background-color: white;
+}
+
+.manual-auth-nav:hover {
+  background-color: #fabc3c;
+  color: #0a2239;
+  cursor: pointer;
+}
+
+/* Account Styling */
+
+.account {
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-info .edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 100px 0;
+}
+
+.form-pair {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.form-pair label {
+  width: 50%;
+}
+.form-pair input {
+  width: 50%;
+}
+
+.user-info .edit-profile-form button {
+  align-self: center;
+  width: 30%;
+  text-align: center;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.user-info button {
+  width: 100%;
+  height: 25px;
+  font-size: 16px;
+  border-radius: 15px;
+  border: none;
+  margin: 5px 0;
+  background-color: #0a2239;
+  color: #fabc3c;
+  letter-spacing: 3px;
+}
+
+.user-info button:hover {
+  background-color: #fabc3c;
+  color: #0a2239;
+  cursor: pointer;
+}
 
 .stripe {
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.payment-form {
-  display: flex;
-  flex-direction: column;
+.stripe p {
+  padding: 10px 10%;
+}
+.stripe img {
+  max-width: 250px;
+}
+
+/* Add Book */
+/* this styling is for the part above the search results that is specific to AddBook only */
+
+.add-book form {
+  width: 100%;
 }
