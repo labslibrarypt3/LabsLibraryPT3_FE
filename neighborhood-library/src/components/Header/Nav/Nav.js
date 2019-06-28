@@ -14,7 +14,7 @@ function Nav() {
           >
             Add a Book
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
           <NavLink
             to="/my-shelf"
@@ -23,7 +23,7 @@ function Nav() {
           >
             My Shelf
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
           <NavLink
             to="/account"
@@ -32,7 +32,7 @@ function Nav() {
           >
             Account
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
           <Logout />
         </nav>
@@ -45,7 +45,7 @@ function Nav() {
           >
             Login
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
           <NavLink
             to="/"
@@ -54,7 +54,7 @@ function Nav() {
           >
             Register
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
         </nav>
       )}

@@ -37,10 +37,12 @@ class HomeLibrary extends Component {
           {this.state.data.map(e => {
             return (
               <MyBook
+                
                 title={e.title}
                 authors={e.authors}
                 cover={e.cover}
                 bookId={e.bookId}
+                key={e.bookId}
               />
             );
           })}

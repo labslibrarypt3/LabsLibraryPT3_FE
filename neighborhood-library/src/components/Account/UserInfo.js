@@ -39,7 +39,7 @@ class UserInfo extends Component {
   };
 
   render() {
-    // console.log(this.props,'in the userinfo')
+    
     if (!localStorage.getItem("jwt")) {
       return <Redirect to={"/"} />;
     }

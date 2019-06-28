@@ -48,7 +48,6 @@ this.setState({
   setupChatClient(client) {
     
     this.client = client;
-    console.log(client)
     this.client
       .getChannelByUniqueName('general')
       .then(channel => channel)

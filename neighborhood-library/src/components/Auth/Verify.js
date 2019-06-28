@@ -13,7 +13,7 @@ export default function verify (ComponentToProtect) {
       fetch('/checkToken')
         .then(res => {
           if (res.status === 200) {
-              console.log('jwt has been verified in component')
+              
             this.setState({ loading: false });
           } else {
             const error = new Error(res.error);
