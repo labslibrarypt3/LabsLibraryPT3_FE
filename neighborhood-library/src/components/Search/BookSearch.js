@@ -30,6 +30,10 @@ class BookSearch extends Component {
       };
       data();
   }
+//user searches books in stock
+// user finds book to borrow and clicks request
+//opens chat box and request from lender
+// lenders click lend button to create transaction - start stripe 
 
   render() {
     return (

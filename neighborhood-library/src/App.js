@@ -13,7 +13,7 @@ import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 
 import Search from "./components/Search/Search";
 
-import TwilioApp from "./components/Twilio/TwilioApp";
+
 
 import Footer from "./components/Footer/Footer";
 import AuthContainer from "./components/Auth/AuthContainer";
@@ -28,6 +28,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+   
     this.getData();
   }
 
@@ -41,6 +42,7 @@ class App extends React.Component {
   };
 
   render() {
+    
     return (
       <div className="App">
         <Header />
@@ -59,7 +61,7 @@ class App extends React.Component {
             <Route path="/search" component={Search} />
           </div>
 
-          <TwilioApp />
+          
         </div>
         <Footer />
       </div>
