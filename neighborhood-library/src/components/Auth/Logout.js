@@ -7,7 +7,7 @@ const Logout = () => {
   };
 
   return (
-    <button onClick={logout} class="logout-button">
+    <button onClick={logout} className="logout-button">
       Logout
     </button>
   );

@@ -61,7 +61,6 @@ class Headers extends React.Component {
   };
 
   render() {
-    console.log(this.state, "here is the header");
     const { isLoggedIn } = this.state;
     let avatar;
 
@@ -100,7 +99,7 @@ class Headers extends React.Component {
 
         <TwilioApp 
         username = {this.state.name}
-        userId = {this.state.userId}
+        userId = {this.state.userId}/>
         
 
       </header>

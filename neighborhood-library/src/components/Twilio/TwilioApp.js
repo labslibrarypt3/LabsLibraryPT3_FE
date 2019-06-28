@@ -100,11 +100,7 @@ class TwilioApp extends Component {
   }
 
   render() {
-    // this.user = {
-    //   id: this.props.userId,
-    //   username: this.props.username
-    // };
-      console.log(this.props)
+   
     if (this.state.error) {
       return <p>{this.state.error}</p>;
     } else if (this.state.isLoading) {
