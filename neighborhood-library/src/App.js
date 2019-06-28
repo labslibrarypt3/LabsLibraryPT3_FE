@@ -17,6 +17,7 @@ import TwilioApp from "./components/Twilio/TwilioApp";
 
 import Footer from "./components/Footer/Footer";
 import AuthContainer from "./components/Auth/AuthContainer";
+import"../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   constructor() {
