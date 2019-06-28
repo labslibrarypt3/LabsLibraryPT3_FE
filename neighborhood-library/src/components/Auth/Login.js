@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import AuthPostData from "./AuthPostData";
-// import { Link } from "react-router-dom";
 
-class Register extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
       password: "",
       email: ""
     };
@@ -21,27 +19,22 @@ class Register extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const type = "register";
+    const type = "login";
     const userData = {
-      name: this.state.username,
       password: this.state.password,
       email: this.state.email
     };
 
     AuthPostData(type, userData);
-  };
+
+    
+  }; 
   render() {
+    
     return (
-      <div className="manual-auth">
+      <div>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="login">Register</label>
-          <input
-            type="username"
-            name="username"
-            placeholder="username"
-            value={this.state.username}
-            onChange={this.handleInput}
-          />
+          <label htmlFor="login">Login</label>
           <input
             type="password"
             name="password"
@@ -56,11 +49,11 @@ class Register extends Component {
             value={this.state.email}
             onChange={this.handleInput}
           />
-          <button type="submit">Register</button>
+          <button type="submit">Login</button>
         </form>
       </div>
     );
   }
 }
 
-export default Register;
+export default Login;

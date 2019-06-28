@@ -1,15 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
+import { Redirect } from "react-router-dom";
 
 const Logout = () => {
+  const logout = () => {
+    return (localStorage.clear(), <Redirect to={"/"} />);
+  };
+
   return (
-    <button
-      onClick={() => {
-        localStorage.clear();
-      }}
-    >
+    <button onClick={logout} className="logout-button">
       Logout
     </button>
   );
-};
 
+  }
 export default Logout;
+

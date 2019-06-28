@@ -12,27 +12,40 @@ class GoodreadsSearchResult extends Component {
       title: this.props.title,
       authors: this.props.authors,
       ISBN: "0",
-      user_id: this.props.user_id,
-      cover: this.props.cover
+      cover: this.props.cover,
+      user_id: localStorage.getItem("id")
     };
   }
 
   addBookToLibrary = async () => {
     const book = this.state;
-    const axiosResponse = await axios
-      .post("localhost:4000/api/books", book)
-      .then(res => res.status(201).json({ message: "book added to library" }))
-      .catch(err => console.log(err));
+    const endpoint = "http://localhost:4000/api/books/"
+    const authToken = localStorage.getItem("jwt");
+    await axios
+      .post(
+        endpoint,
+        book,
+        {headers:{authorization:`${authToken}`}}
+      )
+      .then(res => console.log("book added to library"))
+      .catch(err => console.log(err, "front end book post"));
   };
 
   render() {
     return (
-      <div className="goodreads-search-result">
-        <img className="book-cover" src={this.props.cover} alt="cover image" />
-        <p>
-          {this.props.title} by {this.props.authors}
-        </p>
-        <button onClick={this.addBookToLibrary}>Add to Library</button>
+      <div className="goodreads-search-result book">
+        <div className="book-top">
+          <img
+            className="book-cover"
+            src={this.props.cover}
+            alt="cover"
+          />
+        </div>
+        <div className="book-bottom">
+          <p>{this.props.title}</p>
+          <p>by {this.props.authors}</p>
+          <button onClick={this.addBookToLibrary}>Add to Library</button>
+        </div>
       </div>
     );
   }
