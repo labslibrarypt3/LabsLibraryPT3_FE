@@ -41,6 +41,7 @@ class Landing extends Component {
                 <Login />
                 <p>Need an account?</p>
                 <button
+                  href="#"
                   className="manual-auth-nav"
                   onClick={this.handleRegClick}
                 >
@@ -52,6 +53,7 @@ class Landing extends Component {
                 <Register />
                 <p>Already have an account?</p>
                 <button
+                  href="#"
                   className="manual-auth-nav"
                   onClick={this.handleLoginClick}
                 >
