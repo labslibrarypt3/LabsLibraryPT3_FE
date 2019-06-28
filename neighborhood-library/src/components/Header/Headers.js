@@ -5,7 +5,6 @@ import MenuContent from "./MenuContent";
 import "../../App.css";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import TwilioApp from "../Twilio/oldTwilioApp";
 
 class Headers extends React.Component {
   state = {
@@ -27,6 +26,13 @@ class Headers extends React.Component {
   }
   componentDidMount() {
     this.getData();
+  }
+
+  isLoggedIn() {
+    this.setState({img: true});
+  }
+  isLoggedOut(){
+    this.setState({img:false});
   }
   getData = () => {
     if (localStorage.getItem("jwt")) {
@@ -52,7 +58,15 @@ class Headers extends React.Component {
   };
 
   render() {
-    
+    console.log(this.state,'here is the header')
+    const isLoggedIn = this.state.img;
+    let avatar;
+
+    if(isLoggedIn) {
+      avatar =<img className= "avatar" src={this.state.img} alt="avatar"/>
+    } else {
+      avatar = <img src={null}/>
+    }
     return (
       <header>
         <div className="sidebar">
@@ -75,11 +89,7 @@ class Headers extends React.Component {
           />
         </div>
         <h1 className="title">Neighborhood Library!</h1>
-        {/* <TwilioApp
-        userid = {this.state.userId}
-        username = {this.state.name}
-        
-        /> */}
+        {avatar}
       </header>
     );
   }
