@@ -14,10 +14,11 @@ import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSucce
 
 import Search from "./components/Search/Search";
 
-import TwilioApp from "./components/Twilio/TwilioApp";
+
 
 import Footer from "./components/Footer/Footer";
 import AuthContainer from "./components/Auth/AuthContainer";
+import"../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   constructor() {
@@ -28,6 +29,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+   
     this.getData();
   }
 
@@ -41,6 +43,7 @@ class App extends React.Component {
   };
 
   render() {
+    
     return (
       <div className="App">
         <Header />
@@ -64,7 +67,7 @@ class App extends React.Component {
             />
           </div>
 
-          <TwilioApp />
+          
         </div>
         <Footer />
       </div>

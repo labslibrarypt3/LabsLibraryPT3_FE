@@ -12,8 +12,8 @@ class TwilioApp extends Component {
     };
 
     this.user = {
-      id: props.username,
-      name: props.username
+      id: props.userId,
+      username: localStorage.getItem("username")
     };
 
     this.setupChatClient = this.setupChatClient.bind(this);
@@ -28,7 +28,7 @@ class TwilioApp extends Component {
     fetch('http://localhost:4000/api/twilio/token', {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       method: 'POST',
-      body: `identity=${encodeURIComponent(this.props.username)}`
+      body: `identity=${encodeURIComponent(localStorage.getItem("username"))}`
       
     })
       .then(res => res.json())
@@ -100,6 +100,10 @@ class TwilioApp extends Component {
   }
 
   render() {
+    // this.user = {
+    //   id: this.props.userId,
+    //   username: this.props.username
+    // };
       console.log(this.props)
     if (this.state.error) {
       return <p>{this.state.error}</p>;
