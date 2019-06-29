@@ -11,16 +11,14 @@ import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
-import TwilioApp from "./components/Twilio/TwilioApp"
-import TOS from "./components/Legal/TOS"
-import Privacy from "./components/Legal/Privacy"
+import TwilioApp from "./components/Twilio/TwilioApp";
+import TOS from "./components/Legal/TOS";
+import Privacy from "./components/Legal/Privacy";
 import Search from "./components/Search/Search";
-
-
 
 import Footer from "./components/Footer/Footer";
 import AuthContainer from "./components/Auth/AuthContainer";
-import"../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   constructor() {
@@ -31,7 +29,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-   
     this.getData();
   }
 
@@ -45,7 +42,6 @@ class App extends React.Component {
   };
 
   render() {
-    
     return (
       <div className="App">
         <Header />
@@ -68,18 +64,13 @@ class App extends React.Component {
               component={verify(StripeConnectSuccess)}
             />
 
-            <Route
-              path="/twilio" component={verify(TwilioApp)}/>
-          </div>
-          <Route
-              path="/tos" component={TOS}/>
-              <Route
-              path="/privacy" component={Privacy}/>
-          </div>
-          </div>
+            <Route path="/twilio" component={verify(TwilioApp)} />
 
-          
+            <Route path="/tos" component={TOS} />
+            <Route path="/privacy" component={Privacy} />
+          </div>
         </div>
+
         <Footer />
       </div>
     );

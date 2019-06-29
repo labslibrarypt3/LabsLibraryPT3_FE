@@ -42,6 +42,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
   padding: 20px 5%;
   color: white;
   border-top-left-radius: 15px;
@@ -56,9 +57,33 @@ header {
   );
 }
 
+.header-content {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
 header h1 {
+  display: flex;
+  flex-wrap: wrap;
   letter-spacing: 0px;
-  margin-left: 20px;
+  line-height: 60px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 50%;
+}
+
+#logo {
+  height: 60px;
+  margin: 0 2% 0 10%;
+  padding: 0;
+  position: relative;
 }
 
 .avatar {
@@ -451,7 +476,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%
+  width: 50%;
 }
 
 .user-info .edit-profile-form {

@@ -5,7 +5,7 @@ import MenuContent from "./MenuContent";
 import "../../App.css";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-// import TwilioApp from "../Twilio/TwilioApp";
+import logo from "./logo.svg";
 
 class Headers extends React.Component {
   state = {
@@ -52,7 +52,6 @@ class Headers extends React.Component {
             img: res.data.img,
             isLoggedIn: true
           });
-          
         })
         .catch(err => console.log(err));
     } else {
@@ -76,10 +75,9 @@ class Headers extends React.Component {
             isOpen={this.state.open}
             closeCallback={this.closeMenu.bind(this)}
           >
-          
             <MenuContent closeCallback={this.closeMenu.bind(this)} />
           </CheeseburgerMenu>
-          
+
           <HamburgerMenu
             isOpen={this.state.open}
             menuClicked={this.handleClick.bind(this)}
@@ -91,17 +89,15 @@ class Headers extends React.Component {
             className="hamburger-icon"
             border-radius={15}
           />
-         
         </div>
-        <h1 className="title">Neighborhood Library!</h1>
+        <div className="header-content">
+          <h1 className="title">
+            <img id="logo" src={logo} />
+            Neighborhood Library!
+          </h1>
 
-        <img src={avatar} className="avatar" />
-
-        {/* <TwilioApp 
-        username = {this.state.name}
-        userId = {this.state.userId}/> */}
-        
-
+          <img src={avatar} className="avatar" />
+        </div>
       </header>
     );
   }
