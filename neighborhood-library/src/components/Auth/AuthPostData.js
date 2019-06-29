@@ -1,26 +1,29 @@
 import axios from "axios";
 
 export default function AuthPostData(type, userData) {
-  
   return new Promise((resolve, reject) => {
-let endpoint;
-localStorage.setItem("username", userData.name)
+    let endpoint;
+    console.log(userData);
+    localStorage.setItem("username", userData.name);
 
-    type === 'facebook' || type === 'google'? endpoint = "http://localhost:4000/auths/auth"
-    :type === 'register'?endpoint = "http://localhost:4000/auths/manual":endpoint = "http://localhost:4000/auths/login"
+    type === "facebook" || type === "google"
+      ? (endpoint = "http://localhost:4000/auths/auth")
+      : type === "register"
+      ? (endpoint = "http://localhost:4000/auths/manual")
+      : (endpoint = "http://localhost:4000/auths/login");
     axios
       .post(endpoint, userData)
       .then(res => {
-        if(res.status === 200){
-        localStorage.setItem("jwt", res.data)
-        }else{
+        if (res.status === 200) {
+          localStorage.setItem("jwt", res.data);
+        } else {
           const error = new Error(res.error);
           throw error;
         }
       })
       .catch(err => {
-        console.log("login Error", err)
-        alert('Error logging in please try again')
+        console.log("login Error", err);
+        alert("Error logging in please try again");
       });
   });
 }
