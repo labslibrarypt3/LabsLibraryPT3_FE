@@ -29,6 +29,7 @@ export default function verify (ComponentToProtect) {
     render() {
       const { loading, redirect } = this.state;
       if (loading) {
+        console.log('verified hoc')
         return null;
       }else if (redirect) {
         return <Redirect to="/" />;
