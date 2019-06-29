@@ -5,7 +5,7 @@ import MenuContent from "./MenuContent";
 import "../../App.css";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import TwilioApp from "../Twilio/TwilioApp";
+// import TwilioApp from "../Twilio/TwilioApp";
 
 class Headers extends React.Component {
   state = {
@@ -97,9 +97,9 @@ class Headers extends React.Component {
 
         <img src={avatar} className="avatar" />
 
-        <TwilioApp 
+        {/* <TwilioApp 
         username = {this.state.name}
-        userId = {this.state.userId}/>
+        userId = {this.state.userId}/> */}
         
 
       </header>
