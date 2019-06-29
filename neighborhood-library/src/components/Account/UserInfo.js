@@ -57,8 +57,8 @@ class UserInfo extends Component {
        <ChangeUserInfo
          // userId= {this.state.userId}
   name= {this.props.name}
-  firstName= {this.props.firstname}
-  lastName={this.props.lastname}
+  firstName= {this.props.firstName}
+  lastName={this.props.lastName}
   email= {this.props.email}
   address= {this.props.address}
   city= {this.props.city}
