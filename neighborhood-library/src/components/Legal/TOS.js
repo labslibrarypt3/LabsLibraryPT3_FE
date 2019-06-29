@@ -7,14 +7,8 @@ const TOS = () => {
       <p>
         These terms and conditions outline the rules and regulations for the use
         of Neighborhood Library's Website.
-      </p>{" "}
-      <br />
-      <span style="text-transform: capitalize;"> Neighborhood Library</span> is
-      located at:
-      <br />
-      <address>
-        <br />
-      </address>
+      </p>
+      <p> Neighborhood Library is located online and managed remotely.</p>
       <p>
         By accessing this website we assume you accept these terms and
         conditions in full. Do not continue to use Neighborhood Library's
