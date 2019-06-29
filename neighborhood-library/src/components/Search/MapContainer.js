@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
-import Geocode from 'react-geocode';
 
 import CurrentLocation from "./Map";
 
@@ -15,18 +14,18 @@ export class MapContainer extends Component {
     selectedPlace: {}, // shows the InfoWindow to the selected place on marker
     places: [{
       name: 'Prospect Park',
-      lat: 40.665,
-      lng: -73.969
+      lat: '40.665',
+      lng: '-73.969'
     },
     {
       name: 'Brooklyn Public Library',
-      lat: 40.672,
-      lng: -73.968
+      lat: '40.672',
+      lng: '-73.968'
     },
     {
       name: 'Brooklyn Botanical Garden',
-      lat: 40.663,
-      lng: -73.962
+      lat: '40.663',
+      lng: '-73.962'
     }]
   };
 
@@ -75,21 +74,37 @@ export class MapContainer extends Component {
     }
   };
 
-  getGeocodeData = () => {
-    Geocode.setApiKey(process.env.REACT_APP_MAPS_KEY);
-    Geocode.setLanguage('en');
-    Geocode.enableDebug();
-
-    Geocode.fromLatLng('', '').then(
-      response => {
-        const address = response.results[0].formatted_address;
-        console.log(address);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  initializeGeocoder() {
+    geocoder = new google.maps.Geocoder();
+    let latlng = new google.maps.LatLng(-34.397, 150.644);
+    let mapOptions = {
+      zoom: 8,
+      center: latlng
+    }
+    const mapRef = this.maps.ref;
+    map = new google.maps.Map(mapRef, mapOptions);
   }
+
+  codeAddress() {
+    let address;
+    
+  }
+
+  // getGeocodeData = () => {
+  //   Geocode.setApiKey(process.env.REACT_APP_MAPS_KEY);
+  //   Geocode.setLanguage('en');
+  //   Geocode.enableDebug();
+  //
+  //   Geocode.fromLatLng(this.state.lat, this.state.lng).then(
+  //     response => {
+  //       const address = response.results[0].formatted_address;
+  //       console.log(address);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   render() {
     if (!this.props.loaded) {
