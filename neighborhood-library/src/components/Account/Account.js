@@ -9,9 +9,18 @@ class Account extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: "",
-      name: "",
-      email: ""
+      userId: " ",
+      name: " ",
+      firstName: " ",
+      lastName: " ",
+      email: " ",
+      address: " ",
+      city: " ",
+      state: " ",
+      zipcode: " ",
+      img: " ",
+      password: " ",
+      stripe_user_id: " "
     };
   }
   componentDidMount() {
@@ -29,10 +38,16 @@ class Account extends Component {
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
-            address: res.data.address,
+            firstName: res.data.firstname,
+            lastName: res.data.lastname,
             email: res.data.email,
+            address: res.data.address,
+            city: res.data.city,
+            state: res.data.state,
+            zipcode: res.data.zipcode,
             img: res.data.img,
-            password: res.data.img
+            password: res.data.password,
+            stripe_user_id: res.data.stripe_user_id
           });
         })
         .catch(err => console.log(err));
@@ -48,16 +63,22 @@ class Account extends Component {
       <div className="page account">
         <h2>{this.state.name}</h2>
         <UserInfo
+          userId={this.state.userId}
           name={this.state.name}
-          address={this.state.address}
+          firstName={this.state.firstname}
+          lastName={this.state.lastname}
           email={this.state.email}
+          address={this.state.address}
+          city={this.state.city}
+          state={this.state.state}
+          zipcode={this.state.zipcode}
           img={this.state.img}
           password={this.state.password}
         />
 
         <StripeProvider apiKey="pk_test_j6wi0FWmtWCqFPwU3oCHJA2800c8YshuOy">
           <Elements>
-            <Stripe />
+            <Stripe stripe_user_id={this.state.stripe_user_id} />
           </Elements>
         </StripeProvider>
       </div>

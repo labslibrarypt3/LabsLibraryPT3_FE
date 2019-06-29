@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import ChangePassword from "./ChangePassword"
+import ChangeUserInfo from "./ChangeUserInfo"
+import axios from "axios"
+
 
 class UserInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {
-        name: "",
-        address: "",
-        email: "",
-        img: "",
-        password: ""
-      },
       edit: false,
       changePassword: false
     };
@@ -38,6 +35,18 @@ class UserInfo extends Component {
     });
   };
 
+  
+  // userId= {this.state.userId}
+  // name= {this.state.name}
+  // firstName= {this.state.firstname}
+  // lastName={this.state.lastname}
+  // email= {this.state.email}
+  // address= {this.state.address}
+  // city= {this.state.city}
+  // state={this.state.state}
+  // zipcode={this.state.zipcode}
+  // img= {this.state.img}
+  // password= {this.state.password}
   render() {
     
     if (!localStorage.getItem("jwt")) {
@@ -45,48 +54,19 @@ class UserInfo extends Component {
     }
     if (this.state.edit) {
       return (
-        <div className="user-info">
-          <h2>Edit Profile</h2>
-          <form className="edit-profile-form">
-            <div className="form-pair">
-              <label>Name</label>
-              <input
-                placeholder={this.props.name}
-                type="text"
-                name="name"
-                ref="name"
-              />
-            </div>
-            <div className="form-pair">
-              <label>Street Address</label>
-              <input
-                placeholder={this.props.address}
-                type="text"
-                name="address"
-                ref="address"
-              />
-            </div>
-            <div className="form-pair">
-              <label>Email</label>
-              <input
-                placeholder={this.props.email}
-                type="email"
-                name="email"
-                ref="email"
-              />
-            </div>
-            <div className="form-pair">
-              <label>Avatar url:</label>
-              <input
-                placeholder="Enter web address for img"
-                type="text"
-                name="img"
-                ref="img"
-              />
-            </div>
-            <button>Submit</button>
-          </form>
-        </div>
+       <ChangeUserInfo
+         // userId= {this.state.userId}
+  name= {this.props.name}
+  firstName= {this.props.firstname}
+  lastName={this.props.lastname}
+  email= {this.props.email}
+  address= {this.props.address}
+  city= {this.props.city}
+  state={this.props.state}
+  zipcode={this.props.zipcode}
+  img= {this.props.img}
+  
+       />
       );
     } else {
       if (!this.state.changePassword) {
@@ -94,10 +74,25 @@ class UserInfo extends Component {
           <div className="user-info">
             <h2> Account Info</h2>
             <div>
-              <label>Name:</label> {this.props.name}
+              <label>UserName:</label> {this.props.name}
+            </div>
+            <div>
+              <label>FirstName:</label> {this.props.firstname}
+            </div>
+            <div>
+              <label>LastName:</label> {this.props.lastname}
             </div>
             <div>
               <label>Street Address:</label> {this.props.address}
+            </div>
+            <div>
+              <label>City:</label> {this.props.city}
+            </div>
+            <div>
+              <label>State:</label> {this.props.state}
+            </div>
+            <div>
+              <label>Zipcode:</label> {this.props.zipcode}
             </div>
             <div>
               <label>Email:</label> {this.props.email}
@@ -117,38 +112,9 @@ class UserInfo extends Component {
         );
       } else {
         return (
-          <div className="user-info">
-            <h2>Change Password</h2>
-            <form>
-              <div>
-                <label>Current Password:</label>
-                <input
-                  placeholder={"Enter current password"}
-                  type="password"
-                  name="currentPassword"
-                  ref="currentPassword"
-                />
-              </div>
-              <div>
-                <label>New Password:</label>
-                <input
-                  placeholder={"Enter new password"}
-                  type="password"
-                  name="newPassword"
-                  ref="newPassword"
-                />
-              </div>
-              <div>
-                <label>Confirm password:</label>
-                <input
-                  placeholder={"Enter current password"}
-                  type="password"
-                  name="currentPassword"
-                  ref="currentPassword"
-                />
-              </div>
-            </form>
-          </div>
+          <ChangePassword
+          password= {this.props.password}
+          />
         );
       }
     }
