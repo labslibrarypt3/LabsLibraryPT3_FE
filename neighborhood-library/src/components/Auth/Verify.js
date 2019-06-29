@@ -13,10 +13,11 @@ export default function verify (ComponentToProtect) {
       fetch('/checkToken')
         .then(res => {
           if (res.status === 200) {
-              console.log('jwt has been verified in component')
+              
             this.setState({ loading: false });
           } else {
             const error = new Error(res.error);
+            this.setState({ loading: false, redirect: true });
             throw error;
           }
         })
@@ -28,9 +29,9 @@ export default function verify (ComponentToProtect) {
     render() {
       const { loading, redirect } = this.state;
       if (loading) {
+        console.log('verified hoc')
         return null;
-      }
-      if (redirect) {
+      }else if (redirect) {
         return <Redirect to="/" />;
       }
       return (

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Landing from "../../Landing/Landing";
-import { NavLink, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import MyBook from "../MyBook";
 
 class HomeLibrary extends Component {
@@ -38,10 +37,12 @@ class HomeLibrary extends Component {
           {this.state.data.map(e => {
             return (
               <MyBook
+                
                 title={e.title}
                 authors={e.authors}
                 cover={e.cover}
                 bookId={e.bookId}
+                key={e.bookId}
               />
             );
           })}

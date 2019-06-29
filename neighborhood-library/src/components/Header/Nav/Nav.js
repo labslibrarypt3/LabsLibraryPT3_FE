@@ -1,8 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import AuthContainer from "../../Auth/AuthContainer";
-import Login from "../../Auth/Login";
-import Register from "../../Auth/Register";
 import Logout from "../../Auth/Logout";
 
 function Nav() {
@@ -17,7 +14,7 @@ function Nav() {
           >
             Add a Book
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
           <NavLink
             to="/my-shelf"
@@ -26,7 +23,7 @@ function Nav() {
           >
             My Shelf
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
           <NavLink
             to="/account"
@@ -35,7 +32,7 @@ function Nav() {
           >
             Account
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
           <Logout />
         </nav>
@@ -48,7 +45,7 @@ function Nav() {
           >
             Login
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
           <NavLink
             to="/"
@@ -57,7 +54,7 @@ function Nav() {
           >
             Register
             <hr />
-            <div class="pageTurn" />
+            <div className="pageTurn" />
           </NavLink>
         </nav>
       )}

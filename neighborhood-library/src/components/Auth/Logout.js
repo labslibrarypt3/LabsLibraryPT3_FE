@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
-import Landing from "../Landing/Landing";
 
 const Logout = () => {
   const logout = () => {
@@ -8,7 +7,7 @@ const Logout = () => {
   };
 
   return (
-    <button onClick={logout} class="logout-button">
+    <button onClick={logout} className="logout-button">
       Logout
     </button>
   );

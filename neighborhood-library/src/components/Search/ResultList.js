@@ -7,8 +7,8 @@ class ResultList extends Component {
 
   render() {
     return(
-
-    );
+      <h1>blah</h1>
+    )
   }
 }
 

@@ -1,22 +1,25 @@
 import React from "react";
 import "./App.css";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import axios from "axios";
 
 //component imports
-import verify from "./components/Auth/Verify"
+import verify from "./components/Auth/Verify";
 import Account from "./components/Account/Account";
 import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
+import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
+import TwilioApp from "./components/Twilio/TwilioApp"
 
 import Search from "./components/Search/Search";
 
-import TwilioApp from "./components/Twilio/TwilioApp";
+
 
 import Footer from "./components/Footer/Footer";
 import AuthContainer from "./components/Auth/AuthContainer";
+import"../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   constructor() {
@@ -27,6 +30,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+   
     this.getData();
   }
 
@@ -40,6 +44,7 @@ class App extends React.Component {
   };
 
   render() {
+    
     return (
       <div className="App">
         <Header />
@@ -56,9 +61,17 @@ class App extends React.Component {
             <Route path="/my-shelf" component={verify(MyShelf)} />
 
             <Route path="/search" component={Search} />
+
+            <Route
+              path="/stripe-success"
+              component={verify(StripeConnectSuccess)}
+            />
+
+            <Route
+              path="/twilio" component={verify(TwilioApp)}/>
           </div>
 
-          <TwilioApp />
+          
         </div>
         <Footer />
       </div>

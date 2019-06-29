@@ -21,7 +21,7 @@ class GoodreadsSearchResult extends Component {
     const book = this.state;
     const endpoint = "http://localhost:4000/api/books/"
     const authToken = localStorage.getItem("jwt");
-    const axiosResponse = await axios
+    await axios
       .post(
         endpoint,
         book,
@@ -38,7 +38,7 @@ class GoodreadsSearchResult extends Component {
           <img
             className="book-cover"
             src={this.props.cover}
-            alt="cover image"
+            alt="cover"
           />
         </div>
         <div className="book-bottom">
