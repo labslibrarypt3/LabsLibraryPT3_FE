@@ -9,6 +9,8 @@ import logo from "./logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
+import Landing from "../Landing/Landing";
+import { Link } from "react-router-dom";
 //enables use of icon
 library.add(faCommentAlt);
 
@@ -98,7 +100,9 @@ class Headers extends React.Component {
         <div className="header-content">
           <h1 className="title">
             <img id="logo" src={logo} />
-            Neighborhood Library
+            <Link to="/" component={Landing}>
+              Neighborhood Library
+            </Link>
           </h1>
           <div className="user-nav">
             <img src={avatar} className="avatar" />

@@ -88,6 +88,16 @@ header h1 {
   padding-right: 5%;
 }
 
+.title a {
+  text-decoration: none;
+  color: white;
+}
+
+.title a:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .user-nav {
   width: 40%;
   display: flex;
