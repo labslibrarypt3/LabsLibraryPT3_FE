@@ -9,7 +9,6 @@ import logo from "./logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
-import Landing from "../Landing/Landing";
 import { Link } from "react-router-dom";
 //enables use of icon
 library.add(faCommentAlt);
@@ -37,9 +36,16 @@ class Headers extends React.Component {
     this.getData();
   }
 
-  //this allows avatar to load in header if user is not already logged in upon starting app
+  //grabs avatar img if it doesn't show on first render
   componentDidUpdate() {
-    this.getData();
+    const { isLoggedIn } = this.state;
+    let avatar;
+
+    if (isLoggedIn) {
+      avatar = this.state.img;
+    } else {
+      avatar = null;
+    }
   }
 
   isLoggedIn() {
@@ -105,9 +111,7 @@ class Headers extends React.Component {
         <div className="header-content">
           <h1 className="title">
             <img id="logo" src={logo} />
-            <Link to="/" component={Landing}>
-              Neighborhood Library
-            </Link>
+            <Link to={{ pathname: "/" }}>Neighborhood Library</Link>
           </h1>
           <div className="user-nav">
             <img src={avatar} className="avatar" />

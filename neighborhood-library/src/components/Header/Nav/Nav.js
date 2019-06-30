@@ -26,7 +26,10 @@ function Nav() {
             <div className="pageTurn" />
           </NavLink>
           <NavLink
-            to="/account"
+            to={{
+              pathname: "/account",
+              state: { isLoggedIn: true }
+            }}
             activeClassName="selected"
             className="nav-item"
           >

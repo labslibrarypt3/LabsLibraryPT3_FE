@@ -35,6 +35,7 @@ class Account extends Component {
           headers: { authorization: authToken }
         })
         .then(res => {
+          console.log("account response", res);
           this.setState({
             userId: res.data.userId,
             name: res.data.name,
@@ -65,8 +66,8 @@ class Account extends Component {
         <UserInfo
           userId={this.state.userId}
           name={this.state.name}
-          firstName={this.state.firstname}
-          lastName={this.state.lastname}
+          firstName={this.state.firstName}
+          lastName={this.state.lastName}
           email={this.state.email}
           address={this.state.address}
           city={this.state.city}
