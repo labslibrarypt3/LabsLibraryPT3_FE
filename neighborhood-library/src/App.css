@@ -240,8 +240,11 @@ hr {
 }
 
 /* Footer */
-footer {
-  margin-top: 20px;
+#footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: rgb(234, 77, 51);
   background: linear-gradient(
     90deg,
@@ -249,16 +252,18 @@ footer {
     rgba(250, 188, 60, 1) 74%,
     rgba(234, 77, 51, 1) 100%
   );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   color: white;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   padding: 20px 0;
-  font-weight: bold;
   font-size: 12px;
+}
+
+.legal-links {
+  display: flex;
+  width: 40%;
+  justify-content: space-evenly;
+  margin-top: 5px;
 }
 
 footer a {
