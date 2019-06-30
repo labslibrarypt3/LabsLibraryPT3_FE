@@ -37,6 +37,11 @@ class Headers extends React.Component {
     this.getData();
   }
 
+  //this allows avatar to load in header if user is not already logged in upon starting app
+  componentDidUpdate() {
+    this.getData();
+  }
+
   isLoggedIn() {
     this.setState({ isLoggedIn: true });
   }
