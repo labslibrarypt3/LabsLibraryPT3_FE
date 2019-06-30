@@ -11,7 +11,8 @@ export default function AuthPostData(type, userData) {
       : type === "register"
       ? (endpoint = "http://localhost:4000/auths/manual")
       : (endpoint = "http://localhost:4000/auths/login");
-    axios
+    // console.log (userData)
+      axios
       .post(endpoint, userData)
       .then(res => {
         if (res.status === 200) {
