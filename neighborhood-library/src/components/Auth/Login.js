@@ -26,11 +26,8 @@ class Login extends Component {
     };
 
     AuthPostData(type, userData);
-
-    
-  }; 
+  };
   render() {
-    
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -51,6 +48,7 @@ class Login extends Component {
           />
           <button type="submit">Login</button>
         </form>
+        <a href="/change-password">Forgot password?</a>
       </div>
     );
   }
