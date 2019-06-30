@@ -43,7 +43,7 @@ header {
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-  padding: 20px 5%;
+  padding: 20px 0;
   color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -63,6 +63,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  padding-left: 10%;
 }
 
 header h1 {
@@ -77,21 +78,37 @@ header h1 {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
-  width: 75%;
+  width: 60%;
+  line-height: 32px;
 }
 
 #logo {
   height: 60px;
-  margin: 0 2% 0 10%;
-  padding: 0;
-  position: relative;
+  padding-left: 10%;
+  padding-right: 5%;
+}
+
+.user-nav {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatar {
-  vertical-align: middle;
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin: 0 15%;
+}
+
+.message-icon {
+  width: 50%;
+}
+
+/* hamburger menu container */
+.sidebar {
+  padding-left: 5%;
 }
 
 .hamburger-menu {
@@ -106,12 +123,14 @@ header h1 {
   color: #e8e8f9;
 }
 
-nav {
+#logged-in-nav,
+#logged-out-nav {
+  margin-top: 20px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 20px auto;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .login-button {
@@ -132,6 +151,11 @@ nav {
 .logout-button:hover {
   cursor: pointer;
 }
+
+/* menu-item class name used by cheeseburger library 
+it contains the whole nav.
+there is an extra div inside menu-item to hold the conditional logic for the logged in vs logged out nav
+*/
 
 .menu-item a {
   padding: 25px 15px;
@@ -203,17 +227,11 @@ hr {
   transition-duration: 0.3s;
 }
 
-.auth-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  margin: 0 auto;
-}
-
 .hint {
   padding: 0.5rem 15px;
+  font-size: 12px;
+  opacity: 0.5;
+  text-align: center;
 }
 
 .cheeseburger-menu,

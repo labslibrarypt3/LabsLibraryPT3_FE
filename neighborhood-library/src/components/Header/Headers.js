@@ -98,11 +98,11 @@ class Headers extends React.Component {
         <div className="header-content">
           <h1 className="title">
             <img id="logo" src={logo} />
-            Neighborhood Library!
+            Neighborhood Library
           </h1>
           <div className="user-nav">
             <img src={avatar} className="avatar" />
-            <FontAwesomeIcon icon="comment-alt" />
+            <FontAwesomeIcon icon="comment-alt" className="message-icon" />
           </div>
         </div>
       </header>
