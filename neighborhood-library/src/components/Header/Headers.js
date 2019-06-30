@@ -6,6 +6,11 @@ import "../../App.css";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import logo from "./logo.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
+//enables use of icon
+library.add(faCommentAlt);
 
 class Headers extends React.Component {
   state = {
@@ -95,8 +100,10 @@ class Headers extends React.Component {
             <img id="logo" src={logo} />
             Neighborhood Library!
           </h1>
-
-          <img src={avatar} className="avatar" />
+          <div className="user-nav">
+            <img src={avatar} className="avatar" />
+            <FontAwesomeIcon icon="comment-alt" />
+          </div>
         </div>
       </header>
     );
