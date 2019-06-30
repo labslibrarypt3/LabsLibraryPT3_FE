@@ -75,14 +75,14 @@ export class MapContainer extends Component {
   };
 
   initializeGeocoder() {
-    geocoder = new google.maps.Geocoder();
-    let latlng = new google.maps.LatLng(-34.397, 150.644);
+    let geocoder = new this.google.maps.Geocoder();
+    let latlng = new this.google.maps.LatLng(-34.397, 150.644);
     let mapOptions = {
       zoom: 8,
       center: latlng
     }
     const mapRef = this.maps.ref;
-    map = new google.maps.Map(mapRef, mapOptions);
+    let map = new this.google.maps.Map(mapRef, mapOptions);
   }
 
   codeAddress() {
