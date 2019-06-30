@@ -3,7 +3,7 @@ import AuthPostData from "./AuthPostData";
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import "../../App.css";
-
+import ForgotPassword from "./ForgotPassword";
 
 class AuthContainer extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class AuthContainer extends Component {
         email: res.email,
         provider_id: res.id,
         token: res.accessToken,
-        img:res.picture
+        img: res.picture
       };
     }
 
@@ -36,16 +36,14 @@ class AuthContainer extends Component {
         email: res.w3.U3,
         provider_id: res.El,
         token: res.Zi.access_token,
-        img:res.w3.Paa
+        img: res.w3.Paa
       };
-      
     }
 
     AuthPostData(type, userData);
   }
 
   render() {
-  
     const responseGoogle = response => {
       this.callback(response, "google");
     };
@@ -81,7 +79,6 @@ class AuthContainer extends Component {
             />
           </div>
         ) : (
-
           <button
             className="logout-button"
             onClick={() => {
@@ -91,8 +88,8 @@ class AuthContainer extends Component {
           >
             Logout
           </button>
-
         )}
+        <ForgotPassword />
       </div>
     );
   }

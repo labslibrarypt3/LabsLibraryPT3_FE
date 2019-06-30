@@ -5,7 +5,13 @@ import MenuContent from "./MenuContent";
 import "../../App.css";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-// import TwilioApp from "../Twilio/TwilioApp";
+import logo from "./logo.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+//enables use of icon
+library.add(faCommentAlt);
 
 class Headers extends React.Component {
   state = {
@@ -30,6 +36,18 @@ class Headers extends React.Component {
     this.getData();
   }
 
+  //grabs avatar img if it doesn't show on first render
+  componentDidUpdate() {
+    const { isLoggedIn } = this.state;
+    let avatar;
+
+    if (isLoggedIn) {
+      avatar = this.state.img;
+    } else {
+      avatar = null;
+    }
+  }
+
   isLoggedIn() {
     this.setState({ isLoggedIn: true });
   }
@@ -52,7 +70,6 @@ class Headers extends React.Component {
             img: res.data.img,
             isLoggedIn: true
           });
-          
         })
         .catch(err => console.log(err));
     } else {
@@ -76,10 +93,9 @@ class Headers extends React.Component {
             isOpen={this.state.open}
             closeCallback={this.closeMenu.bind(this)}
           >
-          
             <MenuContent closeCallback={this.closeMenu.bind(this)} />
           </CheeseburgerMenu>
-          
+
           <HamburgerMenu
             isOpen={this.state.open}
             menuClicked={this.handleClick.bind(this)}
@@ -91,17 +107,17 @@ class Headers extends React.Component {
             className="hamburger-icon"
             border-radius={15}
           />
-         
         </div>
-        <h1 className="title">Neighborhood Library!</h1>
-
-        <img src={avatar} className="avatar" />
-
-        {/* <TwilioApp 
-        username = {this.state.name}
-        userId = {this.state.userId}/> */}
-        
-
+        <div className="header-content">
+          <h1 className="title">
+            <img id="logo" src={logo} />
+            <Link to={{ pathname: "/" }}>Neighborhood Library</Link>
+          </h1>
+          <div className="user-nav">
+            <img src={avatar} className="avatar" />
+            <FontAwesomeIcon icon="comment-alt" className="message-icon" />
+          </div>
+        </div>
       </header>
     );
   }

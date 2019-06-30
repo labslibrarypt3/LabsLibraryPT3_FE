@@ -5,16 +5,18 @@ import Privacy from "../Legal/Privacy";
 
 const Footer = () => {
   return (
-    <div>
-      <footer>
-        <p>A Lambda Labs project.</p>
-        <a href="#">View the source code.</a>
-        <div className="legal-links">
-          <Link to="/tos" component={TOS} />
-          <Link to="/privacy" component={Privacy} />
-        </div>
-      </footer>
-    </div>
+    <footer id="footer">
+      <p>A Lambda Labs project.</p>
+      <a href="https://github.com/labslibrarypt3 ">View the source code.</a>
+      <div className="legal-links">
+        <Link to="/tos" component={TOS}>
+          Terms of Service
+        </Link>
+        <Link to="/privacy" component={Privacy}>
+          Privacy Policy
+        </Link>
+      </div>
+    </footer>
   );
 };
 

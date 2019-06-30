@@ -6,7 +6,7 @@ function Nav() {
   return (
     <div>
       {localStorage.getItem("jwt") ? (
-        <nav>
+        <nav id="logged-in-nav">
           <NavLink
             to="/add-book"
             activeClassName="selected"
@@ -26,7 +26,10 @@ function Nav() {
             <div className="pageTurn" />
           </NavLink>
           <NavLink
-            to="/account"
+            to={{
+              pathname: "/account",
+              state: { isLoggedIn: true }
+            }}
             activeClassName="selected"
             className="nav-item"
           >
@@ -37,7 +40,7 @@ function Nav() {
           <Logout />
         </nav>
       ) : (
-        <nav>
+        <nav id="logged-out-nav">
           <NavLink
             to="/"
             activeClassName="selected"

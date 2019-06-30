@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import ChangePassword from "./ChangePassword"
-import ChangeUserInfo from "./ChangeUserInfo"
-import axios from "axios"
-
+import ChangePassword from "./ChangePassword";
+import ChangeUserInfo from "./ChangeUserInfo";
+import axios from "axios";
 
 class UserInfo extends Component {
   constructor(props) {
@@ -35,7 +34,6 @@ class UserInfo extends Component {
     });
   };
 
-  
   // userId= {this.state.userId}
   // name= {this.state.name}
   // firstName= {this.state.firstname}
@@ -48,25 +46,23 @@ class UserInfo extends Component {
   // img= {this.state.img}
   // password= {this.state.password}
   render() {
-    
     if (!localStorage.getItem("jwt")) {
       return <Redirect to={"/"} />;
     }
     if (this.state.edit) {
       return (
-       <ChangeUserInfo
-         // userId= {this.state.userId}
-  name= {this.props.name}
-  firstName= {this.props.firstName}
-  lastName={this.props.lastName}
-  email= {this.props.email}
-  address= {this.props.address}
-  city= {this.props.city}
-  state={this.props.state}
-  zipcode={this.props.zipcode}
-  img= {this.props.img}
-  
-       />
+        <ChangeUserInfo
+          // userId= {this.state.userId}
+          name={this.props.name}
+          firstName={this.props.firstName}
+          lastName={this.props.lastName}
+          email={this.props.email}
+          address={this.props.address}
+          city={this.props.city}
+          state={this.props.state}
+          zipcode={this.props.zipcode}
+          img={this.props.img}
+        />
       );
     } else {
       if (!this.state.changePassword) {
@@ -113,8 +109,8 @@ class UserInfo extends Component {
       } else {
         return (
           <ChangePassword
-          password= {this.props.password}
-          email= {this.props.email}
+            password={this.props.password}
+            email={this.props.email}
           />
         );
       }
