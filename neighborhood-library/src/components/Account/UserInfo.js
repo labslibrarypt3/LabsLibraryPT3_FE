@@ -114,6 +114,7 @@ class UserInfo extends Component {
         return (
           <ChangePassword
           password= {this.props.password}
+          email= {this.props.email}
           />
         );
       }

@@ -24,9 +24,7 @@ class ChangeUserInfo extends Component {
       }
     }
     inputHandler = (e) =>{
-      console.log(e)
             this.setState({ [e.target.name]: e.target.value });
-            
           };
 
     onSubmitHandler = (e) =>{
