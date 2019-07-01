@@ -1,9 +1,11 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 
-const Logout = () => {
+const Logout = withRouter(({ history }) => {
   const logout = () => {
-    return (localStorage.clear(), <Redirect to={"/"} />);
+    localStorage.clear();
+    // <Redirect to={"http://localhost:3000/"} />
+    history.push("/");
   };
 
   return (
@@ -11,7 +13,5 @@ const Logout = () => {
       Logout
     </button>
   );
-
-  }
+});
 export default Logout;
-

@@ -113,10 +113,13 @@ class Headers extends React.Component {
             <img id="logo" src={logo} />
             <Link to={{ pathname: "/" }}>Neighborhood Library</Link>
           </h1>
-          <div className="user-nav">
-            <img src={avatar} className="avatar" />
-            <FontAwesomeIcon icon="comment-alt" className="message-icon" />
-          </div>
+
+          {avatar ? (
+            <div className="user-nav">
+              <img src={avatar} className="avatar" />
+              <FontAwesomeIcon icon="comment-alt" className="message-icon" />
+            </div>
+          ) : null}
         </div>
       </header>
     );
