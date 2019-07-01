@@ -26,6 +26,4 @@ class MenuContent extends Component {
   }
 }
 
-
-
 export default MenuContent;

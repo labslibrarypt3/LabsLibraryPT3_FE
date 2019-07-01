@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import axios from "axios";
 
 //component imports
@@ -42,6 +42,10 @@ class App extends React.Component {
   };
 
   render() {
+    //     <Route
+    //   path='/dashboard'
+    //   render={(props) => <Dashboard {...props} isAuthed={true} />}
+    // />
     return (
       <div className="App">
         <Header />
@@ -77,4 +81,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
