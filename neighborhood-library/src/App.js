@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import axios from "axios";
 
 //component imports
@@ -23,28 +23,41 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      data: []
-    };
+    this.state = {};
   }
 
   componentDidMount() {
     this.getData();
   }
 
-  getData = () => {
-    axios
-      .get("https://pt3-neighborhood-library-back.herokuapp.com/")
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.log(err));
+  getData = async () => {
+    if (localStorage.getItem("jwt")) {
+      const authToken = localStorage.getItem("jwt");
+      const endpoint = "http://localhost:4000/api/users/user";
+      const axiosResponse = await axios
+        .get(endpoint, {
+          headers: { authorization: authToken }
+        })
+        .then(res => {
+          console.log("img on line 45", res.data.img);
+          this.setState({
+            userId: res.data.userId,
+            name: res.data.name,
+            email: res.data.email,
+            img: localStorage.getItem("img")
+          });
+        })
+        .catch(err => console.log(err));
+    } else {
+      return <Redirect to={"/"} />;
+    }
   };
 
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header img={this.state.img} />
+
         <div className="main">
           <div className="main-routes">
             <Route exact path="/" component={Landing} />

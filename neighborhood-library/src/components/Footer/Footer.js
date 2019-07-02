@@ -9,12 +9,8 @@ const Footer = () => {
       <p>A Lambda Labs project.</p>
       <a href="https://github.com/labslibrarypt3 ">View the source code.</a>
       <div className="legal-links">
-        <Link to="/tos" component={TOS}>
-          Terms of Service
-        </Link>
-        <Link to="/privacy" component={Privacy}>
-          Privacy Policy
-        </Link>
+        <Link to="/tos">Terms of Service</Link>
+        <Link to="/privacy">Privacy Policy</Link>
       </div>
     </footer>
   );

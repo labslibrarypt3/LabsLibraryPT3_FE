@@ -4,6 +4,7 @@ import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import "../../App.css";
 import ForgotPassword from "./ForgotPassword";
+import Headers from "../Header/Headers";
 
 class AuthContainer extends Component {
   constructor(props) {

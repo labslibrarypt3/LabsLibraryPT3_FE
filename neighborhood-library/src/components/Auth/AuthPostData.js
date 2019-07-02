@@ -5,6 +5,7 @@ export default function AuthPostData(type, userData) {
     let endpoint;
 
     localStorage.setItem("username", userData.name);
+    localStorage.setItem("img", userData.img);
 
     type === "facebook" || type === "google"
       ? (endpoint = "http://localhost:4000/auths/auth")
@@ -12,7 +13,7 @@ export default function AuthPostData(type, userData) {
       ? (endpoint = "http://localhost:4000/auths/manual")
       : (endpoint = "http://localhost:4000/auths/login");
     // console.log (userData)
-      axios
+    axios
       .post(endpoint, userData)
       .then(res => {
         if (res.status === 200) {
