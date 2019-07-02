@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function AuthPostData(type, userData) {
+const AuthPostData = (type, userData) => {
   return new Promise((resolve, reject) => {
     let endpoint;
 
@@ -28,4 +28,5 @@ export default function AuthPostData(type, userData) {
         alert("Error logging in please try again");
       });
   });
-}
+};
+export default AuthPostData;
