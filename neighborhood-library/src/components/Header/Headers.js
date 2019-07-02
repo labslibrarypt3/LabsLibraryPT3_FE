@@ -80,12 +80,12 @@ class Headers extends React.Component {
             <Link to={{ pathname: "/" }}>Neighborhood Library</Link>
           </h1>
 
-          {avatar ? (
+          {/* {avatar ? (
             <div className="user-nav">
               <img src={avatar} className="avatar" />
               <FontAwesomeIcon icon="comment-alt" className="message-icon" />
             </div>
-          ) : null}
+          ) : null} */}
         </div>
       </header>
     );

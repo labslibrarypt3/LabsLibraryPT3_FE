@@ -1,13 +1,13 @@
 /*
 This component connects to the Goodreads API and returns a list of books based on the user's search results
 
-If you need to make changes to a single result, please go to GoodreadsSearchResult.js
+If you need to make changes to a single result, please go to AddBook.js
  */
 import React, { Component } from "react";
 import axios from "axios";
-import GoodreadsSearchResult from "./GoodreadsSearchResult";
+import AddBook from "./AddBook";
 
-class SearchGoodreads extends Component {
+class AddBookContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,7 +63,7 @@ class SearchGoodreads extends Component {
         <div className="goodreads-search-results-container shelf">
           {this.state.books.map(book => {
             return (
-              <GoodreadsSearchResult
+              <AddBook
                 key={book.goodreadsId}
                 cover={book.covers[0]}
                 title={book.title}
@@ -77,4 +77,4 @@ class SearchGoodreads extends Component {
   }
 }
 
-export default SearchGoodreads;
+export default AddBookContainer;

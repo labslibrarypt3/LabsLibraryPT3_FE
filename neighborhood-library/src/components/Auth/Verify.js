@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-export default function verify(ComponentToProtect) {
+export default function Verify(ComponentToProtect) {
   return class extends Component {
     constructor() {
       super();
