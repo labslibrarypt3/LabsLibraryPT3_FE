@@ -42,6 +42,11 @@ class App extends Component {
     };
   }
 
+  //toggles isLoggedIn in App state
+  loggedInStateHandler = prevState => {
+    this.setState({ isLoggedIn: !prevState.isLoggedIn });
+  };
+
   getUserData = async () => {
     console.log("App.js' getUserData() start");
     const endpoint = "http://localhost:4000/api/users/user";
@@ -71,7 +76,6 @@ class App extends Component {
       <div className="App">
         <Headers img={this.state.img} />
 
-        <Route exact path="/" render={props => <ManualAuthContainer />} />
         <Route
           path="/account"
           render={props => (
@@ -92,18 +96,28 @@ class App extends Component {
             />
           )}
         />
+
         <Route
           path="/add-book"
           render={props => <AddBookContainer {...props} />}
         />
+
         <Route
-          path="/add-book"
-          render={props => <AuthContainer {...props} />}
+          path="/auth"
+          render={props => (
+            <AuthContainer
+              {...props}
+              isLoggedIn={this.state.isLoggedIn}
+              loggedInStateHandler={this.loggedInStateHandler}
+            />
+          )}
         />
-        <Route path="/add-book" render={props => <MyShelf {...props} />} />
-        <Route path="/add-book" render={props => <Search {...props} />} />
+        <Route path="/my-shelf" render={props => <MyShelf {...props} />} />
+
+        <Route path="/search" render={props => <Search {...props} />} />
+
         <Route
-          path="/add-book"
+          path="/stripe-connect-success"
           render={props => <StripeConnectSuccess {...props} />}
         />
         <Route path="/tos" component={TOS} />

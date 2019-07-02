@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, withRouter } from "react-router-dom";
 
-const Logout = withRouter(({ history }) => {
+const Logout = withRouter(({ history }, props) => {
   const logout = () => {
     localStorage.clear();
     // <Redirect to={"http://localhost:3000/"} />
