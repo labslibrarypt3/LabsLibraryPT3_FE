@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Stripe extends Component {
+class StripeConnectButton extends Component {
   render() {
     return (
       <div className="stripe">
@@ -18,4 +18,4 @@ class Stripe extends Component {
   }
 }
 
-export default Stripe;
+export default StripeConnectButton;

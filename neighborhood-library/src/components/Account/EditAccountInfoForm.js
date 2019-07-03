@@ -1,66 +1,59 @@
-
 import React, { Component } from "react";
 import axios from "axios";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
+class EditAccountInfoForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: "",
+      name: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      address: "",
+      city: "",
+      state: "",
+      zipcode: "",
+      img: "",
+      password: "",
+      stripe_user_id: ""
+    };
+  }
+  inputHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
+  onSubmitHandler = e => {
+    e.preventDefault();
 
-class ChangeUserInfo extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        userId: "",
-        name: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        address: "",
-        city: "",
-        state: "",
-        zipcode: "",
-        img: "",
-        password: "",
-        stripe_user_id: ""
-      }
-    }
-    inputHandler = (e) =>{
-            this.setState({ [e.target.name]: e.target.value });
-          };
-
-    onSubmitHandler = (e) =>{
-      e.preventDefault();
-      console.log(this.props,'in onsubmit props')
     const userUpdate = {
-        name: this.state.name ? this.state.name : this.props.name,
-        firstName: this.state.firstName ? this.state.firstName : this.props.firstName,
-        lastName: this.state.lastName ? this.state.lastName : this.props.lastName,
-        email: this.state.email ? this.state.email : this.props.email,
-        address:this.state.address ? this.state.address : this.props.address,
-        city: this.state.city ? this.state.city : this.props.city,
-        state: this.state.state ? this.state.state : this.props.state,
-        zipcode: this.state.zipcode ? this.state.zipcode : this.props.zipcode,
-        img:this.state.img ? this.state.img : this.props.img
-    }
-    console.log(userUpdate,'userupdated object inside onsubmit')
-    const endpoint = `http://localhost:4000/api/users/update`
+      name: this.state.name ? this.state.name : this.props.name,
+      firstName: this.state.firstName
+        ? this.state.firstName
+        : this.props.firstName,
+      lastName: this.state.lastName ? this.state.lastName : this.props.lastName,
+      email: this.state.email ? this.state.email : this.props.email,
+      address: this.state.address ? this.state.address : this.props.address,
+      city: this.state.city ? this.state.city : this.props.city,
+      state: this.state.state ? this.state.state : this.props.state,
+      zipcode: this.state.zipcode ? this.state.zipcode : this.props.zipcode,
+      img: this.state.img ? this.state.img : this.props.img
+    };
+
+    const endpoint = `http://localhost:4000/api/users/update`;
     const authToken = localStorage.getItem("jwt");
-    axios.put(
-        endpoint,
-        userUpdate,
-        {headers:{authorization:`${authToken}`}}
-      )
+    axios.put(endpoint, userUpdate, {
+      headers: { authorization: `${authToken}` }
+    });
+  };
 
-       
-    }
-
-    
-    render(){
-      console.log(this.props)
-      return(
-      
-        <div className="user-info">
+  render() {
+    console.log(this.props);
+    return (
+      <div className="user-info">
         <h2>Edit Profile</h2>
-        <form onSubmit ={this.onSubmitHandler} className="edit-profile-form">
+        <form onSubmit={this.onSubmitHandler} className="edit-profile-form">
           <div className="form-pair">
             <label>Name</label>
             <input
@@ -167,12 +160,9 @@ class ChangeUserInfo extends Component {
           </div>
           <button>Submit</button>
         </form>
-      </div >
-
-
-
-    )
-    }
+      </div>
+    );
+  }
 }
 
-export default ChangeUserInfo;
+export default EditAccountInfoForm;
