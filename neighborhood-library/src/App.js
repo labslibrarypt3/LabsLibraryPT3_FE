@@ -16,8 +16,6 @@ class App extends Component {
     this.state = {
       userId: " ",
       name: " ",
-      firstName: " ",
-      lastName: " ",
       email: " ",
       address: " ",
       city: " ",
@@ -39,12 +37,34 @@ class App extends Component {
   };
 
   getUserData = async () => {
+    this.setState({ isLoading: true });
+    const authToken = localStorage.getItem("jwt");
     console.log("App.js' getUserData() start");
     const endpoint = "http://localhost:4000/api/users/user";
     const response = await axios
-      .get(endpoint)
+      .get(endpoint, { headers: { Authorization: `${authToken}` } })
       .then(res => {
-        console.log("getUserData res.data", res.data);
+        console.log("getUserData res.data", res);
+        this.setState(
+          {
+            userId: res.data.userId,
+            name: res.data.name,
+            email: res.data.email,
+            address: res.data.address,
+            city: res.data.city,
+            state: res.data.state,
+            zipcode: res.data.zipcode,
+            img: res.data.img,
+            stripe_user_id: res.data.stripe_user_id,
+            isLoggedIn: false,
+            isLoading: false,
+            Message: "",
+            Error: ""
+          },
+          () => {
+            console.log("getUserData has updated App.js state");
+          }
+        );
       })
       .catch(err => this.setState({ Error: err }));
     console.log("App.js' getUserData() end");
@@ -55,17 +75,30 @@ class App extends Component {
       <div className="App">
         <Headers img={this.state.img} />
 
-        <Route
-          path="/account"
-          render={props => (
-            <Account {...props} getUserData={this.getUserData} />
-          )}
-        />
-
         {/* <Route
           path="/add-book"
           render={props => <AddBookContainer {...props} />}
         /> */}
+
+        <Route
+          path="/account"
+          render={props => (
+            <Account
+              {...props}
+              getUserData={this.getUserData}
+              userId={this.state.userId}
+              name={this.state.name}
+              email={this.state.email}
+              address={this.state.address}
+              city={this.state.city}
+              state={this.state.state}
+              zipcode={this.state.zipcode}
+              img={this.state.img}
+              stripe_user_id={this.state.stripe_user_id}
+              isLoggedIn={this.state.isLoggedIn}
+            />
+          )}
+        />
 
         <Route
           path="/auth"

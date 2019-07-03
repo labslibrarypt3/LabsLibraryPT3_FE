@@ -1,10 +1,14 @@
 # Refactoring for Cleanliness
 
+## Lessons:
+
+- Still need to pass in tokens for endpoints to work.
+
 ## Where I left off:
 
 LAST ACTION: Refactored Account.js to use Routes. Need to test.
 
-BUG: Cannot get Account component to render and am unsure as to why.
+BUG: this.props.getUserData not running. Investigate backend.
 
 LAST SUCCESS: Auth component collection is working.
 

@@ -11,30 +11,24 @@ class Account extends Component {
 
   componentDidMount() {
     console.log("Account.js mounted");
+    console.log(this.props.getUserData());
     this.props.getUserData();
   }
+
   render() {
+    const fullNameArray = this.props.name.split(" ");
+    const firstName = fullNameArray[0];
+    //grabs fullNameArray from above, gets the last word from it, splits that word into an array of letters, and grabs the first letter.
+    const lastInitial = fullNameArray[fullNameArray.length - 1].split("")[0];
+
     return (
       <div>
-        <h2>Welcome {this.props.name}!</h2>
+        <h2>Welcome {`${firstName} ${lastInitial}.`}!</h2>
         <hr />
         <Route
           exact
           path="/account"
-          render={props => (
-            <AccountInfo
-              userId={this.props.userId}
-              name={this.props.name}
-              firstName={this.props.firstName}
-              lastName={this.props.lastName}
-              email={this.props.email}
-              address={this.props.address}
-              city={this.props.city}
-              props={this.props.state}
-              zipcode={this.props.zipcode}
-              img={this.props.img}
-            />
-          )}
+          render={props => <AccountInfo {...props} />}
         />
 
         <Route
