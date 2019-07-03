@@ -31,32 +31,28 @@ class AccountInfo extends Component {
       <div className="user-info">
         <h2> Account Info</h2>
         <div>
-          <label>UserName:</label> {this.props.name}
-        </div>
-        <div>
-          <label>FirstName:</label> {this.props.firstname}
-        </div>
-        <div>
-          <label>LastName:</label> {this.props.lastname}
-        </div>
-        <div>
-          <label>Street Address:</label> {this.props.address}
-        </div>
-        <div>
-          <label>City:</label> {this.props.city}
-        </div>
-        <div>
-          <label>State:</label> {this.props.state}
-        </div>
-        <div>
-          <label>Zipcode:</label> {this.props.zipcode}
-        </div>
-        <div>
-          <label>Email:</label> {this.props.email}
-        </div>
-        <div>
           <img src={this.props.img} alt="user profile image" />
         </div>
+        <div>
+          <label>Name:</label> <input readOnly value={this.props.name} />
+        </div>
+        <div>
+          <label>Street Address:</label>
+          <input readOnly value={this.props.address} />
+        </div>
+        <div>
+          <label>City:</label> <input readOnly value={this.props.city} />
+        </div>
+        <div>
+          <label>State:</label> <input readOnly value={this.props.state} />
+        </div>
+        <div>
+          <label>Zipcode:</label> <input readOnly value={this.props.zidcode} />
+        </div>
+        <div>
+          <label>Email:</label> <input readOnly value={this.props.email} />
+        </div>
+
         <Link to="/account/edit">Edit Account</Link>
         <div>
           <button onClick={this.handlePasswordClick}>Change Password</button>

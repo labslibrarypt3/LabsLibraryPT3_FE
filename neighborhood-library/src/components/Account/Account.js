@@ -28,17 +28,28 @@ class Account extends Component {
         <Route
           exact
           path="/account"
-          render={props => <AccountInfo {...props} />}
+          render={props => (
+            <AccountInfo
+              {...props}
+              userId={this.props.userId}
+              name={this.props.name}
+              email={this.props.email}
+              address={this.props.address}
+              city={this.props.city}
+              props={this.props.state}
+              zipcode={this.props.zipcode}
+              img={this.props.img}
+            />
+          )}
         />
 
         <Route
           path="/account/edit"
           render={props => (
             <EditAccountInfoForm
+              {...props}
               userId={this.props.userId}
               name={this.props.name}
-              firstName={this.props.firstName}
-              lastName={this.props.lastName}
               email={this.props.email}
               address={this.props.address}
               city={this.props.city}

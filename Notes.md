@@ -6,11 +6,13 @@
 
 ## Where I left off:
 
-LAST ACTION: Refactored Account.js to use Routes. Need to test.
+LAST ACTION: Refactored AccountInfo to use readonly inputs.
 
-BUG: this.props.getUserData not running. Investigate backend.
+NEXT STEP: Work on change password button and component
 
-LAST SUCCESS: Auth component collection is working.
+BUG: None!
+
+LAST SUCCESS: AccountInfo is getting all the data!
 
 ---
 
