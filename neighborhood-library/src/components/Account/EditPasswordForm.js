@@ -33,9 +33,8 @@ class EditPasswordForm extends Component {
     }
   };
   render() {
-    console.log(this.props, "password change page");
     return (
-      <div className="user-info">
+      <div className="edit-profile-form-container">
         <h2>Change Password</h2>
         <form className="edit-profile-form" onSubmit={this.onSubmitHandler}>
           <div>

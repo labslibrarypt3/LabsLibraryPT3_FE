@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
+import SuccessAlert from "../Alerts/SuccessAlert";
 
 class EditAccountInfoForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    (this.state = {
       userId: "",
       name: "",
       firstName: "",
@@ -18,7 +19,13 @@ class EditAccountInfoForm extends Component {
       img: "",
       password: "",
       stripe_user_id: ""
-    };
+    }),
+      {
+        alerts: {
+          success: false,
+          error: false
+        }
+      };
   }
   inputHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -43,17 +50,36 @@ class EditAccountInfoForm extends Component {
 
     const endpoint = `http://localhost:4000/api/users/update`;
     const authToken = localStorage.getItem("jwt");
-    axios.put(endpoint, userUpdate, {
-      headers: { authorization: `${authToken}` }
-    });
+    axios
+      .put(endpoint, userUpdate, {
+        headers: { authorization: `${authToken}` }
+      })
+      .then(res => {
+        this.setState({
+          alerts: {
+            success: true
+          }
+        });
+      })
+      .catch(err => {
+        this.setState({
+          alerts: {
+            error: true
+          }
+        });
+      });
   };
 
   render() {
-    console.log(this.props);
     return (
-      <div className="user-info">
+      <section className="edit-account-info-form-container">
+        {this.state.alerts.success ? <SuccessAlert /> : null}
+        {this.state.alerts.error ? <ErrorAlert /> : null}
         <h2>Edit Profile</h2>
-        <form onSubmit={this.onSubmitHandler} className="edit-profile-form">
+        <form
+          onSubmit={this.onSubmitHandler}
+          className="edit-account-info-form"
+        >
           <div className="form-pair">
             <label>Name</label>
             <input
@@ -66,7 +92,7 @@ class EditAccountInfoForm extends Component {
             />
           </div>
           <div className="form-pair">
-            <label>FirstName</label>
+            <label>First Name</label>
             <input
               onChange={this.inputHandler}
               placeholder={this.props.firstName}
@@ -160,7 +186,7 @@ class EditAccountInfoForm extends Component {
           </div>
           <button>Submit</button>
         </form>
-      </div>
+      </section>
     );
   }
 }

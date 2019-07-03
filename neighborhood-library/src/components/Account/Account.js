@@ -1,8 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
 import { Link, Route } from "react-router-dom";
-import StripeConnectButton from "./Stripe/StripeConnectButton";
+import StripeConnect from "./Stripe/StripeConnect";
 import AccountInfo from "./AccountInfo";
 import EditAccountInfoForm from "./EditAccountInfoForm";
+import EditPasswordForm from "./EditPasswordForm";
 
 class Account extends Component {
   constructor(props) {
@@ -11,7 +12,6 @@ class Account extends Component {
 
   componentDidMount() {
     console.log("Account.js mounted");
-    console.log(this.props.getUserData());
     this.props.getUserData();
   }
 
@@ -20,10 +20,15 @@ class Account extends Component {
     const firstName = fullNameArray[0];
     //grabs fullNameArray from above, gets the last word from it, splits that word into an array of letters, and grabs the first letter.
     const lastInitial = fullNameArray[fullNameArray.length - 1].split("")[0];
+    //check to see if there is a last name/initial so that it doesn't display "undefined" in huge text if it's not there.
+    let heading = "";
+    lastInitial
+      ? (heading = `Welcome ${firstName} ${lastInitial}.`)
+      : (heading = `Welcome ${firstName}.`);
 
     return (
       <div>
-        <h2>Welcome {`${firstName} ${lastInitial}.`}!</h2>
+        <h2>{heading}</h2>
         <hr />
         <Route
           exact
@@ -61,7 +66,7 @@ class Account extends Component {
         />
 
         <hr />
-        <StripeConnectButton stripe_user_id={this.props.stripe_user_id} />
+        <StripeConnect stripe_user_id={this.props.stripe_user_id} />
       </div>
     );
   }

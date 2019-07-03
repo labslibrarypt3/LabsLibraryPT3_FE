@@ -18,6 +18,8 @@ LAST SUCCESS: AccountInfo is getting all the data!
 
 Check off using `&check;`
 
+[ ] Refactor using semantic HTML tags for everything
+
 ## /Account
 
 [ &check; ] Rename files for readability
@@ -29,7 +31,7 @@ Check off using `&check;`
   - AccountInfo
   - EditAccountInfoForm
   - EditPasswordForm
-  - StripeConnectButton
+  - StripeConnect
 
 ---
 
