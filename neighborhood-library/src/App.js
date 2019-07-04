@@ -5,15 +5,8 @@ import { Route } from "react-router-dom";
 //Components
 import Headers from "./components/Header/Headers";
 import Account from "./components/Account/Account";
-import Landing from "./components/Landing/Landing";
-import MyShelf from "./components/MyShelf/MyShelf";
-import SearchGoodreads from "./components/AddBook/SearchGoodreads";
-import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
-import Chat from "./components/Twilio/Chat";
-import TOS from "./components/Legal/TOS";
-import Privacy from "./components/Legal/Privacy";
-import Search from "./components/Search/Search";
 import AuthContainer from "./components/Auth/AuthContainer";
+import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
 //Styles
 import "./App.css";
@@ -34,8 +27,8 @@ class App extends Component {
       stripe_user_id: " ",
       isLoggedIn: false,
       isLoading: false,
-      Message: "",
-      Error: ""
+      Message: " ",
+      Error: " "
     };
   }
 
@@ -78,15 +71,22 @@ class App extends Component {
     console.log("App.js' getUserData() end");
   };
 
+  // componentDidMount() {
+  //   if (this.state.isLoggedIn) {
+  //     this.getUserData();
+  //   }
+  // }
+
   render() {
     return (
       <div className="App">
         <Headers img={this.state.img} />
 
-        {/* <Route
+        <Route
+          exact
           path="/add-book"
-          render={props => <AddBookContainer {...props} />}
-        /> */}
+          render={props => <AddBookContainer userId={this.state.userId} />}
+        />
 
         <Route
           path="/account"

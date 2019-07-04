@@ -34,10 +34,10 @@ class EditPasswordForm extends Component {
   };
   render() {
     return (
-      <div className="edit-profile-form-container">
+      <section className="edit-profile">
         <h2>Change Password</h2>
         <form className="edit-profile-form" onSubmit={this.onSubmitHandler}>
-          <div>
+          <div className="form-pair">
             <label>Current Password:</label>
             <input
               onChange={this.inputHandler}
@@ -47,7 +47,7 @@ class EditPasswordForm extends Component {
               required
             />
           </div>
-          <div>
+          <div className="form-pair">
             <label>New Password:</label>
             <input
               onChange={this.inputHandler}
@@ -57,7 +57,7 @@ class EditPasswordForm extends Component {
               required
             />
           </div>
-          <div>
+          <div className="form-pair">
             <label>Confirm password:</label>
             <input
               onChange={this.inputHandler}
@@ -67,9 +67,9 @@ class EditPasswordForm extends Component {
               required
             />
           </div>
-          <button>Submit</button>
+          <button onSubmit={this.onSubmitHandler}>Submit</button>
         </form>
-      </div>
+      </section>
     );
   }
 }
