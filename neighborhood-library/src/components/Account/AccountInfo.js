@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import EditPasswordForm from "./EditPasswordForm";
 import EditAccountInfoForm from "./EditAccountInfoForm";
-
-import React from "react";
 
 const AccountInfo = props => {
   return (

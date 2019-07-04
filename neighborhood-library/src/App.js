@@ -5,9 +5,9 @@ import { Route } from "react-router-dom";
 //Components
 import Headers from "./components/Header/Headers";
 import Account from "./components/Account/Account";
-import Landing from "./components/Landing/Landing";
+// import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
-import SearchGoodreads from "./components/AddBook/SearchGoodreads";
+import AddBookContainer from "./components/AddBook/AddBookContainer";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import Chat from "./components/Twilio/Chat";
 import TOS from "./components/Legal/TOS";
@@ -82,12 +82,10 @@ class App extends Component {
     return (
       <div className="App">
         <Headers img={this.state.img} />
-
-        {/* <Route
+        <Route
           path="/add-book"
           render={props => <AddBookContainer {...props} />}
-        /> */}
-
+        />
         <Route
           path="/account"
           render={props => (
@@ -107,7 +105,6 @@ class App extends Component {
             />
           )}
         />
-
         <Route
           path="/auth"
           render={props => (
@@ -118,24 +115,16 @@ class App extends Component {
             />
           )}
         />
-
-        {/*
         <Route path="/my-shelf" render={props => <MyShelf {...props} />} />
-
-
         <Route path="/search" render={props => <Search {...props} />} />
-
-            <Route path="/chat" component={Chat} />
-
-
+        <Route path="/chat" component={Chat} />
         <Route
           path="/stripe-connect-success"
           render={props => <StripeConnectSuccess {...props} />}
         />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
-        <Route path="/twilio" component={TwilioApp} /> */}
-
+        <Route path="/twilio" component={Chat} /> */}
         <Footer />
       </div>
     );

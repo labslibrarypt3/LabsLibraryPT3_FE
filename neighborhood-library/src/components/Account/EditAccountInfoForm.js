@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
 import SuccessAlert from "../Alerts/SuccessAlert";
+import ErrorAlert from "../Alerts/ErrorAlert";
 
 class EditAccountInfoForm extends Component {
   constructor(props) {
     super(props);
-    (this.state = {
+    this.state = {
       userId: "",
       name: "",
       firstName: "",
@@ -19,13 +19,12 @@ class EditAccountInfoForm extends Component {
       img: "",
       password: "",
       stripe_user_id: ""
-    }),
-      {
-        alerts: {
-          success: false,
-          error: false
-        }
-      };
+    };
+
+    const alerts = {
+      success: false,
+      error: false
+    };
   }
   inputHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
