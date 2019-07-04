@@ -122,7 +122,11 @@ class App extends Component {
         {/*
         <Route path="/my-shelf" render={props => <MyShelf {...props} />} />
 
+
         <Route path="/search" render={props => <Search {...props} />} />
+
+            <Route path="/chat" component={Chat} />
+
 
         <Route
           path="/stripe-connect-success"
