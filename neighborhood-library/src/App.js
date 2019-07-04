@@ -5,6 +5,14 @@ import { Route } from "react-router-dom";
 //Components
 import Headers from "./components/Header/Headers";
 import Account from "./components/Account/Account";
+import Landing from "./components/Landing/Landing";
+import MyShelf from "./components/MyShelf/MyShelf";
+import SearchGoodreads from "./components/AddBook/SearchGoodreads";
+import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
+import Chat from "./components/Twilio/Chat";
+import TOS from "./components/Legal/TOS";
+import Privacy from "./components/Legal/Privacy";
+import Search from "./components/Search/Search";
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
 //Styles
@@ -114,7 +122,11 @@ class App extends Component {
         {/*
         <Route path="/my-shelf" render={props => <MyShelf {...props} />} />
 
+
         <Route path="/search" render={props => <Search {...props} />} />
+
+            <Route path="/chat" component={Chat} />
+
 
         <Route
           path="/stripe-connect-success"
