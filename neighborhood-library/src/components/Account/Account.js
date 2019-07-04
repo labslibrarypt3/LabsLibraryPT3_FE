@@ -3,7 +3,6 @@ import { Link, Route } from "react-router-dom";
 import StripeConnect from "./Stripe/StripeConnect";
 import AccountInfo from "./AccountInfo";
 import EditAccountInfoForm from "./EditAccountInfoForm";
-import EditPasswordForm from "./EditPasswordForm";
 
 class Account extends Component {
   constructor(props) {
@@ -27,9 +26,8 @@ class Account extends Component {
       : (heading = `Welcome ${firstName}.`);
 
     return (
-      <div>
+      <main className="account container">
         <h2>{heading}</h2>
-        <hr />
         <Route
           exact
           path="/account"
@@ -47,7 +45,6 @@ class Account extends Component {
             />
           )}
         />
-
         <Route
           path="/account/edit"
           render={props => (
@@ -64,10 +61,9 @@ class Account extends Component {
             />
           )}
         />
-
         <hr />
         <StripeConnect stripe_user_id={this.props.stripe_user_id} />
-      </div>
+      </main>
     );
   }
 }

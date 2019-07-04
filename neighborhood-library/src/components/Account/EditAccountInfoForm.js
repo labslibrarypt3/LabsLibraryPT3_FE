@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
 import SuccessAlert from "../Alerts/SuccessAlert";
+import ErrorAlert from "../Alerts/ErrorAlert";
+import EditPasswordForm from "./EditPasswordForm";
 
 class EditAccountInfoForm extends Component {
   constructor(props) {
     super(props);
-    (this.state = {
+    this.state = {
       userId: "",
       name: "",
       firstName: "",
@@ -18,14 +19,12 @@ class EditAccountInfoForm extends Component {
       zipcode: "",
       img: "",
       password: "",
-      stripe_user_id: ""
-    }),
-      {
-        alerts: {
-          success: false,
-          error: false
-        }
-      };
+      stripe_user_id: "",
+      alerts: {
+        success: false,
+        error: false
+      }
+    };
   }
   inputHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -72,7 +71,7 @@ class EditAccountInfoForm extends Component {
 
   render() {
     return (
-      <section className="edit-account-info-form-container">
+      <section className="edit-account-info container">
         {this.state.alerts.success ? <SuccessAlert /> : null}
         {this.state.alerts.error ? <ErrorAlert /> : null}
         <h2>Edit Profile</h2>
@@ -84,34 +83,13 @@ class EditAccountInfoForm extends Component {
             <label>Name</label>
             <input
               onChange={this.inputHandler}
-              placeholder={this.props.name}
+              placeholder={
+                this.props.name ? this.props.name : "FirstName LastName"
+              }
               type="text"
               name="name"
               ref="name"
               val={this.state.name}
-            />
-          </div>
-          <div className="form-pair">
-            <label>First Name</label>
-            <input
-              onChange={this.inputHandler}
-              placeholder={this.props.firstName}
-              type="text"
-              name="firstName"
-              ref="firstName"
-              val={this.state.firstName}
-            />
-          </div>
-
-          <div className="form-pair">
-            <label>LastName</label>
-            <input
-              onChange={this.inputHandler}
-              placeholder={this.props.lastName}
-              type="text"
-              name="lastName"
-              ref="lastName"
-              val={this.state.lastName}
             />
           </div>
 
@@ -126,6 +104,7 @@ class EditAccountInfoForm extends Component {
               val={this.state.address}
             />
           </div>
+
           <div className="form-pair">
             <label>City</label>
             <input
@@ -184,8 +163,10 @@ class EditAccountInfoForm extends Component {
               val={this.state.img}
             />
           </div>
-          <button>Submit</button>
+          <button onSubmit={this.onSubmitHandler}>Submit</button>
         </form>
+        <hr />
+        <EditPasswordForm />
       </section>
     );
   }

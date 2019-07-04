@@ -13,7 +13,10 @@ class AddBookContainer extends Component {
     this.state = {
       query: "",
       books: [],
-      user_id: null
+      alerts: {
+        success: false,
+        error: false
+      }
     };
   }
 
@@ -27,8 +30,7 @@ class AddBookContainer extends Component {
       })
       .then(res => {
         this.setState({
-          books: res.data.books,
-          user_id: localStorage.getItem("id")
+          books: res.data.books
         });
       })
       .catch(err => console.log(err));
@@ -43,13 +45,35 @@ class AddBookContainer extends Component {
     this.getData();
   };
 
+  //book parameter is passed in onClick in AddBook.js
+  addBookToLibrary = async book => {
+    console.log("line 49 AddBookContainer ", typeof book);
+    console.log(`I am ${book} getting passed into addBookToLibrary`);
+    console.log(
+      `Start adding book (title: ${book.title}, author: ${
+        book.authors
+      }) to home library`
+    );
+    const endpoint = "http://localhost:4000/api/books/";
+    const authToken = localStorage.getItem("jwt");
+    const axiosResponse = await axios
+      .post(endpoint, book, { headers: { authorization: `${authToken}` } })
+      .then(res =>
+        this.setState(
+          { alert: { success: true, error: false } },
+          console.log("Book added to home library")
+        )
+      )
+      .catch(err => this.setState({ alert: { error: true, success: false } }));
+  };
+
   render() {
     return (
-      <div className="add-book page">
-        <h2>Add a book to your library.</h2>
+      <main className="add-book-container container">
+        <h2>What books do you want to lend out?</h2>
         <p>
           Search Goodreads' database to find a book you currently own and would
-          like to make available for borrowing.
+          like to make available for your neighbors to borrow.
         </p>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -60,7 +84,7 @@ class AddBookContainer extends Component {
           />
           <button type="submit">Search</button>
         </form>
-        <div className="goodreads-search-results-container shelf">
+        <section className="goodreads-search-results-container shelf">
           {this.state.books.map(book => {
             return (
               <AddBook
@@ -68,11 +92,12 @@ class AddBookContainer extends Component {
                 cover={book.covers[0]}
                 title={book.title}
                 authors={book.authors}
+                addBookToLibrary={this.addBookToLibrary}
               />
             );
           })}
-        </div>
-      </div>
+        </section>
+      </main>
     );
   }
 }

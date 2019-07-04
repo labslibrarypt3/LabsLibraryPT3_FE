@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import Headers from "./components/Header/Headers";
 import Account from "./components/Account/Account";
 import AuthContainer from "./components/Auth/AuthContainer";
+import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
 //Styles
 import "./App.css";
@@ -26,8 +27,8 @@ class App extends Component {
       stripe_user_id: " ",
       isLoggedIn: false,
       isLoading: false,
-      Message: "",
-      Error: ""
+      Message: " ",
+      Error: " "
     };
   }
 
@@ -70,15 +71,22 @@ class App extends Component {
     console.log("App.js' getUserData() end");
   };
 
+  // componentDidMount() {
+  //   if (this.state.isLoggedIn) {
+  //     this.getUserData();
+  //   }
+  // }
+
   render() {
     return (
       <div className="App">
         <Headers img={this.state.img} />
 
-        {/* <Route
+        <Route
+          exact
           path="/add-book"
-          render={props => <AddBookContainer {...props} />}
-        /> */}
+          render={props => <AddBookContainer userId={this.state.userId} />}
+        />
 
         <Route
           path="/account"
