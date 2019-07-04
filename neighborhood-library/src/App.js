@@ -13,7 +13,9 @@ import Chat from "./components/Twilio/Chat";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
 import Search from "./components/Search/Search";
+
 import AuthContainer from "./components/Auth/AuthContainer";
+import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
 //Styles
 import "./App.css";
@@ -24,6 +26,8 @@ class App extends Component {
     this.state = {
       userId: " ",
       name: " ",
+      firstName: " ",
+      lastInitial: " ",
       email: " ",
       address: " ",
       city: " ",
@@ -34,8 +38,8 @@ class App extends Component {
       stripe_user_id: " ",
       isLoggedIn: false,
       isLoading: false,
-      Message: "",
-      Error: ""
+      Message: " ",
+      Error: " "
     };
   }
 
@@ -52,11 +56,21 @@ class App extends Component {
     const response = await axios
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
       .then(res => {
-        console.log("getUserData res.data", res);
+        console.log("response", res);
+        const fullNameArray = res.data.name.split(" ");
+        const firstName = fullNameArray[0];
+        //grabs fullNameArray from above, gets the last word from it, splits that word into an array of letters, and grabs the first letter.
+        const lastInitial = fullNameArray[fullNameArray.length - 1].split(
+          ""
+        )[0];
+        //check to see if there is a last name/initial so that it doesn't display "undefined" in huge text if it's not there.
+
         this.setState(
           {
             userId: res.data.userId,
             name: res.data.name,
+            firstName: firstName,
+            lastInitial: lastInitial,
             email: res.data.email,
             address: res.data.address,
             city: res.data.city,
@@ -78,19 +92,28 @@ class App extends Component {
     console.log("App.js' getUserData() end");
   };
 
+  // componentDidMount() {
+  //   if (this.state.isLoggedIn) {
+  //     this.getUserData();
+  //   }
+  // }
+
   render() {
     return (
       <div className="App">
         <Headers img={this.state.img} />
+
+
         <Route
+          exact
           path="/add-book"
-          render={props => <AddBookContainer {...props} />}
+          render={props => <AddBookContainer userId={this.state.userId} />}
         />
+      
         <Route
           path="/account"
           render={props => (
             <Account
-              {...props}
               getUserData={this.getUserData}
               userId={this.state.userId}
               name={this.state.name}
@@ -102,6 +125,8 @@ class App extends Component {
               img={this.state.img}
               stripe_user_id={this.state.stripe_user_id}
               isLoggedIn={this.state.isLoggedIn}
+              firstName={this.state.firstName}
+              lastInitial={this.state.lastInitial}
             />
           )}
         />
