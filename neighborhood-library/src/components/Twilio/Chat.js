@@ -7,13 +7,13 @@ class Chat extends Component {
   state = {
     lending: [],
     borrowing: [],
-    borrowedTransaction: [],
+    borrowedTransaction: {},
     lender: {},
-    lentTransactions: {},
+    lentTransactions: [],
     userName: " ",
     confirmed: false,
     roomSelect: false,
-    message: "",
+    messages: "",
     premessage: "",
     bookId: ""
   };
@@ -102,7 +102,7 @@ class Chat extends Component {
         params: { lender_id: localStorage.getItem("id") }
       })
       .then(res => {
-        console.log(res.data);
+        console.log(res.data, "in lens tran");
         this.setState({ lentTransactions: res.data });
       })
       .catch(err => {
@@ -113,12 +113,12 @@ class Chat extends Component {
   messagePostHandler = async e => {
     e.preventDefault();
     const endpoint = "http://localhost:4000/api/trans/update";
-    const messageArray = this.state.message;
+    const messages = this.state.messages;
     const book_id = this.state.bookId;
     const axiosresponse = await axios
       // const transactionId =
       .put(endpoint, {
-        messageArray,
+        messages,
         book_id
       })
       .then(res => {
@@ -131,8 +131,8 @@ class Chat extends Component {
   };
 
   inputHandler = e => {
-    this.setState({ message: e.target.value });
-    this.setState({ bookId: e.target.name });
+    this.setState({ messages: e.target.value });
+    this.setState({ bookId: parseInt(e.target.name) });
   };
 
   // component did mount calls all axious call methods to populate state with data needed
@@ -157,7 +157,7 @@ class Chat extends Component {
               console.log(bookId, "firstmap");
               const borrowerMessage = this.state.borrowedTransaction.map(
                 (bookId, e) => {
-                  return bookId.messageArray;
+                  return bookId.message;
                 }
               );
               return (
@@ -169,7 +169,7 @@ class Chat extends Component {
                     <input
                       onChange={this.inputHandler}
                       placeholder="What do you want to say?"
-                      value={this.state.message}
+                      value={this.state.messages}
                       name={bookId}
                     />
                     <div class="button">
@@ -189,7 +189,7 @@ class Chat extends Component {
               console.log(bookId, "lendmap");
               const lenderMessage = this.state.lentTransactions.map(
                 (bookId, e) => {
-                  return bookId.messageArray;
+                  return bookId.messages;
                 }
               );
               return (
@@ -201,7 +201,7 @@ class Chat extends Component {
                     <input
                       onChange={this.inputHandler}
                       placeholder="What do you want to say?"
-                      value={this.state.message}
+                      value={this.state.messages}
                       name={bookId}
                     />
                     <div class="button">
