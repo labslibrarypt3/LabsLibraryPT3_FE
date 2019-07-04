@@ -11,7 +11,7 @@ import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
-import TwilioApp from "./components/Twilio/TwilioApp";
+import Chat from "./components/Twilio/Chat";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
 import Search from "./components/Search/Search";
@@ -68,7 +68,7 @@ class App extends React.Component {
               component={verify(StripeConnectSuccess)}
             />
 
-            <Route path="/twilio" component={verify(TwilioApp)} />
+            <Route path="/chat" component={Chat} />
 
             <Route path="/tos" component={TOS} />
             <Route path="/privacy" component={Privacy} />
