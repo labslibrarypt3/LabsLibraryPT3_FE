@@ -7,7 +7,6 @@ import Headers from "./components/Header/Headers";
 import Account from "./components/Account/Account";
 import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
-import SearchGoodreads from "./components/AddBook/SearchGoodreads";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import Chat from "./components/Twilio/Chat";
 import TOS from "./components/Legal/TOS";
