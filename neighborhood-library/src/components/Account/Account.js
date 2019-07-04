@@ -7,6 +7,7 @@ import EditAccountInfoForm from "./EditAccountInfoForm";
 class Account extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
 
   componentDidMount() {
@@ -15,15 +16,10 @@ class Account extends Component {
   }
 
   render() {
-    const fullNameArray = this.props.name.split(" ");
-    const firstName = fullNameArray[0];
-    //grabs fullNameArray from above, gets the last word from it, splits that word into an array of letters, and grabs the first letter.
-    const lastInitial = fullNameArray[fullNameArray.length - 1].split("")[0];
-    //check to see if there is a last name/initial so that it doesn't display "undefined" in huge text if it's not there.
     let heading = "";
-    lastInitial
-      ? (heading = `Welcome ${firstName} ${lastInitial}.`)
-      : (heading = `Welcome ${firstName}.`);
+    this.props.lastInitial === " "
+      ? (heading = `Welcome ${this.props.firstName} ${this.props.lastInitial}.`)
+      : (heading = `Welcome ${this.props.firstName}.`);
 
     return (
       <main className="account container">
