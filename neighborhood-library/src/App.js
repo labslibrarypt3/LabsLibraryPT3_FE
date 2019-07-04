@@ -5,13 +5,6 @@ import { Route } from "react-router-dom";
 //Components
 import Headers from "./components/Header/Headers";
 import Account from "./components/Account/Account";
-import Landing from "./components/Landing/Landing";
-import MyShelf from "./components/MyShelf/MyShelf";
-import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
-import Chat from "./components/Twilio/Chat";
-import TOS from "./components/Legal/TOS";
-import Privacy from "./components/Legal/Privacy";
-import Search from "./components/Search/Search";
 import AuthContainer from "./components/Auth/AuthContainer";
 import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
