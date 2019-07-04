@@ -5,7 +5,7 @@ You can add a book to your library from this component */
 import React, { Component } from "react";
 import axios from "axios";
 
-class GoodreadsSearchResult extends Component {
+class AddBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,14 +19,10 @@ class GoodreadsSearchResult extends Component {
 
   addBookToLibrary = async () => {
     const book = this.state;
-    const endpoint = "http://localhost:4000/api/books/"
+    const endpoint = "http://localhost:4000/api/books/";
     const authToken = localStorage.getItem("jwt");
     await axios
-      .post(
-        endpoint,
-        book,
-        {headers:{authorization:`${authToken}`}}
-      )
+      .post(endpoint, book, { headers: { authorization: `${authToken}` } })
       .then(res => console.log("book added to library"))
       .catch(err => console.log(err, "front end book post"));
   };
@@ -35,11 +31,7 @@ class GoodreadsSearchResult extends Component {
     return (
       <div className="goodreads-search-result book">
         <div className="book-top">
-          <img
-            className="book-cover"
-            src={this.props.cover}
-            alt="cover"
-          />
+          <img className="book-cover" src={this.props.cover} alt="cover" />
         </div>
         <div className="book-bottom">
           <p>{this.props.title}</p>
@@ -51,4 +43,4 @@ class GoodreadsSearchResult extends Component {
   }
 }
 
-export default GoodreadsSearchResult;
+export default AddBook;

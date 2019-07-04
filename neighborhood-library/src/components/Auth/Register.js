@@ -58,6 +58,16 @@ class Register extends Component {
           />
           <button type="submit">Register</button>
         </form>
+        <div>
+          <p>Already have an account?</p>
+          <button
+            href="#"
+            className="manual-auth-nav"
+            onClick={this.loginVsRegisterToggler}
+          >
+            Login
+          </button>
+        </div>
       </div>
     );
   }

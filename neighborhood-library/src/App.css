@@ -10,6 +10,11 @@ h2 {
   padding: 10px 0;
 }
 
+#root,
+html {
+  background-color: #e8e8f9;
+}
+
 .App {
   font-family: Lato, sans-serif;
   /* Side borders */

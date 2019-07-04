@@ -5,6 +5,7 @@ const AuthPostData = (type, userData) => {
     let endpoint;
 
     localStorage.setItem("username", userData.name);
+    localStorage.setItem("img", userData.img);
 
     type === "facebook" || type === "google"
       ? (endpoint = "http://localhost:4000/auths/auth")

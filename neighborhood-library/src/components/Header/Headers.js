@@ -6,6 +6,7 @@ import "../../App.css";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import logo from "./logo.svg";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
@@ -19,8 +20,7 @@ class Headers extends React.Component {
     userId: "",
     name: "",
     email: "",
-    img: "",
-    isLoggedIn: false
+    img: ""
   };
 
   handleClick() {
@@ -32,60 +32,26 @@ class Headers extends React.Component {
   closeMenu() {
     this.setState({ open: false });
   }
-  componentDidMount() {
-    this.getData();
-  }
 
-  //grabs avatar img if it doesn't show on first render
-  componentDidUpdate() {
-    const { isLoggedIn } = this.state;
-    let avatar;
+  // componentDidMount() {
+  //   this.getData();
+  // }
 
-    if (isLoggedIn) {
-      avatar = this.state.img;
-    } else {
-      avatar = null;
-    }
-  }
+  userNav = (
+    <div className="user-nav">
+      <img className="avatar" src={localStorage.getItem("img")} />
 
-  isLoggedIn() {
-    this.setState({ isLoggedIn: true });
-  }
-  isLoggedOut() {
-    this.setState({ isLoggedIn: false });
-  }
-  getData = () => {
-    if (localStorage.getItem("jwt")) {
-      const authToken = localStorage.getItem("jwt");
-      const endpoint = "http://localhost:4000/api/users/user";
-      return axios
-        .get(endpoint, {
-          headers: { authorization: authToken }
-        })
-        .then(res => {
-          this.setState({
-            userId: res.data.userId,
-            name: res.data.name,
-            email: res.data.email,
-            img: res.data.img,
-            isLoggedIn: true
-          });
-        })
-        .catch(err => console.log(err));
-    } else {
-      return <Redirect to={"/"} />;
-    }
-  };
+      <FontAwesomeIcon icon="comment-alt" className="message-icon" />
+    </div>
+  );
+
+  // componentDidUpdate() {
+  //   if (localStorage.getItem("img") !== this.state.img) {
+  //     this.setState({ img: localStorage.getItem("img") });
+  //   }
+  // }
 
   render() {
-    const { isLoggedIn } = this.state;
-    let avatar;
-
-    if (isLoggedIn) {
-      avatar = this.state.img;
-    } else {
-      avatar = null;
-    }
     return (
       <header>
         <div className="sidebar">
@@ -114,12 +80,12 @@ class Headers extends React.Component {
             <Link to={{ pathname: "/" }}>Neighborhood Library</Link>
           </h1>
 
-          {avatar ? (
+          {/* {avatar ? (
             <div className="user-nav">
               <img src={avatar} className="avatar" />
               <FontAwesomeIcon icon="comment-alt" className="message-icon" />
             </div>
-          ) : null}
+          ) : null} */}
         </div>
       </header>
     );

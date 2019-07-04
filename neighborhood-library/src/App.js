@@ -1,12 +1,10 @@
-import React from "react";
-import "./App.css";
-import { Route, withRouter } from "react-router-dom";
+//Libraries and dependencies
+import React, { Component } from "react";
 import axios from "axios";
-
-//component imports
-import verify from "./components/Auth/Verify";
+import { Route } from "react-router-dom";
+//Components
+import Headers from "./components/Header/Headers";
 import Account from "./components/Account/Account";
-import Header from "./components/Header/Headers";
 import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import SearchGoodreads from "./components/AddBook/SearchGoodreads";
@@ -15,65 +13,128 @@ import Chat from "./components/Twilio/Chat";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
 import Search from "./components/Search/Search";
-
-import Footer from "./components/Footer/Footer";
 import AuthContainer from "./components/Auth/AuthContainer";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Footer from "./components/Footer/Footer";
+//Styles
+import "./App.css";
 
-class App extends React.Component {
-  constructor() {
-    super();
+class App extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      data: []
+      userId: " ",
+      name: " ",
+      email: " ",
+      address: " ",
+      city: " ",
+      state: " ",
+      zipcode: " ",
+      img: " ",
+      password: " ",
+      stripe_user_id: " ",
+      isLoggedIn: false,
+      isLoading: false,
+      Message: "",
+      Error: ""
     };
   }
 
-  componentDidMount() {
-    this.getData();
-  }
+  //toggles isLoggedIn in App state
+  loggedInStateHandler = prevState => {
+    this.setState({ isLoggedIn: !prevState.isLoggedIn });
+  };
 
-  getData = () => {
-    axios
-      .get("https://pt3-neighborhood-library-back.herokuapp.com/")
+  getUserData = async () => {
+    this.setState({ isLoading: true });
+    const authToken = localStorage.getItem("jwt");
+    console.log("App.js' getUserData() start");
+    const endpoint = "http://localhost:4000/api/users/user";
+    const response = await axios
+      .get(endpoint, { headers: { Authorization: `${authToken}` } })
       .then(res => {
-        console.log(res);
+        console.log("getUserData res.data", res);
+        this.setState(
+          {
+            userId: res.data.userId,
+            name: res.data.name,
+            email: res.data.email,
+            address: res.data.address,
+            city: res.data.city,
+            state: res.data.state,
+            zipcode: res.data.zipcode,
+            img: res.data.img,
+            stripe_user_id: res.data.stripe_user_id,
+            isLoggedIn: false,
+            isLoading: false,
+            Message: "",
+            Error: ""
+          },
+          () => {
+            console.log("getUserData has updated App.js state");
+          }
+        );
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ Error: err }));
+    console.log("App.js' getUserData() end");
   };
 
   render() {
-    //     <Route
-    //   path='/dashboard'
-    //   render={(props) => <Dashboard {...props} isAuthed={true} />}
-    // />
     return (
       <div className="App">
-        <Header />
-        <div className="main">
-          <div className="main-routes">
-            <Route exact path="/" component={Landing} />
+        <Headers img={this.state.img} />
 
-            <Route path="/auth-container" component={AuthContainer} />
+        {/* <Route
+          path="/add-book"
+          render={props => <AddBookContainer {...props} />}
+        /> */}
 
-            <Route path="/add-book" component={verify(SearchGoodreads)} />
-
-            <Route path="/account" component={verify(Account)} />
-
-            <Route path="/my-shelf" component={verify(MyShelf)} />
-
-            <Route path="/search" component={Search} />
-
-            <Route
-              path="/stripe-success"
-              component={verify(StripeConnectSuccess)}
+        <Route
+          path="/account"
+          render={props => (
+            <Account
+              {...props}
+              getUserData={this.getUserData}
+              userId={this.state.userId}
+              name={this.state.name}
+              email={this.state.email}
+              address={this.state.address}
+              city={this.state.city}
+              state={this.state.state}
+              zipcode={this.state.zipcode}
+              img={this.state.img}
+              stripe_user_id={this.state.stripe_user_id}
+              isLoggedIn={this.state.isLoggedIn}
             />
+          )}
+        />
+
+        <Route
+          path="/auth"
+          render={props => (
+            <AuthContainer
+              {...props}
+              isLoggedIn={this.state.isLoggedIn}
+              loggedInStateHandler={this.loggedInStateHandler}
+            />
+          )}
+        />
+
+        {/*
+        <Route path="/my-shelf" render={props => <MyShelf {...props} />} />
+
+
+        <Route path="/search" render={props => <Search {...props} />} />
 
             <Route path="/chat" component={Chat} />
 
-            <Route path="/tos" component={TOS} />
-            <Route path="/privacy" component={Privacy} />
-          </div>
-        </div>
+
+        <Route
+          path="/stripe-connect-success"
+          render={props => <StripeConnectSuccess {...props} />}
+        />
+        <Route path="/tos" component={TOS} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/twilio" component={TwilioApp} /> */}
 
         <Footer />
       </div>
@@ -81,4 +142,4 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+export default App;
