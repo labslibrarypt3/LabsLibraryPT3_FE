@@ -5,32 +5,29 @@ import EditAccountInfoForm from "./EditAccountInfoForm";
 
 const AccountInfo = props => {
   return (
-    <div className="user-info">
-      <h2> Account Info</h2>
-      <div>
-        <img src={this.props.img} alt="user profile image" />
+    <section className="account-info">
+      <img src={props.img ? props.img : " "} alt="user profile image" />
+      <div className="form-pair">
+        <label>Name:</label> <input readOnly value={props.name} />
       </div>
-      <div>
-        <label>Name:</label> <input readOnly value={this.props.name} />
-      </div>
-      <div>
+      <div className="form-pair">
         <label>Street Address:</label>
-        <input readOnly value={this.props.address} />
+        <input readOnly value={props.address} />
       </div>
-      <div>
-        <label>City:</label> <input readOnly value={this.props.city} />
+      <div className="form-pair">
+        <label>City:</label> <input readOnly value={props.city} />
       </div>
-      <div>
-        <label>State:</label> <input readOnly value={this.props.state} />
+      <div className="form-pair">
+        <label>State:</label> <input readOnly value={props.state} />
       </div>
-      <div>
-        <label>Zipcode:</label> <input readOnly value={this.props.zidcode} />
+      <div className="form-pair">
+        <label>Zipcode:</label> <input readOnly value={props.zidcode} />
       </div>
-      <div>
-        <label>Email:</label> <input readOnly value={this.props.email} />
+      <div className="form-pair">
+        <label>Email:</label> <input readOnly value={props.email} />
       </div>
       <Link to="/account/edit">Edit Account</Link>
-    </div>
+    </section>
   );
 };
 
