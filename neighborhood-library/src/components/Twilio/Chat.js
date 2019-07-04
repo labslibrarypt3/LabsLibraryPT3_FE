@@ -109,7 +109,7 @@ class Chat extends Component {
         console.log(" Error", err);
       });
   };
-
+  // post new message to existing transaction
   messagePostHandler = async e => {
     e.preventDefault();
     const endpoint = "http://localhost:4000/api/trans/update";
@@ -117,7 +117,7 @@ class Chat extends Component {
     const book_id = this.state.bookId;
     const axiosresponse = await axios
       // const transactionId =
-      .put(endpoint, {
+      .post(endpoint, {
         messages,
         book_id
       })
@@ -129,7 +129,7 @@ class Chat extends Component {
         console.log(" Error", err);
       });
   };
-
+  // handle data typed into input and setting it to state
   inputHandler = e => {
     this.setState({ messages: e.target.value });
     this.setState({ bookId: parseInt(e.target.name) });
@@ -146,15 +146,15 @@ class Chat extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.state, "at render entree");
     return (
       <div>
         <div class="menu">
           <ul class="menu-sidebar">
             <h2>Borrowed</h2>
             {this.state.borrowing.map(e => {
+              console.log(e);
               const bookId = e.bookId;
-              console.log(bookId, "firstmap");
               const borrowerMessage = this.state.borrowedTransaction.map(
                 (bookId, e) => {
                   return bookId.message;
@@ -186,9 +186,10 @@ class Chat extends Component {
             <h2>Lent</h2>
             {this.state.lending.map(e => {
               const bookId = e.bookId;
-              console.log(bookId, "lendmap");
+              console.log(e, "lendmap");
               const lenderMessage = this.state.lentTransactions.map(
                 (bookId, e) => {
+                  console.log(e, "insecond map");
                   return bookId.messages;
                 }
               );
@@ -232,7 +233,5 @@ export default Chat;
 // chat array on transaction table that will hold a maximum of 50
 
 // render chat box
-
-// fix lent to be like the borrowed is rendering
 
 // create an update end
