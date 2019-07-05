@@ -23,7 +23,7 @@ class Nav extends Component {
     return (
       <nav className="nav">
         <ul className="nav__menu">
-          <li className="nav__menu-item" onMouseLeave={this.handleLeave}>
+          <li className="nav__menu-item">
             <NavLink
               to={{
                 pathname: "/account",
@@ -33,7 +33,9 @@ class Nav extends Component {
             >
               Account
             </NavLink>
-            {this.state.showAccountMenu && <SubNav />}
+            {this.state.showAccountMenu && (
+              <SubNav loggedInStateHandler={this.props.loggedInStateHandler} />
+            )}
           </li>
         </ul>
       </nav>

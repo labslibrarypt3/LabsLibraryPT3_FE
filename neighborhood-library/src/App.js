@@ -28,16 +28,21 @@ class App extends Component {
       img: " ",
       password: " ",
       stripe_user_id: " ",
-      isLoggedIn: false,
+      isLoggedIn: true,
       isLoading: false,
       Message: " ",
       Error: " "
     };
   }
+  // componentDidMount() {
+  //   if (this.state.isLoggedIn) {
+  //     this.getUserData();
+  //   }
+  // }
 
   //toggles isLoggedIn in App state
-  loggedInStateHandler = prevState => {
-    this.setState({ isLoggedIn: !prevState.isLoggedIn });
+  loggedInStateHandler = () => {
+    this.setState({ isLoggedIn: !this.state.isLoggedIn });
   };
 
   getUserData = async () => {
@@ -70,7 +75,7 @@ class App extends Component {
             zipcode: res.data.zipcode,
             img: res.data.img,
             stripe_user_id: res.data.stripe_user_id,
-            isLoggedIn: false,
+            isLoggedIn: true,
             isLoading: false,
             Message: "",
             Error: ""
@@ -84,16 +89,14 @@ class App extends Component {
     console.log("App.js' getUserData() end");
   };
 
-  // componentDidMount() {
-  //   if (this.state.isLoggedIn) {
-  //     this.getUserData();
-  //   }
-  // }
-
   render() {
     return (
       <div className="App">
-        <Header img={this.state.img} />
+        <Header
+          img={this.state.img}
+          isLoggedIn={this.state.isLoggedIn}
+          loggedInStateHandler={this.loggedInStateHandler}
+        />
 
         <Route
           exact

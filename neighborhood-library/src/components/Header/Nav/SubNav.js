@@ -2,21 +2,22 @@ import React from "react";
 import Logout from "../../Auth/Logout";
 import { NavLink } from "react-router-dom";
 
-const SubNav = () => {
+const SubNav = props => {
   return (
     <ul className="nav__submenu">
-      <li className="nav__submenu-item ">
-        <NavLink to="/my-shelf">My Shelf</NavLink>
-      </li>
-      <li className="nav__submenu-item ">
-        <NavLink to="/add-book">Add Book</NavLink>
-      </li>
-      <li className="nav__submenu-item ">
-        <NavLink to="/messages">Messages</NavLink>
-      </li>
-      <li className="nav__submenu-item ">
-        <Logout />
-      </li>
+      <NavLink to="/my-shelf" className="nav__submenu-item ">
+        My Shelf
+      </NavLink>
+
+      <NavLink to="/add-book" className="nav__submenu-item ">
+        Add Book
+      </NavLink>
+
+      <NavLink to="/messages" className="nav__submenu-item ">
+        Messages
+      </NavLink>
+
+      <Logout loggedInStateHandler={props.loggedInStateHandler} />
     </ul>
   );
 };
