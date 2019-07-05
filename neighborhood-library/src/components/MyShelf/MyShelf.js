@@ -7,9 +7,11 @@ import Loaned from "./Loaned/Loaned";
 const MyShelf = props => {
   return (
     <main className="my-shelf container">
-      <Link to="/my-shelf/home-library">Home Library</Link>
-      <Link to="/my-shelf/borrowed">Borrowed</Link>
-      <Link to="/my-shelf/loaned">Loaned</Link>
+      <nav className="my-shelf-nav">
+        <Link to="/my-shelf/home-library">Home Library</Link>
+        <Link to="/my-shelf/borrowed">Borrowed</Link>
+        <Link to="/my-shelf/loaned">Loaned</Link>
+      </nav>
 
       <Route path="/my-shelf/home-library" component={HomeLibrary} />
       <Route path="/my-shelf/borrowed" component={Borrowed} />

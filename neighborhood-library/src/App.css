@@ -10,6 +10,7 @@
   font-family: Raleway, sans-serif;
   width: 100vw;
   max-width: 100%;
+  background-color: #d6ddf1;
 }
 
 /* 
@@ -183,9 +184,31 @@ header form button,
 */
 
 main {
-  margin-top: 150px;
+  padding-top: 150px;
 }
 
+main .my-shelf-nav {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  left: 0px;
+  top: 138px;
+  display: flex;
+  justify-content: flex-start;
+  background: #395dc0;
+}
+
+.my-shelf-nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fcc4b3;
+  padding: 0 2%;
+}
 /* Footer */
 footer {
   display: flex;
