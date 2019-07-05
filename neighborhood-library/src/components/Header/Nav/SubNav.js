@@ -1,16 +1,18 @@
 import React from "react";
 import Logout from "../../Auth/Logout";
+import { NavLink } from "react-router-dom";
+
 const SubNav = () => {
   return (
     <ul className="nav__submenu">
       <li className="nav__submenu-item ">
-        <a>My Shelf</a>
+        <NavLink to="/my-shelf">My Shelf</NavLink>
       </li>
       <li className="nav__submenu-item ">
-        <a>Add Book</a>
+        <NavLink to="/add-book">Add Book</NavLink>
       </li>
       <li className="nav__submenu-item ">
-        <a>Messages</a>
+        <NavLink to="/messages">Messages</NavLink>
       </li>
       <li className="nav__submenu-item ">
         <Logout />
