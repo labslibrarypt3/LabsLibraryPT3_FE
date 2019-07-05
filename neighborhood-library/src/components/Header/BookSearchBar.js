@@ -18,7 +18,11 @@ class BookSearchBar extends Component {
   render() {
     return (
       <form className="book-search-bar">
-        <input onChange={this.handleChange} value={this.state.value} />
+        <input
+          onChange={this.handleChange}
+          name="value"
+          value={this.state.value}
+        />
         <button>Search</button>
       </form>
     );
