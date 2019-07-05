@@ -22,6 +22,7 @@
 /* Header container */
 header {
   position: absolute;
+  z-index: 1;
   width: 100vw;
   height: 138px;
   max-width: 100%;
@@ -99,6 +100,7 @@ il {
 
 .nav__submenu {
   position: absolute;
+  z-index: 2;
   left: 4.33%;
 
   top: 138px;
@@ -189,6 +191,7 @@ main {
 
 main .my-shelf-nav {
   position: absolute;
+  z-index: 0;
   width: 100%;
   height: 60px;
   left: 0px;
