@@ -8,11 +8,14 @@
 
 ## Where I left off:
 
-NEXT STEPS: Redesigning Header in Figma
+NEXT STEPS: Clean/redo MyShelf
+
+- add nested routes
+- take off extra dependencies
 
 BUG: None!
 
-LAST SUCCESS: Fix bugs in Account and AddBook
+LAST SUCCESS: rebuilt the header and it looks beautiful
 
 - **For every directory:**
 

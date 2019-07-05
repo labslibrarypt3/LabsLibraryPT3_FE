@@ -21,7 +21,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="nav">
+      <nav className="nav" onMouseLeave={this.handleLeave}>
         <ul className="nav__menu">
           <li className="nav__menu-item">
             <NavLink

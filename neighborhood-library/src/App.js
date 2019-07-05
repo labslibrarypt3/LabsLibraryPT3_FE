@@ -9,6 +9,7 @@ import AuthContainer from "./components/Auth/AuthContainer";
 import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
 import Chat from "./components/Twilio/Chat";
+import MyShelf from "./components/MyShelf/MyShelf";
 //Styles
 import "./App.css";
 
@@ -136,10 +137,9 @@ class App extends Component {
           )}
         />
 
-        {/*
         <Route path="/my-shelf" render={props => <MyShelf {...props} />} />
 
-
+        {/*
         <Route path="/search" render={props => <Search {...props} />} />
 
             <Route path="/chat" component={Chat} />
