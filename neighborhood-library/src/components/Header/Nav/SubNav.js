@@ -1,5 +1,5 @@
 import React from "react";
-
+import Logout from "../../Auth/Logout";
 const SubNav = () => {
   return (
     <ul className="nav__submenu">
@@ -11,6 +11,9 @@ const SubNav = () => {
       </li>
       <li className="nav__submenu-item ">
         <a>Messages</a>
+      </li>
+      <li className="nav__submenu-item ">
+        <Logout />
       </li>
     </ul>
   );
