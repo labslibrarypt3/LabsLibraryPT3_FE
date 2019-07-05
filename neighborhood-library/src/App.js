@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Route } from "react-router-dom";
 //Components
-import Headers from "./components/Header/Headers";
+import Header from "./components/Header/Header";
 import Account from "./components/Account/Account";
 import AuthContainer from "./components/Auth/AuthContainer";
 import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
+import Chat from "./components/Twilio/Chat";
 //Styles
 import "./App.css";
 
@@ -92,7 +93,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Headers img={this.state.img} />
+        <Header img={this.state.img} />
 
         <Route
           exact
@@ -147,8 +148,8 @@ class App extends Component {
         />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
-        <Route path="/twilio" component={TwilioApp} /> */}
-
+        */}
+        <Route path="/chat" component={Chat} />
         <Footer />
       </div>
     );

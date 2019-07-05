@@ -1,68 +1,44 @@
-import React from "react";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Logout from "../../Auth/Logout";
+import SubNav from "./SubNav";
 
-function Nav() {
-  return (
-    <div>
-      {localStorage.getItem("jwt") ? (
-        <nav id="logged-in-nav">
-          <NavLink
-            to="/add-book"
-            activeClassName="selected"
-            className="nav-item"
-          >
-            Add a Book
-            <hr />
-            <div className="pageTurn" />
-          </NavLink>
-          <NavLink
-            to="/my-shelf"
-            activeClassName="selected"
-            className="nav-item"
-          >
-            My Shelf
-            <hr />
-            <div className="pageTurn" />
-          </NavLink>
-          <NavLink
-            to={{
-              pathname: "/account",
-              state: { isLoggedIn: true }
-            }}
-            activeClassName="selected"
-            className="nav-item"
-          >
-            Account
-            <hr />
-            <div className="pageTurn" />
-          </NavLink>
-          <Logout />
-        </nav>
-      ) : (
-        <nav id="logged-out-nav">
-          <NavLink
-            to="/"
-            activeClassName="selected"
-            className="nav-item login-button"
-          >
-            Login
-            <hr />
-            <div className="pageTurn" />
-          </NavLink>
-          <NavLink
-            to="/"
-            activeClassName="selected"
-            className="nav-item login-button"
-          >
-            Register
-            <hr />
-            <div className="pageTurn" />
-          </NavLink>
-        </nav>
-      )}
-    </div>
-  );
+class Nav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showAccountMenu: false
+    };
+  }
+
+  handleHover = () => {
+    this.setState({ showAccountMenu: true });
+  };
+
+  handleLeave = () => {
+    this.setState({ showAccountMenu: false });
+  };
+
+  render() {
+    return (
+      <nav className="nav">
+        <ul className="nav__menu">
+          <li className="nav__menu-item" onMouseLeave={this.handleLeave}>
+            <NavLink
+              to={{
+                pathname: "/account",
+                state: { isLoggedIn: true }
+              }}
+              onMouseEnter={this.handleHover}
+            >
+              Account
+            </NavLink>
+            {this.state.showAccountMenu && <SubNav />}
+          </li>
+        </ul>
+      </nav>
+    );
+  }
 }
 
 export default Nav;
