@@ -149,7 +149,7 @@ class App extends Component {
         />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
-        <Route path="/twilio" component={Chat} /> */}
+
         <Footer />
       </div>
     );

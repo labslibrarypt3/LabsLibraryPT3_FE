@@ -20,7 +20,7 @@ class EditAccountInfoForm extends Component {
       zipcode: "",
       img: "",
       password: "",
-      
+
       stripe_user_id: "",
       alerts: {
         success: false,
