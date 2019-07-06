@@ -17,7 +17,7 @@ class ManualAuthContainer extends Component {
 
   render() {
     return (
-      <div className="manual-auth-container">
+      <section className="manual-auth-container">
         {this.state.isNewHere ? (
           <Register
             loginVsRegisterToggler={this.loginVsRegisterToggler}
@@ -29,7 +29,7 @@ class ManualAuthContainer extends Component {
             loggedInStateHandler={this.props.loggedInStateHandler}
           />
         )}
-      </div>
+      </section>
     );
   }
 }

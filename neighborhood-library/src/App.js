@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Route } from "react-router-dom";
 //Components
-import Headers from "./components/Header/Headers";
+import Header from "./components/Header/Header";
 import Account from "./components/Account/Account";
 // import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
@@ -17,6 +17,8 @@ import Search from "./components/Search/Search";
 import AuthContainer from "./components/Auth/AuthContainer";
 import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
+import Chat from "./components/Twilio/Chat";
+import MyShelf from "./components/MyShelf/MyShelf";
 //Styles
 import "./App.css";
 
@@ -36,16 +38,21 @@ class App extends Component {
       img: " ",
       password: " ",
       stripe_user_id: " ",
-      isLoggedIn: false,
+      isLoggedIn: true,
       isLoading: false,
       Message: " ",
       Error: " "
     };
   }
+  // componentDidMount() {
+  //   if (this.state.isLoggedIn) {
+  //     this.getUserData();
+  //   }
+  // }
 
   //toggles isLoggedIn in App state
-  loggedInStateHandler = prevState => {
-    this.setState({ isLoggedIn: !prevState.isLoggedIn });
+  loggedInStateHandler = () => {
+    this.setState({ isLoggedIn: !this.state.isLoggedIn });
   };
 
   getUserData = async () => {
@@ -78,7 +85,7 @@ class App extends Component {
             zipcode: res.data.zipcode,
             img: res.data.img,
             stripe_user_id: res.data.stripe_user_id,
-            isLoggedIn: false,
+            isLoggedIn: true,
             isLoading: false,
             Message: "",
             Error: ""
@@ -92,24 +99,19 @@ class App extends Component {
     console.log("App.js' getUserData() end");
   };
 
-  // componentDidMount() {
-  //   if (this.state.isLoggedIn) {
-  //     this.getUserData();
-  //   }
-  // }
-
   render() {
     return (
       <div className="App">
-        <Headers img={this.state.img} />
-
-
+        <Header
+          img={this.state.img}
+          isLoggedIn={this.state.isLoggedIn}
+          loggedInStateHandler={this.loggedInStateHandler}
+        />
         <Route
           exact
           path="/add-book"
           render={props => <AddBookContainer userId={this.state.userId} />}
         />
-      
         <Route
           path="/account"
           render={props => (
@@ -140,7 +142,13 @@ class App extends Component {
             />
           )}
         />
-        <Route path="/my-shelf" render={props => <MyShelf {...props} />} />
+        <Route
+          path="/my-shelf"
+          render={props => <MyShelf firstName={this.state.firstName} />}
+        />
+        <Route path="/chat" component={Chat} />
+
+        {/*
         <Route path="/search" render={props => <Search {...props} />} />
         <Route path="/chat" component={Chat} />
         <Route
@@ -149,6 +157,8 @@ class App extends Component {
         />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
+
+        */}
 
         <Footer />
       </div>

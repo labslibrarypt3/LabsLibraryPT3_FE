@@ -22,7 +22,7 @@ class Account extends Component {
       : (heading = `Welcome ${this.props.firstName}.`);
 
     return (
-      <main className="account container">
+      <main className="account">
         <h2>{heading}</h2>
         <Route
           exact

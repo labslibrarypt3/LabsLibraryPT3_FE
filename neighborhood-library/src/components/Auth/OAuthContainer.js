@@ -4,7 +4,7 @@ import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import "../../App.css";
 import ForgotPassword from "./ForgotPassword";
-import Headers from "../Header/Headers";
+import Header from "../Header/Header";
 
 class OAuthContainer extends Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class OAuthContainer extends Component {
     const componentClicked = response => {};
 
     return (
-      <div className="oauth-container">
+      <section className="oauth-container">
         <FacebookLogin
           appId="2561795117185670"
           autoLoad={false}
@@ -76,7 +76,7 @@ class OAuthContainer extends Component {
           cookiePolicy={"single_host_origin"}
           className="login-button"
         />
-      </div>
+      </section>
     );
   }
 }

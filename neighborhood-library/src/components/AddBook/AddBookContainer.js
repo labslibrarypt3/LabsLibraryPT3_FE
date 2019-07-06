@@ -47,13 +47,6 @@ class AddBookContainer extends Component {
 
   //book parameter is passed in onClick in AddBook.js
   addBookToLibrary = async book => {
-    console.log("line 49 AddBookContainer ", typeof book);
-    console.log(`I am ${book} getting passed into addBookToLibrary`);
-    console.log(
-      `Start adding book (title: ${book.title}, author: ${
-        book.authors
-      }) to home library`
-    );
     const endpoint = "http://localhost:4000/api/books/";
     const authToken = localStorage.getItem("jwt");
     const axiosResponse = await axios
