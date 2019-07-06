@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TwillioApp from "./TwilioApp";
+import TwillioApp from "./Chatroom";
 import axios from "axios";
 
 class Chat extends Component {
