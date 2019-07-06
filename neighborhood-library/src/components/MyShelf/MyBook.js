@@ -23,10 +23,11 @@ class MyBook extends Component {
     return (
       <div key={this.props.bookId} className="book">
         <img src={this.props.cover} className="book-cover" alt="book cover" />
-
-        <p className="book-title">{this.props.title}</p>
-        <p className="book-authors">{this.props.authors}</p>
-        <button onClick={this.buttonClicked}>Delete</button>
+        <div className="book-data">
+          <p className="book-title">{this.props.title}</p>
+          <p className="book-authors">{this.props.authors}</p>
+          <button onClick={this.buttonClicked}>Delete</button>
+        </div>
       </div>
     );
   }

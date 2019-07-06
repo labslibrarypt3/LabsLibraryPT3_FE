@@ -308,23 +308,33 @@ header form button,
   min-width: 200px;
   max-width: 200px;
   margin: 10px 2%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-evenly;
+  /* display: flex; */
+
   padding: 2px 1%;
 }
 
 .book-cover {
   border-radius: 15px;
   width: 100%;
-  height: 60%;
+  height: 100%;
   padding: 0;
   margin: 0;
 }
 
-.book p {
+.book-data {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgba(57, 93, 192, 0.9);
+  position: relative;
+  bottom: 97px;
+  padding: 10px 2%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 1000;
+}
+
+.book .book-data p {
   display: block;
   width: 100%;
   padding: 0;
@@ -334,9 +344,10 @@ header form button,
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
+  color: #fcc3b2;
 }
 
-.book-title {
+.book-data .book-title {
   font-family: Raleway;
   font-style: normal;
   font-weight: 600;
@@ -347,7 +358,7 @@ header form button,
   text-align: center;
 }
 
-.book-authors {
+.book-data .book-authors {
   font-family: Raleway;
   font-style: normal;
   font-weight: normal;
@@ -364,6 +375,7 @@ header form button,
   border-radius: 5px;
   background-color: #f2f4f9;
   color: #2849a5;
+  margin: 5px 0;
 }
 
 /* Footer */
