@@ -13,7 +13,9 @@ import Chat from "./components/Twilio/Chat";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
 import Search from "./components/Search/Search";
+
 import AuthContainer from "./components/Auth/AuthContainer";
+import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
 //Styles
 import "./App.css";
@@ -100,11 +102,14 @@ class App extends Component {
     return (
       <div className="App">
         <Headers img={this.state.img} />
+
+
         <Route
           exact
           path="/add-book"
           render={props => <AddBookContainer userId={this.state.userId} />}
         />
+      
         <Route
           path="/account"
           render={props => (
