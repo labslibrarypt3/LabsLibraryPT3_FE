@@ -25,7 +25,6 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 2000px;
 }
 
 /* MAIN Content section of app*/
@@ -384,7 +383,7 @@ footer {
   font-size: 12px;
   position: fixed;
   bottom: 0;
-  z-index:5;
+  z-index: 5;
 }
 
 footer .legal-links {
