@@ -1,35 +1,42 @@
 import React, { Component } from "react";
+import TwillioApp from "./TwilioApp";
 import axios from "axios";
-import Loaned from "../MyShelf/Loaned/Loaned";
-import Borrowed from "../MyShelf/Borrowed/Borrowed";
 
 class Chat extends Component {
-  state = {
-    lending: [],
-    borrowing: [],
-    borrowedTransaction: {},
-    lender: {},
-    lentTransactions: [],
-    userName: " ",
-    confirmed: false,
-    roomSelect: false,
-    messages: "",
-    premessage: "",
-    bookId: ""
-  };
+  constructor() {
+    super();
+    this.state = {
+      messages: "",
+      checkoutId: ""
+    };
+  }
 
+  dataBuild = {
+    messageBuild: {
+      message: " ",
+      checkoutId: " "
+    },
+    userData: "",
+    messages: "",
+    borrowedBooks: [],
+    lentBooks: [],
+    lentTransactions: "",
+    otherUserData: ""
+  };
   // this endpoint gets the books that have been borrowed by this user and stores it in
   // this .state.borrowing
 
-  getBorrowed = () => {
+  //added to data build
+  getBorrowedBooks = async () => {
     const endpoint = "http://localhost:4000/api/trans/borrow";
 
     const authToken = localStorage.getItem("jwt");
-    return axios
+    await axios
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
 
       .then(res => {
-        this.setState({ borrowing: res.data });
+        this.dataBuild.borrowedBooks = res.data;
+        this.getName();
       })
       .catch(err => {
         console.log(" Error", err);
@@ -37,37 +44,36 @@ class Chat extends Component {
   };
 
   // this endpoint returns the transactions where this user has borrowed books
+  // added to data build
+  // getBorrowedTransaction = async () => {
+  //   const endpoint = "http://localhost:4000/api/trans/tranborrow";
 
-  getBorrowedTransaction = () => {
-    const endpoint = "http://localhost:4000/api/trans/tranborrow";
+  //   const authToken = localStorage.getItem("jwt");
+  //   await axios
+  //     .get(endpoint, { headers: { Authorization: `${authToken}` } })
 
-    const authToken = localStorage.getItem("jwt");
-    return axios
-      .get(endpoint, { headers: { Authorization: `${authToken}` } })
-
-      .then(res => {
-        this.setState({ borrowedTransaction: res.data });
-      })
-      .catch(err => {
-        console.log(" Error", err);
-      });
-  };
+  //     .then(res => {
+  //       this.dataBuild.borrowedTransactions = res.data;
+  //       this.getName();
+  //     })
+  //     .catch(err => {
+  //       console.log(" Error", err);
+  //     });
+  // };
 
   // this transaction retrieves this users name and modifies the first and last name to
   // return firstname and last initial and stores into state as userName
 
-  getName = () => {
+  getName = async () => {
     const authToken = localStorage.getItem("jwt");
     const endpoint = "http://localhost:4000/api/users/user";
-    return axios
+    await axios
       .get(endpoint, {
         headers: { authorization: authToken }
       })
       .then(res => {
-        console.log("account response", res);
-        this.setState({
-          userName: `${res.data.firstname} ${res.data.lastname[0]}.`
-        });
+        this.dataBuild.userData = res.data;
+        this.getLentBooks();
       })
       .catch(err => console.log(err));
   };
@@ -77,14 +83,14 @@ class Chat extends Component {
 
   getLentBooks = async () => {
     const endpoint = "http://localhost:4000/api/trans/lend";
-    const axiosresponse = await axios
+    await axios
       .get(endpoint, {
         headers: { authorization: localStorage.getItem("jwt") },
         params: { lender_id: localStorage.getItem("id") }
       })
       .then(res => {
-        console.log(res.data);
-        this.setState({ lending: res.data });
+        this.getLentTransactions();
+        this.dataBuild.lentBooks = res.data;
       })
       .catch(err => {
         console.log(" Error", err);
@@ -96,143 +102,62 @@ class Chat extends Component {
   getLentTransactions = async () => {
     const endpoint = "http://localhost:4000/api/trans/tranlent";
 
-    const axiosresponse = await axios
+    await axios
       .get(endpoint, {
         headers: { authorization: localStorage.getItem("jwt") },
         params: { lender_id: localStorage.getItem("id") }
       })
       .then(res => {
-        console.log(res.data, "in lens tran");
-        this.setState({ lentTransactions: res.data });
+        // console.log(res.data, "in lens tran");
+        this.dataBuild.lentTransactions = res.data;
+        console.log("109", this.dataBuild, "end of chat package build");
+        this.setState({ dataBuild: this.dataBuild });
       })
       .catch(err => {
         console.log(" Error", err);
       });
   };
-
-  messagePostHandler = async e => {
-    e.preventDefault();
-    const endpoint = "http://localhost:4000/api/trans/update";
-    const messages = this.state.messages;
-    const book_id = this.state.bookId;
-    const axiosresponse = await axios
-      // const transactionId =
-      .put(endpoint, {
-        messages,
-        book_id
-      })
-      .then(res => {
-        console.log(res.data);
-        // this.setState({ message: res.data });
-      })
-      .catch(err => {
-        console.log(" Error", err);
-      });
-  };
-
-  inputHandler = e => {
-    this.setState({ messages: e.target.value });
-    this.setState({ bookId: parseInt(e.target.name) });
-  };
-
-  // component did mount calls all axious call methods to populate state with data needed
 
   componentDidMount() {
-    this.getBorrowed();
-    this.getBorrowedTransaction();
-    this.getName();
-    this.getLentBooks();
-    this.getLentTransactions();
+    // this.setState({ databuild: this.dataBuild });
+    this.getBorrowedBooks();
   }
 
   render() {
-    console.log(this.state);
     return (
-      <div>
-        <div class="menu">
-          <ul class="menu-sidebar">
-            <h2>Borrowed</h2>
-            {this.state.borrowing.map(e => {
-              const bookId = e.bookId;
-              console.log(bookId, "firstmap");
-              const borrowerMessage = this.state.borrowedTransaction.map(
-                (bookId, e) => {
-                  return bookId.message;
-                }
-              );
-              return (
-                <div>
-                  <div>{e.title}lender</div>
+      <>
+        <h3>Borrowed by me:</h3>
 
-                  <div>{borrowerMessage}</div>
-                  <form onClick={this.messagePostHandler}>
-                    <input
-                      onChange={this.inputHandler}
-                      placeholder="What do you want to say?"
-                      value={this.state.messages}
-                      name={bookId}
-                    />
-                    <div class="button">
-                      <button>POST</button>
-                    </div>
+        {// first get the book title data by mapping over the get borrowed books array
 
-                    <div class="delete">
-                      <button>DELETE</button>
-                    </div>
-                  </form>
-                </div>
-              );
-            })}
-            <h2>Lent</h2>
-            {this.state.lending.map(e => {
-              const bookId = e.bookId;
-              console.log(bookId, "lendmap");
-              const lenderMessage = this.state.lentTransactions.map(
-                (bookId, e) => {
-                  return bookId.messages;
-                }
-              );
-              return (
-                <div>
-                  <li>{e.title}borrower </li>
+        this.dataBuild.borrowedBooks.map(e => {
+          console.log(e, "this is the borrowing map");
+          return (
+            <div>
+              <div key={Math.random()}>{e.title}</div>
+              <TwillioApp
+                dataBuild={this.dataBuild}
+                roomTitle={`${e.bookId}`}
+              />
+            </div>
+          );
+        })}
 
-                  {lenderMessage}
-                  <form onClick={this.messagePostHandler}>
-                    <input
-                      onChange={this.inputHandler}
-                      placeholder="What do you want to say?"
-                      value={this.state.messages}
-                      name={bookId}
-                    />
-                    <div class="button">
-                      <button>POST</button>
-                    </div>
-
-                    <ul class="posts" />
-
-                    <div class="delete">
-                      <button>DELETE</button>
-                    </div>
-                  </form>
-                </div>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
+        <h3>Lent by me:</h3>
+        {// first get the book title data by mapping over the get borrowed books array
+        this.dataBuild.lentBooks.map(e => {
+          const lenderid = e.user_id;
+          // console.log(e, "this is the first lending map");
+          return (
+            <div>
+              <div key={Math.random()}>{e.title}</div>
+              <TwillioApp dataBuild={this.dataBuild} roomTitle={e.title} />
+            </div>
+          );
+        })}
+      </>
     );
   }
 }
+
 export default Chat;
-// https://codepen.io/jpekanto/pen/bfiau
-// add bollean for lender on table that toggles transaction from false to true
-//done
-// add button to change state of confirmed to true and call update transaction endpoint
-
-// chat array on transaction table that will hold a maximum of 50
-
-// render chat box
-
-// fix lent to be like the borrowed is rendering
-
-// create an update end

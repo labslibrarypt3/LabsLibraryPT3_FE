@@ -4,6 +4,7 @@ import SuccessAlert from "../Alerts/SuccessAlert";
 import ErrorAlert from "../Alerts/ErrorAlert";
 import EditPasswordForm from "./EditPasswordForm";
 
+
 class EditAccountInfoForm extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +20,7 @@ class EditAccountInfoForm extends Component {
       zipcode: "",
       img: "",
       password: "",
+
       stripe_user_id: "",
       alerts: {
         success: false,

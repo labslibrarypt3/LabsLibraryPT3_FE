@@ -5,6 +5,15 @@ import { Route } from "react-router-dom";
 //Components
 import Header from "./components/Header/Header";
 import Account from "./components/Account/Account";
+// import Landing from "./components/Landing/Landing";
+import MyShelf from "./components/MyShelf/MyShelf";
+import AddBookContainer from "./components/AddBook/AddBookContainer";
+import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
+import Chat from "./components/Twilio/Chat";
+import TOS from "./components/Legal/TOS";
+import Privacy from "./components/Legal/Privacy";
+import Search from "./components/Search/Search";
+
 import AuthContainer from "./components/Auth/AuthContainer";
 import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
@@ -98,13 +107,11 @@ class App extends Component {
           isLoggedIn={this.state.isLoggedIn}
           loggedInStateHandler={this.loggedInStateHandler}
         />
-
         <Route
           exact
           path="/add-book"
           render={props => <AddBookContainer userId={this.state.userId} />}
         />
-
         <Route
           path="/account"
           render={props => (
@@ -125,7 +132,6 @@ class App extends Component {
             />
           )}
         />
-
         <Route
           path="/auth"
           render={props => (
@@ -136,26 +142,24 @@ class App extends Component {
             />
           )}
         />
-
         <Route
           path="/my-shelf"
           render={props => <MyShelf firstName={this.state.firstName} />}
         />
+        <Route path="/chat" component={Chat} />
 
         {/*
         <Route path="/search" render={props => <Search {...props} />} />
-
-            <Route path="/chat" component={Chat} />
-
-
+        <Route path="/chat" component={Chat} />
         <Route
           path="/stripe-connect-success"
           render={props => <StripeConnectSuccess {...props} />}
         />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
+
         */}
-        <Route path="/chat" component={Chat} />
+
         <Footer />
       </div>
     );
