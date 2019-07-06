@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import SuccessAlert from "../Alerts/SuccessAlert";
 import ErrorAlert from "../Alerts/ErrorAlert";
-<<<<<<< HEAD
-=======
 import EditPasswordForm from "./EditPasswordForm";
->>>>>>> 3242b0fd02f9559f5f863f861d60c7aa926fcf48
 
 class EditAccountInfoForm extends Component {
   constructor(props) {
@@ -22,20 +19,11 @@ class EditAccountInfoForm extends Component {
       zipcode: "",
       img: "",
       password: "",
-<<<<<<< HEAD
-      stripe_user_id: ""
-    };
-
-    const alerts = {
-      success: false,
-      error: false
-=======
       stripe_user_id: "",
       alerts: {
         success: false,
         error: false
       }
->>>>>>> 3242b0fd02f9559f5f863f861d60c7aa926fcf48
     };
   }
   inputHandler = e => {

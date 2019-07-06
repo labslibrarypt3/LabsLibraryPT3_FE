@@ -5,7 +5,6 @@ import { Route } from "react-router-dom";
 //Components
 import Headers from "./components/Header/Headers";
 import Account from "./components/Account/Account";
-<<<<<<< HEAD
 // import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import AddBookContainer from "./components/AddBook/AddBookContainer";
@@ -14,10 +13,7 @@ import Chat from "./components/Twilio/Chat";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
 import Search from "./components/Search/Search";
-=======
->>>>>>> 3242b0fd02f9559f5f863f861d60c7aa926fcf48
 import AuthContainer from "./components/Auth/AuthContainer";
-import AddBookContainer from "./components/AddBook/AddBookContainer";
 import Footer from "./components/Footer/Footer";
 //Styles
 import "./App.css";
@@ -104,20 +100,11 @@ class App extends Component {
     return (
       <div className="App">
         <Headers img={this.state.img} />
-<<<<<<< HEAD
-        <Route
-          path="/add-book"
-          render={props => <AddBookContainer {...props} />}
-        />
-=======
-
         <Route
           exact
           path="/add-book"
           render={props => <AddBookContainer userId={this.state.userId} />}
         />
-
->>>>>>> 3242b0fd02f9559f5f863f861d60c7aa926fcf48
         <Route
           path="/account"
           render={props => (
@@ -157,7 +144,7 @@ class App extends Component {
         />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
-        <Route path="/twilio" component={Chat} /> */}
+
         <Footer />
       </div>
     );
