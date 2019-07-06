@@ -33,7 +33,7 @@ class HomeLibrary extends Component {
       <section className="home-library shelves">
         <h3>Home Library</h3>
         <p>{this.props.firstName}</p>
-        <div className="shelf">
+        <div className="shelf grid-container">
           {this.state.data.map(e => {
             return (
               <MyBook
