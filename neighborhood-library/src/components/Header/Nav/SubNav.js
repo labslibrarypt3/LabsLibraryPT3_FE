@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const SubNav = props => {
   return (
     <ul className="nav__submenu">
-      <NavLink to="/my-shelf" className="nav__submenu-item ">
+      <NavLink to="/my-shelf/home-library" className="nav__submenu-item ">
         My Shelf
       </NavLink>
 

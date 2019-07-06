@@ -4,8 +4,8 @@ import { Redirect } from "react-router-dom";
 import MyBook from "../MyBook";
 
 class HomeLibrary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: []
     };
@@ -16,9 +16,8 @@ class HomeLibrary extends Component {
       if (localStorage.getItem("jwt")) {
         const authToken = localStorage.getItem("jwt");
         return axios
-          .get(endpoint, {headers:{Authorization:`${authToken}`}})
+          .get(endpoint, { headers: { Authorization: `${authToken}` } })
           .then(res => {
-            
             this.setState({ data: res.data });
           })
           .catch(err => console.log(err));
@@ -31,13 +30,13 @@ class HomeLibrary extends Component {
 
   render() {
     return (
-      <div className="home-library">
-        <h3>HomeLibrary</h3>
+      <section className="home-library shelves">
+        <h3>Home Library</h3>
+        <p>{this.props.firstName}</p>
         <div className="shelf">
           {this.state.data.map(e => {
             return (
               <MyBook
-                
                 title={e.title}
                 authors={e.authors}
                 cover={e.cover}
@@ -47,7 +46,7 @@ class HomeLibrary extends Component {
             );
           })}
         </div>
-      </div>
+      </section>
     );
   }
 }

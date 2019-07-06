@@ -71,7 +71,7 @@ class EditAccountInfoForm extends Component {
 
   render() {
     return (
-      <section className="edit-account-info container">
+      <section className="edit-account-info">
         {this.state.alerts.success ? <SuccessAlert /> : null}
         {this.state.alerts.error ? <ErrorAlert /> : null}
         <h2>Edit Profile</h2>

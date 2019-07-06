@@ -4,9 +4,9 @@ import ManualAuthContainer from "./ManualAuthContainer";
 
 const AuthContainer = props => {
   return (
-    <section className="auth-container container">
+    <main className="auth-container">
       <OAuthContainer
-        isLoggesection={props.isLoggedIn}
+        isLoggedIn={props.isLoggedIn}
         loggedInStateHandler={props.loggedInStateHandler}
       />
       <p>OR</p>
@@ -14,7 +14,7 @@ const AuthContainer = props => {
         isLoggedIn={props.isLoggedIn}
         loggedInStateHandler={props.loggedInStateHandler}
       />
-    </section>
+    </main>
   );
 };
 

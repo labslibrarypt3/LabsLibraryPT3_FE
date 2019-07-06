@@ -137,7 +137,10 @@ class App extends Component {
           )}
         />
 
-        <Route path="/my-shelf" render={props => <MyShelf {...props} />} />
+        <Route
+          path="/my-shelf"
+          render={props => <MyShelf firstName={this.state.firstName} />}
+        />
 
         {/*
         <Route path="/search" render={props => <Search {...props} />} />
