@@ -380,6 +380,85 @@ main {
   height: 200px;
 }
 
+/*
+**************
+***Account****
+**************
+*/
+
+.account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #395dc0;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.account-info img {
+  border-radius: 50%;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.account-info form,
+.edit-account-info-form,
+.edit-password-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.account-info form .form-pair,
+.edit-account-info form .form-pair,
+.edit-password-form form .form-pair {
+  display: flex;
+  width: 100%;
+  margin: 2px auto;
+  justify-content: space-between;
+}
+
+.account-info form .form-pair label,
+.edit-account-info form .form-pair label,
+.edit-password-form form .form-pair label {
+  width: 35%;
+}
+
+.account-info form .form-pair input,
+.edit-account-info form .form-pair input,
+.edit-password-form form .form-pair input {
+  border-radius: 5px;
+  width: 65%;
+  height: 30px;
+}
+
+.account-info a {
+  background-color: #df6041;
+  border-radius: 5px;
+  padding: 2px 2%;
+  margin-top: 10px;
+}
+
+.account .stripe-connect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.account .stripe-connect a img {
+  max-width: 250px;
+  margin: 10px auto;
+}
+
 /* Footer */
 footer {
   display: flex;
