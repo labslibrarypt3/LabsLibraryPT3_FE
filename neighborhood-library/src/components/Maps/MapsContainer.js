@@ -11,6 +11,7 @@ const MapsContainer = () => {
     height: `100vh`,
     zoom: 10
   });
+  const [selectedLibrary, setSelectedLibrary] = useState(null);
 
   const dummyData = [{ latitude: 33.4482, longitude: -112.072578 }];
 
@@ -24,14 +25,20 @@ const MapsContainer = () => {
         setViewport(viewport);
       }}
     >
-      {dummyData.map(location => {
+      {dummyData.map(library => {
         return (
           <Marker
             key={Math.random()}
-            latitude={location.latitude}
-            longitude={location.longitude}
+            latitude={library.latitude}
+            longitude={library.longitude}
           >
-            <button className="marker-button">
+            <button
+              className="marker-button"
+              onClick={event => {
+                event.preventDefault();
+                setSelectedLibrary(library);
+              }}
+            >
               <img src={icon} alt="library" />
             </button>
           </Marker>
