@@ -389,6 +389,18 @@ main {
   width: 100%;
 }
 
+.add-book-container > h2:nth-child(1) {
+  margin: 17px auto;
+}
+
+.add-book-container > p:nth-child(2) {
+  margin: 0 auto 34px auto;
+}
+
+.add-book-container > form:nth-child(3) {
+  margin: 0px auto 30px auto;
+}
+
 .add-book-container form {
   width: 50%;
   display: flex;
