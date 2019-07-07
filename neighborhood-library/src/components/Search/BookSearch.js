@@ -7,10 +7,6 @@ class BookSearch extends Component {
     data: {}
   };
 
-  // I accidentally lost this function.
-  // Sorry,
-  // Ira.
-
   componentDidMount() {
     const data = () => {
       if (localStorage.getItem("jwt")) {
