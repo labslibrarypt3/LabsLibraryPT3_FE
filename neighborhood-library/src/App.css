@@ -269,7 +269,7 @@ main {
 }
 
 /* Home Library, Borrowed, and Loaned */
-
+/* And Add Book */
 .shelves {
   top: 115px;
   display: flex;
@@ -380,6 +380,35 @@ main {
   height: 200px;
 }
 
+/* Add Book Container */
+.add-book-container {
+  height: calc(100% - 313px);
+  position: relative;
+  top: 138px;
+  left: 0;
+  width: 100%;
+}
+
+.add-book-container form {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-book-container form input {
+  width: 70%;
+  border-radius: 5px;
+  margin-right: 2%;
+}
+
+.add-book-container form button {
+  width: 70%;
+  border-radius: 5px;
+}
+
+.add-book-container .add-book .book-data {
+  bottom: 102px;
+}
 /*
 **************
 ***Account****

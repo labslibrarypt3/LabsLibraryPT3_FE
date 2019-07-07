@@ -62,7 +62,7 @@ class AddBookContainer extends Component {
 
   render() {
     return (
-      <main className="add-book-container container">
+      <main className="add-book-container shelves">
         <h2>What books do you want to lend out?</h2>
         <p>
           Search Goodreads' database to find a book you currently own and would
@@ -77,7 +77,7 @@ class AddBookContainer extends Component {
           />
           <button type="submit">Search</button>
         </form>
-        <section className="goodreads-search-results-container shelf">
+        <section className="goodreads-search-results-container shelf grid-container">
           {this.state.books.map(book => {
             return (
               <AddBook
