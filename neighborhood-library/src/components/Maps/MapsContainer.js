@@ -4,13 +4,19 @@ import icon from "./heart.svg";
 const API_KEY = process.env.REACT_APP_MAP_KEY;
 
 const MapsContainer = () => {
-  const [viewport, setViewport] = useState(null);
+  const [viewport, setViewport] = useState({
+    width: `100vw`,
+    height: `100vh`,
+    zoom: 10,
+    latitude: 33.4482,
+    longitude: -112.072578
+  });
   const [selectedLibrary, setSelectedLibrary] = useState(null);
 
   const dummyData = [{ latitude: 33.4482, longitude: -112.072578 }];
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
-      console.log(position.coords.latitude, position.coords.longitude);
       setViewport({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
