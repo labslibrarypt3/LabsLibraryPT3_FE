@@ -135,6 +135,7 @@ class Chat extends Component {
           return (
             <div>
               <div key={Math.random()}>{e.title}</div>
+
               <TwillioApp
                 dataBuild={this.dataBuild}
                 roomTitle={`${e.bookId}`}
@@ -151,10 +152,12 @@ class Chat extends Component {
           return (
             <div>
               <div key={Math.random()}>{e.title}</div>
-              <TwillioApp
-                dataBuild={this.dataBuild}
-                roomTitle={`${e.bookId}`}
-              />
+              <div>
+                <TwillioApp
+                  dataBuild={this.dataBuild}
+                  roomTitle={`${e.bookId}`}
+                />
+              </div>
             </div>
           );
         })}
