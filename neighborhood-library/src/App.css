@@ -532,14 +532,18 @@ footer .legal-links {
 /* ********** */
 
 .marker-button {
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
+  border: none;
   background-color: #395dc0;
   cursor: pointer;
   opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .marker-button img {
-  width: 100%;
+  width: 80%;
 }

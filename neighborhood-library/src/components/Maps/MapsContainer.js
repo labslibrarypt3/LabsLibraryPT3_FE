@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import icon from "./heart.svg";
 const API_KEY = process.env.REACT_APP_MAP_KEY;
 
 const MapsContainer = () => {
-  const [viewport, setViewport] = useState({
-    latitude: 33.4482,
-    longitude: -112.072578,
-    width: `100vw`,
-    height: `100vh`,
-    zoom: 10
-  });
+  const [viewport, setViewport] = useState(null);
   const [selectedLibrary, setSelectedLibrary] = useState(null);
 
   const dummyData = [{ latitude: 33.4482, longitude: -112.072578 }];
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log(position.coords.latitude, position.coords.longitude);
+      setViewport({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        width: `100vw`,
+        height: `100vh`,
+        zoom: 10
+      });
+    });
+  }, []);
 
   return (
     <ReactMapGL
@@ -54,6 +60,7 @@ const MapsContainer = () => {
           onClose={() => {
             setSelectedLibrary(null);
           }}
+          closeOnClick={false}
         >
           <div className="library-info">
             <h3>Dynamic Name</h3>
