@@ -1,17 +1,15 @@
 import React from "react";
 import { Redirect, withRouter } from "react-router-dom";
 
-const Logout = withRouter(({ history }) => {
+const Logout = props => {
   const logout = () => {
     localStorage.clear();
-    // <Redirect to={"http://localhost:3000/"} />
-    history.push("/");
+    props.loggedInStateHandler();
   };
-
   return (
-    <button onClick={logout} className="logout-button">
+    <button onClick={logout} className=" nav__submenu-item">
       Logout
     </button>
   );
-});
+};
 export default Logout;

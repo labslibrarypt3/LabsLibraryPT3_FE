@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import AuthPostData from "./AuthPostData";
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       password: "",
       email: ""
@@ -29,7 +29,7 @@ class Login extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="login">
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="login">Login</label>
           <input
@@ -49,6 +49,16 @@ class Login extends Component {
           <button type="submit">Login</button>
         </form>
         <a href="/change-password">Forgot password?</a>
+        <div>
+          <p>Need an account?</p>
+          <button
+            href="#"
+            className="manual-auth-nav"
+            onClick={this.loginVsRegisterToggler}
+          >
+            Register
+          </button>
+        </div>
       </div>
     );
   }

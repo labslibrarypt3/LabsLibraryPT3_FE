@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Chat from 'twilio-chat';
-import { Chat as ChatUI } from '@progress/kendo-react-conversational-ui';
+import React, { Component } from "react";
+import Chat from "twilio-chat";
+import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
 
 class TwilioApp extends Component {
   constructor(props) {
@@ -12,8 +12,8 @@ class TwilioApp extends Component {
     };
 
     this.user = {
-      id: props.userId,
-      username: localStorage.getItem("username")
+      id: props.dataBuild.userData.userId,
+      username: props.dataBuild.userData.name
     };
 
     this.setupChatClient = this.setupChatClient.bind(this);
@@ -21,15 +21,13 @@ class TwilioApp extends Component {
     this.messageAdded = this.messageAdded.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.handleError = this.handleError.bind(this);
-
   }
 
   componentDidMount() {
-    fetch('http://localhost:4000/api/twilio/token', {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      method: 'POST',
-      body: `identity=${encodeURIComponent(localStorage.getItem("username"))}`
-      
+    fetch("http://localhost:4000/api/twilio/token", {
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      method: "POST",
+      body: `identity=${encodeURIComponent(this.props.dataBuild.userData.name)}`
     })
       .then(res => res.json())
       .then(data => Chat.create(data.token))
@@ -40,18 +38,20 @@ class TwilioApp extends Component {
   handleError(error) {
     console.error(error);
     this.setState({
-      error: 'Could not load chat.'
+      error: "Could not load chat."
     });
   }
 
   setupChatClient(client) {
     this.client = client;
     this.client
-      .getChannelByUniqueName('general2')
+      .getChannelByUniqueName(this.props.roomTitle)
       .then(channel => channel)
       .catch(error => {
         if (error.body.code === 50300) {
-          return this.client.createChannel({ uniqueName: 'general2' });
+          return this.client.createChannel({
+            uniqueName: this.props.roomTitle
+          });
         } else {
           this.handleError(error);
         }
@@ -63,7 +63,7 @@ class TwilioApp extends Component {
       .then(() => {
         this.setState({ isLoading: false });
         this.channel.getMessages().then(this.messagesLoaded);
-        this.channel.on('messageAdded', this.messageAdded);
+        this.channel.on("messageAdded", this.messageAdded);
       })
       .catch(this.handleError);
   }
@@ -100,7 +100,7 @@ class TwilioApp extends Component {
   }
 
   render() {
-   
+    console.log(this.props, "props in twillio");
     if (this.state.error) {
       return <p>{this.state.error}</p>;
     } else if (this.state.isLoading) {

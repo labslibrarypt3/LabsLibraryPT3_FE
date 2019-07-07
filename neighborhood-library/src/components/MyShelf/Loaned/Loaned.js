@@ -34,12 +34,11 @@ class Loaned extends Component {
 
   render() {
     return (
-      <div className="page">
-        <h2>Lent</h2>
+      <div className="loaned shelves">
+        <h3>Lent</h3>
         <p>I am a list of books you've loaned to someone else</p>
-        <div className="shelf">
+        <div className="shelf grid-container">
           {this.state.data.map(e => {
-            
             return (
               <MyBook
                 key={e.lender_id}

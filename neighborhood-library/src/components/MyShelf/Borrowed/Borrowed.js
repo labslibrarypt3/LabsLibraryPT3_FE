@@ -11,17 +11,14 @@ class Borrowed extends Component {
     };
   }
   componentDidMount() {
-  
     const data = () => {
       const endpoint = "http://localhost:4000/api/trans/borrow";
       if (localStorage.getItem("jwt")) {
-       
         const authToken = localStorage.getItem("jwt");
         return axios
-         .get(endpoint, {headers:{Authorization:`${authToken}`}})
-          
+          .get(endpoint, { headers: { Authorization: `${authToken}` } })
+
           .then(res => {
-            
             this.setState({ data: res.data });
           })
           .catch(err => {
@@ -36,10 +33,10 @@ class Borrowed extends Component {
 
   render() {
     return (
-      <div className="borrowed">
-        <h2>Borrowed</h2>
+      <div className="borrowed shelves">
+        <h3>Borrowed</h3>
         <p>These are books you are borrowing from someone else:</p>
-        <div className="shelf">
+        <div className="shelf grid-container">
           {this.state.data.map(e => {
             return (
               <MyBook
