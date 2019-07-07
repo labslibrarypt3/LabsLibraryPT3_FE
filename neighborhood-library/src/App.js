@@ -144,13 +144,13 @@ class App extends Component {
         />
         <Route path="/chat" component={Chat} />
 
-        <Route path="/search" render={props => <Search {...props} />} />
+        <Route path="/search" render={props => <Search />} />
         <Route path="/chat" component={Chat} />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
         <Route
           path="/stripe-connect-success"
-          render={props => <StripeConnectSuccess {...props} />}
+          render={props => <StripeConnectSuccess />}
         />
         <div className="spacer" />
         <Footer />
