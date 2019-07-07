@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Chat from "twilio-chat";
 import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
 
-class TwilioApp extends Component {
+class Chatroom extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -127,4 +127,4 @@ class TwilioApp extends Component {
   }
 }
 
-export default TwilioApp;
+export default Chatroom;

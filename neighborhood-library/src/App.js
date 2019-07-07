@@ -157,7 +157,7 @@ class App extends Component {
         <Route path="/privacy" component={Privacy} />
 
         */}
-
+        <div className="spacer" />
         <Footer />
       </div>
     );
