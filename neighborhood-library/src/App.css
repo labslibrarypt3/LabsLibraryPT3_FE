@@ -275,11 +275,13 @@ main {
   display: flex;
   flex-direction: column;
   align-self: center;
+  align-items: center;
   flex-grow: 1;
   width: 100%;
   height: 96.5%;
   justify-content: flex-start;
   min-height: 1000px;
+  padding: 0 2%;
 }
 
 /* .shelf {
@@ -294,6 +296,7 @@ main {
   width: inherit;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   justify-content: center;
+  align-self: center;
 }
 
 .book {
