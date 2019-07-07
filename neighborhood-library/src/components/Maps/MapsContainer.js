@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import icon from "./heart.svg";
 const API_KEY = process.env.REACT_APP_MAP_KEY;
 
@@ -25,6 +25,7 @@ const MapsContainer = () => {
         setViewport(viewport);
       }}
     >
+      {/* display library locations on map */}
       {dummyData.map(library => {
         return (
           <Marker
@@ -44,6 +45,23 @@ const MapsContainer = () => {
           </Marker>
         );
       })}
+
+      {/* If a library has been selected, show information: */}
+      {selectedLibrary && (
+        <Popup
+          latitude={selectedLibrary.latitude}
+          longitude={selectedLibrary.longitude}
+          onClose={() => {
+            setSelectedLibrary(null);
+          }}
+        >
+          <div className="library-info">
+            <h3>Dynamic Name</h3>
+            <p>Dynamic Library Information</p>
+            <button>Request Book</button>
+          </div>
+        </Popup>
+      )}
     </ReactMapGL>
   );
 };
