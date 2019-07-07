@@ -21,7 +21,7 @@ html {
   width: 100%;
   height: 100%;
   background-color: #d6ddf1;
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -66,6 +66,7 @@ header {
   justify-content: space-around;
   align-items: center;
   color: #f1f1f1;
+  flex-grow: 1;
 
   background: linear-gradient(
       264.53deg,
@@ -147,10 +148,10 @@ il {
 
 .nav__submenu {
   position: absolute;
-  z-index: 2;
+  z-index: 1000;
   left: 4.33%;
 
-  top: 138px;
+  top: 127px;
 
   height: 400px;
   width: 200px;
@@ -166,9 +167,6 @@ il {
 }
 
 .nav__submenu .nav__submenu-item {
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
   width: 100%;
   font-family: Raleway;
   font-style: normal;
@@ -242,6 +240,10 @@ header form button,
 ******************
 */
 
+main {
+  min-height: 100%;
+  height: 100%;
+}
 .my-shelf-nav {
   position: relative;
   z-index: 0;
@@ -275,8 +277,9 @@ header form button,
   align-self: center;
   flex-grow: 1;
   width: 100%;
-  /* height: 96.5%; */
+  height: 96.5%;
   justify-content: flex-start;
+  min-height: 1000px;
 }
 
 /* .shelf {
@@ -289,7 +292,7 @@ header form button,
 .grid-container {
   display: grid;
   width: inherit;
-  grid-template-columns: repeat(auto-fill, 210px);
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   justify-content: center;
 }
 
@@ -319,11 +322,11 @@ header form button,
   width: 100%;
   background-color: rgba(57, 93, 192, 0.9);
   position: relative;
-  bottom: 97px;
+  bottom: 96px;
   padding: 10px 2%;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  z-index: 1;
+  z-index: 0;
 }
 
 .book .book-data p {
@@ -370,9 +373,14 @@ header form button,
   margin: 5px 0;
 }
 
+.spacer {
+  height: 200px;
+}
+
 /* Footer */
 footer {
   display: flex;
+  flex-grow: 1;
   width: 100%;
   flex-direction: column;
   align-items: center;
@@ -380,10 +388,13 @@ footer {
   background: #8099d4;
   padding: 50px 0;
   margin-bottom: 0px;
+
   font-size: 12px;
-  position: fixed;
+  /* position: fixed; */
+  right: 0;
   bottom: 0;
-  z-index: 5;
+  left: 0;
+  z-index: 3;
 }
 
 footer .legal-links {
