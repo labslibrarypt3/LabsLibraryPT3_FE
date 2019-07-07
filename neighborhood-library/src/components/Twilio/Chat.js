@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TwillioApp from "./TwilioApp";
+import TwillioApp from "../Chat/TwilioApp";
 import axios from "axios";
 
 class Chat extends Component {
@@ -151,10 +151,7 @@ class Chat extends Component {
           return (
             <div>
               <div key={Math.random()}>{e.title}</div>
-              <TwillioApp
-                dataBuild={this.dataBuild}
-                roomTitle={`${e.bookId}`}
-              />
+              <TwillioApp dataBuild={this.dataBuild} roomTitle={e.title} />
             </div>
           );
         })}
