@@ -18,6 +18,9 @@ const AuthPostData = (type, userData) => {
       .then(res => {
         if (res.status === 200) {
           localStorage.setItem("jwt", res.data);
+          window.location.replace(
+            " http://localhost:3000/my-shelf/home-library"
+          );
         } else {
           const error = new Error(res.error);
           throw error;

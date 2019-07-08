@@ -8,7 +8,8 @@ class Chatroom extends Component {
     this.state = {
       error: null,
       isLoading: true,
-      messages: []
+      messages: [],
+      buttonName: "Book Loaned"
     };
 
     this.user = {
@@ -99,6 +100,12 @@ class Chatroom extends Component {
     this.client.shutdown();
   }
 
+  buttonHandler = e => {
+    this.state.buttonName === "Book Loaned"
+      ? this.setState({ buttonName: "Book Returned" })
+      : this.setState({ buttonName: "Book Loaned" });
+  };
+
   render() {
     console.log(this.props, "props in twillio");
     if (this.state.error) {
@@ -107,12 +114,15 @@ class Chatroom extends Component {
       return <p>Loading chat...</p>;
     }
     return (
-      <ChatUI
-        user={this.user}
-        messages={this.state.messages}
-        onMessageSend={this.sendMessage}
-        width={500}
-      />
+      <div>
+        <button onClick={this.buttonHandler}>{this.state.buttonName}</button>
+        <ChatUI
+          user={this.user}
+          messages={this.state.messages}
+          onMessageSend={this.sendMessage}
+          width={500}
+        />
+      </div>
     );
   }
 }

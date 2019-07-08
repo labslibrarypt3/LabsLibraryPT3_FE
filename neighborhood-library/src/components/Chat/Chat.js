@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TwillioApp from "./Chatroom";
+import Chatroom from "./Chatroom";
 import axios from "axios";
 
 class Chat extends Component {
@@ -135,10 +135,8 @@ class Chat extends Component {
           return (
             <div>
               <div key={Math.random()}>{e.title}</div>
-              <TwillioApp
-                dataBuild={this.dataBuild}
-                roomTitle={`${e.bookId}`}
-              />
+
+              <Chatroom dataBuild={this.dataBuild} roomTitle={`${e.bookId}`} />
             </div>
           );
         })}
@@ -151,10 +149,7 @@ class Chat extends Component {
           return (
             <div>
               <div key={Math.random()}>{e.title}</div>
-              <TwillioApp
-                dataBuild={this.dataBuild}
-                roomTitle={`${e.bookId}`}
-              />
+              <Chatroom dataBuild={this.dataBuild} roomTitle={`${e.bookId}`} />
             </div>
           );
         })}
