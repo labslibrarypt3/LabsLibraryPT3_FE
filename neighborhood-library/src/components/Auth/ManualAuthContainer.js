@@ -3,7 +3,6 @@ import OAuthContainer from "./OAuthContainer";
 import Register from "../Auth/Register";
 import Login from "../Auth/Login";
 import { Redirect } from "react-router-dom";
-import MapContainer from "../Search/MapContainer";
 
 class ManualAuthContainer extends Component {
   constructor(props) {

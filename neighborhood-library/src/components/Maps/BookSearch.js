@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MapContainer from "./MapContainer";
 import axios from "axios";
 
 class BookSearch extends Component {

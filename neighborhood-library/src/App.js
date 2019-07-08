@@ -11,9 +11,8 @@ import AddBookContainer from "./components/AddBook/AddBookContainer";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
-import Search from "./components/Search/Search";
 
-import BookSearch from "./components/Search/BookSearch";
+import BookSearch from "./components/Maps/BookSearch";
 
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
@@ -41,16 +40,15 @@ class App extends Component {
       isLoggedIn: true,
       isLoading: false,
       Message: " ",
-      Error: " "
+      Error: " ",
+      libraries: []
     };
   }
-  componentDidMount() {
-    // if (this.state.isLoggedIn) {
-    //   this.getUserData();
-    // }
-
-    this.getLibraries();
-  }
+  // componentDidMount() {
+  //   // if (this.state.isLoggedIn) {
+  //   //   this.getUserData();
+  //   // }
+  // }
 
   //toggles isLoggedIn in App state
   loggedInStateHandler = () => {
@@ -102,10 +100,15 @@ class App extends Component {
   };
 
   getLibraries = () => {
-    const endpoint = "http://localhost:4000/api/users";
+    const endpoint = "http://localhost:4000/api/users/get-libraries";
     axios
       .get(endpoint)
-      .then(res => console.log(res))
+      .then(res => {
+        // we need lat, lng, userId
+        // then use userid to put into helper in backend
+
+        this.setState({ libraries: res.data });
+      })
       .catch(err => console.log(err));
   };
 
@@ -161,9 +164,6 @@ class App extends Component {
           path="/search"
           render={props => <BookSearch userId={this.state.userId} />}
         />
-        {/* <Route path="/search" component={Search} /> */}
-
-        <Route path="/search" render={props => <Search />} />
 
         {/*
         
@@ -177,7 +177,12 @@ class App extends Component {
         />
         <Route
           path="/search-libraries"
-          render={props => <MapsContainer getUserData={this.getUserData} />}
+          render={props => (
+            <MapsContainer
+              getLibraries={this.getLibraries}
+              libraries={this.state.libraries}
+            />
+          )}
         />
         <div className="spacer" />
 
