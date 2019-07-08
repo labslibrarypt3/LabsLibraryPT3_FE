@@ -7,11 +7,15 @@ import Header from "./components/Header/Header";
 import Account from "./components/Account/Account";
 // import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
-import AddBookContainer from "./components/AddBook/AddBookContainer";
+import AddBookContainer 
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
 import Search from "./components/Search/Search";
+
+
+import BookSearch from "./components/Search/BookSearch";
+
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
 import Chat from "./components/Chat/Chat";
@@ -42,11 +46,13 @@ class App extends Component {
     };
   }
   componentDidMount() {
+
     // if (this.state.isLoggedIn) {
     //   this.getUserData();
     // }
 
     this.getLibraries();
+
   }
 
   //toggles isLoggedIn in App state
@@ -154,8 +160,18 @@ class App extends Component {
           render={props => <MyShelf firstName={this.state.firstName} />}
         />
         <Route path="/chat" component={Chat} />
+        <Route
+          path="/search"
+          render={props => <BookSearch userId={this.state.userId} />}
+        />
+        {/* <Route path="/search" component={Search} /> */}
+
 
         <Route path="/search" render={props => <Search />} />
+
+        {/*
+        
+
         <Route path="/chat" component={Chat} />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
@@ -167,6 +183,10 @@ class App extends Component {
           path="/search-libraries"
           render={props => <MapsContainer getUserData={this.getUserData} />}
         />
+        <div className="spacer" />
+
+
+        */}
         <div className="spacer" />
 
         <Footer />
