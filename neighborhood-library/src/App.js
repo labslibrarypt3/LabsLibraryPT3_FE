@@ -7,12 +7,11 @@ import Header from "./components/Header/Header";
 import Account from "./components/Account/Account";
 // import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
-import AddBookContainer 
+import AddBookContainer from "./components/AddBook/AddBookContainer";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
 import Search from "./components/Search/Search";
-
 
 import BookSearch from "./components/Search/BookSearch";
 
@@ -46,13 +45,11 @@ class App extends Component {
     };
   }
   componentDidMount() {
-
     // if (this.state.isLoggedIn) {
     //   this.getUserData();
     // }
 
     this.getLibraries();
-
   }
 
   //toggles isLoggedIn in App state
@@ -165,7 +162,6 @@ class App extends Component {
           render={props => <BookSearch userId={this.state.userId} />}
         />
         {/* <Route path="/search" component={Search} /> */}
-
 
         <Route path="/search" render={props => <Search />} />
 

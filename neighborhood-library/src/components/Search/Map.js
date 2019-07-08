@@ -1,11 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import ReactMapGL from "react-map-gl";
 
 const mapStyles = {
   map: {
-    position: 'absolute',
-    width: '75%',
-    height: '100%'
+    position: "absolute",
+    width: "75%",
+    height: "100%"
   }
 };
 
