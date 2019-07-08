@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import Chat from "twilio-chat";
 import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
 
-class TwilioApp extends Component {
+class Chatroom extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoading: true,
-      messages: []
+      messages: [],
+      buttonName: "Book Loaned"
     };
 
     this.user = {
@@ -99,6 +100,12 @@ class TwilioApp extends Component {
     this.client.shutdown();
   }
 
+  buttonHandler = e => {
+    this.state.buttonName === "Book Loaned"
+      ? this.setState({ buttonName: "Book Returned" })
+      : this.setState({ buttonName: "Book Loaned" });
+  };
+
   render() {
     console.log(this.props, "props in twillio");
     if (this.state.error) {
@@ -107,14 +114,17 @@ class TwilioApp extends Component {
       return <p>Loading chat...</p>;
     }
     return (
-      <ChatUI
-        user={this.user}
-        messages={this.state.messages}
-        onMessageSend={this.sendMessage}
-        width={500}
-      />
+      <div>
+        <button onClick={this.buttonHandler}>{this.state.buttonName}</button>
+        <ChatUI
+          user={this.user}
+          messages={this.state.messages}
+          onMessageSend={this.sendMessage}
+          width={500}
+        />
+      </div>
     );
   }
 }
 
-export default TwilioApp;
+export default Chatroom;
