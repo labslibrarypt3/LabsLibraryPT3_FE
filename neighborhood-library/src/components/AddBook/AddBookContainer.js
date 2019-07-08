@@ -1,19 +1,22 @@
 /*
 This component connects to the Goodreads API and returns a list of books based on the user's search results
 
-If you need to make changes to a single result, please go to GoodreadsSearchResult.js
+If you need to make changes to a single result, please go to AddBook.js
  */
 import React, { Component } from "react";
 import axios from "axios";
-import GoodreadsSearchResult from "./GoodreadsSearchResult";
+import AddBook from "./AddBook";
 
-class SearchGoodreads extends Component {
+class AddBookContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       query: "",
       books: [],
-      user_id: null
+      alerts: {
+        success: false,
+        error: false
+      }
     };
   }
 
@@ -27,8 +30,7 @@ class SearchGoodreads extends Component {
       })
       .then(res => {
         this.setState({
-          books: res.data.books,
-          user_id: localStorage.getItem("id")
+          books: res.data.books
         });
       })
       .catch(err => console.log(err));
@@ -43,13 +45,28 @@ class SearchGoodreads extends Component {
     this.getData();
   };
 
+  //book parameter is passed in onClick in AddBook.js
+  addBookToLibrary = async book => {
+    const endpoint = "http://localhost:4000/api/books/";
+    const authToken = localStorage.getItem("jwt");
+    const axiosResponse = await axios
+      .post(endpoint, book, { headers: { authorization: `${authToken}` } })
+      .then(res =>
+        this.setState(
+          { alert: { success: true, error: false } },
+          console.log("Book added to home library")
+        )
+      )
+      .catch(err => this.setState({ alert: { error: true, success: false } }));
+  };
+
   render() {
     return (
-      <div className="add-book page">
-        <h2>Add a book to your library.</h2>
+      <main className="add-book-container shelves">
+        <h2>What books do you want to lend out?</h2>
         <p>
           Search Goodreads' database to find a book you currently own and would
-          like to make available for borrowing.
+          like to make available for your neighbors to borrow.
         </p>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -60,21 +77,22 @@ class SearchGoodreads extends Component {
           />
           <button type="submit">Search</button>
         </form>
-        <div className="goodreads-search-results-container shelf">
+        <section className="goodreads-search-results-container shelf grid-container">
           {this.state.books.map(book => {
             return (
-              <GoodreadsSearchResult
+              <AddBook
                 key={book.goodreadsId}
                 cover={book.covers[0]}
                 title={book.title}
                 authors={book.authors}
+                addBookToLibrary={this.addBookToLibrary}
               />
             );
           })}
-        </div>
-      </div>
+        </section>
+      </main>
     );
   }
 }
 
-export default SearchGoodreads;
+export default AddBookContainer;
