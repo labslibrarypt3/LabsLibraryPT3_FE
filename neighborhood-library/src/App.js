@@ -38,15 +38,14 @@ class App extends Component {
       isLoggedIn: true,
       isLoading: false,
       Message: " ",
-      Error: " "
+      Error: " ",
+      libraries: []
     };
   }
   componentDidMount() {
     // if (this.state.isLoggedIn) {
     //   this.getUserData();
     // }
-
-    this.getLibraries();
   }
 
   //toggles isLoggedIn in App state
@@ -99,10 +98,15 @@ class App extends Component {
   };
 
   getLibraries = () => {
-    const endpoint = "http://localhost:4000/api/users";
+    const endpoint = "http://localhost:4000/api/users/get-libraries";
     axios
       .get(endpoint)
-      .then(res => console.log(res))
+      .then(res => {
+        // we need lat, lng, userId
+        // then use userid to put into helper in backend
+
+        this.setState({ libraries: res.data });
+      })
       .catch(err => console.log(err));
   };
 
@@ -165,7 +169,12 @@ class App extends Component {
         />
         <Route
           path="/search-libraries"
-          render={props => <MapsContainer getUserData={this.getUserData} />}
+          render={props => (
+            <MapsContainer
+              getLibraries={this.getLibraries}
+              libraries={this.state.libraries}
+            />
+          )}
         />
         <div className="spacer" />
 

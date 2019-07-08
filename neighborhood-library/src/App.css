@@ -532,11 +532,11 @@ footer .legal-links {
 /* ********** */
 
 .marker-button {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: none;
-  background-color: #395dc0;
+  background-color: #395dc0; /*get rgb value to adjust opacity without changing the icon opacity */
   cursor: pointer;
   opacity: 0.8;
   display: flex;
@@ -546,4 +546,29 @@ footer .legal-links {
 
 .marker-button img {
   width: 80%;
+}
+
+/* ************* */
+/* *******Auth******* */
+/* **************** */
+
+.auth-container {
+  height: calc(100vh - 375px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.auth-container .oauth-container {
+  height: 300px;
+}
+
+.auth-container p {
+  height: fit-content;
+}
+
+.auth-container .manual-auth-container {
+  height: 300px;
 }
