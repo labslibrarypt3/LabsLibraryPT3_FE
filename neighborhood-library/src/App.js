@@ -7,14 +7,12 @@ import Header from "./components/Header/Header";
 import Account from "./components/Account/Account";
 // import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
-import AddBookContainer 
+import AddBookContainer from "./components/AddBook/AddBookContainer";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
-import Search from "./components/Search/Search";
 
-
-import BookSearch from "./components/Search/BookSearch";
+import BookSearch from "./components/Maps/BookSearch";
 
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
@@ -47,7 +45,6 @@ class App extends Component {
     };
   }
   componentDidMount() {
-
     // if (this.state.isLoggedIn) {
     //   this.getUserData();
     // }
@@ -167,13 +164,6 @@ class App extends Component {
           path="/search"
           render={props => <BookSearch userId={this.state.userId} />}
         />
-        {/* <Route path="/search" component={Search} /> */}
-
-
-        <Route path="/search" render={props => <Search />} />
-
-        {/*
-        
 
         <Route path="/chat" component={Chat} />
         <Route path="/tos" component={TOS} />
@@ -191,10 +181,6 @@ class App extends Component {
             />
           )}
         />
-        <div className="spacer" />
-
-
-        */}
         <div className="spacer" />
 
         <Footer />

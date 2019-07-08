@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-import MapContainer from "./MapContainer";
 import axios from "axios";
 
 class BookSearch extends Component {
-
-    query: "",
-    data: {}
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +17,6 @@ class BookSearch extends Component {
   // I accidentally lost this function.
   // Sorry,
   // Ira.
-
 
   componentDidMount() {
     const data = () => {
@@ -63,13 +56,6 @@ class BookSearch extends Component {
     });
     this.createTransaction();
   };
-
-  //   });
-  // };
-  //user searches books in stock
-  // user finds book to borrow and clicks request
-  //opens chat box and request from lender
-  // lenders click lend button to create transaction - start stripe
 
   render() {
     console.log(this.props);
