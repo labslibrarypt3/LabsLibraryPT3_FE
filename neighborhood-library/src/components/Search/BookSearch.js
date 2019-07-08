@@ -3,6 +3,11 @@ import MapContainer from "./MapContainer";
 import axios from "axios";
 
 class BookSearch extends Component {
+
+    query: "",
+    data: {}
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +23,7 @@ class BookSearch extends Component {
   // I accidentally lost this function.
   // Sorry,
   // Ira.
+
 
   componentDidMount() {
     const data = () => {

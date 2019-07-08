@@ -34,9 +34,9 @@ class EditPasswordForm extends Component {
   };
   render() {
     return (
-      <section className="edit-profile">
+      <section className="edit-password-form">
         <h2>Change Password</h2>
-        <form className="edit-profile-form" onSubmit={this.onSubmitHandler}>
+        <form onSubmit={this.onSubmitHandler}>
           <div className="form-pair">
             <label>Current Password:</label>
             <input

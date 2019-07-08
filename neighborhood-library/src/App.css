@@ -269,7 +269,7 @@ main {
 }
 
 /* Home Library, Borrowed, and Loaned */
-
+/* And Add Book */
 .shelves {
   top: 115px;
   display: flex;
@@ -380,6 +380,126 @@ main {
   height: 200px;
 }
 
+/* Add Book Container */
+.add-book-container {
+  height: calc(100% - 313px);
+  position: relative;
+  top: 138px;
+  left: 0;
+  width: 100%;
+}
+
+.add-book-container > h2:nth-child(1) {
+  margin: 17px auto;
+}
+
+.add-book-container > p:nth-child(2) {
+  margin: 0 auto 34px auto;
+}
+
+.add-book-container > form:nth-child(3) {
+  margin: 0px auto 30px auto;
+}
+
+.add-book-container form {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-book-container form input {
+  width: 70%;
+  border-radius: 5px;
+  margin-right: 2%;
+}
+
+.add-book-container form button {
+  width: 70%;
+  border-radius: 5px;
+}
+
+.add-book-container .add-book .book-data {
+  bottom: 102px;
+}
+/*
+**************
+***Account****
+**************
+*/
+
+.account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #395dc0;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.account-info img {
+  border-radius: 50%;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.account-info form,
+.edit-account-info-form,
+.edit-password-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.account-info form .form-pair,
+.edit-account-info form .form-pair,
+.edit-password-form form .form-pair {
+  display: flex;
+  width: 100%;
+  margin: 2px auto;
+  justify-content: space-between;
+}
+
+.account-info form .form-pair label,
+.edit-account-info form .form-pair label,
+.edit-password-form form .form-pair label {
+  width: 35%;
+}
+
+.account-info form .form-pair input,
+.edit-account-info form .form-pair input,
+.edit-password-form form .form-pair input {
+  border-radius: 5px;
+  width: 65%;
+  height: 30px;
+}
+
+.account-info a {
+  background-color: #df6041;
+  border-radius: 5px;
+  padding: 2px 2%;
+  margin-top: 10px;
+}
+
+.account .stripe-connect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.account .stripe-connect a img {
+  max-width: 250px;
+  margin: 10px auto;
+}
+
 /* Footer */
 footer {
   display: flex;
@@ -405,4 +525,25 @@ footer .legal-links {
   width: 40%;
   justify-content: space-evenly;
   margin-top: 5px;
+}
+
+/* ************************* */
+/* SEARCH STYLES */
+/* ********** */
+
+.marker-button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  background-color: #395dc0;
+  cursor: pointer;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-button img {
+  width: 80%;
 }

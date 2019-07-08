@@ -2,7 +2,7 @@ import React from "react";
 
 const StripeConnect = () => {
   return (
-    <section className="stripe-connect-container">
+    <section className="stripe-connect">
       <p>
         We partner with Stripe to facilitate payments for late and lost books.
         <br />

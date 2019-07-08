@@ -7,14 +7,19 @@ import Header from "./components/Header/Header";
 import Account from "./components/Account/Account";
 // import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
-import AddBookContainer from "./components/AddBook/AddBookContainer";
-// import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
-// import TOS from "./components/Legal/TOS";
-// import Privacy from "./components/Legal/Privacy";
+import AddBookContainer 
+import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
+import TOS from "./components/Legal/TOS";
+import Privacy from "./components/Legal/Privacy";
+import Search from "./components/Search/Search";
+
+
 import BookSearch from "./components/Search/BookSearch";
+
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
 import Chat from "./components/Chat/Chat";
+import MapsContainer from "./components/Maps/MapsContainer";
 //Styles
 import "./App.css";
 
@@ -41,9 +46,13 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    if (this.state.isLoggedIn) {
-      this.getUserData();
-    }
+
+    // if (this.state.isLoggedIn) {
+    //   this.getUserData();
+    // }
+
+    this.getLibraries();
+
   }
 
   //toggles isLoggedIn in App state
@@ -93,6 +102,14 @@ class App extends Component {
       })
       .catch(err => this.setState({ Error: err }));
     console.log("App.js' getUserData() end");
+  };
+
+  getLibraries = () => {
+    const endpoint = "http://localhost:4000/api/users";
+    axios
+      .get(endpoint)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -149,18 +166,29 @@ class App extends Component {
         />
         {/* <Route path="/search" component={Search} /> */}
 
+
+        <Route path="/search" render={props => <Search />} />
+
         {/*
         
+
         <Route path="/chat" component={Chat} />
-        <Route
-          path="/stripe-connect-success"
-          render={props => <StripeConnectSuccess {...props} />}
-        />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
+        <Route
+          path="/stripe-connect-success"
+          render={props => <StripeConnectSuccess />}
+        />
+        <Route
+          path="/search-libraries"
+          render={props => <MapsContainer getUserData={this.getUserData} />}
+        />
+        <div className="spacer" />
+
 
         */}
         <div className="spacer" />
+
         <Footer />
       </div>
     );

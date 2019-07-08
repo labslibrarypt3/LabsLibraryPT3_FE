@@ -13,7 +13,7 @@ const SubNav = props => {
         Add Book
       </NavLink>
 
-      <NavLink to="/messages" className="nav__submenu-item ">
+      <NavLink to="/chat" className="nav__submenu-item ">
         Messages
       </NavLink>
 
