@@ -173,7 +173,8 @@ class App extends Component {
           render={props => <StripeConnectSuccess />}
         />
         <Route
-          path="/search-libraries"
+          exact
+          path="/"
           render={props => (
             <MapsContainer
               getLibraries={this.getLibraries}

@@ -64,9 +64,10 @@ class OAuthContainer extends Component {
           onClick={componentClicked}
           callback={responseFacebook}
           // cssClass="login-button"
-          icon="fa fa-facebook"
+          icon="fa-facebook"
           textButton="Login"
         />
+
         <GoogleLogin
           clientId="276277558253-h0h6fqj0m26r3a20998jeplb75r097g7.apps.googleusercontent.com"
           icon={true}

@@ -558,7 +558,7 @@ footer .legal-links {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin: 165px 0px 0px 0px;
 }
 
 .auth-container .oauth-container {
