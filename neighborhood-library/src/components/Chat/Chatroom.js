@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Chat from "twilio-chat";
 import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
+import "@progress/kendo-theme-default/dist/all.css";
 import { isFlowBaseAnnotation } from "@babel/types";
 import axios from "axios";
 

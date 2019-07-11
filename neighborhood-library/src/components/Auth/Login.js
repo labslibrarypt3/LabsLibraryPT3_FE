@@ -32,8 +32,9 @@ class Login extends Component {
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
           <label htmlFor="login" />
-          <div className="login-input">
+          <div>
             <input
+              className="login-input"
               type="email"
               name="email"
               placeholder="email"
@@ -41,7 +42,7 @@ class Login extends Component {
               onChange={this.handleInput}
             />
           </div>
-          <div className="login-input">
+          <div>
             <input
               className="login-input"
               type="password"
@@ -51,16 +52,18 @@ class Login extends Component {
               onChange={this.handleInput}
             />
           </div>
-          <div className="login-input">
-            <button type="submit">Login</button>
+          <div>
+            <button className="login-button" type="submit">
+              Login
+            </button>
           </div>
         </form>
         <a href="/change-password">Forgot password?</a>
-        <div>
+        <div className="register">
           <p>Need an account?</p>
           <button
             href="#"
-            className="manual-auth-nav"
+            className="login-button"
             onClick={this.loginVsRegisterToggler}
           >
             Register
