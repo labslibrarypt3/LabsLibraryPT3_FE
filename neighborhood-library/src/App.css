@@ -558,11 +558,17 @@ footer .legal-links {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 165px 0px 0px 0px;
+  margin: 80px 0px 0px 0px;
 }
 
-.auth-container .oauth-container {
-  height: 300px;
+.oauth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 200px;
+  padding: 0px 0px 0px 0px;
+
+  margin: -54px 24px 50px 18px;
 }
 
 .auth-container p {
@@ -572,3 +578,44 @@ footer .legal-links {
 .auth-container .manual-auth-container {
   height: 300px;
 }
+.fa-facebook {
+  border-radius: 5px;
+}
+.flogin-button {
+  padding: 0 0 0 0;
+  color: purple;
+
+  background: linear-gradient(
+      264.53deg,
+      #2849a5 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #df6041;
+
+  height: 75px;
+  width: 100%;
+}
+
+.glogin-button {
+  height: 75px;
+  width: 100%;
+
+  background: linear-gradient(
+      264.53deg,
+      #df6041 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #2849a5 0%;
+
+  margin: 10px 0 0 0;
+}
+
+/* Inline #4 | http://localhost:3000/auth */
+
+.oauth-container {
+  display: flex;
+  /* margin: -54px 24px 50px 18px; */
+  margin: 300px 24px 50px 18px;
+}
+
+/* Element | http://localhost:3000/auth */

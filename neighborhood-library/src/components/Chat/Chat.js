@@ -6,6 +6,7 @@ class Chat extends Component {
   constructor() {
     super();
     this.state = {
+      closeChat: false,
       messages: "",
       checkoutId: ""
     };
@@ -23,6 +24,8 @@ class Chat extends Component {
     lentTransactions: "",
     otherUserData: ""
   };
+  // boolean value on state to toggle between  true and false
+
   // this endpoint gets the books that have been borrowed by this user and stores it in
   // this .state.borrowing
 
@@ -42,24 +45,6 @@ class Chat extends Component {
         console.log(" Error", err);
       });
   };
-
-  // this endpoint returns the transactions where this user has borrowed books
-  // added to data build
-  // getBorrowedTransaction = async () => {
-  //   const endpoint = "http://localhost:4000/api/trans/tranborrow";
-
-  //   const authToken = localStorage.getItem("jwt");
-  //   await axios
-  //     .get(endpoint, { headers: { Authorization: `${authToken}` } })
-
-  //     .then(res => {
-  //       this.dataBuild.borrowedTransactions = res.data;
-  //       this.getName();
-  //     })
-  //     .catch(err => {
-  //       console.log(" Error", err);
-  //     });
-  // };
 
   // this transaction retrieves this users name and modifies the first and last name to
   // return firstname and last initial and stores into state as userName
@@ -127,16 +112,17 @@ class Chat extends Component {
     return (
       <>
         <h3>Borrowed by me:</h3>
-
         {// first get the book title data by mapping over the get borrowed books array
 
         this.dataBuild.borrowedBooks.map(e => {
           console.log(e, "this is the borrowing map");
           return (
             <div>
-              <div key={Math.random()}>{e.title}</div>
-
-              <Chatroom dataBuild={this.dataBuild} roomTitle={`${e.bookId}`} />
+              <Chatroom
+                title={e.title}
+                dataBuild={this.dataBuild}
+                roomTitle={`${e.bookId}`}
+              />
             </div>
           );
         })}
@@ -144,12 +130,13 @@ class Chat extends Component {
         <h3>Lent by me:</h3>
         {// first get the book title data by mapping over the get borrowed books array
         this.dataBuild.lentBooks.map(e => {
-          const lenderid = e.user_id;
-          // console.log(e, "this is the first lending map");
           return (
             <div>
-              <div key={Math.random()}>{e.title}</div>
-              <Chatroom dataBuild={this.dataBuild} roomTitle={`${e.bookId}`} />
+              <Chatroom
+                title={e.title}
+                dataBuild={this.dataBuild}
+                roomTitle={`${e.bookId}`}
+              />
             </div>
           );
         })}
