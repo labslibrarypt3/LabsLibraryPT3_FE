@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Chat from "twilio-chat";
 import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
+import { isFlowBaseAnnotation } from "@babel/types";
+import axios from "axios";
 
 class Chatroom extends Component {
   constructor(props) {
@@ -10,7 +12,8 @@ class Chatroom extends Component {
       error: null,
       isLoading: true,
       messages: [],
-      buttonName: "Book Loaned"
+      buttonName: "Book Loaned",
+      confirmTransaction: false
     };
 
     this.user = {
@@ -94,6 +97,52 @@ class Chatroom extends Component {
   componentWillUnmount() {
     this.client.shutdown();
   }
+
+  // updateTransaction = () =>{
+  //   const authToken = localStorage.getItem("jwt");
+  //   const endpoint = "http://localhost:4000/trans/update";
+  //   await axios
+  //     .put(endpoint,{
+  //       transId:,
+  //       is_checked_out:
+
+  //     } {
+  //       headers: { authorization: authToken }
+  //     })
+  //     .then(res => {
+  //       this.dataBuild.userData = res.data;
+  //       this.getLentBooks();
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+  buttonHandler = e => {
+    this.state.buttonName === "Book Loaned"
+      ? this.setState({
+          buttonName: "Book Returned",
+          confirmTransaction: "false"
+        })
+      : this.setState({
+          buttonName: "Book Loaned",
+          confirmTransaction: "true"
+        });
+    this.updateTransaction();
+  };
+
+  // updateTransaction = () => {
+  //   const authToken = localStorage.getItem("jwt");
+  //   const endpoint = "http://localhost:4000/api/trans/update";
+  //   axios
+  //     .put(endpoint, {
+  //       body: { confirmTransaction },
+  //       headers: { authorization: authToken }
+  //     })
+  //     .then(res => {
+  //       this.dataBuild.userData = res.data;
+  //       this.getLentBooks();
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   buttonHandler = e => {
     this.state.buttonName === "Book Loaned"
