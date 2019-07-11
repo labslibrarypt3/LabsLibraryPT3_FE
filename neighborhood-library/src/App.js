@@ -165,7 +165,6 @@ class App extends Component {
           render={props => <BookSearch userId={this.state.userId} />}
         />
 
-        <Route path="/chat" component={Chat} />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
         <Route
@@ -173,7 +172,8 @@ class App extends Component {
           render={props => <StripeConnectSuccess />}
         />
         <Route
-          path="/search-libraries"
+          exact
+          path="/"
           render={props => (
             <MapsContainer
               getLibraries={this.getLibraries}
