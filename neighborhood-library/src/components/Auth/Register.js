@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import AuthPostData from "./AuthPostData";
+// import { Link } from "react-router-dom";
 
 class Register extends Component {
   constructor() {
     super();
     this.state = {
-      username: '',
-      password: ''
-    }
+      username: "",
+      password: "",
+      email: ""
+    };
   }
 
   handleInput = e => {
@@ -14,32 +17,58 @@ class Register extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
-    const creds = this.state;
-    const endpoint = '';
-  }
+    const type = "register";
+    const userData = {
+      name: this.state.username,
+      password: this.state.password,
+      email: this.state.email
+    };
 
+    AuthPostData(type, userData);
+  };
   render() {
     return (
-      <form>
-        <label for='login'>Register</label>
-        <input
-          type='text'
-          name='username'
-          placeholder='username'
-          value={this.state.username}
-          onChange={this.handleInput} />
-        <input
-          type='password'
-          name='password'
-          placeholder='password'
-          value={this.state.password}
-          onChange={this.handleInput} />
-        <button type='submit'>Register</button>
-      </form>
+      <div className="manual-auth">
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="login">Register</label>
+          <input
+            type="username"
+            name="username"
+            placeholder="username"
+            value={this.state.username}
+            onChange={this.handleInput}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={this.state.password}
+            onChange={this.handleInput}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            value={this.state.email}
+            onChange={this.handleInput}
+          />
+          <button type="submit">Register</button>
+        </form>
+        <div>
+          <p>Already have an account?</p>
+          <button
+            href="#"
+            className="manual-auth-nav"
+            onClick={this.loginVsRegisterToggler}
+          >
+            Login
+          </button>
+        </div>
+      </div>
     );
   }
 }

@@ -1,33 +1,574 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,600,700,900&display=swap");
+
+/*
+*************
+*****App*****
+*************
+*/
+html {
+  font-family: Raleway, sans-serif;
+
+  width: 100vw;
+
+  max-width: 100%;
+
+  height: 100vh;
+  background-color: #d6ddf1;
+  box-sizing: border-box;
+}
+
 .App {
+  width: 100%;
+  height: 100%;
+  background-color: #d6ddf1;
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* MAIN Content section of app*/
+
+main {
+  height: calc(100% - 313px);
+  position: relative;
+  top: 138px;
+  left: 0;
+  width: 100%;
+}
+
+a {
+  color: #f1f1f1;
+}
+
+p,
+h2,
+h3 {
+  color: #395dc0;
+}
+
+/* 
+********************
+*******HEADER*******
+******************** 
+*/
+
+/* Header container */
+header {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 138px;
+  max-width: 100%;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #f1f1f1;
+  flex-grow: 1;
+
+  background: linear-gradient(
+      264.53deg,
+      #2849a5 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #df6041;
+}
+
+/* "neighborhood library" logo thing */
+header .title {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  left: 34px;
+  display: flex;
+  align-items: center;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  padding: 0;
+  margin: 0;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Account drop down nav */
+header .nav {
+  position: absolute;
+
+  right: 2.78%;
+
+  top: 11px;
+
+  bottom: 0%;
+
+  width: 200px;
+
+  padding-right: 40px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  font-family: Raleway;
+
+  font-style: normal;
+
+  font-weight: bold;
+
+  font-size: 24px;
+
+  line-height: 28px;
+
+  mix-blend-mode: normal;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.nav__menu-item a {
+  color: #f1f1f1;
+}
+
+.nav__menu-item a:hover {
+  text-decoration: underline;
+  color: #fcc4b3;
+}
+
+ul,
+il {
+  list-style: none;
+}
+
+.nav__submenu {
+  position: absolute;
+  z-index: 1000;
+  left: 4.33%;
+
+  top: 127px;
+
+  height: 400px;
+  width: 200px;
+
+  background: #2849a5;
+  opacity: 0.95;
+
+  display: flex;
+  flex-direction: column;
+}
+.nav__submenu button {
+  background-color: transparent;
+}
+
+.nav__submenu .nav__submenu-item {
+  width: 100%;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-decoration: none;
+  color: #f1f1f1;
+  mix-blend-mode: normal;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  position: relative;
+
+  width: 100%;
+  height: 25%;
+}
+
+.nav__submenu-item:hover {
+  color: #fcc4b3;
+  text-decoration: underline;
+}
+
+/* Header Search Bar */
+header form,
+.book-search-bar {
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1316px) {
+  .book-search-bar {
+    display: none;
+  }
+}
+
+header form input,
+.book-search-bar input {
+  align-self: center;
+  height: 50px;
+  width: 70%;
+  background: #f1f1f1;
+  border-radius: 15px;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+header form button,
+.book-search-bar button {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  width: 25%;
+  height: 50px;
+  color: #f1f1f1;
+  background: none;
+  border-radius: 15px;
+  border: 3px solid #f1f1f1;
+}
+
+/*
+******************
+*****My Shelf*****
+******************
+*/
+
+main {
+  min-height: 100%;
+  height: 100%;
+}
+.my-shelf-nav {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 60px;
+  top: 0px;
+  display: flex;
+  justify-content: flex-start;
+
+  background: #395dc0;
+}
+
+.my-shelf-nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fcc4b3;
+  padding: 0 2%;
+}
+
+/* Home Library, Borrowed, and Loaned */
+/* And Add Book */
+.shelves {
+  top: 115px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  height: 96.5%;
+  justify-content: flex-start;
+  min-height: 1000px;
+  padding: 0 2%;
+}
+
+/* .shelf {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+} */
+
+.grid-container {
+  display: grid;
+  width: inherit;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  justify-content: center;
+  align-self: center;
+}
+
+.book {
+  background: #fcc3b2;
+  box-shadow: 0px 4px 4px rgba(57, 93, 192, 0.25);
+  border-radius: 15px;
+  height: 300px;
+  width: 20%;
+  min-width: 190px;
+  max-width: 196px;
+  margin: 10px 2%;
+  padding: 2px 1%;
+}
+
+.book-cover {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.book-data {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgba(57, 93, 192, 0.9);
+  position: relative;
+  bottom: 96px;
+  padding: 10px 2%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 0;
+}
+
+.book .book-data p {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  align-self: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  color: #fcc3b2;
+}
+
+.book-data .book-title {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.book-data .book-authors {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.book button {
+  align-self: flex-end;
+  border: none;
+  border-radius: 5px;
+  background-color: #f2f4f9;
+  color: #65708f;
+  margin: 5px 0;
+}
+
+.spacer {
+  height: 200px;
+}
+
+/* Add Book Container */
+.add-book-container {
+  height: calc(100% - 313px);
+  position: relative;
+  top: 138px;
+  left: 0;
+  width: 100%;
+}
+
+.add-book-container > h2:nth-child(1) {
+  margin: 17px auto;
+}
+
+.add-book-container > p:nth-child(2) {
+  margin: 0 auto 34px auto;
+}
+
+.add-book-container > form:nth-child(3) {
+  margin: 0px auto 30px auto;
+}
+
+.add-book-container form {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-book-container form input {
+  width: 70%;
+  border-radius: 5px;
+  margin-right: 2%;
+}
+
+.add-book-container form button {
+  width: 70%;
+  border-radius: 5px;
+}
+
+.add-book-container .add-book .book-data {
+  bottom: 102px;
+}
+/*
+**************
+***Account****
+**************
+*/
+
+.account {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: #395dc0;
 }
 
-.App-link {
-  color: #61dafb;
+.account-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.account-info img {
+  border-radius: 50%;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.account-info form,
+.edit-account-info-form,
+.edit-password-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.account-info form .form-pair,
+.edit-account-info form .form-pair,
+.edit-password-form form .form-pair {
+  display: flex;
+  width: 100%;
+  margin: 2px auto;
+  justify-content: space-between;
+}
+
+.account-info form .form-pair label,
+.edit-account-info form .form-pair label,
+.edit-password-form form .form-pair label {
+  width: 35%;
+}
+
+.account-info form .form-pair input,
+.edit-account-info form .form-pair input,
+.edit-password-form form .form-pair input {
+  border-radius: 5px;
+  width: 65%;
+  height: 30px;
+}
+
+.account-info a {
+  background-color: #df6041;
+  border-radius: 5px;
+  padding: 2px 2%;
+  margin-top: 10px;
+}
+
+.account .stripe-connect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.account .stripe-connect a img {
+  max-width: 250px;
+  margin: 10px auto;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #8099d4;
+  padding: 50px 0;
+  margin-bottom: 0px;
+
+  font-size: 12px;
+  /* position: fixed; */
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+}
+
+footer .legal-links {
+  display: flex;
+  width: 40%;
+  justify-content: space-evenly;
+  margin-top: 5px;
+}
+
+/* ************************* */
+/* SEARCH STYLES */
+/* ********** */
+
+.marker-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #395dc0; /*get rgb value to adjust opacity without changing the icon opacity */
+  cursor: pointer;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-button img {
+  width: 80%;
+}
+
+/* ************* */
+/* *******Auth******* */
+/* **************** */
+
+.auth-container {
+  height: calc(100vh - 375px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.auth-container .oauth-container {
+  height: 300px;
+}
+
+.auth-container p {
+  height: fit-content;
+}
+
+.auth-container .manual-auth-container {
+  height: 300px;
 }

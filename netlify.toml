@@ -1,0 +1,4 @@
+[build]
+  base = "neighborhood-library/"
+  publish = "neighborhood-library/build/"
+  command = "yarn build"
