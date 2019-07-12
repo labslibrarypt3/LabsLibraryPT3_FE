@@ -35,7 +35,7 @@ class BookSearch extends Component {
     };
     data();
   }
-  createTransaction = () => {
+  createTransaction = async () => {
     const endpoint = "http://localhost:4000/api/trans/";
     const authToken = localStorage.getItem("jwt");
     const transaction = this.state.transaction;
@@ -55,6 +55,8 @@ class BookSearch extends Component {
       }
     });
     this.createTransaction();
+
+    window.location.replace("http://localhost:3000/chat");
   };
 
   render() {

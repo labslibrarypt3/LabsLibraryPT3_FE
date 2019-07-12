@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import MyBook from "../MyBook";
+import TransBook from "../TransBook";
 
 class Loaned extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class Loaned extends Component {
         <div className="shelf grid-container">
           {this.state.data.map(e => {
             return (
-              <MyBook
+              <TransBook
                 key={e.lender_id}
                 title={e.title}
                 authors={e.authors}
