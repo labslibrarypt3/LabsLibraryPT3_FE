@@ -7,7 +7,9 @@ const Header = props => {
   return (
     <header>
       <h1 className="title">Neighborhood Library</h1>
-      <BookSearchBar />
+      {/* <BookSearchBar /> */}
+
+      {/* start of logged in question */}
       {props.isLoggedIn ? (
         <Nav loggedInStateHandler={props.loggedInStateHandler} />
       ) : (

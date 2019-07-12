@@ -79,9 +79,9 @@ header {
 /* "neighborhood library" logo thing */
 header .title {
   position: absolute;
-  width: 20%;
+  /* width: 20%; */
   height: 100%;
-  left: 34px;
+  /* left: 34px; */
   display: flex;
   align-items: center;
 
@@ -619,3 +619,16 @@ footer .legal-links {
 }
 
 /* Element | http://localhost:3000/auth */
+
+/* nav styling */
+.account-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #344A9E;
+}
+
+.nav-links{
+display: flex;
+background-color: red;
+}
