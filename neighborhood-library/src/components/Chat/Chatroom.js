@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Chat from "twilio-chat";
 import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
+import "@progress/kendo-theme-default/dist/all.css";
 import { isFlowBaseAnnotation } from "@babel/types";
 import axios from "axios";
 
@@ -123,7 +124,7 @@ class Chatroom extends Component {
           confirmTransaction: "false"
         })
       : this.setState({
-          buttonName: "Book Loaned",
+          buttonName: "Book Exchanged",
           confirmTransaction: "true"
         });
     this.updateTransaction();
@@ -172,15 +173,22 @@ class Chatroom extends Component {
           <div onClick={this.toggleOpenCloseDrawer}>{this.props.title}</div>
         </div>
       ) : (
-        <div>
-          <div onClick={this.toggleOpenCloseDrawer}>{this.props.title}</div>
-          <button onClick={this.buttonHandler}>{this.state.buttonName}</button>
-          <ChatUI
-            user={this.user}
-            messages={this.state.messages}
-            onMessageSend={this.sendMessage}
-            width={500}
-          />
+        <div className="chat-room">
+          <div className="chat-title" onClick={this.toggleOpenCloseDrawer}>
+            {this.props.title}
+          </div>
+
+          <div className="chat-window">
+            <ChatUI
+              user={this.user}
+              messages={this.state.messages}
+              onMessageSend={this.sendMessage}
+              width={500}
+            />
+            <button onClick={this.buttonHandler}>
+              {this.state.buttonName}
+            </button>
+          </div>
         </div>
       );
     }
@@ -188,3 +196,4 @@ class Chatroom extends Component {
 }
 
 export default Chatroom;
+// updating to push up to date in rest of group

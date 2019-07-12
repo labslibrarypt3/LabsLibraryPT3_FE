@@ -1173,6 +1173,20 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@progress/kendo-data-query@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-data-query/-/kendo-data-query-1.5.1.tgz#7dccfd3cc5af3435160244ebc167918f9e0dc212"
+  integrity sha512-4m1tSB5FhwLQgYn6PLYbyINpvTqlE7T/BNuFG1JuxXdX4MM4zpVkYuty711XTpTjoRj495OzQDJWT+Vfcnabxg==
+  dependencies:
+    tslib "^1.7.0"
+
+"@progress/kendo-date-math@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-date-math/-/kendo-date-math-1.2.0.tgz#62fc00b540786b8bb5c7001ecb06b2e3ff05b498"
+  integrity sha512-SVj6lSajwgI/dxqn+Gm1Pe1T8aaQkMmf/1ALETx2pii6SMLDLdCH9tp6Kp+M5t+NDqppLVrdMYDXWng9buiU8A==
+  dependencies:
+    tslib "^1.7.0"
+
 "@progress/kendo-popup-common@^1.2.2":
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/@progress/kendo-popup-common/-/kendo-popup-common-1.7.0.tgz#d0d29dbc5eacdaba8803aa3d0f69f8a8ad05dbff"
@@ -1187,7 +1201,7 @@
     prop-types "^15.6.0"
     react-transition-group "^2.2.0"
 
-"@progress/kendo-react-buttons@^3.2.2":
+"@progress/kendo-react-buttons@3.2.2", "@progress/kendo-react-buttons@^3.2.2":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@progress/kendo-react-buttons/-/kendo-react-buttons-3.2.2.tgz#1497ee5b866c7fb3677b84eb323c98b7e91317d6"
   integrity sha512-eyClCpNmjLriUyhEKec5pXHHFD1qDQrZWo7SRF7mhzq2b8VDB1MdgnewLEXBY5mxWbnhlOoE2lW1ztYeFSGjzA==
@@ -1210,6 +1224,34 @@
   integrity sha512-LecXdr03NZx4rNaxg2vOA4TM3eqCElhCKDQIDvgstAeHA/h6QTlRhDFCaGnL9MEJBTFL+axYhDOrnAavL7ZgUw==
   dependencies:
     "@progress/kendo-react-common" "3.2.2"
+
+"@progress/kendo-react-dateinputs@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-react-dateinputs/-/kendo-react-dateinputs-3.2.2.tgz#d96c927b7e74aa84a4621bbcda76617b0376d3a1"
+  integrity sha512-aiJPGnPQ4C9rUlZSdUXzh6s9kOSwwIxks7nWzG1/EqBSUkhi4b8I0W64SgUH5yLNk+ThARduAZ/6tk9haGSmtQ==
+  dependencies:
+    "@progress/kendo-date-math" "1.2.0"
+    "@progress/kendo-react-buttons" "3.2.2"
+    "@progress/kendo-react-common" "3.2.2"
+    "@progress/kendo-react-popup" "3.2.2"
+    prop-types "^15.6.0"
+
+"@progress/kendo-react-dropdowns@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-react-dropdowns/-/kendo-react-dropdowns-3.2.2.tgz#e61ec167a30f12d8554a37677082ac030a2d3c9e"
+  integrity sha512-hGMXphTOxha+WqcnxWrSm2ZiSogYsLsovlzKWJ9u7NKXmhQ5vW4s3sMWKTv3IlsizJkUHw1orilPTFdKVFANSw==
+  dependencies:
+    "@progress/kendo-react-common" "3.2.2"
+    "@progress/kendo-react-popup" "3.2.2"
+    prop-types "^15.6.0"
+
+"@progress/kendo-react-grid@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-react-grid/-/kendo-react-grid-3.2.2.tgz#3d502c3ebaeb5e4ccb2e3dbca0d6a40248c02dd8"
+  integrity sha512-lDXP408lEGSO0CVXvWsezSuKiTJMUeMZ8uSOXkU+cejcs2p4iQZMUeifLWtuqHUw4ZV704OfoaLi65c5+fzqtw==
+  dependencies:
+    "@progress/kendo-react-common" "3.2.2"
+    prop-types "^15.6.0"
 
 "@progress/kendo-react-inputs@^3.2.2":
   version "3.2.2"
@@ -1236,6 +1278,11 @@
     "@progress/kendo-react-animation" "3.2.2"
     "@progress/kendo-react-common" "3.2.2"
     prop-types "^15.6.0"
+
+"@progress/kendo-theme-default@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-theme-default/-/kendo-theme-default-4.0.0.tgz#54c3ec89fcf3a8c3020ac3edd03539f5ffc42b66"
+  integrity sha512-F8S84duw/pdDOz22Uh1goIrWGdgFGdLF7rmQFsBvN62We4AtaZUMBpqy6i4iXHZ4bLgcpuu87erMwqDGHI020w==
 
 "@progress/kendo-theme-material@^2.5.2":
   version "2.5.2"
@@ -13157,7 +13204,7 @@ ts-pnp@1.1.2, ts-pnp@^1.0.0:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.2.tgz#be8e4bfce5d00f0f58e0666a82260c34a57af552"
   integrity sha512-f5Knjh7XCyRIzoC/z1Su1yLLRrPrFCgtUAh/9fCSP6NKbATwpOL1+idQVXQokK9GRFURn/jYPGPfegIctwunoA==
 
-tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.7.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
