@@ -728,7 +728,10 @@ footer .legal-links {
 }
 
 /* chat **************************************************************** */
-
+/* .chat-room {
+  display: flex;
+  height: 100%;
+} */
 /* Inline #4 | http://localhost:3000/auth */
 
 /* Element | http://localhost:3000/auth */
