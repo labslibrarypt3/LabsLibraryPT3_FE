@@ -728,10 +728,22 @@ footer .legal-links {
 }
 
 /* chat **************************************************************** */
-/* .chat-room {
+.chat-room {
   display: flex;
-  height: 100%;
-} */
+  height: 50%;
+}
+.chat-title {
+  display: flex;
+  width: 18%;
+  height: 88%;
+  background: blue;
+  border: 1px solid lightcoral;
+  margin: 0% 0% 1% 0%;
+  box-shadow: 3px 3px;
+}
+.chat-window {
+  float: right;
+}
 /* Inline #4 | http://localhost:3000/auth */
 
 /* Element | http://localhost:3000/auth */
