@@ -63,6 +63,11 @@ class App extends Component {
     const response = await axios
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
       .then(res => {
+        if (res.status !== 200 || authToken === null) {
+          window.location.replace(" http://localhost:3000/auth");
+          console.log("log in please ....");
+        }
+
         console.log("response", res);
         const fullNameArray = res.data.name.split(" ");
         const firstName = fullNameArray[0];
