@@ -18,11 +18,16 @@ class HomeLibrary extends Component {
         return axios
           .get(endpoint, { headers: { Authorization: `${authToken}` } })
           .then(res => {
+            if (res.status !== 200 || authToken === null) {
+              window.location.replace(" http://localhost:3000/auth");
+              console.log("log in please ....");
+            }
+
             this.setState({ data: res.data });
           })
           .catch(err => console.log(err));
       } else {
-        return <Redirect to={"/"} />;
+        window.location.replace(" http://localhost:3000/auth");
       }
     };
     data();
