@@ -99,24 +99,6 @@ class Chatroom extends Component {
     this.client.shutdown();
   }
 
-  // updateTransaction = () =>{
-  //   const authToken = localStorage.getItem("jwt");
-  //   const endpoint = "http://localhost:4000/trans/update";
-  //   await axios
-  //     .put(endpoint,{
-  //       transId:,
-  //       is_checked_out:
-
-  //     } {
-  //       headers: { authorization: authToken }
-  //     })
-  //     .then(res => {
-  //       this.dataBuild.userData = res.data;
-  //       this.getLentBooks();
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
   buttonHandler = e => {
     this.state.buttonName === "Book Loaned"
       ? this.setState({
@@ -169,7 +151,7 @@ class Chatroom extends Component {
       return <p>Loading chat...</p>;
     } else {
       return this.state.closeChat ? (
-        <div>
+        <div className="chat-title">
           <div onClick={this.toggleOpenCloseDrawer}>{this.props.title}</div>
         </div>
       ) : (
