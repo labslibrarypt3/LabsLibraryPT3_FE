@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthPostData from "./AuthPostData";
+import { FormControl, Form, FormGroup, Button } from "react-bootstrap";
 
 class Login extends Component {
   constructor(props) {
@@ -31,44 +32,45 @@ class Login extends Component {
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
-          <label htmlFor="login" />
-          <div>
-            <input
-              className="login-input"
-              type="email"
-              name="email"
-              placeholder="email"
-              value={this.state.email}
-              onChange={this.handleInput}
-            />
-          </div>
-          <div>
-            <input
-              className="login-input"
-              type="password"
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control name="email" type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
               name="password"
-              placeholder="password"
+              type="password"
+              placeholder="Password"
               value={this.state.password}
               onChange={this.handleInput}
             />
-          </div>
+          </Form.Group>
+
+          <Button variant="primary" className="login-button" type="submit">
+            Login
+          </Button>
           <div>
-            <button className="login-button" type="submit">
-              Login
-            </button>
+            <a href="/change-password">Forgot password?</a>
+          </div>
+          <div className="register">
+            <p>Need an account?</p>
+
+            <Button
+              label
+              onClick={this.loginVsRegisterToggler}
+              href="#"
+              variant="primary"
+              className="login-button"
+              type="submit"
+            >
+              Register
+            </Button>
           </div>
         </form>
-        <a href="/change-password">Forgot password?</a>
-        <div className="register">
-          <p>Need an account?</p>
-          <button
-            href="#"
-            className="login-button"
-            onClick={this.loginVsRegisterToggler}
-          >
-            Register
-          </button>
-        </div>
       </div>
     );
   }
