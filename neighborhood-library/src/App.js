@@ -186,7 +186,6 @@ class App extends Component {
             />
           )}
         />
-        <div className="spacer" />
 
         <Footer />
       </div>

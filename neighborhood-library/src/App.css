@@ -11,7 +11,7 @@ html {
   width: 100vw;
 
   max-width: 1100px;
-
+  margin: 0 auto;
   height: 100vh;
   background-color: #d6ddf1;
   box-sizing: border-box;
@@ -590,11 +590,10 @@ footer .legal-links {
 /* **************** */
 
 .auth-container {
-  height: 279px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 170px 0px 0px 0px;
+
+  justify-content: space-evenly;
+  padding: 3% 1% 1% 0%;
 }
 
 .login {
@@ -602,10 +601,15 @@ footer .legal-links {
   flex-direction: column;
   margin: 0px 0% 131px 8%;
   align-items: center;
+  border: 1px solid darkgray;
+  background: #494d93;
+  padding: 2% 2% 2% 2%;
+  color: d8d8d8;
+  box-shadow: 5px 5px;
 }
 .login-button {
-  margin: 5% 0% 0% 23%;
-  color: whitesmoke;
+  margin: 0% 0% 0% 0%;
+  color: d8d8d8;
 
   background: #2849a5;
 }
@@ -615,9 +619,10 @@ footer .legal-links {
   flex-direction: column;
   justify-content: space-around;
   /* width: 200px; */
-  padding: 0px 0px 0px 0px;
-
-  margin: -0px 0px 140px 0px;
+  padding: 15px 20px 15px 20px;
+  box-shadow: 5px 5px;
+  margin: -0px 0px 106px 0px;
+  background: #494d93;
 }
 
 .auth-container p {
@@ -652,12 +657,10 @@ footer .legal-links {
 }
 @media only screen and (max-width: 390px) {
   .auth-container {
-    height: 279px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     /* justify-content: center; */
-    margin: 170px 0px 0px 0px;
   }
 
   .login {
@@ -666,6 +669,7 @@ footer .legal-links {
     margin: 0px 0% 131px 0%;
     align-items: center;
     width: 100%;
+    color: f1f1f1;
   }
   .login-button {
     margin: 5% 0% 0% 0%;
@@ -681,12 +685,8 @@ footer .legal-links {
   }
 
   .oauth-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 90%;
-    padding: 0px 0px 0px 0px;
-    margin: 323px 0px 13px 0px;
+    width: 100%;
+    margin: 15px;
   }
 
   .auth-container p {
@@ -723,26 +723,39 @@ footer .legal-links {
 .register {
   width: 90%;
 }
-.spacer {
+/* .spacer {
   height: 315px;
-}
+} */
 
 /* chat **************************************************************** */
 .chat-room {
   display: flex;
-  height: 50%;
+  justify-content: space-around;
+  background: #494d93;
 }
 .chat-title {
   display: flex;
   width: 18%;
   height: 88%;
-  background: blue;
-  border: 1px solid lightcoral;
-  margin: 0% 0% 1% 0%;
-  box-shadow: 3px 3px;
+  color: whitesmoke;
+
+  background: #2849a5;
+  margin: 1% 0% 1% 0%;
+  padding: 1% 1% 1% 1%;
+  box-shadow: 1px 1px;
 }
 .chat-window {
-  float: right;
+  /* float: right; */
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+.chat-confirm {
+  margin: 0% 0% 0% 0%;
+  width: 20%;
+  color: whitesmoke;
+  background: #2849a5;
 }
 /* Inline #4 | http://localhost:3000/auth */
 

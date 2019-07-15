@@ -167,7 +167,7 @@ class Chatroom extends Component {
               onMessageSend={this.sendMessage}
               width={500}
             />
-            <button onClick={this.buttonHandler}>
+            <button className="chat-confirm" onClick={this.buttonHandler}>
               {this.state.buttonName}
             </button>
           </div>

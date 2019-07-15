@@ -20,6 +20,7 @@
     "google-maps-react": "^2.0.2",
     "load-google-maps-api": "^2.0.0",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.0.4",
@@ -27,6 +28,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "react-stripe-elements": "^3.0.0",
+    "save": "^2.4.0",
     "twilio-chat": "^3.2.3"
   },
   "scripts": {
