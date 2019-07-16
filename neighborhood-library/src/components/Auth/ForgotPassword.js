@@ -1,68 +1,162 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { Auth } from "aws-amplify";
+import { Link } from "react-router-dom";
+import {
+  Alert,
+  FormGroup,
+  FormControl,
+  FormLabel,
+  Button
+} from "react-bootstrap";
+import "./ResetPassword.css";
 
-class ForgotPassword extends Component {
+export default class ResetPassword extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
+      code: "",
       email: "",
-      showError: false,
-      messageFromServer: ""
+      password: "",
+      codeSent: false,
+      confirmed: false,
+      confirmPassword: "",
+      isConfirming: false,
+      isSendingCode: false
     };
   }
 
-  changeHandler = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  validateCodeForm() {
+    return this.state.email.length > 0;
+  }
+
+  validateResetForm() {
+    return (
+      this.state.code.length > 0 &&
+      this.state.password.length > 0 &&
+      this.state.password === this.state.confirmPassword
+    );
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
   };
 
-  sendEmail = event => {
+  handleSendCodeClick = async event => {
     event.preventDefault();
-    if (this.state.email === "") {
-      this.setState({
-        showError: false,
-        messageFromServer: ""
-      });
-    } else {
-      axios
-        .post("http://localhost:4000/api/users/forgot-password", {
-          email: this.state.email
-        })
-        .then(response => {
-          if (response.data === "Email not in database") {
-            this.setState({
-              showError: false,
-              messageFromServer:
-                "Error: We can't find a user with that email address."
-            });
-          } else if (
-            response.data ===
-            "Recovery email sent. Check your email to change your password."
-          ) {
-          }
-        })
-        .catch(error => {
-          console.log(error.data);
-        });
+
+    this.setState({ isSendingCode: true });
+
+    try {
+      await Auth.forgotPassword(this.state.email);
+      this.setState({ codeSent: true });
+    } catch (e) {
+      alert(e.message);
+      this.setState({ isSendingCode: false });
     }
   };
 
+  handleConfirmClick = async event => {
+    event.preventDefault();
+
+    this.setState({ isConfirming: true });
+
+    try {
+      await Auth.forgotPasswordSubmit(
+        this.state.email,
+        this.state.code,
+        this.state.password
+      );
+      this.setState({ confirmed: true });
+    } catch (e) {
+      alert(e.message);
+      this.setState({ isConfirming: false });
+    }
+  };
+
+  renderRequestCodeForm() {
+    return (
+      <form onSubmit={this.handleSendCodeClick}>
+        <FormGroup bsSize="large" controlId="email">
+          <FormLabel>Email</FormLabel>
+          <FormControl
+            autoFocus
+            type="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <Button
+          type="submit"
+          bsSize="large"
+          loadingText="sending..."
+          text="Send Confirmation"
+          isLoading={this.state.isSendingCode}
+          disabled={!this.validateCodeForm()}
+        />
+      </form>
+    );
+  }
+
+  renderConfirmationForm() {
+    return (
+      <form onSubmit={this.handleConfirmClick}>
+        <FormGroup bsSize="large" controlId="code">
+          <FormLabel>Confirmation Code</FormLabel>
+          <FormControl
+            autoFocus
+            type="tel"
+            value={this.state.code}
+            onChange={this.handleChange}
+          />
+          {alert("Please check your email for the confirmation code.")}
+        </FormGroup>
+        <hr />
+        <FormGroup bsSize="large" controlId="password">
+          <FormLabel>New Password</FormLabel>
+          <FormControl
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup bsSize="large" controlId="confirmPassword">
+          <FormLabel>Confirm Password</FormLabel>
+          <FormControl
+            type="password"
+            onChange={this.handleChange}
+            value={this.state.confirmPassword}
+          />
+        </FormGroup>
+        {/* button goes here */}
+      </form>
+    );
+  }
+
+  renderSuccessMessage() {
+    return (
+      <div className="success">
+        <p>Your password has been reset.</p>
+        <p>
+          <Link to="/login">
+            Click here to login with your new credentials.
+          </Link>
+        </p>
+      </div>
+    );
+  }
+
   render() {
     return (
-      <div>
-        <form>
-          <input
-            type="email"
-            value={this.state.password}
-            placeholder="username@email.com"
-            name="email"
-            onChange={this.changeHandler}
-            required
-          />
-          <button>Submit</button>
-        </form>
+      <div className="ResetPassword">
+        {!this.state.codeSent
+          ? this.renderRequestCodeForm()
+          : !this.state.confirmed
+          ? this.renderConfirmationForm()
+          : this.renderSuccessMessage()}
       </div>
     );
   }
 }
-
-export default ForgotPassword;
