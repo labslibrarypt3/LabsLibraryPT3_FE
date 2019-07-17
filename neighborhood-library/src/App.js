@@ -50,35 +50,6 @@ class App extends Component {
     // }
   }
 
-<<<<<<< HEAD
-  // Add call to pull user data
-  // componentDidMount(){
-  //   const response = await fetch( /*URL GOES HERE*/);
-  //   const data = await response.json();
-  //   this.setState({data: data});
-  //
-  // }
-
-  render(){
-    return (
-      <div className="App">
-
-        <header className="App-header">
-          <h2>Neighborhood Library</h2>
-
-        </header>
-
-        <Nav/>
-
-        <div className="main">
-          <Route path="/add-book/:id" component={AddBook} />
-          <Route path="/account/:id/" component={Account} />
-          <Route path="/search" component={Search} />
-          <Route path="/my-shelf/:id" component={MyShelf} />
-        </div>
-      </div>
-    )
-=======
   //toggles isLoggedIn in App state
   loggedInStateHandler = () => {
     this.setState({ isLoggedIn: !this.state.isLoggedIn });
@@ -215,7 +186,6 @@ class App extends Component {
         <Footer />
       </div>
     );
->>>>>>> 4e19316a15aaca19f42ffbcf70bd80e963d3c340
   }
 }
 
