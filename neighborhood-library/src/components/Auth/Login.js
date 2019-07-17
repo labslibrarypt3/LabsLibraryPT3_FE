@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import AuthPostData from "./AuthPostData";
 import { FormControl, Form, FormGroup, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import ResetPassword from "./ForgotPassword";
 
 class Login extends Component {
   constructor(props) {
@@ -54,7 +56,7 @@ class Login extends Component {
             Login
           </Button>
           <div>
-            <a href="/change-password">Forgot password?</a>
+            <Link to="/login/reset">Forgot password?</Link>
           </div>
           <div className="register">
             <p>Need an account?</p>

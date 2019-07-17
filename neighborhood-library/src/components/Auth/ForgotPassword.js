@@ -1,68 +1,73 @@
 import React, { Component } from "react";
+import {
+  Alert,
+  FormGroup,
+  FormControl,
+  FormLabel,
+  Button
+} from "react-bootstrap";
+
+import "./ResetPassword.css";
 import axios from "axios";
 
-class ForgotPassword extends Component {
+class ResetPassword extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       email: "",
       showError: false,
       messageFromServer: ""
     };
   }
-
-  changeHandler = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  sendEmail = event => {
-    event.preventDefault();
-    if (this.state.email === "") {
-      this.setState({
-        showError: false,
-        messageFromServer: ""
-      });
-    } else {
-      axios
-        .post("http://localhost:4000/api/users/forgot-password", {
-          email: this.state.email
-        })
-        .then(response => {
-          if (response.data === "Email not in database") {
-            this.setState({
+  handleChange = name => e => this.setState({ [name]: e.target.value });
+  sendEmail = e => {
+    e.preventDefault();
+    console.log(this.state.email);
+    this.state.email === ""
+      ? this.setState({ showError: false, messageFromServer: "" })
+      : console.log(this.state.email, "after handling before axios");
+    axios
+      .post("http://localhost:4000/auths/forgot-password", {
+        email: this.state.email
+      })
+      .then(response => {
+        response.data === "email not found"
+          ? this.setState({ showError: true, messageFromServer: "" })
+          : response.data === "reset email sent"
+          ? this.setState({
               showError: false,
-              messageFromServer:
-                "Error: We can't find a user with that email address."
-            });
-          } else if (
-            response.data ===
-            "Recovery email sent. Check your email to change your password."
-          ) {
-          }
-        })
-        .catch(error => {
-          console.log(error.data);
-        });
-    }
+              messageFromServer: "reset email sent"
+            })
+          : this.setState({ showError: true, messageFromServer: " " });
+      })
+      .catch(err => console.log(err.data));
   };
-
+  ///
   render() {
+    const { email, messageFromServer, showError } = this.state;
     return (
       <div>
-        <form>
+        <h2>Forgot Password / Reset Password</h2>
+        <form onSubmit={this.sendEmail}>
           <input
             type="email"
-            value={this.state.password}
-            placeholder="username@email.com"
-            name="email"
-            onChange={this.changeHandler}
+            label="email"
+            value={email}
+            onChange={this.handleChange("email")}
             required
           />
-          <button>Submit</button>
+          <Button type="submit">Reset Password</Button>
         </form>
+        {showError ? (
+          "This email wasnt found as typed"
+        ) : messageFromServer !== "" ? (
+          <div>Reset email sent</div>
+        ) : (
+          <div />
+        )}
       </div>
     );
   }
 }
-
-export default ForgotPassword;
+export default ResetPassword;

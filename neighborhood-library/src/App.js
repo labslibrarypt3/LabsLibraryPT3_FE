@@ -19,6 +19,8 @@ import Footer from "./components/Footer/Footer";
 import Chat from "./components/Chat/Chat";
 import MapsContainer from "./components/Maps/MapsContainer";
 //Styles
+import ResetPassword from "./components/Auth/ForgotPassword";
+import ResetPasswordRedirect from "./components/Auth/ResetPassword";
 import "./App.css";
 
 class App extends Component {
@@ -185,6 +187,16 @@ class App extends Component {
               libraries={this.state.libraries}
             />
           )}
+        />
+        <Route
+          exact
+          path="/login/reset"
+          render={props => <ResetPassword email={this.state.email} />}
+        />
+        <Route
+          exact
+          path="/reset"
+          render={props => <ResetPasswordRedirect />}
         />
 
         <Footer />
