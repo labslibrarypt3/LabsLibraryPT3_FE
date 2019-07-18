@@ -10,8 +10,8 @@ html {
 
   width: 100vw;
 
-  max-width: 100%;
-
+  max-width: 1100px;
+  margin: 0 auto;
   height: 100vh;
   background-color: #d6ddf1;
   box-sizing: border-box;
@@ -30,8 +30,6 @@ html {
 /* MAIN Content section of app*/
 
 main {
-  height: calc(100% - 313px);
-  position: relative;
   top: 138px;
   left: 0;
   width: 100%;
@@ -53,13 +51,52 @@ h3 {
 ******************** 
 */
 
+@media screen and (max-width: 390px) {
+  header {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 138px;
+    max-width: 1100%;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #f1f1f1;
+    flex-grow: 1;
+
+    background: linear-gradient(
+        264.53deg,
+        #2849a5 0%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      #df6041;
+  }
+  .title {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 102%;
+    padding: 0;
+    margin: 15% 0% 0% 5%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
 /* Header container */
 header {
-  position: absolute;
+  position: relative;
   z-index: 1;
   width: 100%;
   height: 138px;
-  max-width: 100%;
+  max-width: 1100%;
   left: 0px;
   top: 0px;
   display: flex;
@@ -553,44 +590,56 @@ footer .legal-links {
 /* **************** */
 
 .auth-container {
-  height: calc(100vh - 375px);
+  display: flex;
+
+  justify-content: space-evenly;
+  padding: 3% 1% 1% 0%;
+}
+
+.login {
   display: flex;
   flex-direction: column;
+  margin: 0px 0% 131px 8%;
   align-items: center;
-  justify-content: center;
-  margin: 80px 0px 0px 0px;
+  border: 1px solid darkgray;
+  background: #494d93;
+  padding: 2% 2% 2% 2%;
+  color: d8d8d8;
+  box-shadow: 5px 5px;
+}
+.login-button {
+  margin: 0% 0% 0% 0%;
+  color: d8d8d8;
+
+  background: #2849a5;
 }
 
 .oauth-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 200px;
-  padding: 0px 0px 0px 0px;
-
-  margin: -54px 24px 50px 18px;
+  /* width: 200px; */
+  padding: 15px 20px 15px 20px;
+  box-shadow: 5px 5px;
+  margin: -0px 0px 106px 0px;
+  background: #494d93;
 }
 
 .auth-container p {
-  height: fit-content;
+  /* height: fit-content; */
+  margin: 0% 5% 9% 5%;
 }
 
-.auth-container .manual-auth-container {
+/* .manual-auth-container {
   height: 300px;
-}
+} */
 .fa-facebook {
   border-radius: 5px;
 }
 .flogin-button {
   padding: 0 0 0 0;
-  color: purple;
-
-  background: linear-gradient(
-      264.53deg,
-      #2849a5 0%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    #df6041;
+  color: whitesmoke;
+  background: #2849a5;
 
   height: 75px;
   width: 100%;
@@ -600,22 +649,114 @@ footer .legal-links {
   height: 75px;
   width: 100%;
 
-  background: linear-gradient(
-      264.53deg,
-      #df6041 0%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    #2849a5 0%;
+  color: whitesmoke;
+
+  background: #2849a5;
 
   margin: 10px 0 0 0;
 }
+@media only screen and (max-width: 390px) {
+  .auth-container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    /* justify-content: center; */
+  }
 
-/* Inline #4 | http://localhost:3000/auth */
+  .login {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0% 131px 0%;
+    align-items: center;
+    width: 100%;
+    color: f1f1f1;
+  }
+  .login-button {
+    margin: 5% 0% 0% 0%;
+    color: whitesmoke;
+    width: 100%;
+    background: #2849a5;
+  }
+  .login-form {
+    width: 90%;
+  }
+  .login-input {
+    width: 100%;
+  }
 
-.oauth-container {
-  display: flex;
-  /* margin: -54px 24px 50px 18px; */
-  margin: 300px 24px 50px 18px;
+  .oauth-container {
+    width: 100%;
+    margin: 15px;
+  }
+
+  .auth-container p {
+    /* height: fit-content; */
+    margin: 0% 5% 3% 5%;
+  }
+
+  .manual-auth-container {
+    width: 100%;
+  }
+  .fa-facebook {
+    border-radius: 5px;
+  }
+  .flogin-button {
+    padding: 0 0 0 0;
+    color: whitesmoke;
+    background: #2849a5;
+
+    height: 75px;
+    width: 100%;
+  }
+
+  .glogin-button {
+    height: 75px;
+    width: 100%;
+
+    color: whitesmoke;
+
+    background: #2849a5;
+
+    margin: 10px 0 0 0;
+  }
 }
+.register {
+  width: 90%;
+}
+/* .spacer {
+  height: 315px;
+} */
+
+/* chat **************************************************************** */
+.chat-room {
+  display: flex;
+  justify-content: space-around;
+  background: #494d93;
+}
+.chat-title {
+  display: flex;
+  width: 18%;
+  height: 88%;
+  color: whitesmoke;
+
+  background: #2849a5;
+  margin: 1% 0% 1% 0%;
+  padding: 1% 1% 1% 1%;
+  box-shadow: 1px 1px;
+}
+.chat-window {
+  /* float: right; */
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+.chat-confirm {
+  margin: 0% 0% 0% 0%;
+  width: 20%;
+  color: whitesmoke;
+  background: #2849a5;
+}
+/* Inline #4 | http://localhost:3000/auth */
 
 /* Element | http://localhost:3000/auth */

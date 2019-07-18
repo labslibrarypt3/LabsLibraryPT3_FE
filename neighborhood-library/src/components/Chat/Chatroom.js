@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Chat from "twilio-chat";
 import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
+import "@progress/kendo-theme-default/dist/all.css";
 import { isFlowBaseAnnotation } from "@babel/types";
 import axios from "axios";
 
@@ -98,24 +99,6 @@ class Chatroom extends Component {
     this.client.shutdown();
   }
 
-  // updateTransaction = () =>{
-  //   const authToken = localStorage.getItem("jwt");
-  //   const endpoint = "http://localhost:4000/trans/update";
-  //   await axios
-  //     .put(endpoint,{
-  //       transId:,
-  //       is_checked_out:
-
-  //     } {
-  //       headers: { authorization: authToken }
-  //     })
-  //     .then(res => {
-  //       this.dataBuild.userData = res.data;
-  //       this.getLentBooks();
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
   buttonHandler = e => {
     this.state.buttonName === "Book Loaned"
       ? this.setState({
@@ -123,7 +106,7 @@ class Chatroom extends Component {
           confirmTransaction: "false"
         })
       : this.setState({
-          buttonName: "Book Loaned",
+          buttonName: "Book Exchanged",
           confirmTransaction: "true"
         });
     this.updateTransaction();
@@ -168,19 +151,26 @@ class Chatroom extends Component {
       return <p>Loading chat...</p>;
     } else {
       return this.state.closeChat ? (
-        <div>
+        <div className="chat-title">
           <div onClick={this.toggleOpenCloseDrawer}>{this.props.title}</div>
         </div>
       ) : (
-        <div>
-          <div onClick={this.toggleOpenCloseDrawer}>{this.props.title}</div>
-          <button onClick={this.buttonHandler}>{this.state.buttonName}</button>
-          <ChatUI
-            user={this.user}
-            messages={this.state.messages}
-            onMessageSend={this.sendMessage}
-            width={500}
-          />
+        <div className="chat-room">
+          <div className="chat-title" onClick={this.toggleOpenCloseDrawer}>
+            {this.props.title}
+          </div>
+
+          <div className="chat-window">
+            <ChatUI
+              user={this.user}
+              messages={this.state.messages}
+              onMessageSend={this.sendMessage}
+              width={500}
+            />
+            <button className="chat-confirm" onClick={this.buttonHandler}>
+              {this.state.buttonName}
+            </button>
+          </div>
         </div>
       );
     }
@@ -188,3 +178,4 @@ class Chatroom extends Component {
 }
 
 export default Chatroom;
+// updating to push up to date in rest of group
