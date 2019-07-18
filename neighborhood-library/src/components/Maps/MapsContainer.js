@@ -68,7 +68,7 @@ const MapsContainer = props => {
     const unit = "M";
     const distanceInMiles = distance(lat1, lon1, lat2, lon2, unit);
 
-    if (distanceInMiles < 300) {
+    if (distanceInMiles < 3000) {
       neighborhoodLibraries.push(library);
     }
   });
@@ -87,27 +87,30 @@ const MapsContainer = props => {
         {/* display nearby library locations on map */}
 
         {neighborhoodLibraries.map(library => {
-          const latitude = Number(library.latitude);
-          const longitude = Number(library.longitude);
-          console.log("lat", latitude, "lon", longitude);
-          return (
-            <Marker
-              key={library.userId}
-              latitude={latitude}
-              longitude={longitude}
-            >
-              <button
-                className="marker-button"
-                onClick={event => {
-                  event.preventDefault();
-                  setSelectedLibrary(library);
-                }}
+        
+            const latitude = Number(library.latitude);
+            const longitude = Number(library.longitude);
+            console.log("lat", latitude, "lon", longitude);
+
+            return (
+              <Marker
+                key={library.userId}
+                latitude={latitude}
+                longitude={longitude}
               >
-                <img src={icon} alt="library" />
-              </button>
-            </Marker>
-          );
-        })}
+                <button
+                  className="marker-button"
+                  onClick={event => {
+                    event.preventDefault();
+                    setSelectedLibrary(library);
+                  }}
+                >
+                  <img src={icon} alt="library" />
+                </button>
+              </Marker>
+            );
+          }
+        )}
 
         {/* If a library has been selected, show information:
       {selectedLibrary && (
