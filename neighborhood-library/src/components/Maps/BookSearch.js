@@ -87,6 +87,7 @@ class BookSearch extends Component {
                         value={e.user_id}
                         name={e.bookId}
                         onClick={this.buttonClicked}
+                        disabled={this.borrower_id}
                       >
                         Borrow
                       </button>
