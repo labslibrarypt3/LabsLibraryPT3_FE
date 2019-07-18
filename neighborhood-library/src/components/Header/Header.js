@@ -1,6 +1,7 @@
 import React from "react";
 import DrawerToggleButton from './DrawerToggleButton';
 import { NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Header = props => (
   <header className="header-bar">
@@ -8,24 +9,25 @@ const Header = props => (
         <a href="/">Neighborhood Library</a>
       </h1>
     <nav className="header-navigation">
-      <div>
-        <DrawerToggleButton click={props.drawerClickHandler} />
+      <div className="nav-toggle">
+        <DrawerToggleButton   click={props.drawerClickHandler} />
       </div>
       <ul className="nav-links">
         <li>
-          <a href="#">home</a>
+        <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">my shelf</a>
+        <Link to="/my-shelf/home-library">My Shelf</Link>
+          
         </li>
         <li>
-          <a href="#">loaned</a>
+        <Link to="/chat">Chat</Link>
         </li>
         <li>
           <a href="#">borrowed</a>
         </li>
         <li>
-          <a href="#">chat</a>
+          <a href="/auth">Login</a>
         </li>
       </ul>
     </nav>
