@@ -2,11 +2,13 @@ import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import EditPasswordForm from "./EditPasswordForm";
 import EditAccountInfoForm from "./EditAccountInfoForm";
+import { FormControl, Form, FormGroup, Button } from "react-bootstrap";
 
 const AccountInfo = props => {
   return (
     <section className="account-info">
       <img src={props.img ? props.img : " "} alt="user profile image" />
+
       <form>
         <div className="form-pair">
           <label>Name:</label> <input readOnly value={props.name} />

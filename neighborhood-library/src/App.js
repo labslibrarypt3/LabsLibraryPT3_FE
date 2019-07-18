@@ -22,6 +22,8 @@ import Footer from "./components/Footer/Footer";
 import Chat from "./components/Chat/Chat";
 import MapsContainer from "./components/Maps/MapsContainer";
 //Styles
+import ResetPassword from "./components/Auth/ForgotPassword";
+import ResetPasswordRedirect from "./components/Auth/ResetPassword";
 import "./App.css";
 
 
@@ -79,6 +81,11 @@ class App extends Component {
     const response = await axios
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
       .then(res => {
+        if (res.status !== 200 || authToken === null) {
+          window.location.replace(" http://localhost:3000/auth");
+          console.log("log in please ....");
+        }
+
         console.log("response", res);
         const fullNameArray = res.data.name.split(" ");
         const firstName = fullNameArray[0];
@@ -212,7 +219,16 @@ class App extends Component {
             />
           )}
         />
-        <div className="spacer" />
+        <Route
+          exact
+          path="/login/reset"
+          render={props => <ResetPassword email={this.state.email} />}
+        />
+        <Route
+          exact
+          path="/reset"
+          render={props => <ResetPasswordRedirect />}
+        />
 
         <Footer />
       </div>

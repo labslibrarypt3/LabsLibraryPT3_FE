@@ -72,7 +72,7 @@ class BookSearch extends Component {
           <div className="shelf grid-container">
             {this.state.data.map(e => {
               console.log(e.user_id, this.props.userId, "in map of booksearch");
-              if (e.user_id != this.props.userId) {
+              if (e.user_id !== this.props.userId) {
                 return (
                   <div key={e.bookId} className="book">
                     <img

@@ -38,6 +38,11 @@ class Chat extends Component {
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
 
       .then(res => {
+        if (res.status !== 200 || authToken === null) {
+          window.location.replace(" http://localhost:3000/auth");
+          console.log("log in please ....");
+        }
+
         this.dataBuild.borrowedBooks = res.data;
         this.getName();
       })
