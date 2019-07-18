@@ -12,7 +12,7 @@ class LibCard extends Component {
   render() {
     return (
       <>
-        {showPopup && <Popup
+        {/* {showPopup && <Popup
           latitude={props.library.latitude}
           longitude={props.library.longitude}
           closeButton={true}
@@ -22,7 +22,10 @@ class LibCard extends Component {
           <div>
             {/* display library content here */}
           </div>
-        </Popup>}
+        </Popup>} */}
+        <div>
+          {/* display library content here */}
+        </div>
       </>
     );
   }
