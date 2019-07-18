@@ -115,12 +115,7 @@ header {
 
 /* "neighborhood library" logo thing */
 header .title {
-  position: absolute;
-  width: 20%;
-  height: 100%;
-  left: 34px;
-  display: flex;
-  align-items: center;
+ 
 
   font-family: Raleway;
   font-style: normal;
@@ -133,143 +128,7 @@ header .title {
 }
 
 /* Account drop down nav */
-header .nav {
-  position: absolute;
 
-  right: 2.78%;
-
-  top: 11px;
-
-  bottom: 0%;
-
-  width: 200px;
-
-  padding-right: 40px;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  text-align: center;
-
-  font-family: Raleway;
-
-  font-style: normal;
-
-  font-weight: bold;
-
-  font-size: 24px;
-
-  line-height: 28px;
-
-  mix-blend-mode: normal;
-
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.nav__menu-item a {
-  color: #f1f1f1;
-}
-
-.nav__menu-item a:hover {
-  text-decoration: underline;
-  color: #fcc4b3;
-}
-
-ul,
-il {
-  list-style: none;
-}
-
-.nav__submenu {
-  position: absolute;
-  z-index: 1000;
-  left: 4.33%;
-
-  top: 127px;
-
-  height: 400px;
-  width: 200px;
-
-  background: #2849a5;
-  opacity: 0.95;
-
-  display: flex;
-  flex-direction: column;
-}
-.nav__submenu button {
-  background-color: transparent;
-}
-
-.nav__submenu .nav__submenu-item {
-  width: 100%;
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 28px;
-  text-decoration: none;
-  color: #f1f1f1;
-  mix-blend-mode: normal;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: none;
-  display: flex;
-  align-items: center;
-  text-align: center;
-
-  position: relative;
-
-  width: 100%;
-  height: 25%;
-}
-
-.nav__submenu-item:hover {
-  color: #fcc4b3;
-  text-decoration: underline;
-}
-
-/* Header Search Bar */
-header form,
-.book-search-bar {
-  display: flex;
-  width: 30%;
-  justify-content: space-between;
-}
-
-@media screen and (max-width: 1316px) {
-  .book-search-bar {
-    display: none;
-  }
-}
-
-header form input,
-.book-search-bar input {
-  align-self: center;
-  height: 50px;
-  width: 70%;
-  background: #f1f1f1;
-  border-radius: 15px;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
-header form button,
-.book-search-bar button {
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 28px;
-  width: 25%;
-  height: 50px;
-  color: #f1f1f1;
-  background: none;
-  border-radius: 15px;
-  border: 3px solid #f1f1f1;
-}
 
 /*
 ******************
@@ -760,3 +619,144 @@ footer .legal-links {
 /* Inline #4 | http://localhost:3000/auth */
 
 /* Element | http://localhost:3000/auth */
+
+
+.header-bar {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+  left: 0;
+  min-height: 140px;
+}
+
+.header-navigation{
+  display: flex;
+  height: 100%;
+  align-items: center;
+ 
+}
+
+.logo {
+  display: flex;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.nav-links{
+  display: flex;
+  justify-content: space-around;
+  width: 30%
+}
+.nav-links li {
+  list-style: none;
+}
+.nav-links a:hover,
+.nav-link a:active {
+  color: orange;
+}
+
+.toggle-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+  width: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box; 
+}
+.toggle-button:focus{
+  outline: none;
+}
+
+.toggle-button-line{
+  width: 30px;
+  height: 2px;
+  background: white;
+
+}
+
+.side-drawer {
+  height: 100%;
+  background: linear-gradient(
+      264.53deg,
+      #2849a5 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #df6041;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  max-width: 400px;
+  z-index: 900;
+  border: 1px solid green;
+
+}
+
+
+.side-drawer ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.side-drawer li {
+  margin: 0.5rem
+}
+.side-drawer a {
+  color: rebeccapurple;
+  text-decoration: none;
+  font-size: 1.2rem 0;
+}
+
+.side-drawer a:hover,
+.side-drawer a:active {
+  color: orange;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 800;
+  opacity: .1;
+} 
+
+
+@media (max-width: 500px) {
+  .nav-links {
+    display: none;
+  }
+ 
+}
+
+@media (min-width: 501px) {
+  .side-drawer {
+    display: none;
+  } 
+  .nav-toggle {
+    display: none;
+  }
+}
+
+
+/* Kat notes.... backdrop is over backround and not over maps,
+which is why we are not seeing maps underneath the transparent backdrop.
+I will come back to this later. */

@@ -4,6 +4,9 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 //Components
 import Header from "./components/Header/Header";
+import SideDrawer from './components/Header/SideDrawer';
+import Backdrop from './components/Header/Backdrop';
+
 import Account from "./components/Account/Account";
 // import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
@@ -22,6 +25,7 @@ import MapsContainer from "./components/Maps/MapsContainer";
 import ResetPassword from "./components/Auth/ForgotPassword";
 import ResetPasswordRedirect from "./components/Auth/ResetPassword";
 import "./App.css";
+
 
 class App extends Component {
   constructor(props) {
@@ -43,6 +47,7 @@ class App extends Component {
       isLoading: false,
       Message: " ",
       Error: " ",
+      sideDrawerOpen: false,
       libraries: []
     };
   }
@@ -56,6 +61,17 @@ class App extends Component {
   loggedInStateHandler = () => {
     this.setState({ isLoggedIn: !this.state.isLoggedIn });
   };
+
+  drawerToggleClickHandler = (e) => {
+    this.setState((prevState) => {
+      e.persist();
+      return {sideDrawerOpen: !prevState.sideDrawerOpen}
+    })
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false})
+  }
 
   getUserData = async () => {
     this.setState({ isLoading: true });
@@ -119,14 +135,29 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
+  
+
   render() {
+    
+    if (this.state.sideDrawerOpen) {
+      return(
+       <div>
+       <SideDrawer />
+    <Backdrop backdropClick={this.backdropClickHandler}/></div>
+      )
+    }
     return (
       <div className="App">
+        
         <Header
+          drawerClickHandler={this.drawerToggleClickHandler}
           img={this.state.img}
           isLoggedIn={this.state.isLoggedIn}
           loggedInStateHandler={this.loggedInStateHandler}
         />
+        {SideDrawer}
+        {Backdrop}
+        
         <Route
           exact
           path="/add-book"
