@@ -622,7 +622,7 @@ footer .legal-links {
 
 
 .header-bar {
-  position: fixed;
+  position: relative;
   z-index: 100;
   width: 100%;
   top: 0;
@@ -701,13 +701,9 @@ footer .legal-links {
   max-width: 400px;
   z-index: 900;
   border: 1px solid green;
-  /* transform: translateX(-100%);
-  transition: transform 0.3s ease-out; */
+
 }
 
-/* .side-drawer.open {
-  transform: translateX(0);
-} */
 
 .side-drawer ul {
   height: 100%;
@@ -744,14 +740,14 @@ footer .legal-links {
 } 
 
 
-@media (max-width: 800px) {
+@media (max-width: 500px) {
   .nav-links {
     display: none;
   }
  
 }
 
-@media (min-width: 801px) {
+@media (min-width: 501px) {
   .side-drawer {
     display: none;
   } 
