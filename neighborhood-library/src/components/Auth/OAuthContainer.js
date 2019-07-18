@@ -63,18 +63,25 @@ class OAuthContainer extends Component {
           fields="name,email,picture"
           onClick={componentClicked}
           callback={responseFacebook}
-          // cssClass="login-button"
-          icon="fa fa-facebook"
-          textButton="Login"
+          cssClass="flogin-button"
+          icon="fa-facebook"
+          textButton=" Login with Facebook "
         />
+
         <GoogleLogin
           clientId="276277558253-h0h6fqj0m26r3a20998jeplb75r097g7.apps.googleusercontent.com"
-          icon={true}
-          buttonText="Login"
+          render={renderProps => (
+            <button
+              className="glogin-button"
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+            >
+              "Login with Google"
+            </button>
+          )}
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
           cookiePolicy={"single_host_origin"}
-          className="login-button"
         />
       </section>
     );

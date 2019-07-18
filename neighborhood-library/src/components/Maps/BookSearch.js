@@ -35,7 +35,7 @@ class BookSearch extends Component {
     };
     data();
   }
-  createTransaction = () => {
+  createTransaction = async () => {
     const endpoint = "http://localhost:4000/api/trans/";
     const authToken = localStorage.getItem("jwt");
     const transaction = this.state.transaction;
@@ -70,7 +70,7 @@ class BookSearch extends Component {
           <div className="shelf grid-container">
             {this.state.data.map(e => {
               console.log(e.user_id, this.props.userId, "in map of booksearch");
-              if (e.user_id != this.props.userId) {
+              if (e.user_id !== this.props.userId) {
                 return (
                   <div key={e.bookId} className="book">
                     <img

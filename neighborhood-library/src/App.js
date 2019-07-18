@@ -4,6 +4,9 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 //Components
 import Header from "./components/Header/Header";
+import SideDrawer from './components/Header/SideDrawer';
+import Backdrop from './components/Header/Backdrop';
+
 import Account from "./components/Account/Account";
 // import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
@@ -19,7 +22,10 @@ import Footer from "./components/Footer/Footer";
 import Chat from "./components/Chat/Chat";
 import MapsContainer from "./components/Maps/MapsContainer";
 //Styles
+import ResetPassword from "./components/Auth/ForgotPassword";
+import ResetPasswordRedirect from "./components/Auth/ResetPassword";
 import "./App.css";
+
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +47,7 @@ class App extends Component {
       isLoading: false,
       Message: " ",
       Error: " ",
+      sideDrawerOpen: false,
       libraries: []
     };
   }
@@ -55,6 +62,17 @@ class App extends Component {
     this.setState({ isLoggedIn: !this.state.isLoggedIn });
   };
 
+  drawerToggleClickHandler = (e) => {
+    this.setState((prevState) => {
+      e.persist();
+      return {sideDrawerOpen: !prevState.sideDrawerOpen}
+    })
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false})
+  }
+
   getUserData = async () => {
     this.setState({ isLoading: true });
     const authToken = localStorage.getItem("jwt");
@@ -63,6 +81,11 @@ class App extends Component {
     const response = await axios
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
       .then(res => {
+        if (res.status !== 200 || authToken === null) {
+          window.location.replace(" http://localhost:3000/auth");
+          console.log("log in please ....");
+        }
+
         console.log("response", res);
         const fullNameArray = res.data.name.split(" ");
         const firstName = fullNameArray[0];
@@ -112,14 +135,29 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
+  
+
   render() {
+    
+    if (this.state.sideDrawerOpen) {
+      return(
+       <div>
+       <SideDrawer />
+    <Backdrop backdropClick={this.backdropClickHandler}/></div>
+      )
+    }
     return (
       <div className="App">
+        
         <Header
+          drawerClickHandler={this.drawerToggleClickHandler}
           img={this.state.img}
           isLoggedIn={this.state.isLoggedIn}
           loggedInStateHandler={this.loggedInStateHandler}
         />
+        {SideDrawer}
+        {Backdrop}
+        
         <Route
           exact
           path="/add-book"
@@ -165,7 +203,6 @@ class App extends Component {
           render={props => <BookSearch userId={this.state.userId} />}
         />
 
-        <Route path="/chat" component={Chat} />
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
         <Route
@@ -173,7 +210,8 @@ class App extends Component {
           render={props => <StripeConnectSuccess />}
         />
         <Route
-          path="/search-libraries"
+          exact
+          path="/"
           render={props => (
             <MapsContainer
               getLibraries={this.getLibraries}
@@ -181,7 +219,16 @@ class App extends Component {
             />
           )}
         />
-        <div className="spacer" />
+        <Route
+          exact
+          path="/login/reset"
+          render={props => <ResetPassword email={this.state.email} />}
+        />
+        <Route
+          exact
+          path="/reset"
+          render={props => <ResetPasswordRedirect />}
+        />
 
         <Footer />
       </div>

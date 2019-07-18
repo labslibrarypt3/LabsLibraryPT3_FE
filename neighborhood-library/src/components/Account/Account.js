@@ -7,7 +7,7 @@ import EditAccountInfoForm from "./EditAccountInfoForm";
 class Account extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    console.log(props, "are there props in the accounts page");
   }
 
   componentDidMount() {
@@ -20,7 +20,6 @@ class Account extends Component {
     this.props.lastInitial === " "
       ? (heading = `Welcome ${this.props.firstName} ${this.props.lastInitial}.`)
       : (heading = `Welcome ${this.props.firstName}.`);
-
     return (
       <main className="account">
         <h2>{heading}</h2>

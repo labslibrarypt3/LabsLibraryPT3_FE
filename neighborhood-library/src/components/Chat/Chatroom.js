@@ -1,27 +1,26 @@
 import React, { Component } from "react";
 import Chat from "twilio-chat";
 import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
+import "@progress/kendo-theme-default/dist/all.css";
+import { isFlowBaseAnnotation } from "@babel/types";
+import axios from "axios";
 
 class Chatroom extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      closeChat: true,
       error: null,
       isLoading: true,
       messages: [],
-      buttonName: "Book Loaned"
+      buttonName: "Book Loaned",
+      confirmTransaction: false
     };
 
     this.user = {
       id: props.dataBuild.userData.userId,
       username: props.dataBuild.userData.name
     };
-
-    this.setupChatClient = this.setupChatClient.bind(this);
-    this.messagesLoaded = this.messagesLoaded.bind(this);
-    this.messageAdded = this.messageAdded.bind(this);
-    this.sendMessage = this.sendMessage.bind(this);
-    this.handleError = this.handleError.bind(this);
   }
 
   componentDidMount() {
@@ -36,14 +35,14 @@ class Chatroom extends Component {
       .catch(this.handleError);
   }
 
-  handleError(error) {
+  handleError = error => {
     console.error(error);
     this.setState({
       error: "Could not load chat."
     });
-  }
+  };
 
-  setupChatClient(client) {
+  setupChatClient = client => {
     this.client = client;
     this.client
       .getChannelByUniqueName(this.props.roomTitle)
@@ -67,7 +66,7 @@ class Chatroom extends Component {
         this.channel.on("messageAdded", this.messageAdded);
       })
       .catch(this.handleError);
-  }
+  };
 
   twilioMessageToKendoMessage(message) {
     return {
@@ -77,24 +76,24 @@ class Chatroom extends Component {
     };
   }
 
-  messagesLoaded(messagePage) {
+  messagesLoaded = messagePage => {
     this.setState({
       messages: messagePage.items.map(this.twilioMessageToKendoMessage)
     });
-  }
+  };
 
-  messageAdded(message) {
+  messageAdded = message => {
     this.setState(prevState => ({
       messages: [
         ...prevState.messages,
         this.twilioMessageToKendoMessage(message)
       ]
     }));
-  }
+  };
 
-  sendMessage(event) {
+  sendMessage = event => {
     this.channel.sendMessage(event.message.text);
-  }
+  };
 
   componentWillUnmount() {
     this.client.shutdown();
@@ -102,8 +101,46 @@ class Chatroom extends Component {
 
   buttonHandler = e => {
     this.state.buttonName === "Book Loaned"
+      ? this.setState({
+          buttonName: "Book Returned",
+          confirmTransaction: "false"
+        })
+      : this.setState({
+          buttonName: "Book Exchanged",
+          confirmTransaction: "true"
+        });
+    this.updateTransaction();
+  };
+
+  // updateTransaction = () => {
+  //   const authToken = localStorage.getItem("jwt");
+  //   const endpoint = "http://localhost:4000/api/trans/update";
+  //   axios
+  //     .put(endpoint, {
+  //       body: { confirmTransaction },
+  //       headers: { authorization: authToken }
+  //     })
+  //     .then(res => {
+  //       this.dataBuild.userData = res.data;
+  //       this.getLentBooks();
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+  buttonHandler = e => {
+    this.state.buttonName === "Book Loaned"
       ? this.setState({ buttonName: "Book Returned" })
       : this.setState({ buttonName: "Book Loaned" });
+  };
+
+  toggleOpenCloseDrawer = () => {
+    this.state.closeChat
+      ? this.setState({
+          closeChat: false
+        })
+      : this.setState({
+          closeChat: true
+        });
   };
 
   render() {
@@ -112,19 +149,33 @@ class Chatroom extends Component {
       return <p>{this.state.error}</p>;
     } else if (this.state.isLoading) {
       return <p>Loading chat...</p>;
+    } else {
+      return this.state.closeChat ? (
+        <div className="chat-title">
+          <div onClick={this.toggleOpenCloseDrawer}>{this.props.title}</div>
+        </div>
+      ) : (
+        <div className="chat-room">
+          <div className="chat-title" onClick={this.toggleOpenCloseDrawer}>
+            {this.props.title}
+          </div>
+
+          <div className="chat-window">
+            <ChatUI
+              user={this.user}
+              messages={this.state.messages}
+              onMessageSend={this.sendMessage}
+              width={500}
+            />
+            <button className="chat-confirm" onClick={this.buttonHandler}>
+              {this.state.buttonName}
+            </button>
+          </div>
+        </div>
+      );
     }
-    return (
-      <div>
-        <button onClick={this.buttonHandler}>{this.state.buttonName}</button>
-        <ChatUI
-          user={this.user}
-          messages={this.state.messages}
-          onMessageSend={this.sendMessage}
-          width={500}
-        />
-      </div>
-    );
   }
 }
 
 export default Chatroom;
+// updating to push up to date in rest of group
