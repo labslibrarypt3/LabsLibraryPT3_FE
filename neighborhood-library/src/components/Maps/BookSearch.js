@@ -9,7 +9,6 @@ class BookSearch extends Component {
       data: [],
       transaction: {
         lender_id: "",
-        borrower_id: "",
         book_id: ""
       }
     };
@@ -49,9 +48,9 @@ class BookSearch extends Component {
   buttonClicked = e => {
     e.preventDefault();
     this.setState({
+      btnDisabled: true,
       transaction: {
         lender_id: e.target.value,
-        borrower_id: this.props.userId,
         book_id: e.target.name
       }
     });
@@ -86,7 +85,6 @@ class BookSearch extends Component {
                         value={e.user_id}
                         name={e.bookId}
                         onClick={this.buttonClicked}
-                        disabled={this.state.transaction.borrower_id}
                       >
                         Borrow
                       </button>
@@ -105,3 +103,20 @@ class BookSearch extends Component {
 }
 
 export default BookSearch;
+
+class BorrowBtn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      disabled: false
+    }
+  }
+
+  render() {
+    return (
+      <button>
+
+      </button>
+    );
+  }
+}
