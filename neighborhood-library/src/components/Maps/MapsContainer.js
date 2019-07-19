@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import icon from "./heart.svg";
 import MapsSearchResults from "./MapsSearchResults";
+import LibraryPopup from "./LibraryPopup";
+// import { REPL_MODE_STRICT } from "repl";
 const API_KEY = process.env.REACT_APP_MAP_KEY;
 
 const MapsContainer = props => {
@@ -22,7 +24,7 @@ const MapsContainer = props => {
       setViewport({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
-        width: `100vw`,
+        width: `70.5vw`,
         height: `100vh`,
         zoom: 10
       });
@@ -85,50 +87,49 @@ const MapsContainer = props => {
         }}
       >
         {/* display nearby library locations on map */}
-
         {neighborhoodLibraries.map(library => {
-        
-            const latitude = Number(library.latitude);
-            const longitude = Number(library.longitude);
-            console.log("lat", latitude, "lon", longitude);
+          const latitude = Number(library.latitude);
+          const longitude = Number(library.longitude);
+          console.log("lat", latitude, "lon", longitude);
 
-            return (
-              <Marker
-                key={library.userId}
-                latitude={latitude}
-                longitude={longitude}
+          return (
+            <Marker
+              key={library.userId}
+              latitude={latitude}
+              longitude={longitude}
+            >
+              <button
+                className="marker-button"
+                onClick={event => {
+                  console.log("marker clicked");
+                  //  <LibraryPopup data={library} />;
+                  setSelectedLibrary(library);
+                }}
               >
-                <button
-                  className="marker-button"
-                  onClick={event => {
-                    event.preventDefault();
-                    setSelectedLibrary(library);
-                  }}
-                >
-                  <img src={icon} alt="library" />
-                </button>
-              </Marker>
-            );
-          }
-        )}
+                <img src={icon} alt="library" />
+              </button>
+            </Marker>
+          );
+        })}
 
-        {/* If a library has been selected, show information:
-      {selectedLibrary && (
-        <Popup
-          latitude={selectedLibrary.latitude}
-          longitude={selectedLibrary.longitude}
-          onClose={() => {
-            setSelectedLibrary(null);
-          }}
-          closeOnClick={false}
-        >
-          <div className="library-info">
-            <h3>Dynamic Name</h3>
-            <p>Dynamic Library Information</p>
-            <button>Request Book</button>
-          </div>
-        </Popup>
-      )} */}
+        {/* If a library has been selected, show information: */}
+        {selectedLibrary && (
+          <LibraryPopup library={selectedLibrary} />
+          // <Popup
+          // // latitude={selectedLibrary.latitude}
+          // // longitude={selectedLibrary.longitude}
+          // // onClose={() => {
+          // //   setSelectedLibrary(null);
+          // // }}
+          // // closeOnClick={false}
+          // >
+          //   <div className="library-info">
+          //     <h3>Dynamic Name</h3>
+          //     <p>Dynamic Library Information</p>
+          //     <button>Request Book</button>
+          //   </div>
+          // </Popup>
+        )}
       </ReactMapGL>
       <MapsSearchResults />
     </main>
