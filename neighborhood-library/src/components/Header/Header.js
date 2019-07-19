@@ -24,10 +24,10 @@ const Header = props => (
         <Link to="/chat">Chat</Link>
         </li>
         <li>
-          <a href="#">borrowed</a>
+        <Link to="/account">Account</Link>
         </li>
         <li>
-          <a href="/auth">Login</a>
+          <Link to="/auth">Login</Link>
         </li>
       </ul>
     </nav>
