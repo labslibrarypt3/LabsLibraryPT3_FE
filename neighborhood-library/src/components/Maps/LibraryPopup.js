@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Library from "./Library";
 
 class LibraryPopup extends Component {
   constructor(props) {
@@ -30,10 +31,9 @@ class LibraryPopup extends Component {
   render() {
     console.log(this.props.library.userId);
     return (
-      <>
-        {" "}
-        <h2>render library here</h2>;
-      </>
+      <div>
+        <Library />
+      </div>
     );
   }
 }

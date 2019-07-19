@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import icon from "./heart.svg";
-import MapsSearchResults from "./MapsSearchResults";
 import LibraryPopup from "./LibraryPopup";
 // import { REPL_MODE_STRICT } from "repl";
 const API_KEY = process.env.REACT_APP_MAP_KEY;
@@ -24,8 +23,8 @@ const MapsContainer = props => {
       setViewport({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
-        width: `100vw`,
-        height: `100vh`,
+        width: "100%",
+        height: "75vh",
         zoom: 10
       });
     });
@@ -101,8 +100,6 @@ const MapsContainer = props => {
               <button
                 className="marker-button"
                 onClick={event => {
-                  console.log("marker clicked");
-                  //  <LibraryPopup data={library} />;
                   setSelectedLibrary(library);
                 }}
               >
@@ -131,7 +128,6 @@ const MapsContainer = props => {
           // </Popup>
         )}
       </ReactMapGL>
-      <MapsSearchResults />
     </main>
   );
 };
