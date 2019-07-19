@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class BookSearch extends Component {
+class Library extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,9 +14,6 @@ class BookSearch extends Component {
       }
     };
   }
-  // I accidentally lost this function.
-  // Sorry,
-  // Ira.
 
   componentDidMount() {
     const data = () => {
@@ -68,6 +65,7 @@ class BookSearch extends Component {
             onChange={this.handleInputChange}
           />
           <div className="shelf grid-container">
+            <button>Back</button>
             {this.state.data.map(e => {
               console.log(e.user_id, this.props.userId, "in map of booksearch");
               if (e.user_id !== this.props.userId) {
@@ -102,4 +100,4 @@ class BookSearch extends Component {
   }
 }
 
-export default BookSearch;
+export default Library;
