@@ -17,6 +17,10 @@ const SubNav = props => {
         Messages
       </NavLink>
 
+      <NavLink to="/Account" className="nav__submenu-item ">
+        Account
+      </NavLink>
+
       <Logout loggedInStateHandler={props.loggedInStateHandler} />
     </ul>
   );
