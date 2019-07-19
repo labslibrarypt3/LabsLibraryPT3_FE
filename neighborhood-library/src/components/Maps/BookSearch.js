@@ -55,8 +55,6 @@ class BookSearch extends Component {
       }
     });
     this.createTransaction();
-
-    window.location.replace("http://localhost:3000/chat");
   };
 
   render() {
