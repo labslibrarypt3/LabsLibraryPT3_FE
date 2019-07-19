@@ -24,7 +24,7 @@ const MapsContainer = props => {
       setViewport({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
-        width: `70.5vw`,
+        width: `100vw`,
         height: `100vh`,
         zoom: 10
       });

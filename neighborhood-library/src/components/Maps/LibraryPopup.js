@@ -5,34 +5,30 @@ class LibraryPopup extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user_id: " ",
       library: []
     };
   }
-  componentDidMount() {
-    const endpoint = "http://localhost:4000/api/books/mybooks";
-    const data = () => {
-      if (localStorage.getItem("jwt")) {
-        const authToken = localStorage.getItem("jwt");
-        return axios
-          .get(endpoint, { headers: { Authorization: `${authToken}` } })
-          .then(res => {
-            if (res.status !== 200 || authToken === null) {
-              window.location.replace(" http://localhost:3000/auth");
-              console.log("log in please ....");
-            }
 
-            this.setState({ data: res.data });
-          })
-          .catch(err => console.log(err));
-      } else {
-        window.location.replace(" http://localhost:3000/auth");
-      }
-    };
-    data();
+  data = () => {
+    const user_id = this.state.user_id;
+    console.log(user_id);
+    axios
+      .get("http://localhost:4000/api/books/mybooks", { user_id })
+      .then(res => {
+        this.setState({ library: res.data });
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  };
+
+  componentDidMount() {
+    this.setState({ user_id: this.props.userId });
+    this.data();
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.library.userId);
     return (
       <>
         {" "}
