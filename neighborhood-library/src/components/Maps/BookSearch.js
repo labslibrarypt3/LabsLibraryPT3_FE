@@ -34,6 +34,7 @@ class BookSearch extends Component {
     };
     data();
   }
+
   createTransaction = async () => {
     const endpoint = "http://localhost:4000/api/trans/";
     const authToken = localStorage.getItem("jwt");
@@ -45,6 +46,7 @@ class BookSearch extends Component {
       .then(res => console.log("transaction request added"))
       .catch(err => console.log(err));
   };
+
   buttonClicked = e => {
     e.preventDefault();
     this.setState({
@@ -58,7 +60,6 @@ class BookSearch extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <form>
@@ -96,7 +97,6 @@ class BookSearch extends Component {
           </div>
           <p>{this.state.query}</p>
         </form>
-        {/* <MapContainer /> */}
       </div>
     );
   }
@@ -112,10 +112,19 @@ class BorrowBtn extends Component {
     }
   }
 
+  disableBtn = e => {
+    e.preventDefault();
+    this.setState({
+      disabled: !this.state.disabled
+    });
+  }
+
   render() {
     return (
-      <button>
-
+      <button
+        disabled={this.state.disabled}
+        >
+        Borrow
       </button>
     );
   }
