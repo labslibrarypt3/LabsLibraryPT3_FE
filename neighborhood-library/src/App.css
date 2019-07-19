@@ -628,12 +628,13 @@ footer .legal-links {
   top: 0;
   left: 0;
   min-height: 140px;
+ 
 }
 
 .header-navigation{
   display: flex;
   height: 100%;
-  align-items: center;
+  
  
 }
 
@@ -648,18 +649,37 @@ footer .legal-links {
   justify-content: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.logo a:hover,
+.logo a:active {
+text-decoration: none;
+color: #ABBDE5;
+}
 
 .nav-links{
   display: flex;
-  justify-content: space-around;
-  width: 30%
+  justify-content: center;
+   font-family: Raleway;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .nav-links li {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  margin: 10, 10, 20, 20;
   list-style: none;
+  /* border: 1px solid green; */
+  padding: 20px;
+  
 }
 .nav-links a:hover,
 .nav-link a:active {
-  color: orange;
+  text-decoration: none;
+  color: #ABBDE5;
 }
 
 .toggle-button {
@@ -700,7 +720,7 @@ footer .legal-links {
   width: 70%;
   max-width: 400px;
   z-index: 900;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 
 }
 
@@ -718,14 +738,22 @@ footer .legal-links {
   margin: 0.5rem
 }
 .side-drawer a {
-  color: rebeccapurple;
+  color: white;
   text-decoration: none;
   font-size: 1.2rem 0;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  padding: 0;
+  margin: 0;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .side-drawer a:hover,
 .side-drawer a:active {
-  color: orange;
+  color: #ABBDE5;
 }
 
 .backdrop {
@@ -734,7 +762,7 @@ footer .legal-links {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.3);
+  /* background: rgba(0, 0, 0, 0.3); */
   z-index: 800;
   opacity: .1;
 } 
@@ -744,7 +772,15 @@ footer .legal-links {
   .nav-links {
     display: none;
   }
- 
+  .header-bar {
+    display: flex;
+    align-items: center;
+  }
+ .nav-toggle{ 
+   align-self: center;
+   margin-right: 15px;
+   /* border: 1px solid goldenrod; */
+ }
 }
 
 @media (min-width: 501px) {
@@ -753,6 +789,10 @@ footer .legal-links {
   } 
   .nav-toggle {
     display: none;
+  }
+  .header-bar {
+    display: flex;
+    flex-direction: column;
   }
 }
 
