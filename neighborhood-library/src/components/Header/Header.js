@@ -16,9 +16,7 @@ const Header = props => (
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/account">Account</Link>
-        </li>
+
         <li>
           <Link to="/my-shelf/home-library">My Shelf</Link>
         </li>
@@ -26,7 +24,7 @@ const Header = props => (
           <Link to="/chat">Chat</Link>
         </li>
         <li>
-        <Link to="/account">Account</Link>
+          <Link to="/account">Account</Link>
         </li>
         <li>
           <Link to="/auth">Login</Link>
