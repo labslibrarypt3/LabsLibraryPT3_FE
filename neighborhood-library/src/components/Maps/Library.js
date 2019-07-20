@@ -101,3 +101,30 @@ class Library extends Component {
 }
 
 export default Library;
+
+class BorrowBtn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      disabled: false
+    }
+  }
+
+  disableBtn = e => {
+    e.preventDefault();
+    this.setState({
+      disabled: !this.state.disabled
+    });
+  }
+
+  render() {
+    return (
+      <button
+        disabled={this.state.disabled}
+        onClick={this.disableBtn}
+        >
+        Borrow
+      </button>
+    );
+  }
+}
