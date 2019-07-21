@@ -75,7 +75,8 @@ class App extends Component {
   getUserData = async () => {
     this.setState({ isLoading: true });
     const authToken = localStorage.getItem("jwt");
-    console.log("App.js' getUserData() start");
+    console.log("App.js' getUserData() start", authToken, this.state.userId);
+
     const endpoint = "http://localhost:4000/api/users/user";
     const response = await axios
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
@@ -84,7 +85,7 @@ class App extends Component {
           window.location.replace(" http://localhost:3000/auth");
           console.log("log in please ....");
         }
-
+        localStorage.setItem("userId", res.data.userId);
         console.log("response", res);
         const fullNameArray = res.data.name.split(" ");
         const firstName = fullNameArray[0];
@@ -194,10 +195,6 @@ class App extends Component {
           render={props => <MyShelf firstName={this.state.firstName} />}
         />
         <Route path="/chat" component={Chat} />
-        <Route
-          path="/search"
-          render={props => <Library userId={this.state.userId} />}
-        />
 
         <Route path="/tos" component={TOS} />
         <Route path="/privacy" component={Privacy} />
@@ -210,6 +207,8 @@ class App extends Component {
           path="/"
           render={props => (
             <MapsContainer
+              getUserData={this.getUserData}
+              userId={this.state.userId}
               getLibraries={this.getLibraries}
               libraries={this.state.libraries}
             />
@@ -220,11 +219,7 @@ class App extends Component {
           path="/login/reset"
           render={props => <ResetPassword email={this.state.email} />}
         />
-        <Route
-          exact
-          path="/reset"
-          render={props => <ResetPasswordRedirect />}
-        />
+        <Route path="/reset" render={props => <ResetPasswordRedirect />} />
 
         <Footer />
       </div>

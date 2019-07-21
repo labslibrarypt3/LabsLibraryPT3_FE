@@ -10,6 +10,22 @@ class HomeLibrary extends Component {
       data: []
     };
   }
+  getLentTransactions = async () => {
+    const endpoint = "http://localhost:4000/api/trans/tranlent";
+
+    await axios
+      .get(endpoint, {
+        headers: { authorization: localStorage.getItem("jwt") },
+        params: { lender_id: localStorage.getItem("userId") }
+      })
+      .then(res => {
+        console.log(res.data, "in lens tran");
+      })
+      .catch(err => {
+        console.log(" Error", err);
+      });
+  };
+
   componentDidMount() {
     const endpoint = "http://localhost:4000/api/books/mybooks";
     const data = () => {
@@ -31,6 +47,7 @@ class HomeLibrary extends Component {
       }
     };
     data();
+    this.getLentTransactions();
   }
 
   render() {

@@ -51,6 +51,7 @@ class ResetPassword extends Component {
         <h2>Forgot Password / Reset Password</h2>
         <form onSubmit={this.sendEmail}>
           <input
+            placeholder="enter email address"
             type="email"
             label="email"
             value={email}

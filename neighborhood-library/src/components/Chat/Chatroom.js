@@ -112,20 +112,23 @@ class Chatroom extends Component {
     this.updateTransaction();
   };
 
-  // updateTransaction = () => {
-  //   const authToken = localStorage.getItem("jwt");
-  //   const endpoint = "http://localhost:4000/api/trans/update";
-  //   axios
-  //     .put(endpoint, {
-  //       body: { confirmTransaction },
-  //       headers: { authorization: authToken }
-  //     })
-  //     .then(res => {
-  //       this.dataBuild.userData = res.data;
-  //       this.getLentBooks();
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  updateTransaction = () => {
+    const change = this.state.confirmTransaction;
+    const endpoint = "http://localhost:4000/api/trans/update";
+    axios
+      .put(endpoint, {
+        body: {
+          book_id: this.props.roomTitle,
+          is_checked_out: this.state.confirmTransaction
+        }
+        // headers: { authorization: authToken }
+      })
+      .then(res => {
+        this.dataBuild.userData = res.data;
+        this.getLentBooks();
+      })
+      .catch(err => console.log(err));
+  };
 
   buttonHandler = e => {
     this.state.buttonName === "Book Loaned"

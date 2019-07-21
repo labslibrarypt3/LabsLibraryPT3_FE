@@ -35,23 +35,29 @@ class Library extends Component {
   createTransaction = async () => {
     const endpoint = "http://localhost:4000/api/trans/";
     const authToken = localStorage.getItem("jwt");
+    console.log(authToken, "inside createTransaction ");
     const transaction = this.state.transaction;
     return axios
-      .post(endpoint, transaction, {
-        headers: { Authorization: `${authToken}` }
-      })
+      .post(endpoint, transaction)
       .then(res => console.log("transaction request added"))
       .catch(err => console.log(err));
   };
   buttonClicked = e => {
     e.preventDefault();
-    this.setState({
-      transaction: {
-        lender_id: e.target.value,
-        book_id: e.target.name
+    console.log(e, "target in click handler");
+    this.setState(
+      {
+        transaction: {
+          userId: localStorage.getItem("userId"),
+          lender_id: e.target.value,
+          book_id: e.target.name
+        }
+      },
+      () => {
+        console.log(this.state.transaction, "in the library click handler");
+        this.createTransaction();
       }
-    });
-    this.createTransaction();
+    );
   };
 
   render() {
