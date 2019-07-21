@@ -16,7 +16,7 @@ class MapsContainer extends Component {
         longitude: -112.072578
       },
       selectedLibrary: null,
-      neighborhoodLibraries: []
+      isLibraryShowing: false
     };
   }
 
@@ -91,6 +91,10 @@ class MapsContainer extends Component {
     });
   };
 
+  toggleLibrary = () => {
+    this.setState({ isLibraryShowing: !this.state.isLibraryShowing });
+  };
+
   render() {
     return (
       <main className="maps-container">
@@ -118,7 +122,10 @@ class MapsContainer extends Component {
                 <button
                   className="marker-button"
                   onClick={event => {
-                    this.setState({ selectedLibrary: library });
+                    this.setState({
+                      selectedLibrary: library,
+                      isLibraryShowing: true
+                    });
                   }}
                 >
                   <img src={icon} alt="library" />
@@ -128,8 +135,12 @@ class MapsContainer extends Component {
           })}
 
           {/* If a library has been selected, show information: */}
-          {this.state.selectedLibrary && (
-            <LibraryPopup library={this.state.selectedLibrary} />
+          {this.state.isLibraryShowing && (
+            <LibraryPopup
+              library={this.state.selectedLibrary}
+              isLibraryShowing={this.state.isLibraryShowing}
+              toggleLibrary={this.toggleLibrary}
+            />
           )}
         </ReactMapGL>
       </main>

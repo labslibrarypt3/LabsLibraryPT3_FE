@@ -58,7 +58,7 @@ class Library extends Component {
     console.log(this.props);
     return (
       <div className="shelf grid-container library">
-        <button onClick={this.props.setSelectedLibrary}>Back</button>
+        <button onClick={this.props.toggleLibrary}>Back</button>
         {this.state.data.map(e => {
           console.log(e.user_id, this.props.userId, "in map of booksearch");
           if (e.user_id !== this.props.userId) {
