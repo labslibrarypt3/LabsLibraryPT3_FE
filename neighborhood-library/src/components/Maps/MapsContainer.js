@@ -30,7 +30,7 @@ class MapsContainer extends Component {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           width: "100%",
-          height: "75vh",
+          height: "calc(100vh-320px)",
           zoom: 10
         }
       });
@@ -95,55 +95,67 @@ class MapsContainer extends Component {
     this.setState({ isLibraryShowing: !this.state.isLibraryShowing });
   };
 
+  mapRender = () => {
+    return (
+      <ReactMapGL
+        {...this.state.viewport}
+        className="map"
+        mapboxApiAccessToken={`${API_KEY}`}
+        mapStyle="mapbox://styles/irasanchez/cjxt8qjbk84pi1cmniuxpvkv0"
+        onViewportChange={viewport => {
+          this.setState({ viewport: viewport });
+        }}
+      >
+        {/* display nearby library locations on map */}
+        {this.neighborhoodLibraries.map(library => {
+          const latitude = Number(library.latitude);
+          const longitude = Number(library.longitude);
+          console.log("lat", latitude, "lon", longitude);
+
+          return (
+            <Marker
+              key={library.userId}
+              latitude={latitude}
+              longitude={longitude}
+            >
+              <button
+                className="marker-button"
+                onClick={event => {
+                  this.setState({
+                    selectedLibrary: library,
+                    isLibraryShowing: true
+                  });
+                }}
+              >
+                <img src={icon} alt="library" />
+              </button>
+            </Marker>
+          );
+        })}
+      </ReactMapGL>
+    );
+  };
+
   render() {
     return (
-      <main className="maps-container">
-        <ReactMapGL
-          {...this.state.viewport}
-          className="map-container"
-          mapboxApiAccessToken={`${API_KEY}`}
-          mapStyle="mapbox://styles/irasanchez/cjxt8qjbk84pi1cmniuxpvkv0"
-          onViewportChange={viewport => {
-            this.setState({ viewport: viewport });
-          }}
-        >
-          {/* display nearby library locations on map */}
-          {this.neighborhoodLibraries.map(library => {
-            const latitude = Number(library.latitude);
-            const longitude = Number(library.longitude);
-            console.log("lat", latitude, "lon", longitude);
+      <>
+        {/* If a library has been selected, show information: */}
 
-            return (
-              <Marker
-                key={library.userId}
-                latitude={latitude}
-                longitude={longitude}
-              >
-                <button
-                  className="marker-button"
-                  onClick={event => {
-                    this.setState({
-                      selectedLibrary: library,
-                      isLibraryShowing: true
-                    });
-                  }}
-                >
-                  <img src={icon} alt="library" />
-                </button>
-              </Marker>
-            );
-          })}
-
-          {/* If a library has been selected, show information: */}
-          {this.state.isLibraryShowing && (
+        {this.state.isLibraryShowing ? (
+          <main className="maps-container">
             <LibraryPopup
               library={this.state.selectedLibrary}
               isLibraryShowing={this.state.isLibraryShowing}
               toggleLibrary={this.toggleLibrary}
             />
-          )}
-        </ReactMapGL>
-      </main>
+            <this.mapRender />
+          </main>
+        ) : (
+          <main className="maps-container">
+            <this.mapRender />
+          </main>
+        )}
+      </>
     );
   }
 }

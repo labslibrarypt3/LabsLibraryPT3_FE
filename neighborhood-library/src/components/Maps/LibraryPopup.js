@@ -32,12 +32,10 @@ class LibraryPopup extends Component {
     const userId = localStorage.getItem("userId");
     console.log(this.props, this.state.user_id, "the render of popup");
     return (
-      <div>
-        <Library
-          toggleLibrary={this.props.toggleLibrary}
-          isLibraryShowing={this.props.isLibraryShowing}
-        />
-      </div>
+      <Library
+        toggleLibrary={this.props.toggleLibrary}
+        isLibraryShowing={this.props.isLibraryShowing}
+      />
     );
   }
 }

@@ -63,29 +63,36 @@ class Library extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="shelf grid-container library">
-        <button onClick={this.props.toggleLibrary}>Back</button>
-        {this.state.data.map(e => {
-          console.log(e.user_id, this.props.userId, "in map of booksearch");
-          if (e.user_id !== this.props.userId) {
-            return (
-              <div key={e.bookId} className="book">
-                <img src={e.cover} className="book-cover" alt="book cover" />
-                <div className="book-data">
-                  <p className="book-title">{e.title}</p>
-                  <p className="book-authors">{e.authors}</p>
-                  <button
-                    value={e.user_id}
-                    name={e.bookId}
-                    onClick={this.buttonClicked}
-                  >
-                    Borrow
-                  </button>
+      <div className="library-pop-up">
+        <button
+          className="back-to-map-button"
+          onClick={this.props.toggleLibrary}
+        >
+          Back
+        </button>
+        <div className="shelf grid-container library">
+          {this.state.data.map(e => {
+            console.log(e.user_id, this.props.userId, "in map of booksearch");
+            if (e.user_id !== this.props.userId) {
+              return (
+                <div key={e.bookId} className="book">
+                  <img src={e.cover} className="book-cover" alt="book cover" />
+                  <div className="book-data">
+                    <p className="book-title">{e.title}</p>
+                    <p className="book-authors">{e.authors}</p>
+                    <button
+                      value={e.user_id}
+                      name={e.bookId}
+                      onClick={this.buttonClicked}
+                    >
+                      Borrow
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
-          }
-        })}
+              );
+            }
+          })}
+        </div>
       </div>
     );
   }

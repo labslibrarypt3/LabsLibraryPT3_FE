@@ -15,6 +15,7 @@ html {
   height: 100vh;
   background-color: #d6ddf1;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .App {
@@ -787,10 +788,34 @@ footer .legal-links {
 /****MAPS*****/
 /*************/
 
+.maps-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .map{
+  
+} */
+
+.library-pop-up {
+  overflow-x: scroll;
+}
+
 .library {
+  display: flex;
   background-color: #d6ddf1;
-  width: 50%;
-  overflow-y: scroll;
+  flex-wrap: nowrap;
+  height: 320px;
+  /* overflow-y: hidden; */
+  margin-top: 55px;
+}
+
+.back-to-map-button {
+  height: 50px;
+  width: 10%;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 2%;
 }
 
 /* Kat notes.... backdrop is over backround and not over maps,
