@@ -7,7 +7,7 @@ const API_KEY = process.env.REACT_APP_MAP_KEY;
 
 const MapsContainer = props => {
   const [viewport, setViewport] = useState({
-    width: `100vw`,
+    width: "100%",
     height: `100vh`,
     zoom: 10,
     latitude: 33.4482,
@@ -19,6 +19,7 @@ const MapsContainer = props => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
       props.getLibraries();
+      props.getUserData();
 
       setViewport({
         latitude: position.coords.latitude,
@@ -28,6 +29,10 @@ const MapsContainer = props => {
         zoom: 10
       });
     });
+  }, []);
+
+  useEffect(() => {
+    console.log(props, "useeffect in maps cont");
   }, []);
 
   //calculate distance
@@ -89,7 +94,7 @@ const MapsContainer = props => {
         {neighborhoodLibraries.map(library => {
           const latitude = Number(library.latitude);
           const longitude = Number(library.longitude);
-          console.log("lat", latitude, "lon", longitude);
+          // console.log("lat", latitude, "lon", longitude);
 
           return (
             <Marker
@@ -112,6 +117,8 @@ const MapsContainer = props => {
         {/* If a library has been selected, show information: */}
         {selectedLibrary && (
           <LibraryPopup library={selectedLibrary} />
+
+          // userId={this.props.userId}
           // <Popup
           // // latitude={selectedLibrary.latitude}
           // // longitude={selectedLibrary.longitude}

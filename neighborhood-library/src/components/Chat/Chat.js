@@ -75,11 +75,10 @@ class Chat extends Component {
     const endpoint = "http://localhost:4000/api/trans/lend";
     await axios
       .get(endpoint, {
-        headers: { authorization: localStorage.getItem("jwt") },
-        params: { lender_id: localStorage.getItem("id") }
+        headers: { authorization: localStorage.getItem("jwt") }
       })
       .then(res => {
-        this.getLentTransactions();
+        // this.getLentTransactions();
         this.dataBuild.lentBooks = res.data;
       })
       .catch(err => {
@@ -114,6 +113,7 @@ class Chat extends Component {
   }
 
   render() {
+    console.log(this.dataBuild.lentBooks, "in render component");
     return (
       <>
         <h3>Borrowed by me:</h3>
