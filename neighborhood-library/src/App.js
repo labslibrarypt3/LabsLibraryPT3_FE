@@ -4,8 +4,8 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 //Components
 import Header from "./components/Header/Header";
-import SideDrawer from './components/Header/SideDrawer';
-import Backdrop from './components/Header/Backdrop';
+import SideDrawer from "./components/Header/SideDrawer";
+import Backdrop from "./components/Header/Backdrop";
 
 import Account from "./components/Account/Account";
 // import Landing from "./components/Landing/Landing";
@@ -15,7 +15,7 @@ import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSucce
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
 
-import BookSearch from "./components/Maps/BookSearch";
+import Library from "./components/Maps/Library";
 
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
@@ -25,7 +25,6 @@ import MapsContainer from "./components/Maps/MapsContainer";
 import ResetPassword from "./components/Auth/ForgotPassword";
 import ResetPasswordRedirect from "./components/Auth/ResetPassword";
 import "./App.css";
-
 
 class App extends Component {
   constructor(props) {
@@ -62,16 +61,16 @@ class App extends Component {
     this.setState({ isLoggedIn: !this.state.isLoggedIn });
   };
 
-  drawerToggleClickHandler = (e) => {
-    this.setState((prevState) => {
+  drawerToggleClickHandler = e => {
+    this.setState(prevState => {
       e.persist();
-      return {sideDrawerOpen: !prevState.sideDrawerOpen}
-    })
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
   };
 
   backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false})
-  }
+    this.setState({ sideDrawerOpen: false });
+  };
 
   getUserData = async () => {
     this.setState({ isLoading: true });
@@ -135,20 +134,17 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  
-
   render() {
-    
     if (this.state.sideDrawerOpen) {
-      return(
-       <div>
-       <SideDrawer />
-    <Backdrop backdropClick={this.backdropClickHandler}/></div>
-      )
+      return (
+        <div>
+          <SideDrawer />
+          <Backdrop backdropClick={this.backdropClickHandler} />
+        </div>
+      );
     }
     return (
       <div className="App">
-        
         <Header
           drawerClickHandler={this.drawerToggleClickHandler}
           img={this.state.img}
@@ -157,7 +153,7 @@ class App extends Component {
         />
         {SideDrawer}
         {Backdrop}
-        
+
         <Route
           exact
           path="/add-book"
@@ -200,7 +196,7 @@ class App extends Component {
         <Route path="/chat" component={Chat} />
         <Route
           path="/search"
-          render={props => <BookSearch userId={this.state.userId} />}
+          render={props => <Library userId={this.state.userId} />}
         />
 
         <Route path="/tos" component={TOS} />

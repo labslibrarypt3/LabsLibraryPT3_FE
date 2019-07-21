@@ -32,7 +32,7 @@ class LibraryPopup extends Component {
     console.log(this.props.library.userId);
     return (
       <div>
-        <Library />
+        <Library setSelectedLibrary={this.props.setSelectedLibrary} />
       </div>
     );
   }
