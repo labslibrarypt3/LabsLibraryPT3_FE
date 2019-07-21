@@ -18,6 +18,9 @@ class MyBook extends Component {
       }
     });
   };
+  // get transaction by bookId then check if checked out.
+  // If checked out is true change button text to checked out else
+  // render delete.
 
   render() {
     return (

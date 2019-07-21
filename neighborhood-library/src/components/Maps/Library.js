@@ -35,23 +35,29 @@ class Library extends Component {
   createTransaction = async () => {
     const endpoint = "http://localhost:4000/api/trans/";
     const authToken = localStorage.getItem("jwt");
+    console.log(authToken, "inside createTransaction ");
     const transaction = this.state.transaction;
     return axios
-      .post(endpoint, transaction, {
-        headers: { Authorization: `${authToken}` }
-      })
+      .post(endpoint, transaction)
       .then(res => console.log("transaction request added"))
       .catch(err => console.log(err));
   };
   buttonClicked = e => {
     e.preventDefault();
-    this.setState({
-      transaction: {
-        lender_id: e.target.value,
-        book_id: e.target.name
+    console.log(e, "target in click handler");
+    this.setState(
+      {
+        transaction: {
+          userId: localStorage.getItem("userId"),
+          lender_id: e.target.value,
+          book_id: e.target.name
+        }
+      },
+      () => {
+        console.log(this.state.transaction, "in the library click handler");
+        this.createTransaction();
       }
-    });
-    this.createTransaction();
+    );
   };
 
   render() {
@@ -67,8 +73,10 @@ class Library extends Component {
           <div className="shelf grid-container">
             <button>Back</button>
             {this.state.data.map(e => {
-              console.log(e.user_id, this.props.userId, "in map of booksearch");
-              if (e.user_id !== this.props.userId) {
+              const userId = localStorage.getItem("userId");
+              console.log(e.user_id, userId, "in map of booksearch");
+
+              if (e.user_id !== userId) {
                 return (
                   <div key={e.bookId} className="book">
                     <img

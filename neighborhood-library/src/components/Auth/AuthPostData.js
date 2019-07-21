@@ -16,8 +16,10 @@ const AuthPostData = (type, userData) => {
     axios
       .post(endpoint, userData)
       .then(res => {
+        console.log(res, "inside authh");
         if (res.status === 200) {
           localStorage.setItem("jwt", res.data);
+
           window.location.replace(
             " http://localhost:3000/my-shelf/home-library"
           );
