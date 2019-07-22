@@ -10,6 +10,7 @@ class Borrowed extends Component {
       data: []
     };
   }
+
   componentDidMount() {
     const data = () => {
       const endpoint = "http://localhost:4000/api/trans/borrow";
