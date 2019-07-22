@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import MyBook from "../MyBook";
+import NoBooks from "./NoBooks";
 
 class HomeLibrary extends Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class HomeLibrary extends Component {
     this.getLentTransactions();
   }
 
-  render() {
+  renderHomeLibrary = () => {
     return (
       <section className="home-library shelves">
         <h3>Home Library</h3>
@@ -70,6 +71,13 @@ class HomeLibrary extends Component {
         </div>
       </section>
     );
+  };
+
+  render() {
+    const { data } = this.state;
+
+    // if there are no books in this.state.data, show the No Books component
+    return <>{data ? <this.renderHomeLibrary /> : <NoBooks />}</>;
   }
 }
 
