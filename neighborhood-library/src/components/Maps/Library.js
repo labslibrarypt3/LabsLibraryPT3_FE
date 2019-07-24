@@ -32,6 +32,7 @@ class Library extends Component {
     };
     data();
   }
+
   createTransaction = async () => {
     const endpoint = "http://localhost:4000/api/trans/";
     const authToken = localStorage.getItem("jwt");
@@ -42,6 +43,7 @@ class Library extends Component {
       .then(res => console.log("transaction request added"))
       .catch(err => console.log(err));
   };
+
   buttonClicked = e => {
     e.preventDefault();
     console.log(e, "target in click handler");
@@ -119,8 +121,7 @@ class BorrowBtn extends Component {
     return (
       <button
         disabled={this.state.disabled}
-        onClick={this.disableBtn}
-        >
+        onClick={this.disableBtn}>
         Borrow
       </button>
     );
