@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class Library extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Library extends Component {
   componentDidMount() {
     const data = () => {
       if (localStorage.getItem("jwt")) {
-        const endpoint = "http://localhost:4000/api/books/";
+        const endpoint = `${baseUrl}/api/books/`;
         const authToken = localStorage.getItem("jwt");
         return axios
           .get(endpoint, { headers: { Authorization: `${authToken}` } })
@@ -33,7 +34,7 @@ class Library extends Component {
     data();
   }
   createTransaction = async () => {
-    const endpoint = "http://localhost:4000/api/trans/";
+    const endpoint = `${baseUrl}/api/trans/`;
     const authToken = localStorage.getItem("jwt");
     console.log(authToken, "inside createTransaction ");
     const transaction = this.state.transaction;

@@ -23,6 +23,8 @@ import MapsContainer from "./components/Maps/MapsContainer";
 import ResetPassword from "./components/Auth/ForgotPassword";
 import ResetPasswordRedirect from "./components/Auth/ResetPassword";
 import "./App.css";
+//Utils
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class App extends Component {
   constructor(props) {
@@ -75,7 +77,7 @@ class App extends Component {
     const authToken = localStorage.getItem("jwt");
     console.log("App.js' getUserData() start", authToken, this.state.userId);
 
-    const endpoint = "http://localhost:4000/api/users/user";
+    const endpoint = `${baseUrl}/api/users/user`;
     const response = await axios
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
       .then(res => {
@@ -121,7 +123,7 @@ class App extends Component {
   };
 
   getLibraries = () => {
-    const endpoint = "http://localhost:4000/api/users/get-libraries";
+    const endpoint = `${baseUrl}/api/users/get-libraries`;
     axios
       .get(endpoint)
       .then(res => {
