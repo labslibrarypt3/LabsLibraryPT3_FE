@@ -8,7 +8,7 @@ import SideDrawer from "./components/Header/SideDrawer";
 import Backdrop from "./components/Header/Backdrop";
 
 import Account from "./components/Account/Account";
-// import Landing from "./components/Landing/Landing";
+import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import AddBookContainer from "./components/AddBook/AddBookContainer";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
@@ -153,6 +153,11 @@ class App extends Component {
         {SideDrawer}
         {Backdrop}
 
+        <Route
+          exact
+          path="/landing"
+          component={Landing}
+        />
         <Route
           exact
           path="/add-book"
