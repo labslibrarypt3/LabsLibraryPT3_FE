@@ -11,6 +11,7 @@ const MyShelf = props => {
         <Link to="/my-shelf/home-library">Home Library</Link>
         <Link to="/my-shelf/borrowed">Borrowed</Link>
         <Link to="/my-shelf/loaned">Loaned</Link>
+        <Link to="/add-book">Add Books</Link>
       </nav>
 
       <Route

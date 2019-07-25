@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+const baseUrl = process.env.REACT_APP_BASE_URL;
 class ResetPasswordRedirect extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class ResetPasswordRedirect extends Component {
     if (this.state.newPassword !== this.state.confirmPassword) {
       alert("Your new password and confirm password must match");
     } else {
-      const endpoint = `http://localhost:4000/auths/reset-password`;
+      const endpoint = `${baseUrl}/auths/reset-password`;
       const endpointObj = {
         newPassword: this.state.newPassword,
         email: this.props.email

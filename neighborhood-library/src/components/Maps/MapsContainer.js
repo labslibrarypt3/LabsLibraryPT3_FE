@@ -1,37 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import icon from "./heart.svg";
 import LibraryPopup from "./LibraryPopup";
-// import { REPL_MODE_STRICT } from "repl";
 const API_KEY = process.env.REACT_APP_MAP_KEY;
 
-const MapsContainer = props => {
-  const [viewport, setViewport] = useState({
-    width: `100vw`,
-    height: `100vh`,
-    zoom: 10,
-    latitude: 33.4482,
-    longitude: -112.072578
-  });
-  const [selectedLibrary, setSelectedLibrary] = useState(null);
+class MapsContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewport: {
+        width: `100vw`,
+        height: `100vh`,
+        zoom: 10,
+        latitude: 33.4482,
+        longitude: -112.072578
+      },
+      selectedLibrary: null,
+      isLibraryShowing: false
+    };
+  }
 
-  //get user location and set it to state
-  useEffect(() => {
+  componentDidMount() {
+    //get user location and set it to App.js state
     navigator.geolocation.getCurrentPosition(position => {
-      props.getLibraries();
+      this.props.getLibraries();
 
-      setViewport({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        width: "100%",
-        height: "75vh",
-        zoom: 10
+      this.setState({
+        viewport: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          width: "100%",
+          height: "calc(100vh-320px)",
+          zoom: 10
+        }
       });
     });
-  }, []);
+  }
 
-  //calculate distance
-  const distance = (lat1, lon1, lat2, lon2, unit) => {
+  componentDidUpdate() {
+    this.getNeighborhoodLibraries();
+  }
+
+  distance = (lat1, lon1, lat2, lon2, unit) => {
     if (lat1 == lat2 && lon1 == lon2) {
       return 0;
     } else {
@@ -58,35 +68,46 @@ const MapsContainer = props => {
     }
   };
 
-  //libraries props.libraries
-  //if within 50 miles, add to neighborhoodLibraries
-  const neighborhoodLibraries = [];
-  props.libraries.map(library => {
-    const lat1 = library.latitude;
-    const lon1 = library.longitude;
-    const lat2 = viewport.latitude;
-    const lon2 = viewport.longitude;
-    const unit = "M";
-    const distanceInMiles = distance(lat1, lon1, lat2, lon2, unit);
+  //get neighborhood libraries within 300 mile radius
+  neighborhoodLibraries = [];
+  getNeighborhoodLibraries = () => {
+    console.log("getting neighborhood libraries");
 
-    if (distanceInMiles < 3000) {
-      neighborhoodLibraries.push(library);
-    }
-  });
+    console.log(this.neighborhoodLibraries, "blank array made");
+    console.log(this.props.libraries);
+    this.props.libraries.map(library => {
+      console.log("mapping");
+      const lat1 = library.latitude;
+      const lon1 = library.longitude;
+      const lat2 = this.state.viewport.latitude;
+      const lon2 = this.state.viewport.longitude;
+      const unit = "M";
+      const distanceInMiles = this.distance(lat1, lon1, lat2, lon2, unit);
 
-  return (
-    <main className="maps-container">
+      if (distanceInMiles < 3000) {
+        this.neighborhoodLibraries.push(library);
+        console.log("pushing");
+      }
+    });
+  };
+
+  toggleLibrary = () => {
+    this.setState({ isLibraryShowing: !this.state.isLibraryShowing });
+  };
+
+  mapRender = () => {
+    return (
       <ReactMapGL
-        {...viewport}
-        className="map-container"
+        {...this.state.viewport}
+        className="map"
         mapboxApiAccessToken={`${API_KEY}`}
         mapStyle="mapbox://styles/irasanchez/cjxt8qjbk84pi1cmniuxpvkv0"
         onViewportChange={viewport => {
-          setViewport(viewport);
+          this.setState({ viewport: viewport });
         }}
       >
         {/* display nearby library locations on map */}
-        {neighborhoodLibraries.map(library => {
+        {this.neighborhoodLibraries.map(library => {
           const latitude = Number(library.latitude);
           const longitude = Number(library.longitude);
           console.log("lat", latitude, "lon", longitude);
@@ -100,7 +121,10 @@ const MapsContainer = props => {
               <button
                 className="marker-button"
                 onClick={event => {
-                  setSelectedLibrary(library);
+                  this.setState({
+                    selectedLibrary: library,
+                    isLibraryShowing: true
+                  });
                 }}
               >
                 <img src={icon} alt="library" />
@@ -108,28 +132,32 @@ const MapsContainer = props => {
             </Marker>
           );
         })}
-
-        {/* If a library has been selected, show information: */}
-        {selectedLibrary && (
-          <LibraryPopup library={selectedLibrary} />
-          // <Popup
-          // // latitude={selectedLibrary.latitude}
-          // // longitude={selectedLibrary.longitude}
-          // // onClose={() => {
-          // //   setSelectedLibrary(null);
-          // // }}
-          // // closeOnClick={false}
-          // >
-          //   <div className="library-info">
-          //     <h3>Dynamic Name</h3>
-          //     <p>Dynamic Library Information</p>
-          //     <button>Request Book</button>
-          //   </div>
-          // </Popup>
-        )}
       </ReactMapGL>
-    </main>
-  );
-};
+    );
+  };
+
+  render() {
+    return (
+      <>
+        {/* If a library has been selected, show information: */}
+
+        {this.state.isLibraryShowing ? (
+          <main className="maps-container">
+            <LibraryPopup
+              library={this.state.selectedLibrary}
+              isLibraryShowing={this.state.isLibraryShowing}
+              toggleLibrary={this.toggleLibrary}
+            />
+            <this.mapRender />
+          </main>
+        ) : (
+          <main className="maps-container">
+            <this.mapRender />
+          </main>
+        )}
+      </>
+    );
+  }
+}
 
 export default MapsContainer;

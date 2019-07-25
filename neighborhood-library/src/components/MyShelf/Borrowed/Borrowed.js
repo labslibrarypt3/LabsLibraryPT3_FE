@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import TransBook from "../TransBook";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class Borrowed extends Component {
   constructor(props) {
@@ -10,9 +11,10 @@ class Borrowed extends Component {
       data: []
     };
   }
+
   componentDidMount() {
     const data = () => {
-      const endpoint = "http://localhost:4000/api/trans/borrow";
+      const endpoint = `${baseUrl}/api/trans/borrow`;
       if (localStorage.getItem("jwt")) {
         const authToken = localStorage.getItem("jwt");
         return axios

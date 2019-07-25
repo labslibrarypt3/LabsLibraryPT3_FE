@@ -13,7 +13,7 @@ class Loaned extends Component {
   }
   componentDidMount() {
     const data = () => {
-      const endpoint = "http://localhost:4000/api/trans/lend";
+      const endpoint = `${baseUrl}/api/trans/lend`;
       if (localStorage.getItem("jwt")) {
         return axios
           .get(endpoint, {

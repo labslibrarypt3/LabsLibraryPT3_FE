@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Library from "./Library";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class LibraryPopup extends Component {
   constructor(props) {
@@ -13,12 +14,11 @@ class LibraryPopup extends Component {
 
   data = () => {
     const user_id = this.state.user_id;
-    console.log(user_id);
+
     axios
-      .get("http://localhost:4000/api/books/mybooks", { user_id })
+      .get(`${baseUrl}/api/books/books`, { user_id })
       .then(res => {
         this.setState({ library: res.data });
-        console.log(res.data);
       })
       .catch(err => console.log(err));
   };
@@ -29,11 +29,13 @@ class LibraryPopup extends Component {
   }
 
   render() {
-    console.log(this.props.library.userId);
+    const userId = localStorage.getItem("userId");
+
     return (
-      <div>
-        <Library />
-      </div>
+      <Library
+        toggleLibrary={this.props.toggleLibrary}
+        isLibraryShowing={this.props.isLibraryShowing}
+      />
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class BookSearchBar extends Component {
+class LibraryBar extends Component {
   constructor(props) {
     super(props);
     this.state = { value: "" };
@@ -29,4 +29,4 @@ class BookSearchBar extends Component {
   }
 }
 
-export default BookSearchBar;
+export default LibraryBar;
