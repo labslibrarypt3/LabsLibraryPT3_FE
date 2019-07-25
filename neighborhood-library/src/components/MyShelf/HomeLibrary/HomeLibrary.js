@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import MyBook from "../MyBook";
 import NoBooks from "./NoBooks";
 const baseUrl = process.env.REACT_APP_BASE_URL;
+const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
 
 class HomeLibrary extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class HomeLibrary extends Component {
           .get(endpoint, { headers: { Authorization: `${authToken}` } })
           .then(res => {
             if (res.status !== 200 || authToken === null) {
-              window.location.replace(" http://localhost:3000/auth");
+              window.location.replace(`${feBaseUrl}/auth`);
               console.log("log in please ....");
             }
 
@@ -45,7 +46,7 @@ class HomeLibrary extends Component {
           })
           .catch(err => console.log(err));
       } else {
-        window.location.replace(" http://localhost:3000/auth");
+        window.location.replace(`${feBaseUrl}/auth`);
       }
     };
     data();

@@ -24,8 +24,8 @@ import ResetPassword from "./components/Auth/ForgotPassword";
 import ResetPasswordRedirect from "./components/Auth/ResetPassword";
 import "./App.css";
 //Utils
-const baseUrl = process.env.REACT_APP_BASE_URL;
-
+const baseUrl = process.env.REACT_APP_BASE_URL; //backend
+const feBaseUrl = process.env.REACT_APP_FE_BASE_URL; //frontend
 class App extends Component {
   constructor(props) {
     super(props);
@@ -82,7 +82,7 @@ class App extends Component {
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
       .then(res => {
         if (res.status !== 200 || authToken === null) {
-          window.location.replace(" http://localhost:3000/auth");
+          window.location.replace(`${feBaseUrl}/auth`);
           console.log("log in please ....");
         }
         localStorage.setItem("userId", res.data.userId);

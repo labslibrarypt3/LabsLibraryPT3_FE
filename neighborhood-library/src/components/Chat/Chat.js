@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Chatroom from "./Chatroom";
 import axios from "axios";
 const baseUrl = process.env.REACT_APP_BASE_URL;
+const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
 
 class Chat extends Component {
   constructor() {
@@ -40,7 +41,7 @@ class Chat extends Component {
 
       .then(res => {
         if (res.status !== 200 || authToken === null) {
-          window.location.replace(" http://localhost:3000/auth");
+          window.location.replace(`${feBaseUrl}/auth`);
           console.log("log in please ....");
         }
 
