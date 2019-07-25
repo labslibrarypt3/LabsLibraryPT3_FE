@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TwillioApp from "../Chat/TwilioApp";
 import axios from "axios";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class Chat extends Component {
   constructor() {
@@ -28,7 +29,7 @@ class Chat extends Component {
 
   //added to data build
   getBorrowedBooks = async () => {
-    const endpoint = "http://localhost:4000/api/trans/borrow";
+    const endpoint = `${baseUrl}/api/trans/borrow`;
 
     const authToken = localStorage.getItem("jwt");
     await axios
@@ -43,30 +44,12 @@ class Chat extends Component {
       });
   };
 
-  // this endpoint returns the transactions where this user has borrowed books
-  // added to data build
-  // getBorrowedTransaction = async () => {
-  //   const endpoint = "http://localhost:4000/api/trans/tranborrow";
-
-  //   const authToken = localStorage.getItem("jwt");
-  //   await axios
-  //     .get(endpoint, { headers: { Authorization: `${authToken}` } })
-
-  //     .then(res => {
-  //       this.dataBuild.borrowedTransactions = res.data;
-  //       this.getName();
-  //     })
-  //     .catch(err => {
-  //       console.log(" Error", err);
-  //     });
-  // };
-
   // this transaction retrieves this users name and modifies the first and last name to
   // return firstname and last initial and stores into state as userName
 
   getName = async () => {
     const authToken = localStorage.getItem("jwt");
-    const endpoint = "http://localhost:4000/api/users/user";
+    const endpoint = `${baseUrl}/api/users/user`;
     await axios
       .get(endpoint, {
         headers: { authorization: authToken }
@@ -82,7 +65,7 @@ class Chat extends Component {
   // state
 
   getLentBooks = async () => {
-    const endpoint = "http://localhost:4000/api/trans/lend";
+    const endpoint = `${baseUrl}/api/trans/lend`;
     await axios
       .get(endpoint, {
         headers: { authorization: localStorage.getItem("jwt") },
@@ -100,7 +83,7 @@ class Chat extends Component {
   // this retrieves transactions where the user has lent books transactions
 
   getLentTransactions = async () => {
-    const endpoint = "http://localhost:4000/api/trans/tranlent";
+    const endpoint = `${baseUrl}/api/trans/tranlent`;
 
     await axios
       .get(endpoint, {

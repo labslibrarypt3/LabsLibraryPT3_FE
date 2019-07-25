@@ -1,6 +1,7 @@
 //if this works on Loaned.js, Borrowed.js, and HomeLibrary.js, then use this for all 3 and delete the extras
 import React, { Component } from "react";
 import axios from "axios";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class MyBook extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class MyBook extends Component {
   buttonClicked = () => {
     const authToken = localStorage.getItem("jwt");
     const book = this.props.bookId;
-    const endpoint = "http://localhost:4000/api/books/";
+    const endpoint = `${baseUrl}/api/books/`;
     return axios.delete(endpoint, {
       headers: {
         Authorization: `${authToken}`,

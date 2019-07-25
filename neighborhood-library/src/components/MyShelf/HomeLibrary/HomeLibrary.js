@@ -3,6 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import MyBook from "../MyBook";
 import NoBooks from "./NoBooks";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class HomeLibrary extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class HomeLibrary extends Component {
     };
   }
   getLentTransactions = async () => {
-    const endpoint = "http://localhost:4000/api/trans/tranlent";
+    const endpoint = `${baseUrl}/api/trans/tranlent`;
 
     await axios
       .get(endpoint, {
@@ -28,7 +29,7 @@ class HomeLibrary extends Component {
   };
 
   componentDidMount() {
-    const endpoint = "http://localhost:4000/api/books/mybooks";
+    const endpoint = `${baseUrl}/api/books/mybooks`;
     const data = () => {
       if (localStorage.getItem("jwt")) {
         const authToken = localStorage.getItem("jwt");
