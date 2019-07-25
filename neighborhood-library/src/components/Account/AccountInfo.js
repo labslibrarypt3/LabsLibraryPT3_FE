@@ -5,6 +5,9 @@ import EditAccountInfoForm from "./EditAccountInfoForm";
 import { FormControl, Form, FormGroup, Button } from "react-bootstrap";
 
 const AccountInfo = props => {
+  // if (!localStorage.getItem("userId")) {
+  //   window.location.replace(" http://localhost:3000/auth");
+  // }
   return (
     <section className="account-info">
       <img src={props.img ? props.img : " "} alt="user profile image" />

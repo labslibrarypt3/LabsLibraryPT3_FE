@@ -85,6 +85,7 @@ class App extends Component {
           window.location.replace(`${feBaseUrl}/auth`);
           console.log("log in please ....");
         }
+
         localStorage.setItem("userId", res.data.userId);
         console.log("response", res);
         const fullNameArray = res.data.name.split(" ");

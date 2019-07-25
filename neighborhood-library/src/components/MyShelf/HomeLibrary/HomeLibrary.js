@@ -4,13 +4,16 @@ import { Redirect } from "react-router-dom";
 import MyBook from "../MyBook";
 import NoBooks from "./NoBooks";
 const baseUrl = process.env.REACT_APP_BASE_URL;
+
 const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
+
 
 class HomeLibrary extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      lentData: []
     };
   }
   getLentTransactions = async () => {
@@ -23,6 +26,7 @@ class HomeLibrary extends Component {
       })
       .then(res => {
         console.log(res.data, "in lens tran");
+        this.setState({ lentData: res.data });
       })
       .catch(err => {
         console.log(" Error", err);
@@ -37,8 +41,14 @@ class HomeLibrary extends Component {
         return axios
           .get(endpoint, { headers: { Authorization: `${authToken}` } })
           .then(res => {
-            if (res.status !== 200 || authToken === null) {
+
+            if (
+              res.status !== 200 ||
+              authToken === null ||
+              res.data === "Hello World, from Neighborhood Library Backend"
+            ) {
               window.location.replace(`${feBaseUrl}/auth`);
+
               console.log("log in please ....");
             }
 
@@ -62,6 +72,7 @@ class HomeLibrary extends Component {
           {this.state.data.map(e => {
             return (
               <MyBook
+                lentData={this.state.lentData}
                 title={e.title}
                 authors={e.authors}
                 cover={e.cover}
@@ -75,10 +86,12 @@ class HomeLibrary extends Component {
     );
   };
 
+
   render() {
     const { data } = this.state;
 
     // if there are no books in this.state.data, show the No Books component
+
     return <>{data ? <this.renderHomeLibrary /> : <NoBooks />}</>;
   }
 }
