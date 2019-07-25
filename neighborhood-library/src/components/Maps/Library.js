@@ -45,6 +45,9 @@ class Library extends Component {
   buttonClicked = e => {
     e.preventDefault();
     console.log(e, "target in click handler");
+    if (localStorage.getItem("userId") === "undefined") {
+      window.location.replace(" http://localhost:3000/auth");
+    }
     this.setState(
       {
         transaction: {

@@ -38,7 +38,11 @@ class Chat extends Component {
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
 
       .then(res => {
-        if (res.status !== 200 || authToken === null) {
+        if (
+          res.status !== 200 ||
+          authToken === null ||
+          res.data === "Hello World, from Neighborhood Library Backend"
+        ) {
           window.location.replace(" http://localhost:3000/auth");
           console.log("log in please ....");
         }
