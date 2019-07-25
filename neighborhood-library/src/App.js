@@ -14,6 +14,7 @@ import AddBookContainer from "./components/AddBook/AddBookContainer";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
+import Team from './components/TeamPage/Team';
 
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
@@ -221,7 +222,7 @@ class App extends Component {
           render={props => <ResetPassword email={this.state.email} />}
         />
         <Route path="/reset" render={props => <ResetPasswordRedirect />} />
-
+        <Route path="/team" component={Team} />
         <Footer />
       </div>
     );
