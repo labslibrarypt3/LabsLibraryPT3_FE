@@ -1,4 +1,5 @@
 import React from "react";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const StripeConnect = () => {
   return (
@@ -9,7 +10,7 @@ const StripeConnect = () => {
         <br />
         Connect to Stripe by following the link below:
       </p>
-      <a href={`http://localhost:4000/api/stripe/connect`}>
+      <a href={`${baseUrl}/api/stripe/connect`}>
         <img src={require("./connect-to-stripe-button.png")} />
       </a>
     </section>

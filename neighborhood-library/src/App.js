@@ -23,7 +23,9 @@ import MapsContainer from "./components/Maps/MapsContainer";
 import ResetPassword from "./components/Auth/ForgotPassword";
 import ResetPasswordRedirect from "./components/Auth/ResetPassword";
 import "./App.css";
-
+//Utils
+const baseUrl = process.env.REACT_APP_BASE_URL; //backend
+const feBaseUrl = process.env.REACT_APP_FE_BASE_URL; //frontend
 class App extends Component {
   constructor(props) {
     super(props);
@@ -75,10 +77,15 @@ class App extends Component {
     const authToken = localStorage.getItem("jwt");
     console.log("App.js' getUserData() start", authToken, this.state.userId);
 
-    const endpoint = "http://localhost:4000/api/users/user";
+    const endpoint = `${baseUrl}/api/users/user`;
     const response = await axios
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
       .then(res => {
+        if (res.status !== 200 || authToken === null) {
+          window.location.replace(`${feBaseUrl}/auth`);
+          console.log("log in please ....");
+        }
+
         localStorage.setItem("userId", res.data.userId);
         console.log("response", res);
         const fullNameArray = res.data.name.split(" ");
@@ -117,7 +124,7 @@ class App extends Component {
   };
 
   getLibraries = () => {
-    const endpoint = "http://localhost:4000/api/users/get-libraries";
+    const endpoint = `${baseUrl}/api/users/get-libraries`;
     axios
       .get(endpoint)
       .then(res => {

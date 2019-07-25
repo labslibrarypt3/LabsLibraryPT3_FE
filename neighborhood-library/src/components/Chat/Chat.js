@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Chatroom from "./Chatroom";
 import axios from "axios";
+const baseUrl = process.env.REACT_APP_BASE_URL;
+const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
 
 class Chat extends Component {
   constructor() {
@@ -31,19 +33,21 @@ class Chat extends Component {
 
   //added to data build
   getBorrowedBooks = async () => {
-    const endpoint = "http://localhost:4000/api/trans/borrow";
+    const endpoint = `${baseUrl}/api/trans/borrow`;
 
     const authToken = localStorage.getItem("jwt");
     await axios
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
 
       .then(res => {
+
         if (
           res.status !== 200 ||
           authToken === null ||
           res.data === "Hello World, from Neighborhood Library Backend"
         ) {
-          window.location.replace(" http://localhost:3000/auth");
+          window.location.replace(`${feBaseUrl}/auth`);
+
           console.log("log in please ....");
         }
 
@@ -60,7 +64,7 @@ class Chat extends Component {
 
   getName = async () => {
     const authToken = localStorage.getItem("jwt");
-    const endpoint = "http://localhost:4000/api/users/user";
+    const endpoint = `${baseUrl}/api/users/user`;
     await axios
       .get(endpoint, {
         headers: { authorization: authToken }
@@ -76,7 +80,7 @@ class Chat extends Component {
   // state
 
   getLentBooks = async () => {
-    const endpoint = "http://localhost:4000/api/trans/lend";
+    const endpoint = `${baseUrl}/api/trans/lend`;
     await axios
       .get(endpoint, {
         headers: { authorization: localStorage.getItem("jwt") }
@@ -93,7 +97,7 @@ class Chat extends Component {
   // this retrieves transactions where the user has lent books transactions
 
   getLentTransactions = async () => {
-    const endpoint = "http://localhost:4000/api/trans/tranlent";
+    const endpoint = `${baseUrl}/api/trans/tranlent`;
 
     await axios
       .get(endpoint, {
