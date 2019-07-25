@@ -15,8 +15,6 @@ import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSucce
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
 
-import BookSearch from "./components/Maps/BookSearch";
-
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
 import Chat from "./components/Chat/Chat";
