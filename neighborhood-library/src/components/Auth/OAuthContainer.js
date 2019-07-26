@@ -41,7 +41,7 @@ class OAuthContainer extends Component {
       };
     }
 
-    AuthPostData(type, userData, this.props.log);
+    AuthPostData(type, userData);
   }
 
   render() {

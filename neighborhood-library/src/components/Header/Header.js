@@ -1,7 +1,8 @@
 import React from "react";
 import DrawerToggleButton from "./DrawerToggleButton";
-import { NavLink } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Logout from "../Auth/Logout";
 
 const Header = props => (
   <header className="header-bar">
@@ -27,7 +28,11 @@ const Header = props => (
           <Link to="/account">Account</Link>
         </li>
         <li>
-          <Link to="/auth">Login</Link>
+          {localStorage.getItem("jwt") ? (
+            <Logout />
+          ) : (
+            <Link to="/auth">Login</Link>
+          )}
         </li>
       </ul>
     </nav>
