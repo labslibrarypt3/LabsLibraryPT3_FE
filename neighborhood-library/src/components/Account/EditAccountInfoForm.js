@@ -3,7 +3,7 @@ import axios from "axios";
 import SuccessAlert from "../Alerts/SuccessAlert";
 import ErrorAlert from "../Alerts/ErrorAlert";
 import EditPasswordForm from "./EditPasswordForm";
-
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class EditAccountInfoForm extends Component {
   constructor(props) {
@@ -49,7 +49,7 @@ class EditAccountInfoForm extends Component {
       img: this.state.img ? this.state.img : this.props.img
     };
 
-    const endpoint = `http://localhost:4000/api/users/update`;
+    const endpoint = `${baseUrl}/api/users/update`;
     const authToken = localStorage.getItem("jwt");
     axios
       .put(endpoint, userUpdate, {

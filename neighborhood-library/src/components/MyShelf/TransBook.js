@@ -1,5 +1,6 @@
 //if this works on Loaned.js, Borrowed.js, and HomeLibrary.js, then use this for all 3 and delete the extras
 import React, { Component } from "react";
+const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
 
 class TransBook extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class TransBook extends Component {
     this.state = {};
   }
   buttonClicked = () => {
-    window.location.replace("http://localhost:3000/chat");
+    window.location.replace(`${feBaseUrl}/chat`);
   };
 
   render() {

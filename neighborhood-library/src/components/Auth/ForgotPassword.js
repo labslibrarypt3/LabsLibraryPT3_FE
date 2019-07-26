@@ -9,6 +9,7 @@ import {
 
 import "./ResetPassword.css";
 import axios from "axios";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class ResetPassword extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class ResetPassword extends Component {
       ? this.setState({ showError: false, messageFromServer: "" })
       : console.log(this.state.email, "after handling before axios");
     axios
-      .post("http://localhost:4000/auths/forgot-password", {
+      .post(`${baseUrl}/auths/forgot-password`, {
         email: this.state.email
       })
       .then(response => {

@@ -6,6 +6,7 @@ If you need to make changes to a single result, please go to AddBook.js
 import React, { Component } from "react";
 import axios from "axios";
 import AddBook from "./AddBook";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class AddBookContainer extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class AddBookContainer extends Component {
   getData = async () => {
     const authToken = localStorage.getItem("jwt");
     await axios
-      .get(`http://localhost:4000/api/goodreads/search`, {
+      .get(`${baseUrl}/api/goodreads/search`, {
         params: { q: this.state.query },
         headers: { authorization: authToken }
       })
@@ -47,7 +48,7 @@ class AddBookContainer extends Component {
 
   //book parameter is passed in onClick in AddBook.js
   addBookToLibrary = async book => {
-    const endpoint = "http://localhost:4000/api/books/";
+    const endpoint = `${baseUrl}/api/books/`;
     const authToken = localStorage.getItem("jwt");
     const axiosResponse = await axios
       .post(endpoint, book, { headers: { authorization: `${authToken}` } })

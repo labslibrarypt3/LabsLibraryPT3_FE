@@ -16,6 +16,9 @@ class Account extends Component {
   }
 
   render() {
+    if (this.props.email === " ") {
+      window.location.replace(" http://localhost:3000/auth");
+    }
     let heading = "";
     this.props.lastInitial === " "
       ? (heading = `Welcome ${this.props.firstName} ${this.props.lastInitial}.`)

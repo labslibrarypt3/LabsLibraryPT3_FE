@@ -1,5 +1,6 @@
 import axios from "axios";
-
+const baseUrl = process.env.REACT_APP_BASE_URL;
+const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
 const AuthPostData = (type, userData) => {
   return new Promise((resolve, reject) => {
     let endpoint;
@@ -8,11 +9,11 @@ const AuthPostData = (type, userData) => {
     localStorage.setItem("img", userData.img);
 
     type === "facebook" || type === "google"
-      ? (endpoint = "http://localhost:4000/auths/auth")
+      ? (endpoint = `${baseUrl}/auths/auth`)
       : type === "register"
-      ? (endpoint = "http://localhost:4000/auths/manual")
-      : (endpoint = "http://localhost:4000/auths/login");
-    // console.log (userData)
+      ? (endpoint = `${baseUrl}/auths/manual`)
+      : (endpoint = `${baseUrl}/auths/login`);
+
     axios
       .post(endpoint, userData)
       .then(res => {
@@ -20,9 +21,7 @@ const AuthPostData = (type, userData) => {
         if (res.status === 200) {
           localStorage.setItem("jwt", res.data);
 
-          window.location.replace(
-            " http://localhost:3000/my-shelf/home-library"
-          );
+          window.location.replace(`{feBaseUrl}/my-shelf/home-library`);
         } else {
           const error = new Error(res.error);
           throw error;

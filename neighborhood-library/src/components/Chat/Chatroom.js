@@ -4,6 +4,7 @@ import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
 import "@progress/kendo-theme-default/dist/all.css";
 import { isFlowBaseAnnotation } from "@babel/types";
 import axios from "axios";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class Chatroom extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Chatroom extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:4000/api/twilio/token", {
+    fetch(`${baseUrl}/api/twilio/token`, {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       method: "POST",
       body: `identity=${encodeURIComponent(this.props.dataBuild.userData.name)}`
@@ -114,7 +115,7 @@ class Chatroom extends Component {
 
   updateTransaction = () => {
     const change = this.state.confirmTransaction;
-    const endpoint = "http://localhost:4000/api/trans/update";
+    const endpoint = `${baseUrl}/api/trans/update`;
     axios
       .put(endpoint, {
         body: {
