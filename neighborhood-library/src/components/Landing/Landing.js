@@ -30,8 +30,7 @@ const LandingPage = props => {
         <div>
           <h3>Map to assist search</h3>
           <p>
-            Culpa o et culpa aliquip, pariatur quis voluptate. Probant elit mandaremus,
-            mandaremus dolore magna sed amet. Te proident aut arbitror, quis ab nam sunt.
+            We've intergrated maps and geolocation services to allow you to search libraries near you. It doesn't matter if you are in your local neighborhood, or across the globe, you will be able to borrow a good book.
           </p>
         </div>
       </div>
@@ -39,8 +38,7 @@ const LandingPage = props => {
         <div>
           <h3>Secure in app messaging</h3>
           <p>
-            Culpa o et culpa aliquip, pariatur quis voluptate. Probant elit mandaremus,
-            mandaremus dolore magna sed amet. Te proident aut arbitror, quis ab nam sunt.
+            Communicate securely whith other users to coordinate exchanges.
           </p>
         </div>
         <img src={messages} alt="chat messages" />
