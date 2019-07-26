@@ -11,9 +11,10 @@ class Loaned extends Component {
       data: []
     };
   }
+
   componentDidMount() {
     const data = () => {
-      const endpoint = `${baseUrl}/api/trans/lend`;
+      const endpoint = `${process.env.REACT_APP_BASE_URL}/api/trans/lend`;
       if (localStorage.getItem("jwt")) {
         return axios
           .get(endpoint, {

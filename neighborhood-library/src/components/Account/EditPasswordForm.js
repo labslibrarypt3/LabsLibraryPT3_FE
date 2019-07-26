@@ -20,7 +20,7 @@ class EditPasswordForm extends Component {
     if (this.state.newPassword !== this.state.confirmPassword) {
       alert("Your new password and confirm password must match");
     } else {
-      const endpoint = `${baseUrl}/auths/password/`;
+      const endpoint = `${process.env.REACT_APP_BASE_URL}/auths/password/`;
       const endpointObj = {
         newPassword: this.state.newPassword,
         password: this.state.password,
