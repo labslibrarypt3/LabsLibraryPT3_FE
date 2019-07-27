@@ -13,6 +13,20 @@
   justify-content: center;
 }
 
+.section h1 {
+  color: #f1f1f1;
+  font-size: 60px;
+  background: #395dc0;
+  padding: 20px;
+}
+
+.link {
+  color: #f1f1f1;
+  font-size: 55px;
+  background: #395dc0;
+  padding: 20px;
+}
+
 .section-2 {
   position: relative;
   height: 100vh;
@@ -24,11 +38,14 @@
 
 .column {
   flex-direction: column;
+  justify-content: space-around;
+  padding: 25px;
+  padding-bottom: 50px;
 }
 
 .row {
   display: flex;
-  justify-content: space-space-around;
+  justify-content: space-around;
   width: 100%;
 }
 
@@ -37,6 +54,12 @@
   align-items: center;
   justify-content: center;
   width: 45%;
+}
+
+.row-text {
+  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .icon {

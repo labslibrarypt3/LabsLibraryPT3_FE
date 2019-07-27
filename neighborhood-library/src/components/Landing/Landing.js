@@ -31,7 +31,7 @@ const LandingPage = props => {
             <div className='row-cell'>
               <img className='icon' src={Marker} alt='book marker' />
             </div>
-            <div className='row-cell column'>
+            <div className='row-cell row-text column'>
               <h3>Location Search</h3>
               <p>
                 We've intergrated maps and geolocation services to allow you to search libraries near you. It doesn't matter if you are in your local neighborhood, or across the globe, you will be able to borrow a good book.
@@ -39,7 +39,7 @@ const LandingPage = props => {
             </div>
           </div>
           <div className='row'>
-            <div className='row-cell column'>
+            <div className='row-cell row-text column'>
               <h3>Secure in App Messaging</h3>
               <p>
                 We Tilio's Chat API to allow you to communicate securely with other users to coordinate exchanges.
@@ -52,7 +52,7 @@ const LandingPage = props => {
         </div>
       </div>
       <div className='section parallax bg3'>
-        <Link to="/auth">Register or Login</Link>
+        <Link to="/auth" className='link'>Register or Login</Link>
       </div>
     </div>
   );
