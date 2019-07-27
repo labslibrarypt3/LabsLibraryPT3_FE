@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+const baseUrl = process.env.BASE_URL;
 class EditPasswordForm extends Component {
   constructor(props) {
     super(props);
