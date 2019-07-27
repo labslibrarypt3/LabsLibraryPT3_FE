@@ -7,13 +7,13 @@ const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
 
-
 class HomeLibrary extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      lentData: []
+      lentData: [],
+      bookLent: false
     };
   }
   getLentTransactions = async () => {
@@ -41,7 +41,6 @@ class HomeLibrary extends Component {
         return axios
           .get(endpoint, { headers: { Authorization: `${authToken}` } })
           .then(res => {
-
             if (
               res.status !== 200 ||
               authToken === null ||
@@ -85,7 +84,6 @@ class HomeLibrary extends Component {
       </section>
     );
   };
-
 
   render() {
     const { data } = this.state;
