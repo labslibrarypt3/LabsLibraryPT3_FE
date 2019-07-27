@@ -47,8 +47,6 @@ class HomeLibrary extends Component {
               res.data === "Hello World, from Neighborhood Library Backend"
             ) {
               window.location.replace(`${feBaseUrl}/auth`);
-
-              console.log("log in please ....");
             }
 
             this.setState({ data: res.data });
