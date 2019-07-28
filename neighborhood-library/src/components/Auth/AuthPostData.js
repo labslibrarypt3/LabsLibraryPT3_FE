@@ -1,6 +1,7 @@
 import axios from "axios";
 const baseUrl = process.env.REACT_APP_BASE_URL;
 const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
+
 const AuthPostData = (type, userData) => {
   return new Promise((resolve, reject) => {
     let endpoint;
@@ -17,7 +18,6 @@ const AuthPostData = (type, userData) => {
     axios
       .post(endpoint, userData)
       .then(res => {
-        console.log(res, "inside authh");
         if (res.status === 200) {
           localStorage.setItem("jwt", res.data);
 
@@ -28,7 +28,6 @@ const AuthPostData = (type, userData) => {
         }
       })
       .catch(err => {
-        console.log("login Error", err);
         alert("Error logging in please try again");
       });
   });
