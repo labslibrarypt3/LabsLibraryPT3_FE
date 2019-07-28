@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Landing.css';
 import Marker from './assets/noun_Library_2474696.svg';
 import Messages from './assets/noun_messages_699935.svg';
+import Books from './assets/noun_books_983242.svg';
 
 const LandingPage = props => {
   return (
@@ -47,6 +48,17 @@ const LandingPage = props => {
             </div>
             <div className='row-cell'>
               <img className='icon' src={Messages} alt='chat bubbles' />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='row-cell'>
+              <img className='icon' src={Books} alt='stack of books' />
+            </div>
+            <div className='row-cell row-text column'>
+              <h3>Money Back Guarantee</h3>
+              <p>
+                Like your public library, Neighborhood Library's books are free to borrow. And like them we charge late fees for overdue books. This way we can ensure our users are reimburse, or books are returned.
+              </p>
             </div>
           </div>
         </div>
