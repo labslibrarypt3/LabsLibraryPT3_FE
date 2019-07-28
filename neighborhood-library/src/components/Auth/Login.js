@@ -28,7 +28,7 @@ class Login extends Component {
       email: this.state.email
     };
 
-    AuthPostData(type, userData);
+    AuthPostData(type, userData, this.props.logi);
   };
   render() {
     return (
