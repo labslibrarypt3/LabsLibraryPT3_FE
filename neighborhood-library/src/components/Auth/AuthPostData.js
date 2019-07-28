@@ -21,7 +21,7 @@ const AuthPostData = (type, userData) => {
         if (res.status === 200) {
           localStorage.setItem("jwt", res.data);
 
-          window.location.replace(`{feBaseUrl}/my-shelf/home-library`);
+          window.location.replace(`${feBaseUrl}/my-shelf/home-library`);
         } else {
           const error = new Error(res.error);
           throw error;
