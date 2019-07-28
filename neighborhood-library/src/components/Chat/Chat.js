@@ -40,7 +40,6 @@ class Chat extends Component {
       .get(endpoint, { headers: { Authorization: `${authToken}` } })
 
       .then(res => {
-
         if (
           res.status !== 200 ||
           authToken === null ||
@@ -88,6 +87,7 @@ class Chat extends Component {
       .then(res => {
         // this.getLentTransactions();
         this.dataBuild.lentBooks = res.data;
+        this.getLentTransactions();
       })
       .catch(err => {
         console.log(" Error", err);
@@ -105,10 +105,9 @@ class Chat extends Component {
         params: { lender_id: localStorage.getItem("id") }
       })
       .then(res => {
-        // console.log(res.data, "in lens tran");
-        this.dataBuild.lentTransactions = res.data;
+        //  transactions= res.data;
         console.log("109", this.dataBuild, "end of chat package build");
-        this.setState({ dataBuild: this.dataBuild });
+        // this.setState({ dataBuild: this.dataBuild.lentTransactions });
       })
       .catch(err => {
         console.log(" Error", err);

@@ -13,3 +13,7 @@ ReactDOM.render(
 );
 
 require("dotenv").config();
+
+
+//REACT_APP_BASE_URL="http://localhost:4000"
+// REACT_APP_FE_BASE_URL="http://localhost:3000"
