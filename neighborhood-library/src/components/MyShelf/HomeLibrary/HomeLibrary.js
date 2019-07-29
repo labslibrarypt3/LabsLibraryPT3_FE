@@ -7,7 +7,6 @@ const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
 
-
 class HomeLibrary extends Component {
   constructor(props) {
     super(props);
@@ -41,15 +40,12 @@ class HomeLibrary extends Component {
         return axios
           .get(endpoint, { headers: { Authorization: `${authToken}` } })
           .then(res => {
-
             if (
               res.status !== 200 ||
               authToken === null ||
               res.data === "Hello World, from Neighborhood Library Backend"
             ) {
               window.location.replace(`${feBaseUrl}/auth`);
-
-              console.log("log in please ....");
             }
 
             this.setState({ data: res.data });
@@ -70,9 +66,15 @@ class HomeLibrary extends Component {
         <p>{this.props.firstName}</p>
         <div className="shelf grid-container">
           {this.state.data.map(e => {
+            let checkedOutStatus;
+            this.state.lentData.map(transaction => {
+              if (transaction.book_id == e.bookId) {
+                checkedOutStatus = transaction.is_checked_out;
+              }
+            });
             return (
               <MyBook
-                lentData={this.state.lentData}
+                checkedOutStatus={checkedOutStatus}
                 title={e.title}
                 authors={e.authors}
                 cover={e.cover}
@@ -85,7 +87,6 @@ class HomeLibrary extends Component {
       </section>
     );
   };
-
 
   render() {
     const { data } = this.state;
