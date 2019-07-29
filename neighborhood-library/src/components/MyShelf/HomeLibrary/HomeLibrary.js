@@ -12,8 +12,7 @@ class HomeLibrary extends Component {
     super(props);
     this.state = {
       data: [],
-      lentData: [],
-      bookLent: false
+      lentData: []
     };
   }
   getLentTransactions = async () => {
@@ -47,8 +46,6 @@ class HomeLibrary extends Component {
               res.data === "Hello World, from Neighborhood Library Backend"
             ) {
               window.location.replace(`${feBaseUrl}/auth`);
-
-              console.log("log in please ....");
             }
 
             this.setState({ data: res.data });
@@ -69,9 +66,15 @@ class HomeLibrary extends Component {
         <p>{this.props.firstName}</p>
         <div className="shelf grid-container">
           {this.state.data.map(e => {
+            let checkedOutStatus;
+            this.state.lentData.map(transaction => {
+              if (transaction.book_id == e.bookId) {
+                checkedOutStatus = transaction.is_checked_out;
+              }
+            });
             return (
               <MyBook
-                lentData={this.state.lentData}
+                checkedOutStatus={checkedOutStatus}
                 title={e.title}
                 authors={e.authors}
                 cover={e.cover}

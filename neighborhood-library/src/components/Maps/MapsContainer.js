@@ -100,7 +100,7 @@ class MapsContainer extends Component {
       <ReactMapGL
         {...this.state.viewport}
         className="map"
-        mapboxApiAccessToken={`${API_KEY}`}
+        mapboxApiAccessToken={API_KEY}
         mapStyle="mapbox://styles/irasanchez/cjxt8qjbk84pi1cmniuxpvkv0"
         onViewportChange={viewport => {
           this.setState({ viewport: viewport });

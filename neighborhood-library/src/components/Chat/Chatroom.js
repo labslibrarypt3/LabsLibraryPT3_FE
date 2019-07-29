@@ -116,25 +116,28 @@ class Chatroom extends Component {
   updateTransaction = () => {
     const change = this.state.confirmTransaction;
     const endpoint = `${baseUrl}/api/trans/update`;
+    console.log("button update axios call");
     axios
-      .put(endpoint, {
-        body: {
+      .put(
+        endpoint,
+        {
           book_id: this.props.roomTitle,
-          is_checked_out: this.state.confirmTransaction
+          is_checked_out: change
         }
         // headers: { authorization: authToken }
-      })
+      )
       .then(res => {
-        this.dataBuild.userData = res.data;
         this.getLentBooks();
       })
       .catch(err => console.log(err));
   };
 
   buttonHandler = e => {
+    console.log("button pressed");
     this.state.buttonName === "Book Loaned"
-      ? this.setState({ buttonName: "Book Returned" })
-      : this.setState({ buttonName: "Book Loaned" });
+      ? this.setState({ buttonName: "Book Returned", confirmTransaction: true })
+      : this.setState({ buttonName: "Book Loaned", confirmTransaction: false });
+    this.updateTransaction();
   };
 
   toggleOpenCloseDrawer = () => {
