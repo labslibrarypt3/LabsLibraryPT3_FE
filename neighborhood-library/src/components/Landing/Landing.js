@@ -12,7 +12,7 @@ const LandingPage = props => {
         <h1>Neighborhood Library</h1>
       </div>
       <div className='section static'>
-        <p>
+        <p className='section-text'>
           A new way to lend and borrow books.
         </p>
       </div>
@@ -21,7 +21,7 @@ const LandingPage = props => {
       </div>
       <div className='section-2 static'>
         <div className='section'>
-          <p>
+          <p className='section-text'>
             Neighborhood Library makes it easy to share your books. Users can effortlessly create Home Libraries others can browse and request.
           </p>
         </div>
@@ -53,7 +53,7 @@ const LandingPage = props => {
               <img className='icon' src={Books} alt='stack of books' />
             </div>
             <div className='row-cell row-text column'>
-              <h3>Returns Guaranteed</h3>
+              <h3>Guaranteed Returns</h3>
               <p>
                 Like your public library, Neighborhood Library's books are free to borrow. And like them we charge late fees for overdue books. This way we can ensure our users are reimburse, or books are returned.
               </p>
