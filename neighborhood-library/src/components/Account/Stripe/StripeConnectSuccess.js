@@ -1,6 +1,9 @@
 import React from "react";
-
+import axios from "axios";
 const StripeConnectSuccess = () => {
+  //get token from the url
+  // send code to stripe
+  // fetch the user acct id
   return (
     <div>
       <h2>You're all set!</h2>
