@@ -13,7 +13,8 @@ const LandingPage = props => {
       </div>
       <div className='section static'>
         <p className='section-text'>
-          A new way to lend and borrow books.
+          Your new way to lend and borrow books.<br />
+          Neighborhood Library is a Peer to Peer lending service allowing you to find your next good read wherever you are.
         </p>
       </div>
       <div className='section parallax bg2'>
@@ -41,7 +42,7 @@ const LandingPage = props => {
             <div className='row-cell row-text column'>
               <h3>Secure in App Messaging</h3>
               <p>
-                We Tilio's Chat API to allow you to communicate securely with other users to coordinate exchanges.
+                We use Tilio's Chat API to allow you to communicate securely with other users to coordinate exchanges, and meeting locations.
               </p>
             </div>
             <div className='row-cell'>
