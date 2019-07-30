@@ -13,8 +13,7 @@ const LandingPage = props => {
       </div>
       <div className='section static'>
         <p>
-          Culpa o et culpa aliquip, pariatur quis voluptate. Probant elit mandaremus,
-          mandaremus dolore magna sed amet. Te proident aut arbitror, quis ab nam sunt.
+          A new way to lend and borrow books.
         </p>
       </div>
       <div className='section parallax bg2'>
@@ -23,8 +22,7 @@ const LandingPage = props => {
       <div className='section-2 static'>
         <div className='section'>
           <p>
-            Culpa o et culpa aliquip, pariatur quis voluptate. Probant elit mandaremus,
-            mandaremus dolore magna sed amet. Te proident aut arbitror, quis ab nam sunt.
+            Neighborhood Library makes it easy to share your books. Users can effortlessly create Home Libraries others can browse and request.
           </p>
         </div>
         <div className='section column static'>
@@ -55,7 +53,7 @@ const LandingPage = props => {
               <img className='icon' src={Books} alt='stack of books' />
             </div>
             <div className='row-cell row-text column'>
-              <h3>Money Back Guarantee</h3>
+              <h3>Returns Guaranteed</h3>
               <p>
                 Like your public library, Neighborhood Library's books are free to borrow. And like them we charge late fees for overdue books. This way we can ensure our users are reimburse, or books are returned.
               </p>
