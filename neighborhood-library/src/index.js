@@ -14,6 +14,5 @@ ReactDOM.render(
 
 require("dotenv").config();
 
-
-//REACT_APP_BASE_URL="http://localhost:4000"
-// REACT_APP_FE_BASE_URL="http://localhost:3000"
+// REACT_APP_BASE_URL="https://pt3-neighborhood-library-back.herokuapp.com"
+// REACT_APP_FE_BASE_URL="https://goofy-mayer-45bb20.netlify.com"

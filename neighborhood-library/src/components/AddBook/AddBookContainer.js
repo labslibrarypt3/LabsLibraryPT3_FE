@@ -45,7 +45,18 @@ class AddBookContainer extends Component {
     event.preventDefault();
     this.getData();
   };
-
+  updateUserData(position) {
+    console.log(position.coords.latitude);
+    const endpoint = `${baseUrl}/api/users/update`;
+    const authToken = localStorage.getItem("jwt");
+    const userUpdate = {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    };
+    axios.put(endpoint, userUpdate, {
+      headers: { authorization: `${authToken}` }
+    });
+  }
   //book parameter is passed in onClick in AddBook.js
   addBookToLibrary = async book => {
     const endpoint = `${baseUrl}/api/books/`;
@@ -87,6 +98,7 @@ class AddBookContainer extends Component {
                 title={book.title}
                 authors={book.authors}
                 addBookToLibrary={this.addBookToLibrary}
+                updateUserData={this.updateUserData}
               />
             );
           })}
