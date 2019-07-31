@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 class StripeConnectSuccess extends React.Component {
-  constructor() {
+  constructor(props) {
     super(props);
   }
 
@@ -9,6 +9,7 @@ class StripeConnectSuccess extends React.Component {
     //get token from the url
     // send code to stripe
     // fetch the user acct id
+    console.log(this.props.params.get("code"));
   }
   render() {
     return (
