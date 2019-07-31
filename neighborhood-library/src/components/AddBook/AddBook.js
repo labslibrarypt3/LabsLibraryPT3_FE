@@ -5,6 +5,7 @@
 import React from "react";
 
 const AddBook = props => {
+  console.log(props);
   return (
     <div className="add-book book">
       <img className="book-cover" src={props.cover} alt="book cover" />
@@ -15,6 +16,10 @@ const AddBook = props => {
 
         <button
           onClick={() => {
+            navigator.geolocation.getCurrentPosition(position => {
+              props.updateUserData(position);
+            });
+
             const book = {
               title: props.title,
               authors: props.authors,
