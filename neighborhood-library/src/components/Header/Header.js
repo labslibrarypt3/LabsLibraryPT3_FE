@@ -6,7 +6,7 @@ import Logout from "../Auth/Logout";
 
 const Header = props => (
   <header className="header-bar">
-    <h1 className="logo">
+    <h1 className="title">
       <a href="/">Neighborhood Library</a>
     </h1>
     <nav className="header-navigation">

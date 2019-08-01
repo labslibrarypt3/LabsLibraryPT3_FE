@@ -64,8 +64,7 @@ class OAuthContainer extends Component {
           onClick={componentClicked}
           callback={responseFacebook}
           cssClass="flogin-button"
-          icon="fa-facebook"
-          textButton=" Login with Facebook "
+          textButton="Login with Facebook"
         />
 
         <GoogleLogin
@@ -76,7 +75,8 @@ class OAuthContainer extends Component {
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
             >
-              "Login with Google"
+              Login with <br />
+              Google
             </button>
           )}
           onSuccess={responseGoogle}
