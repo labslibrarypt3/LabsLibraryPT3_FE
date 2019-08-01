@@ -40,8 +40,11 @@ class Loaned extends Component {
   render() {
     return (
       <div className="loaned shelves">
-        <h3>Lent</h3>
-        <p>I am a list of books you've loaned to someone else</p>
+        <h3>Loaned</h3>
+        <p>
+          These are the books you've loaned to a neighbor that will need to be
+          returned eventually.
+        </p>
         <div className="shelf grid-container">
           {this.state.data.map(e => {
             return (

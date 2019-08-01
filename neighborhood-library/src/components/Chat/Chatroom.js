@@ -4,6 +4,7 @@ import { Chat as ChatUI } from "@progress/kendo-react-conversational-ui";
 import "@progress/kendo-theme-default/dist/all.css";
 import { isFlowBaseAnnotation } from "@babel/types";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
 class Chatroom extends Component {
@@ -14,7 +15,7 @@ class Chatroom extends Component {
       error: null,
       isLoading: true,
       messages: [],
-      buttonName: "Book Loaned",
+      buttonName: "Confirm Book Exchanged",
       confirmTransaction: false
     };
 
@@ -174,9 +175,15 @@ class Chatroom extends Component {
               onMessageSend={this.sendMessage}
               width={500}
             />
-            <button className="chat-confirm" onClick={this.buttonHandler}>
+
+            <Button
+              variant="primary"
+              className="chat-confirm"
+              type="submit"
+              onClick={this.buttonHandler}
+            >
               {this.state.buttonName}
-            </button>
+            </Button>
           </div>
         </div>
       );

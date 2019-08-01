@@ -63,7 +63,10 @@ class HomeLibrary extends Component {
     return (
       <section className="home-library shelves">
         <h3>Home Library</h3>
-        <p>{this.props.firstName}</p>
+        <p>
+          Welcome to your home library. Here are the books you've made available
+          for your neighbors to borrow.
+        </p>
         <div className="shelf grid-container">
           {this.state.data.map(e => {
             let checkedOutStatus;
