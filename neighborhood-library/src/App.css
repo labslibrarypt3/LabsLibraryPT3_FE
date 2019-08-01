@@ -818,6 +818,27 @@ footer .legal-links {
   margin-left: 2%;
 }
 
+.teamHeader {
+  font-family: Raleway, sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.teamMemberName {
+  font-family: Raleway, sans-serif !important;
+  font-weight: 900 !important;
+} 
+
+.lambdaDescription a {
+  color: #757575 !important;
+}
+.lambdaDescription a:hover {
+  color: #757575 !important;
+}
+
+ .lambdaDescription a:active {
+  color: #757575 !important;
+}
+
 /* Kat notes.... backdrop is over backround and not over maps,
 which is why we are not seeing maps underneath the transparent backdrop.
 I will come back to this later. */
