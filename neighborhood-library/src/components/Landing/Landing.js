@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Landing.css';
+
+import LandingHeader from './LandingHeader';
 import Marker from './assets/noun_Library_2474696.svg';
 import Messages from './assets/noun_messages_699935.svg';
 import Books from './assets/noun_books_983242.svg';
+import './Landing.css';
 
 const LandingPage = props => {
   return (
     <div className='wrapper'>
+      <LandingHeader />
       <div className='section parallax bg1'>
         <h1>Neighborhood Library</h1>
       </div>
@@ -63,7 +66,7 @@ const LandingPage = props => {
         </div>
       </div>
       <div className='section parallax bg3'>
-        <Link to="/auth" className='link'>Register or Login</Link>
+        
       </div>
     </div>
   );
