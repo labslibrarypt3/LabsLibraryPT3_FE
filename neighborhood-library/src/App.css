@@ -828,3 +828,23 @@ footer .legal-links {
 .back-to-map-button:hover {
   background-color: #395dc0;
 }
+.teamHeader {
+  font-family: Raleway, sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.teamMemberName {
+  font-family: Raleway, sans-serif !important;
+  font-weight: 900 !important;
+}
+
+.lambdaDescription a {
+  color: #757575 !important;
+}
+.lambdaDescription a:hover {
+  color: #757575 !important;
+}
+
+.lambdaDescription a:active {
+  color: #757575 !important;
+}
