@@ -9,6 +9,7 @@ const Footer = () => {
       <p>A Lambda Labs project.</p>
       <a href="https://github.com/labslibrarypt3 ">View the source code.</a>
       <div className="legal-links">
+        <Link to='/team'>Meet The Team</Link>
         <Link to="/tos">Terms of Service</Link>
         <Link to="/privacy">Privacy Policy</Link>
       </div>
