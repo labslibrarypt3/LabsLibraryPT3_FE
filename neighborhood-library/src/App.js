@@ -42,7 +42,7 @@ class App extends Component {
       img: " ",
       password: " ",
       stripe_user_id: " ",
-      isLoggedIn: false,
+      isLoggedIn: true,
       isLoading: false,
       Message: " ",
       Error: " ",
