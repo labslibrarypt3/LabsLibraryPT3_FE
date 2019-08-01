@@ -14,7 +14,7 @@ const LandingPage = props => {
       <div className='section static'>
         <p className='section-text'>
           Your new way to lend and borrow books.<br />
-          Neighborhood Library is a Peer to Peer lending service allowing you to find your next good read wherever you are.
+          Neighborhood Library is a Peer to Peer lending service to help you find your next good read any.
         </p>
       </div>
       <div className='section parallax bg2'>
