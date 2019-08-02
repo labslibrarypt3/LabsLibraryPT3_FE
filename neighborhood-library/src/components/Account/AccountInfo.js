@@ -5,7 +5,7 @@ import EditAccountInfoForm from "./EditAccountInfoForm";
 import { FormControl, Form, FormGroup, Button } from "react-bootstrap";
 
 const AccountInfo = props => {
-  if (!localStorage.getItem("userId")) {
+  if (!localStorage.getItem("jwt")) {
     window.location.replace(" http://localhost:3000/auth");
   }
   return (

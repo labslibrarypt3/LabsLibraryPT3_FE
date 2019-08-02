@@ -14,7 +14,7 @@ class LibraryPopup extends Component {
 
   data = () => {
     const user_id = this.state.user_id;
-
+    // debug this to return books that belong to the individual user change endpoint most likely solution
     axios
       .get(`${baseUrl}/api/books/books`, { user_id })
       .then(res => {
@@ -34,6 +34,7 @@ class LibraryPopup extends Component {
     return (
       <Library
         toggleLibrary={this.props.toggleLibrary}
+        getUserData={this.props.getUserData}
         isLibraryShowing={this.props.isLibraryShowing}
       />
     );

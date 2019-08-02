@@ -20,6 +20,7 @@ class Library extends Component {
   }
 
   componentDidMount() {
+    this.props.getUserData();
     const data = () => {
       if (localStorage.getItem("jwt")) {
         const endpoint = `${baseUrl}/api/books/`;
@@ -43,12 +44,12 @@ class Library extends Component {
     const transaction = this.state.transaction;
     return axios
       .post(endpoint, transaction)
-      .then(res => console.log("transaction request added"))
+      .then(res => console.log(window.location.replace(`${feBaseUrl}/chat`)))
       .catch(err => console.log(err));
   };
   buttonClicked = e => {
     e.preventDefault();
-    console.log(e, "target in click handler");
+
     if (localStorage.getItem("userId") === "undefined") {
       window.location.replace(" http://localhost:3000/auth");
     }
