@@ -3,6 +3,7 @@ import AuthPostData from "./AuthPostData";
 import { FormControl, Form, FormGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ResetPassword from "./ForgotPassword";
+import { link } from "fs";
 
 class Login extends Component {
   constructor(props) {
@@ -28,8 +29,12 @@ class Login extends Component {
       email: this.state.email
     };
 
-    AuthPostData(type, userData, this.props.logi);
+    AuthPostData(type, userData);
   };
+
+  // handlRegClick = e =>{
+  //   link
+  // }
   render() {
     return (
       <div className="login">
@@ -63,7 +68,7 @@ class Login extends Component {
 
             <Button
               label
-              onClick={this.loginVsRegisterToggler}
+              onClick={this.handlRegClick}
               href="#"
               variant="primary"
               className="login-button"

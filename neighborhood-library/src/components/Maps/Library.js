@@ -20,6 +20,7 @@ class Library extends Component {
   }
 
   componentDidMount() {
+    this.props.getUserData();
     const data = () => {
       if (localStorage.getItem("jwt")) {
         const endpoint = `${baseUrl}/api/books/`;
@@ -48,7 +49,7 @@ class Library extends Component {
   };
   buttonClicked = e => {
     e.preventDefault();
-    console.log(e, "target in click handler");
+
     if (localStorage.getItem("userId") === "undefined") {
       window.location.replace(" http://localhost:3000/auth");
     }
