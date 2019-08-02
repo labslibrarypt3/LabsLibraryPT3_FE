@@ -7,11 +7,9 @@ import EditAccountInfoForm from "./EditAccountInfoForm";
 class Account extends Component {
   constructor(props) {
     super(props);
-    console.log(props, "are there props in the accounts page");
   }
 
   componentDidMount() {
-    console.log("Account.js mounted");
     this.props.getUserData();
   }
 

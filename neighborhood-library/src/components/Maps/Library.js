@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Button } from "react-bootstrap";
+
 const baseUrl = process.env.REACT_APP_BASE_URL;
 const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
 
@@ -69,12 +71,15 @@ class Library extends Component {
     console.log(this.props);
     return (
       <div className="library-pop-up">
-        <button
+        <Button
+          variant="primary"
           className="back-to-map-button"
+          type="submit"
           onClick={this.props.toggleLibrary}
         >
           Back
-        </button>
+        </Button>
+
         <div className="shelf grid-container library">
           {this.state.data.map(e => {
             console.log(e.user_id, this.props.userId, "in map of booksearch");

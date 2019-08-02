@@ -8,12 +8,13 @@ import SideDrawer from "./components/Header/SideDrawer";
 import Backdrop from "./components/Header/Backdrop";
 
 import Account from "./components/Account/Account";
-// import Landing from "./components/Landing/Landing";
+import Landing from "./components/Landing/Landing";
 import MyShelf from "./components/MyShelf/MyShelf";
 import AddBookContainer from "./components/AddBook/AddBookContainer";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
+import Team from './components/TeamPage/Team';
 
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
@@ -42,7 +43,7 @@ class App extends Component {
       img: " ",
       password: " ",
       stripe_user_id: " ",
-      isLoggedIn: false,
+      isLoggedIn: true,
       isLoading: false,
       Message: " ",
       Error: " ",
@@ -158,6 +159,11 @@ class App extends Component {
 
         <Route
           exact
+          path="/"
+          component={Landing}
+        />
+        <Route
+          exact
           path="/add-book"
           render={props => <AddBookContainer userId={this.state.userId} />}
         />
@@ -205,7 +211,7 @@ class App extends Component {
         />
         <Route
           exact
-          path="/"
+          path="/home"
           render={props => (
             <MapsContainer
               getUserData={this.getUserData}
@@ -221,7 +227,7 @@ class App extends Component {
           render={props => <ResetPassword email={this.state.email} />}
         />
         <Route path="/reset" render={props => <ResetPasswordRedirect />} />
-
+        <Route path="/team" component={Team} />
         <Footer />
       </div>
     );
