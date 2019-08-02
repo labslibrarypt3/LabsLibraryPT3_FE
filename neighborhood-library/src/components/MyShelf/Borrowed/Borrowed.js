@@ -37,7 +37,7 @@ class Borrowed extends Component {
     return (
       <div className="borrowed shelves">
         <h3>Borrowed</h3>
-        <p>These are books you are borrowing from someone else:</p>
+        <p>These are books you are borrowing from someone else</p>
         <div className="shelf grid-container">
           {this.state.data.map(e => {
             return (
