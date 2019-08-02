@@ -28,7 +28,7 @@ class Login extends Component {
       email: this.state.email
     };
 
-    AuthPostData(type, userData, this.props.logi);
+    AuthPostData(type, userData);
   };
   render() {
     return (
@@ -62,12 +62,9 @@ class Login extends Component {
             <p>Need an account?</p>
 
             <Button
-              label
-              onClick={this.loginVsRegisterToggler}
-              href="#"
+              onClick={this.props.loginVsRegisterToggler}
               variant="primary"
               className="login-button"
-              type="submit"
             >
               Register
             </Button>

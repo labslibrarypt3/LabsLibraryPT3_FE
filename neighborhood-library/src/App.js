@@ -14,7 +14,7 @@ import AddBookContainer from "./components/AddBook/AddBookContainer";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
-import Team from './components/TeamPage/Team';
+import Team from "./components/TeamPage/Team";
 
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
@@ -157,11 +157,7 @@ class App extends Component {
         {SideDrawer}
         {Backdrop}
 
-        <Route
-          exact
-          path="/"
-          component={Landing}
-        />
+        <Route exact path="/" component={Landing} />
         <Route
           exact
           path="/add-book"
@@ -211,7 +207,7 @@ class App extends Component {
         />
         <Route
           exact
-          path="/home"
+          path="/maps"
           render={props => (
             <MapsContainer
               getUserData={this.getUserData}

@@ -48,7 +48,7 @@ class Library extends Component {
   };
   buttonClicked = e => {
     e.preventDefault();
-    console.log(e, "target in click handler");
+
     if (localStorage.getItem("userId") === "undefined") {
       window.location.replace(" http://localhost:3000/auth");
     }
@@ -61,7 +61,6 @@ class Library extends Component {
         }
       },
       () => {
-        console.log(this.state.transaction, "in the library click handler");
         this.createTransaction();
       }
     );

@@ -6,10 +6,8 @@ import Logout from "../Auth/Logout";
 
 const Header = props => (
   <header className="header-bar">
-
     <h1 className="title">
       <a href="/">Neighborhood Library</a>
-
     </h1>
     <nav className="header-navigation">
       <div className="nav-toggle">
@@ -17,7 +15,7 @@ const Header = props => (
       </div>
       <ul className="nav-links">
         <li>
-          <Link to="/home">Home</Link>
+          <Link to="/maps">Map</Link>
         </li>
 
         <li>

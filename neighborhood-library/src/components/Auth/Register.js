@@ -32,7 +32,7 @@ class Register extends Component {
   };
   render() {
     return (
-      <div className="manual-auth">
+      <div className="login">
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="login">Register</label>
           <input
@@ -61,9 +61,8 @@ class Register extends Component {
         <div>
           <p>Already have an account?</p>
           <button
-            href="#"
             className="manual-auth-nav"
-            onClick={this.loginVsRegisterToggler}
+            onClick={this.props.loginVsRegisterToggler}
           >
             Login
           </button>
