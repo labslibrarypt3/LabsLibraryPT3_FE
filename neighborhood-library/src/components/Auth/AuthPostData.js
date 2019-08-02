@@ -3,6 +3,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL;
 const feBaseUrl = process.env.REACT_APP_FE_BASE_URL;
 
 const AuthPostData = (type, userData) => {
+  console.log(type, userData, "inside authpostdata");
   return new Promise((resolve, reject) => {
     let endpoint;
 
