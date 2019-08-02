@@ -147,6 +147,7 @@ class MapsContainer extends Component {
               library={this.state.selectedLibrary}
               isLibraryShowing={this.state.isLibraryShowing}
               toggleLibrary={this.toggleLibrary}
+              getUserData={this.props.getUserData}
             />
             <this.mapRender />
           </main>
