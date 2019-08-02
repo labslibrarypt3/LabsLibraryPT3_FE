@@ -44,7 +44,7 @@ class Library extends Component {
     const transaction = this.state.transaction;
     return axios
       .post(endpoint, transaction)
-      .then(res => console.log("transaction request added"))
+      .then(res => console.log(window.location.replace(`${feBaseUrl}/chat`)))
       .catch(err => console.log(err));
   };
   buttonClicked = e => {
