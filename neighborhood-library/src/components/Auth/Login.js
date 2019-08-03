@@ -67,12 +67,9 @@ class Login extends Component {
             <p>Need an account?</p>
 
             <Button
-              label
-              onClick={this.handlRegClick}
-              href="#"
+              onClick={this.props.loginVsRegisterToggler}
               variant="primary"
               className="login-button"
-              type="submit"
             >
               Register
             </Button>

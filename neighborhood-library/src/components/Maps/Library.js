@@ -63,7 +63,6 @@ class Library extends Component {
         }
       },
       () => {
-        console.log(this.state.transaction, "in the library click handler");
         this.createTransaction();
       }
     );

@@ -210,7 +210,7 @@ class App extends Component {
         />
         <Route
           exact
-          path="/home"
+          path="/maps"
           render={props => (
             <MapsContainer
               getUserData={this.getUserData}
