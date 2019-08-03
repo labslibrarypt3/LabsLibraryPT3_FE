@@ -14,7 +14,7 @@ import AddBookContainer from "./components/AddBook/AddBookContainer";
 import StripeConnectSuccess from "./components/Account/Stripe/StripeConnectSuccess";
 import TOS from "./components/Legal/TOS";
 import Privacy from "./components/Legal/Privacy";
-import Team from './components/TeamPage/Team';
+import Team from "./components/TeamPage/Team";
 
 import AuthContainer from "./components/Auth/AuthContainer";
 import Footer from "./components/Footer/Footer";
@@ -87,7 +87,6 @@ class App extends Component {
           console.log("log in please ....");
         }
 
-        localStorage.setItem("userId", res.data.userId);
         console.log("response", res);
         const fullNameArray = res.data.name.split(" ");
         const firstName = fullNameArray[0];
@@ -161,11 +160,7 @@ class App extends Component {
         {SideDrawer}
         {Backdrop}
 
-        <Route
-          exact
-          path="/"
-          component={Landing}
-        />
+        <Route exact path="/" component={Landing} />
         <Route
           exact
           path="/add-book"

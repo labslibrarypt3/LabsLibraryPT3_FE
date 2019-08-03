@@ -25,6 +25,7 @@ class LibraryPopup extends Component {
 
   componentDidMount() {
     this.setState({ user_id: this.props.userId });
+    // console.log(user_id);
     this.data();
   }
 

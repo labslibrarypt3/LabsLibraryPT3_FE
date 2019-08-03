@@ -23,7 +23,7 @@ class Library extends Component {
     this.props.getUserData();
     const data = () => {
       if (localStorage.getItem("jwt")) {
-        const endpoint = `${baseUrl}/api/books/`;
+        const endpoint = `${baseUrl}/api/books`;
         const authToken = localStorage.getItem("jwt");
         return axios
           .get(endpoint, { headers: { Authorization: `${authToken}` } })
@@ -37,20 +37,21 @@ class Library extends Component {
     };
     data();
   }
+
   createTransaction = async () => {
     const endpoint = `${baseUrl}/api/trans/`;
     const authToken = localStorage.getItem("jwt");
     console.log(authToken, "inside createTransaction ");
     const transaction = this.state.transaction;
-    return axios
+    axios
       .post(endpoint, transaction)
-      .then(res => console.log(window.location.replace(`${feBaseUrl}/chat`)))
+      .then(res => window.location.replace(`${feBaseUrl}/chat`))
       .catch(err => console.log(err));
   };
   buttonClicked = e => {
     e.preventDefault();
 
-    if (localStorage.getItem("userId") === "undefined") {
+    if (localStorage.getItem("userId") == "undefined") {
       window.location.replace(" http://localhost:3000/auth");
     }
     this.setState(
