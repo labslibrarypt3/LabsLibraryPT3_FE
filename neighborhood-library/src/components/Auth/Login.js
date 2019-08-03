@@ -3,6 +3,7 @@ import AuthPostData from "./AuthPostData";
 import { FormControl, Form, FormGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ResetPassword from "./ForgotPassword";
+import { link } from "fs";
 
 class Login extends Component {
   constructor(props) {
@@ -30,6 +31,10 @@ class Login extends Component {
 
     AuthPostData(type, userData);
   };
+
+  // handlRegClick = e =>{
+  //   link
+  // }
   render() {
     return (
       <div className="login">

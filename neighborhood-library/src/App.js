@@ -116,7 +116,11 @@ class App extends Component {
             Error: ""
           },
           () => {
-            console.log("getUserData has updated App.js state");
+            localStorage.setItem("userId", res.data.userId);
+            console.log(
+              localStorage.getItem("userId"),
+              "this here should be userId in the app.js"
+            );
           }
         );
       })
