@@ -57,45 +57,6 @@ h3 {
 ********************
 */
 
-@media screen and (max-width: 390px) {
-  header {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 138px;
-    max-width: 1100%;
-    left: 0px;
-    top: 0px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: #f1f1f1;
-    flex-grow: 1;
-
-    background: linear-gradient(
-        264.53deg,
-        #2849a5 0%,
-        rgba(255, 255, 255, 0) 100%
-      ),
-      #df6041;
-  }
-  .title {
-    position: absolute;
-    width: 20%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    font-family: Raleway;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 102%;
-    padding: 0;
-    margin: 15% 0% 0% 5%;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-}
-
 /* Header container */
 header {
   position: relative;
@@ -464,6 +425,7 @@ footer .legal-links {
   border-radius: 15px;
   padding: 4% 4%;
   height: 100%;
+  color: #395dc0;
 }
 .login-button {
   margin: 0% 0% 0% 0%;
@@ -486,7 +448,7 @@ footer .legal-links {
 }
 
 .auth-container p {
-  margin: 0% 5% 9% 5%;
+  margin: 0% 5% 9% 0%;
 }
 
 .flogin-button {
@@ -541,7 +503,7 @@ footer .legal-links {
   }
 
   .auth-container p {
-    margin: 0% 5% 3% 5%;
+    margin: 0% 5% 3% 0%;
   }
 
   .manual-auth-container {
@@ -570,6 +532,10 @@ footer .legal-links {
 }
 .register {
   width: 90%;
+  margin: 10px 0 0 0;
+}
+.login a {
+  color: #395dc0;
 }
 /* .spacer {
   height: 315px;
@@ -583,7 +549,6 @@ footer .legal-links {
 .chat-room {
   display: flex;
   justify-content: space-around;
- 
 }
 .chat-title {
   display: flex;
@@ -624,7 +589,6 @@ footer .legal-links {
 .chat-confirm:hover {
   background-color: #df6041;
 }
-
 
 .header-bar {
   position: relative;

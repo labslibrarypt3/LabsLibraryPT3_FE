@@ -21,21 +21,21 @@ class Library extends Component {
 
   componentDidMount() {
     this.props.getUserData();
-    const data = () => {
-      if (localStorage.getItem("jwt")) {
-        const endpoint = `${baseUrl}/api/books`;
-        const authToken = localStorage.getItem("jwt");
-        return axios
-          .get(endpoint, { headers: { Authorization: `${authToken}` } })
-          .then(res => {
-            this.setState({ data: res.data });
-          })
-          .catch(err => console.log(err));
-      } else {
-        window.location.replace(`${feBaseUrl}/auth`);
-      }
-    };
-    data();
+    // const data = () => {
+    //   if (localStorage.getItem("jwt")) {
+    //     const endpoint = `${baseUrl}/api/books`;
+    //     const authToken = localStorage.getItem("jwt");
+    //     return axios
+    //       .get(endpoint, { headers: { Authorization: `${authToken}` } })
+    //       .then(res => {
+    //         this.setState({ data: res.data });
+    //       })
+    //       .catch(err => console.log(err));
+    //   } else {
+    //     window.location.replace(`${feBaseUrl}/auth`);
+    //   }
+    // };
+    // data();
   }
 
   createTransaction = async () => {
@@ -82,7 +82,7 @@ class Library extends Component {
         </Button>
 
         <div className="shelf grid-container library">
-          {this.state.data.map(e => {
+          {this.props.books.map(e => {
             console.log(e.user_id, this.props.userId, "in map of booksearch");
             if (e.user_id !== this.props.userId) {
               return (

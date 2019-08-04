@@ -108,7 +108,6 @@ class MapsContainer extends Component {
         {this.neighborhoodLibraries.map(library => {
           const latitude = Number(library.latitude);
           const longitude = Number(library.longitude);
-          console.log("lat", latitude, "lon", longitude);
 
           return (
             <Marker
