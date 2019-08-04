@@ -34,6 +34,7 @@ class Borrowed extends Component {
   }
 
   render() {
+    console.log(this.state.data, "in borrowed component");
     return (
       <div className="borrowed shelves">
         <h3>Borrowed</h3>

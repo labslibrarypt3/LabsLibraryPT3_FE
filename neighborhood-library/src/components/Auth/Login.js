@@ -41,7 +41,13 @@ class Login extends Component {
         <form onSubmit={this.handleSubmit} className="login-form">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control name="email" type="email" placeholder="Enter email" />
+            <Form.Control
+              name="email"
+              type="email"
+              placeholder="Enter email"
+              value={this.state.email}
+              onChange={this.handleInput}
+            />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -67,12 +73,9 @@ class Login extends Component {
             <p>Need an account?</p>
 
             <Button
-              label
-              onClick={this.handlRegClick}
-              href="#"
+              onClick={this.props.loginVsRegisterToggler}
               variant="primary"
               className="login-button"
-              type="submit"
             >
               Register
             </Button>

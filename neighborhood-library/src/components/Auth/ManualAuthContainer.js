@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import OAuthContainer from "./OAuthContainer";
 import Register from "../Auth/Register";
 import Login from "../Auth/Login";
-import { Redirect } from "react-router-dom";
 
 class ManualAuthContainer extends Component {
   constructor(props) {
@@ -11,7 +9,11 @@ class ManualAuthContainer extends Component {
   }
 
   loginVsRegisterToggler = event => {
-    this.setState(prevState => ({ isNewHere: !prevState.isNewHere }));
+    //set state to the opposite of the previous state (false -> true, vice versa)
+
+    this.state.isNewHere
+      ? this.setState({ isNewHere: false })
+      : this.setState({ isNewHere: true });
   };
 
   render() {

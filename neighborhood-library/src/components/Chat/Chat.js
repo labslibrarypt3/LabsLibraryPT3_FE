@@ -120,14 +120,12 @@ class Chat extends Component {
   }
 
   render() {
-    console.log(this.dataBuild.lentBooks, "in render component");
     return (
-      <>
-        <h3>Borrowed by me:</h3>
+      <main>
+        <h3 className="chat-header">Borrowed by me:</h3>
         {// first get the book title data by mapping over the get borrowed books array
 
         this.dataBuild.borrowedBooks.map(e => {
-          console.log(e, "this is the borrowing map");
           return (
             <div>
               <Chatroom
@@ -139,7 +137,7 @@ class Chat extends Component {
           );
         })}
 
-        <h3>Lent by me:</h3>
+        <h3 className="chat-header">Lent by me:</h3>
         {// first get the book title data by mapping over the get borrowed books array
         this.dataBuild.lentBooks.map(e => {
           return (
@@ -152,7 +150,7 @@ class Chat extends Component {
             </div>
           );
         })}
-      </>
+      </main>
     );
   }
 }
