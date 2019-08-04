@@ -152,7 +152,6 @@ class Chatroom extends Component {
   };
 
   render() {
-    console.log(this.props, "props in twillio");
     if (this.state.error) {
       return <p>{this.state.error}</p>;
     } else if (this.state.isLoading) {

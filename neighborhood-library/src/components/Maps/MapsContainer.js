@@ -76,7 +76,6 @@ class MapsContainer extends Component {
     console.log(this.neighborhoodLibraries, "blank array made");
     console.log(this.props.libraries);
     this.props.libraries.map(library => {
-      console.log("mapping");
       const lat1 = library.latitude;
       const lon1 = library.longitude;
       const lat2 = this.state.viewport.latitude;
@@ -86,7 +85,6 @@ class MapsContainer extends Component {
 
       if (distanceInMiles < 3000) {
         this.neighborhoodLibraries.push(library);
-        console.log("pushing");
       }
     });
   };
@@ -110,7 +108,6 @@ class MapsContainer extends Component {
         {this.neighborhoodLibraries.map(library => {
           const latitude = Number(library.latitude);
           const longitude = Number(library.longitude);
-          console.log("lat", latitude, "lon", longitude);
 
           return (
             <Marker

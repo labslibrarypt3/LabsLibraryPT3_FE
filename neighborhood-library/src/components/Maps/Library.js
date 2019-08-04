@@ -21,36 +21,37 @@ class Library extends Component {
 
   componentDidMount() {
     this.props.getUserData();
-    const data = () => {
-      if (localStorage.getItem("jwt")) {
-        const endpoint = `${baseUrl}/api/books/`;
-        const authToken = localStorage.getItem("jwt");
-        return axios
-          .get(endpoint, { headers: { Authorization: `${authToken}` } })
-          .then(res => {
-            this.setState({ data: res.data });
-          })
-          .catch(err => console.log(err));
-      } else {
-        window.location.replace(`${feBaseUrl}/auth`);
-      }
-    };
-    data();
+    // const data = () => {
+    //   if (localStorage.getItem("jwt")) {
+    //     const endpoint = `${baseUrl}/api/books`;
+    //     const authToken = localStorage.getItem("jwt");
+    //     return axios
+    //       .get(endpoint, { headers: { Authorization: `${authToken}` } })
+    //       .then(res => {
+    //         this.setState({ data: res.data });
+    //       })
+    //       .catch(err => console.log(err));
+    //   } else {
+    //     window.location.replace(`${feBaseUrl}/auth`);
+    //   }
+    // };
+    // data();
   }
+
   createTransaction = async () => {
     const endpoint = `${baseUrl}/api/trans/`;
     const authToken = localStorage.getItem("jwt");
     console.log(authToken, "inside createTransaction ");
     const transaction = this.state.transaction;
-    return axios
+    axios
       .post(endpoint, transaction)
-      .then(res => console.log(window.location.replace(`${feBaseUrl}/chat`)))
+      .then(res => window.location.replace(`${feBaseUrl}/chat`))
       .catch(err => console.log(err));
   };
   buttonClicked = e => {
     e.preventDefault();
 
-    if (localStorage.getItem("userId") === "undefined") {
+    if (localStorage.getItem("userId") == "undefined") {
       window.location.replace(" http://localhost:3000/auth");
     }
     this.setState(
@@ -62,7 +63,6 @@ class Library extends Component {
         }
       },
       () => {
-        console.log(this.state.transaction, "in the library click handler");
         this.createTransaction();
       }
     );
@@ -82,7 +82,7 @@ class Library extends Component {
         </Button>
 
         <div className="shelf grid-container library">
-          {this.state.data.map(e => {
+          {this.props.books.map(e => {
             console.log(e.user_id, this.props.userId, "in map of booksearch");
             if (e.user_id !== this.props.userId) {
               return (
