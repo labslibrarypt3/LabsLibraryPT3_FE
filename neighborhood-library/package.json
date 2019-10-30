@@ -55,6 +55,6 @@
     ]
   },
   "devDependencies": {
-    "knex": "^0.17.0"
+    "knex": "^0.19.5"
   }
 }
